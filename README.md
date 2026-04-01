@@ -1,0 +1,47 @@
+# Palms Place Condos
+
+Real estate marketing site for **Palms Place** (Las Vegas). This repository is set up for local development and [GitHub Codespaces](https://github.com/features/codespaces).
+
+## Prerequisites
+
+- **Node.js** 20 LTS (or the version pinned in this repo once `package.json` exists)
+- **Git**
+- A GitHub account with access to this repository
+
+## Quick start (local)
+
+```bash
+git clone git@github.com:DrJanDuffy/palmsplacecondos.git
+cd palmsplacecondos
+```
+
+After the app is scaffolded (e.g. Next.js), install dependencies and run the dev server using the commands in `package.json` (typically `pnpm install` / `npm install` and `pnpm dev` or `npm run dev`).
+
+## Git remote (existing repo)
+
+If this folder was cloned without `origin`, or you are pushing from a machine that has not added the remote:
+
+```bash
+git remote add origin git@github.com:DrJanDuffy/palmsplacecondos.git
+git branch -M main
+git push -u origin main
+```
+
+## GitHub Codespaces
+
+Open the repo on GitHub and choose **Code → Codespaces → Create codespace on main**. The included dev container installs Node and useful editor defaults so the environment is consistent for collaborators.
+
+To adjust tooling (Node version, extensions, post-create commands), edit [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json).
+
+## Collaborators
+
+Repository owners can add collaborators under **Settings → Collaborators** on GitHub and invite people by username or email.
+
+## Security
+
+- Do not commit secrets, API keys, or `.env` files with live credentials. Use `.env.example` for documented placeholders and platform environment variables for production.
+- Keep dependencies updated and review pull requests before merging.
+
+## License
+
+Proprietary unless otherwise noted. Add a `LICENSE` file when the project’s legal terms are finalized.
