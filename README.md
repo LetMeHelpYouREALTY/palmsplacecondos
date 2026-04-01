@@ -22,6 +22,24 @@ Open [http://localhost:3000](http://localhost:3000). Production build check (ali
 
 Copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your canonical HTTPS origin when deploying.
 
+## Project structure
+
+| Path | Purpose |
+|------|---------|
+| [`src/app/`](src/app/) | Next.js App Router routes, layouts, and global styles |
+| [`src/components/ui/`](src/components/ui/) | Reusable UI primitives (e.g. shadcn-style components) |
+| [`src/components/layouts/`](src/components/layouts/) | Header, footer, shell layouts |
+| [`src/components/sections/`](src/components/sections/) | Page sections (hero, FAQ, CTA) |
+| [`src/components/forms/`](src/components/forms/) | Lead and contact forms |
+| [`src/components/tools/`](src/components/tools/) | Interactive tools (search widgets, valuation) |
+| [`src/components/shared/`](src/components/shared/) | Cross-cutting UI helpers |
+| [`src/components/seo/`](src/components/seo/) | JSON-LD and SEO-specific components |
+| [`src/components/idx/`](src/components/idx/) | MLS/IDX widgets (see folder README; changes need approval) |
+| [`src/lib/`](src/lib/) | Server-safe utilities, schema, and `site-contact` |
+| [`src/hooks/`](src/hooks/) | Client-side React hooks |
+| [`src/types/`](src/types/) | Shared TypeScript types |
+| [`public/images/`](public/images/) | Static images referenced from pages |
+
 ## Git remote (existing repo)
 
 If this folder was cloned without `origin`, or you are pushing from a machine that has not added the remote:
