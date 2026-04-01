@@ -7,6 +7,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const nextConfig: NextConfig = {
   /* When a parent directory has another lockfile, pin tracing to this app root (Vercel/local). */
   outputFileTracingRoot: path.join(__dirname),
+
+  /**
+   * RealScout CSP (when you add Content-Security-Policy): include in `script-src` and
+   * `connect-src` both `https://em.realscout.com` and `https://www.realscout.com` — see
+   * AGENTS.md and `.cursor/rules/next-config-headers.mdc`. Do not duplicate CSP in middleware
+   * without aligning directives.
+   *
+   * This project does not set CSP by default so Next.js/Vercel defaults do not break embeds.
+   */
 };
 
 export default nextConfig;

@@ -38,6 +38,13 @@ body {
   font-family: var(--font-display), "Georgia", ui-serif, serif;
 }
 
+/* RealScout web component — keep divider readable on dark UI (see css-tailwind-sources.mdc) */
+realscout-office-listings {
+  --rs-listing-divider-color: var(--palms-gold);
+  display: block;
+  width: 100%;
+}
+
 /* Focus visible for gold-on-dark UI */
 :focus-visible {
   outline: 2px solid var(--palms-gold);
