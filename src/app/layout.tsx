@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layouts/site-header";
 import { siteContact } from "@/lib/site-contact";
@@ -12,6 +12,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const displaySerif = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "600", "700"],
 });
 
 const metadataBaseUrl =
@@ -35,17 +41,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${displaySerif.variable} min-h-screen bg-palms-charcoal text-palms-cream antialiased`}
       >
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>
-          <footer className="border-t border-black/10 px-6 py-8 text-sm text-foreground/80 dark:border-white/15">
+          <footer className="border-t border-palms-gold/25 bg-palms-charcoal-elevated px-6 py-10 text-sm text-palms-cream/85">
             <div className="mx-auto max-w-3xl space-y-2">
-              <p className="font-medium text-foreground">{siteContact.agentName}</p>
+              <p className="font-medium text-palms-cream">{siteContact.agentName}</p>
               <p>Nevada license {siteContact.license}</p>
               <p>{siteContact.brokerage}</p>
-              <p className="text-foreground/70">
+              <p className="text-palms-cream/70">
                 Phone, office address, and hours will match Google Business Profile on this site once
                 finalized for launch.
               </p>

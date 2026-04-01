@@ -15,7 +15,7 @@ function NavLink({
   onNavigate?: () => void;
 }) {
   const base = cn(
-    "rounded-md px-2 py-1.5 text-sm font-medium text-foreground/90 transition-colors hover:bg-black/5 hover:text-foreground dark:hover:bg-white/10",
+    "rounded-md px-2 py-1.5 text-sm font-medium text-palms-cream/90 transition-colors hover:bg-palms-gold/10 hover:text-palms-gold",
     className,
   );
 
@@ -44,11 +44,11 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 dark:border-white/15">
+    <header className="sticky top-0 z-50 border-b border-palms-gold/25 bg-palms-charcoal/95 backdrop-blur supports-[backdrop-filter]:bg-palms-charcoal/85">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
         <div className="flex min-w-0 flex-1 items-center gap-3">
           <Link
-            className="truncate text-base font-semibold tracking-tight text-foreground hover:opacity-90"
+            className="font-display truncate text-lg font-semibold tracking-[0.02em] text-palms-cream hover:text-palms-gold"
             href="/"
           >
             Palms Place Condos
@@ -59,7 +59,7 @@ export function SiteHeader() {
           aria-controls="site-nav-panel"
           aria-expanded={open}
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          className="inline-flex items-center justify-center rounded-md border border-black/15 px-3 py-2 text-sm font-medium text-foreground md:hidden dark:border-white/20"
+          className="inline-flex items-center justify-center rounded-md border border-palms-gold/35 px-3 py-2 text-sm font-medium text-palms-cream hover:border-palms-gold hover:bg-palms-gold/10 md:hidden"
           onClick={() => setOpen((v) => !v)}
           type="button"
         >
@@ -69,7 +69,7 @@ export function SiteHeader() {
 
       <div
         className={cn(
-          "border-t border-black/10 dark:border-white/15 md:block",
+          "border-t border-palms-gold/20 md:block",
           open ? "block" : "hidden md:block",
         )}
         id="site-nav-panel"
@@ -85,7 +85,10 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <nav aria-label="Main" className="flex flex-wrap gap-x-1 gap-y-1 border-t border-black/10 pt-3 dark:border-white/15">
+          <nav
+            aria-label="Main"
+            className="flex flex-wrap gap-x-1 gap-y-1 border-t border-palms-gold/20 pt-3"
+          >
             {primaryNav.map((item, index) => (
               <NavLink
                 item={item}
@@ -95,8 +98,8 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="border-t border-black/10 pt-3 dark:border-white/15">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-foreground/60">
+          <div className="border-t border-palms-gold/20 pt-3">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-palms-gold-muted">
               Popular searches
             </p>
             <nav aria-label="Popular searches" className="flex flex-wrap gap-x-1 gap-y-1">
