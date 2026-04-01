@@ -1,0 +1,25 @@
+---
+description: playwright.config — baseURL, webServer, projects, a11y and E2E for App Router
+globs: "**/playwright.config.*"
+alwaysApply: false
+---
+
+# Playwright (`**/playwright.config.*`)
+
+*Use for flows that need the real Next.js runtime—especially **async Server Components** and full navigation (as of March 2026). For E2E **authoring** patterns (flakes, fixtures), see **`testing-patterns.mdc`**.*
+
+## Base URL and server
+- Set **`baseURL`** to the local app (e.g. `http://127.0.0.1:3000`) and use **`webServer`** to start **`next dev`** or a **production `next start`** build—pick one strategy and keep it **fast** for CI (often build once, then start).
+
+## Stability
+- Prefer **`test.describe`** and **deterministic** selectors (**`getByRole`**, **`getByLabel`**) over brittle CSS—aligns with accessibility and resilient E2E.
+
+## App Router
+- E2E is the right layer for **full-page** behavior, **middleware**, **redirects**, and **metadata** visible in the document—don’t duplicate that burden in Vitest.
+
+## CI
+- Run **Playwright** install step **`npx playwright install --with-deps`** (or project equivalent) in CI so browsers are present.
+- Use **trace / screenshot on failure** for debugging flaky tests—enable selectively to avoid huge artifacts.
+
+## Scope
+- Don’t point **`baseURL`** at production URLs for destructive tests; use **preview deployments** with caution and auth.

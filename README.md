@@ -45,6 +45,12 @@ Repository owners can add collaborators under **Settings → Collaborators** on 
 
 Quick link (this repository): [github.com/DrJanDuffy/palmsplacecondos/settings/access](https://github.com/DrJanDuffy/palmsplacecondos/settings/access). Organization-owned repos may use **Settings → Collaborators and teams** instead.
 
+## Cursor rules and AGENTS.md
+
+Shared **Cursor** rule files live in [`.cursor/rules/`](.cursor/rules/) (copied from the team standard so Codespaces and collaborators get the same SEO, Next.js, and real-estate conventions).
+
+Repository-specific instructions for AI assistants and contributors: **[AGENTS.md](AGENTS.md)** (Dr. Jan Duffy branding, RealScout/IDX boundaries, Vercel/Cloudflare, NAP/schema).
+
 ## Security
 
 - Do not commit secrets, API keys, or `.env` files with live credentials. Use `.env.example` for documented placeholders and platform environment variables for production.

@@ -1,0 +1,27 @@
+---
+description: App Router layout.tsx — fonts, scripts, providers, html/body, locale
+globs: "**/app/**/layout.tsx"
+alwaysApply: false
+---
+
+# App Router Layouts (`**/app/**/layout.tsx`)
+
+## Scope and layers
+- Prefer **minimal** root layout: global **fonts**, **`html` `lang`**, shared **providers** (i18n, analytics, auth), and **one** load of third-party **scripts** that must be global.
+- **Nested layouts** should add only what that segment needs—avoid re-importing heavy client bundles for the whole tree.
+
+## Scripts and widgets
+- **Calendly, RealScout, PostHog, etc.**: load **once** at the appropriate layout level—do not duplicate script tags in every page or child layout.
+- If a widget requires **`dangerouslySetInnerHTML`**, keep that pattern in **one** place and document why (vendor requirement).
+
+## Metadata
+- Root layout may set **`metadata`** / **`metadataBase`** defaults; child layouts can **extend** but should not fight canonical or title logic—prefer **`generateMetadata`** on **pages** for route-specific SEO when the project does so.
+
+## Internationalization
+- For **`[locale]`** segments, ensure **`lang`** on `<html>` matches the active locale and aligns with **`next-intl`** (or the project’s i18n) conventions.
+
+## Auth and marketing splits
+- When **marketing** vs **auth/dashboard** use different layouts, keep **Clerk** (or auth) boundaries from pulling unnecessary JS into public marketing routes if the repo optimizes that way.
+
+## Performance
+- Avoid **synchronous** third-party scripts in `<head>` without `next/script` strategy unless the project standard says otherwise; prefer **`afterInteractive`** / **`lazyOnload`** per Next.js docs.

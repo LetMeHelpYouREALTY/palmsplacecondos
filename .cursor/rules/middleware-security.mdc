@@ -1,0 +1,19 @@
+---
+description: middleware.ts — redirects, auth, i18n, and security headers
+globs: "**/middleware.ts"
+alwaysApply: false
+---
+
+# Next.js Middleware (`middleware.ts`)
+
+## Scope
+- Keep the **matcher** as narrow as possible so static assets and `_next` are not run through middleware unless required.
+- Avoid heavy work or external calls on every request—prefer edge-safe patterns.
+
+## Security and headers
+- If **`Content-Security-Policy`** or other security headers are set here **and** in `next.config` or the hosting platform, ensure they **do not contradict** each other (CSP is often merged unpredictably).
+- After changing redirects or auth, verify **locale-prefixed routes** (`/[locale]/...`) still resolve correctly for the project’s i18n setup.
+
+## Real estate / marketing
+- **Staging** or **preview** URLs: confirm cookie/session behavior matches production expectations.
+- Do not add **noindex** or blocking for production marketing routes unless explicitly requested.

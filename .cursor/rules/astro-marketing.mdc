@@ -1,0 +1,27 @@
+---
+description: Astro pages/layouts — content, SEO, and real estate marketing patterns (non-Next stacks)
+globs: "**/*.astro"
+alwaysApply: false
+---
+
+# Astro Marketing Sites (`**/*.astro`)
+
+Use when the project is **Astro** (not Next.js). Align with **`content.mdc`** for long-form copy and **`seo-aeo-geo-gsc.mdc`** for search/entity behavior.
+
+## Structure and SEO
+- **One H1** per page; unique **`<title>`** and meta **description** per route (via `Layout` props or `<head>`), consistent with the visible H1 and intent.
+- Prefer **static or server-rendered** output when the project already does; avoid shipping unnecessary client JS for marketing shells.
+- **Canonical** and **Open Graph** tags should match the site’s existing layout/pattern—do not fork duplicate head logic without a reason.
+
+## Content and collections
+- Use the repo’s **content collection** / MD patterns when present; keep frontmatter fields consistent (title, description, date, draft).
+- For blog or posts under `src/data/blog` or `src/content`, follow **`content.mdc`** for voice, NAP, and anti-template rules.
+
+## Real estate specifics
+- **NAP** and CTAs in Astro components should pull from the same **single source of truth** as the rest of the site (shared TS/config/env), not a second phone number.
+- **RealScout / widgets**: load scripts **once** in the root layout; use the project’s existing widget markup pattern; update **CSP** and image allowlists when adding domains.
+- Do not change **`components/idx/**`** without explicit approval.
+
+## Performance and a11y
+- Prefer **native lazy loading** and project image conventions (`astro:assets` / `<Image>`) where configured.
+- Interactive elements need keyboard access and visible **focus** styles; images need meaningful **`alt`** text (listing context where applicable).

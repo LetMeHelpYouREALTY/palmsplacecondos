@@ -1,0 +1,20 @@
+---
+description: vercel.json — rewrites, regions, headers overlap with next.config
+globs: "**/vercel.json"
+alwaysApply: false
+---
+
+# Vercel config (`vercel.json`)
+
+## Duplication with Next.js
+- **`headers`**, **`redirects`**, and **`rewrites`** may also live in **`next.config`** or **middleware**. After edits, confirm **one** authoritative layer or intentional layering—conflicts cause confusing 404/redirect loops.
+
+## Sitemap / SEO
+- **Rewrites** like `/sitemap.xml` → `/sitemap` must match **App Router** `sitemap.ts` behavior and **`robots.ts`** `sitemap` URL.
+
+## Regions and runtime
+- **`regions`** (e.g. `iad1`) affect latency—change only with intent.
+- **`buildCommand` / `installCommand`** should stay aligned with **`package.json`** scripts and team CI.
+
+## Env and secrets
+- Reference **env vars** in dashboard or project settings—do not commit secrets in **`vercel.json`**.

@@ -1,0 +1,27 @@
+---
+description: App Router route handlers — POST/GET safety, secrets, rate limits
+globs: "**/app/**/route.ts"
+alwaysApply: false
+---
+
+# API Route Handlers (`**/app/**/route.ts`)
+
+## Security
+- **Never** return API keys, tokens, or DB connection strings in JSON responses.
+- Validate and **sanitize** request bodies (use **zod** or project-standard validation); reject oversized payloads when handling public forms.
+
+## Methods
+- Export only HTTP methods you intend (**GET**, **POST**, etc.); return **`405`** for unsupported verbs.
+
+## Abuse and limits
+- Public endpoints (lead capture, webhooks) should use **rate limiting** / bot protection when the project provides it (**Arcjet**, Upstash, etc.).
+
+## CORS and caching
+- If the handler is called from browsers on other origins, set **explicit CORS** policy—avoid `*` with credentials.
+- Use **`revalidate`** / **`dynamic`** / **`fetchCache`** consistently with Next.js docs when applicable.
+
+## Webhooks
+- Verify **signatures** or secrets from third parties before acting; respond quickly to avoid timeouts.
+
+## Real estate / PII
+- Treat lead data as **PII**—minimize logging, align with privacy policy, and avoid echoing sensitive fields in error messages.

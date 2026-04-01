@@ -1,0 +1,33 @@
+---
+description: GBP-aligned marketing copy, posts, and video scripts — no generic filler; NAP and compliance
+globs: "**/content/**/*.{md,mdx,ts,tsx},**/gbp/**/*.{md,mdx},**/data/blog/**/*.md,**/scripts/**/*.{md,txt},**/*gbp*.{md,mdx},**/*video*.{md,txt}"
+alwaysApply: false
+---
+
+# Marketing Content & Scripts (GBP, Posts, Video)
+
+Apply when editing **long-form marketing copy**, **Google Business Profile–style posts**, **blog posts**, or **video scripts** matched by the globs above—not when editing code-only files.
+
+## Google Business Profile (GBP) alignment
+- **Stable NAP**: Business name, phone, and address must match **GBP** and the site’s single source of truth (e.g. `site-contact` / env-driven phone). Never invent a second number or location for “variety.”
+- **Hours & CTAs**: If you mention hours, offers, or links, they must be **accurate** or clearly framed as “confirm on Google” / “call for availability.”
+- **No fabricated proof**: Do not invent review counts, rankings, sales volume, or awards. Use only what is **verifiable** and client-approved.
+- **Local specificity**: Tie posts to **real** neighborhoods, inventory types, and buyer/seller problems for that market—not interchangeable “any city” copy.
+
+## Answer-first & E-E-A-T (2026)
+- **Lead with the answer** in the first paragraph (AEO-friendly): who it’s for, what they get, and geography.
+- **Experience signals**: Prefer concrete process, timelines, and what happens next—not vague superlatives (“best,” “premier”) without substance.
+- **Fair housing & compliance**: Avoid discriminatory language and protected-class targeting. Keep **MLS/IDX** disclaimers where the project requires them.
+
+## Video scripts (short-form and long-form)
+- **Structure**: Hook (problem or outcome) → **local** context → clear steps or insight → **one** primary CTA (call, DM, site path).
+- **On-screen safety**: Avoid promising specific rates, returns, or legal/tax outcomes; defer to lenders, attorneys, or CPAs when needed.
+- **Spoken NAP**: If the script includes contact info, it must match **GBP** and site NAP (use env-driven or centralized values in production).
+
+## Voice and anti-template rules
+- Ban **placeholder markets** (wrong city/state) and **swap-only** templates that could apply to any metro.
+- Prefer **specific** anchors (community names, property types, common objections) over generic motivational filler.
+- **Internal links**: Use descriptive anchors to hubs (buyers, sellers, neighborhoods) already on the site.
+
+## Schema and cross-rules
+- When published content is also surfaced as HTML pages, align with **`real-estate-page-marketing.mdc`**, **`seo-aeo-geo-gsc.mdc`**, and **`real-estate-jsonld-schema.mdc`** as applicable—no conflicting FAQ or LocalBusiness claims.

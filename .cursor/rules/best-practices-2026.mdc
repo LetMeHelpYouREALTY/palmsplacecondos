@@ -1,0 +1,114 @@
+---
+description: Always follow current best practices before implementation
+alwaysApply: true
+---
+
+# Best Practices First (2026)
+
+Apply this workflow to every task by default:
+
+1. **Research first**
+   - Check official documentation for the relevant framework/tooling before implementing.
+   - Verify version-specific behavior (especially Next.js App Router changes).
+
+2. **Match existing patterns**
+   - Review nearby project files and reuse established conventions.
+   - Prefer consistency with current architecture over introducing new patterns.
+
+3. **Use modern, secure defaults**
+   - Favor typed interfaces, server-safe logic, accessibility, and performance-conscious code.
+   - Avoid deprecated APIs and outdated router/build patterns.
+
+4. **Implement minimally and clearly**
+   - Make the smallest safe change that solves the request.
+   - Keep code maintainable and readable; avoid unnecessary complexity.
+
+5. **Validate before finishing**
+   - Run lint/type checks for changed files when feasible.
+   - Confirm no broken imports/paths and no obvious regressions.
+
+If a requested approach conflicts with current best practices, propose the safer modern approach and explain why briefly.
+
+## Next.js App Router (15+)
+- Use App Router conventions (`app/`), not Pages Router patterns.
+- Do not introduce `getStaticProps` or `getServerSideProps`.
+- Prefer server components by default and client components only when interactivity is required.
+- For route segments with dynamic params, use typed async `params: Promise<...>` (and `searchParams` as `Promise<...>` when applicable) per current Next.js docs.
+
+## Astro and multi-framework fleets
+- For **`.astro`** pages/layouts, follow **`astro-marketing.mdc`** (metadata, H1, content collections, widgets)—do not assume Next.js `app/` patterns in those files.
+- When a repo mixes stacks, **match the dominant framework** in each path (e.g. Astro for `*.astro`, Next for `app/**`).
+
+## Build and Deployment
+- Prefer `vercel build` for production build checks (avoid `npm run build`/`pnpm build` unless explicitly requested).
+- Use `vercel dev` for local platform-parity workflows when practical.
+- Ensure build-related changes remain compatible with Vercel + Cloudflare DNS-only setup.
+
+## RealScout and CSP Safety
+- RealScout requires both `em.realscout.com` and `www.realscout.com` in CSP `script-src` and `connect-src`.
+- Load the RealScout script once in root layout.
+- Use `dangerouslySetInnerHTML` for RealScout widget markup and do not add duplicate script loads.
+- When adding widget domains, keep security headers/configs in sync where they are duplicated.
+
+## SEO and Structured Data
+- Keep NAP consistent with GBP in visible content and JSON-LD.
+- Preserve or extend existing schema rather than fragmenting schema logic.
+- Ensure logo/image references in schema and metadata point to valid assets.
+- When editing App Router **`page.tsx`** files for marketing real estate routes, also apply the scoped global rule **`real-estate-page-marketing.mdc`** (unique metadata, H1, NAP, scope, indexing).
+- For **AEO** (answer/FAQ), **GEO** (entity/generative), and **Google Search Console** workflows, follow **`seo-aeo-geo-gsc.mdc`** (always-on companion).
+
+## Companion always-on rules
+- **`seo-aeo-geo-gsc.mdc`** — SEO, AEO, GEO, and Google Search Console patterns for Next.js real estate sites (loads automatically with this ruleset).
+
+## Scoped global rules (when matching files are in play)
+- **`content.mdc`** — GBP-style posts, video scripts, and long-form marketing copy (`**/content/**`, `**/gbp/**`, `**/data/blog/**`, `**/scripts/**`, matched extensions)
+- **`astro-marketing.mdc`** — `**/*.astro` (Astro pages/layouts; use when the project is not Next-only)
+- **`security-env.mdc`** — `.env.example`, middleware, `next.config.*`, `astro.config.*`, `app/**/route.ts` (secrets and safe env hygiene)
+- **`error-loading-ui.mdc`** — `**/app/**/error.tsx`, `not-found.tsx`, `loading.tsx` (UX and a11y for App Router boundaries)
+- **`testing-patterns.mdc`** — `**/*.{test,spec}.{ts,tsx}`, `**/e2e/**` (what to test; Vitest vs Playwright; mocks)
+- **`real-estate-page-marketing.mdc`** — `**/app/**/page.tsx`
+- **`real-estate-components.mdc`** — `**/components/**/*.tsx`
+- **`next-config-headers.mdc`** — `**/next.config.*`
+- **`middleware-security.mdc`** — `**/middleware.ts`
+- **`real-estate-jsonld-schema.mdc`** — `**/lib/schema*.ts`
+- **`lib-seo-metadata.mdc`** — `**/lib/metadata*.ts`
+- **`lib-site-contact.mdc`** — `**/site-contact.ts`
+- **`next-app-layouts.mdc`** — `**/app/**/layout.tsx`
+- **`seo-structured-data-components.mdc`** — `**/components/seo/**/*.tsx`
+- **`app-sitemap-metadata.mdc`** — `**/sitemap.ts`
+- **`app-robots-metadata.mdc`** — `**/robots.ts`
+- **`app-api-route-handlers.mdc`** — `**/app/**/route.ts`
+- **`css-tailwind-sources.mdc`** — `**/styles/**/*.css`
+- **`postcss-config.mdc`** — `**/postcss.config.*`
+- **`vercel-json.mdc`** — `**/vercel.json`
+- **`eslint-config.mdc`** — `**/eslint.config.*`
+- **`package-json.mdc`** — `**/package.json`
+- **`tsconfig-json.mdc`** — `**/tsconfig.json`
+- **`vitest-config.mdc`** — `**/vitest.config.*`
+- **`playwright-config.mdc`** — `**/playwright.config.*`
+
+Scoped rules for **package.json**, **tsconfig**, **Vitest**, and **Playwright** follow **Next.js docs** (e.g. [Vitest + Next](https://nextjs.org/docs/app/building-your-application/testing/vitest)), **TypeScript strict defaults**, and **Node LTS**-style `engines` as of **March 2026**—re-check after **major** Next/Node upgrades.
+
+## Content Integrity (Real Estate Sites)
+- **Single source of truth**: Centralize phone, license, brokerage, and primary service area (e.g. shared `lib/site-contact.ts` or schema generators). Do not duplicate conflicting numbers in copy.
+- **No placeholders in production copy**: Replace `XXX-XXXX`, fake MLS rows, demo agent names, or wrong metro/area codes left from starter templates.
+- **No fabricated social proof**: Do not invent review counts, sales volume, rankings, or “#1 team” claims without verifiable source and client approval.
+- **Geographic scope**: Marketing pages must match the business’s actual market (e.g. Las Vegas/Henderson vs unrelated states). Remove or rewrite boilerplate tied to other regions.
+- **Role boundaries**: Real estate copy should not imply legal or tax advice; point users to attorneys/CPAs where appropriate.
+
+## Tailwind CSS and Variants
+- When merging a **variant** `className` with a **caller** `className` that might both set `bg-*` or `text-*`, use `tailwind-merge` (e.g. a small `cn()` helper) so utilities do not fight and produce invisible text (e.g. white-on-white buttons).
+- Put **semantic variant colors last** in `cn()` when you need variant styles to win over layout-only overrides.
+
+## Change Discipline
+- Prefer minimal, focused edits over broad refactors.
+- Do not modify `components/idx/*` unless explicitly requested.
+- After substantive edits, run lint checks for touched files and fix introduced issues.
+
+## Secrets and environment (cross-cutting)
+- Never commit live keys; use **`.env.example`** placeholders and platform env for production. When editing middleware, configs, or API routes, see **`security-env.mdc`**.
+- Prefer **dependency hygiene**: use the lockfile the repo standardizes on (`pnpm-lock.yaml` / `package-lock.json` / `bun.lock`); avoid ad-hoc `npm install` that desyncs the repo.
+
+## Fleet / repo setup (optional)
+- **Per-project Cursor rules**: copy or symlink **`.cursor/rules/`** into a repo root so the team shares the same `.mdc` set; remove legacy **`.cursorrules`** if still present (deprecated in favor of `.mdc`).
+- **Repo-specific overrides**: use **`AGENTS.md`** at the repo root for project-only instructions that should not live in global user rules.

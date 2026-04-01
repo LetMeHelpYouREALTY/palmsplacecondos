@@ -1,0 +1,34 @@
+---
+description: App Router page.tsx — SEO, NAP, locale routes, and trust for real estate marketing sites
+globs: "**/app/**/page.tsx"
+alwaysApply: false
+---
+
+# Real Estate Marketing Pages (`page.tsx`)
+
+Apply when editing or adding Next.js App Router pages (especially under `src/app` or `app`).
+
+## Metadata and headings
+- Each route needs a **unique** `title` and `description` aligned with the page H1 and user intent (no generic boilerplate repeated site-wide).
+- **One clear H1** per page; support with H2/H3 hierarchy. Match localized routes (`[locale]`) so titles and copy stay consistent per language.
+- Prefer `generateMetadata` / `generateStaticParams` patterns that match the project’s existing i18n setup.
+
+## NAP, GBP, and JSON-LD
+- **Visible NAP** (business name, address, phone) on key pages should match **Google Business Profile** and **LocalBusiness / RealEstateAgent** JSON-LD where the project centralizes schema.
+- Do not introduce a second conflicting phone, address, or brokerage name in page copy—use shared constants or schema generators when the repo provides them.
+
+## Geographic and topical scope
+- Page content must match the **actual service area** (cities, states) the business serves. Avoid placeholder markets, demo MLS rows, or stats from other regions left by templates.
+- Long-tail URLs should stay **on-topic**; avoid keyword stuffing unrelated locations.
+
+## Trust and compliance
+- Do not add **fabricated** review counts, sales volume, or rankings.
+- Real estate pages should not read as **legal or tax advice**; defer to attorneys/CPAs where the topic requires it (divorce, tax, deeds, etc.).
+- Keep **MLS/IDX** disclaimers and attribution where the project requires them; do not strip compliance blocks.
+
+## Indexing and dev routes
+- Use `robots: { index: false }` (or project equivalent) for **internal demos**, counters, or test pages that should not appear in search results.
+
+## Internal linking
+- Use **descriptive anchor text** (e.g. neighborhood + intent) rather than “click here” only.
+- Prefer linking to canonical topic hubs already defined in the project (services, communities, guides).

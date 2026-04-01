@@ -1,0 +1,26 @@
+---
+description: tsconfig.json — strict mode, paths, Next.js typed routes, module resolution
+globs: "**/tsconfig.json"
+alwaysApply: false
+---
+
+# TypeScript config (`**/tsconfig.json`)
+
+*Prefer strict defaults and Next.js docs — verify against [nextjs.org/docs](https://nextjs.org/docs) for your installed Next version (as of March 2026).*
+
+## Strictness
+- Keep **`"strict": true`** (or equivalent) unless there is a **documented**, time-bound migration—loosening strictness invites production bugs.
+- **`noUncheckedIndexedAccess`** is optional but valuable for safer indexing—add with a focused PR if the repo can absorb churn.
+
+## Next.js App Router
+- Include **`.next/types/**/*.ts`** (or project equivalent) so **typed routes** / **typed links** work when enabled—follow the **current** `create-next-app` / Next docs for the exact `include` block.
+- **`moduleResolution`**: use the value **Next’s template** sets (often **`bundler`** with modern module settings)—don’t mix outdated **`node10`** resolution with App Router.
+
+## Paths
+- **`paths`** (e.g. `@/*` → `./src/*`) must match **actual** folder layout and **Vitest/Vite** `vite-tsconfig-paths` if used.
+
+## Multiple configs
+- **Root vs `tsconfig` in packages**: `extends` should stay **DRY**; avoid copying compiler options that drift between apps.
+
+## Scope
+- When editing **`node_modules`** copies of `tsconfig`, **stop**—edit the repo’s own files only.

@@ -1,0 +1,30 @@
+---
+description: package.json — scripts, engines, packageManager, dependency hygiene (root + workspaces)
+globs: "**/package.json"
+alwaysApply: false
+---
+
+# `package.json` (root and workspace packages)
+
+**Never** edit manifests under **`node_modules`**. Prefer the **repo root** file for app-wide scripts; in **monorepos**, each workspace package follows the same hygiene.
+
+*Aligned with common Node 20+/Next.js App Router repo practices — review quarterly as tooling evolves (as of March 2026).*
+
+## Scripts
+- Prefer **clear, scriptable** commands: `dev`, `build`, `start`, `lint`, `typecheck` / `check:types`, `test` — match what **CI** runs so local and pipeline stay aligned.
+- Avoid **one-off** `npm run build` in docs when the team standard is **`vercel build`** (see global `best-practices-2026.mdc`)—document the canonical production check.
+
+## Engines and package manager
+- Set **`engines.node`** to the **LTS range** the team supports (e.g. `>=20`) to reduce “works on my machine” drift.
+- If the repo standardizes on **pnpm/yarn**, consider **`packageManager`** (Corepack) + **lockfile** committed—don’t mix lockfiles.
+
+## Dependencies
+- **Pin major** framework deps (`next`, `react`, `typescript`) intentionally; upgrade on a schedule, not ad hoc in unrelated PRs.
+- Run **`npm audit`** / platform alerts; don’t silence **security** issues without a ticket and timeline.
+
+## Hygiene
+- Use **`private: true`** for apps that are not npm packages.
+- Keep **`name` / `version`** sensible if publishing; otherwise version is mainly for internal tagging.
+
+## Monorepos
+- Align **shared** dependency versions across workspace packages where they depend on the same libraries; avoid incompatible duplicate majors.

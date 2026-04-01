@@ -1,0 +1,21 @@
+---
+description: app/robots.ts — allow/disallow, sitemap URL, host-aware base URL
+globs: "**/robots.ts"
+alwaysApply: false
+---
+
+# Robots (`**/robots.ts`)
+
+## Sitemap link
+- **`sitemap`** must be an **absolute** URL pointing at the deployed sitemap (often `https://www.example.com/sitemap.xml`), aligned with **`metadataBase`** and **`sitemap.ts`** output.
+
+## Host and environment
+- If **`baseUrl`** is derived from **`x-forwarded-host`** / **`host`**, confirm **preview** and **production** hosts do not accidentally publish wrong origins or block crawlers on prod.
+- Staging: often **`Disallow: /`** or auth wall—do not copy staging robots to production without review.
+
+## Rules blocks
+- **`allow`** / **`disallow`** paths must match real **`app`** routes; avoid typos that block CSS or Next static assets unintentionally.
+- When listing **AI / LLM** user agents, keep lists maintainable and match current product policy.
+
+## Consistency
+- If certain routes use **`noindex`** in metadata, robots rules should not **allow** crawling in a way that contradicts the intended indexing story without a documented reason.

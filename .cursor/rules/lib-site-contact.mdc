@@ -1,0 +1,17 @@
+---
+description: Canonical phone, tel link, license — single NAP source for code and copy
+globs: "**/site-contact.ts"
+alwaysApply: false
+---
+
+# Site Contact Constants (`**/site-contact.ts`)
+
+## Purpose
+- This file should hold **one** canonical **phone display string**, **`tel:`** / **E.164** form, **license ID**, and **brokerage name** when the project uses a shared module for NAP.
+
+## Usage
+- **Import** these constants in pages, footers, and CTAs instead of retyping numbers—prevents **drift** and mismatches with JSON-LD.
+- When **GBP or office phone** changes, update **here first**, then verify **`schema.ts` / generators** and visible copy still match.
+
+## Scope
+- Do not use this module for **unrelated brands** or multi-agent teams unless the file is clearly structured for that (e.g. per-site exports in monorepos).

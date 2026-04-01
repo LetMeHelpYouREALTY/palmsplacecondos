@@ -1,0 +1,22 @@
+---
+description: app/sitemap.ts — absolute URLs, base origin parity, crawl hints
+globs: "**/sitemap.ts"
+alwaysApply: false
+---
+
+# Sitemap (`**/sitemap.ts`)
+
+## Origin and URLs
+- Every entry must use **absolute** `url` values (`https://www.example.com/path`) consistent with **`metadataBase` / `siteUrl`** in `lib/metadata` or env—avoid mixing `www` and non-`www` or wrong protocol.
+
+## Coverage and noise
+- Include **public marketing** routes that should be indexed; **exclude** auth, dashboards, demos, and **`noindex`** pages unless the product intentionally lists them (usually omit).
+- After adding routes, ensure **no duplicate** `url` strings.
+
+## Fields
+- **`lastModified`**: use stable dates (e.g. `new Date()` at build or file mtime) honestly—avoid fake daily churn unless the build truly updates.
+- **`changeFrequency`** and **`priority`**: rough hints only; keep priorities sensible (core pages higher than long-tail if the project tiers them).
+
+## Cross-checks
+- **`robots.ts`** should reference the **same** sitemap absolute URL when the project links them.
+- If locales use path prefixes, sitemap entries must match the **routing** strategy (`/fr/...` vs canonical policy).

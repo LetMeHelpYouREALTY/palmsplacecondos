@@ -1,0 +1,19 @@
+---
+description: eslint.config — Next, React, Tailwind class order; CI parity
+globs: "**/eslint.config.*"
+alwaysApply: false
+---
+
+# ESLint config (`**/eslint.config.*`)
+
+## Stack alignment
+- Keep **Next.js**, **React**, **TypeScript**, and **Tailwind** plugins at versions compatible with **ESLint** flat config used in the repo.
+
+## Tailwind
+- **`eslint-plugin-tailwindcss`** (or equivalent): class order rules should match **Prettier** / team habits—avoid noisy autofixes that fight formatter unless CI requires them.
+
+## CI
+- **`npm run lint`** / **`eslint .`** in CI should use the **same** config as local—no hidden `.eslintrc` unless migration is documented.
+
+## Scope
+- Do not disable **a11y** or **react-hooks** rules globally without team approval; prefer narrow **`eslint-disable-next-line`** at call sites with comments.

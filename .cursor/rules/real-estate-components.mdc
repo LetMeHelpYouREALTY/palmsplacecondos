@@ -1,0 +1,31 @@
+---
+description: React components — CTAs, widgets, Tailwind, client boundaries (real estate sites)
+globs: "**/components/**/*.tsx"
+alwaysApply: false
+---
+
+# Real Estate UI Components (`**/components/**/*.tsx`)
+
+## Server vs client
+- Prefer **Server Components** by default. Add **`'use client'`** only when the file needs hooks, browser APIs, event handlers, or client-only libraries.
+- Do not mark entire trees as client components unnecessarily—push `use client` to leaf components when possible.
+
+## CTAs and scheduling
+- Reuse existing **Calendly** / scheduling abstractions (`CalendlyLink`, shared CTA components) instead of duplicating raw URLs or popup init logic.
+- When composing **variant styles** with **caller `className`**, use **`tailwind-merge` / `cn()`** and put **semantic colors last** so text/background never conflict (e.g. invisible white-on-white buttons).
+- Primary actions need visible **focus** states (`focus:ring-*`, `focus-visible`) and sufficient **color contrast**.
+
+## Third-party widgets (RealScout, etc.)
+- Load vendor scripts **once** in the root layout unless the project already uses a different pattern—do not add duplicate script tags per widget instance.
+- **RealScout** widget markup often uses **`dangerouslySetInnerHTML`**; avoid duplicating global script loads.
+- When adding a new domain for images or API calls, update **CSP** and **`next/image` remote patterns** in lockstep with `next.config`.
+
+## IDX / MLS
+- Do not modify **`components/idx/**`** (or the project’s IDX folder) unless the user explicitly approves—compliance and vendor integration are sensitive.
+
+## Accessibility and images
+- Interactive elements use **`button`** or **`a`** with meaningful labels; decorative icons **`aria-hidden`** where appropriate.
+- Use **`next/image`** for static assets when the project does; for third-party listing images, follow existing patterns (`remotePatterns` or plain `<img>`).
+
+## Copy in components
+- Pull **phone, license, brokerage** from shared constants or props—avoid hardcoding a second conflicting number inside a component.

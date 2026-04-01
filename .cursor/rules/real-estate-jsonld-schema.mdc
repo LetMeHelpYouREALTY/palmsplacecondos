@@ -1,0 +1,30 @@
+---
+description: lib/schema — JSON-LD types, FAQ vs QAPage, NAP, and rich-result hygiene
+globs: "**/lib/schema*.ts"
+alwaysApply: false
+---
+
+# JSON-LD and Schema (`**/lib/schema*.ts`)
+
+## Single source of truth
+- **Telephone, address, business name, and URL** in structured data must match **visible NAP**, **Google Business Profile**, and shared constants (e.g. `site-contact.ts` or equivalent)—never drift a second number or address into generators.
+
+## FAQPage vs QAPage
+- **FAQPage**: multiple **site-authored** Q&As on one page; **not** for user-generated answers.
+- **QAPage**: reserved for **one** question where **users** can submit answers (forum/support-style). Do not use QAPage for static divorce/RE FAQ copy.
+
+## Reviews and ratings
+- **AggregateRating** / **Review** must reflect **real, permissioned** reviews where the project uses them. Avoid duplicate or conflicting ratings for the same `@id` across pages unless the pattern is intentional and documented.
+
+## URLs and identity
+- **`url`**, **`@id`**, and **`mainEntityOfPage`** should align with **canonical** URLs from `metadata` helpers when both exist.
+- **Article** / **BlogPosting**: keep **`datePublished`** / **`dateModified`** consistent with visible bylines and `generateMetadata`.
+
+## Area served
+- **`areaServed`** (cities/regions) should match marketing scope—no random metros from templates.
+
+## Breadcrumbs and lists
+- **BreadcrumbList** `item` URLs should be absolute where Google’s examples expect stable URLs; match the site’s routing and locale strategy.
+
+## When adding types
+- Prefer **extending existing generators** in this file over scattering one-off JSON-LD objects in random components.

@@ -1,0 +1,27 @@
+---
+description: vitest.config — jsdom, React plugin, path aliases; limits with async RSC
+globs: "**/vitest.config.*"
+alwaysApply: false
+---
+
+# Vitest (`**/vitest.config.*`)
+
+*Matches [Next.js Vitest guide](https://nextjs.org/docs/app/building-your-application/testing/vitest) expectations — re-check when upgrading Next/Vitest (as of March 2026).*
+
+## Setup
+- Use **`defineConfig` from `vitest/config`**, **`@vitejs/plugin-react`**, and **`environment: 'jsdom'`** for DOM components unless the project standard differs.
+- Add **`vite-tsconfig-paths`** when tests import **`@/`** aliases (TypeScript projects per Next docs).
+
+## What Vitest is (and isn’t) for here
+- For **writing** tests (assertions, mocks, selectors), see **`testing-patterns.mdc`**.
+- **Official limitation**: **`async` Server Components** are **not** supported in Vitest the way client components are—use **E2E** (e.g. Playwright) for those surfaces, per Next.js testing docs.
+- **Client components** and **pure logic** (utils, server actions’ extracted functions) are good Vitest targets.
+
+## Mocks
+- **`next/navigation`** (`useRouter`, `usePathname`, `useSearchParams`) needs **explicit mocks** in unit tests—there is no full App Router context in jsdom.
+
+## Scripts
+- Prefer **`vitest run`** in CI and **`vitest`** (watch) locally—document in **`package.json`**.
+
+## Performance
+- Scope **`include` / `exclude`** so `node_modules` and `.next` aren’t scanned unnecessarily.

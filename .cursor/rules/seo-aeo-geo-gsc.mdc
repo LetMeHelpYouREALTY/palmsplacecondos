@@ -1,0 +1,45 @@
+---
+description: SEO, AEO (answer engines), GEO (generative/entity), and Google Search Console patterns for Next.js real estate sites
+alwaysApply: true
+---
+
+# SEO, AEO, GEO, and Google Search Console (2026)
+
+Companion to **`best-practices-2026.mdc`**. Detailed file-specific rules stay in scoped **`.mdc`** files (metadata, sitemap, robots, JSON-LD, page marketing)—this file orients agents on **search**, **answers**, **entities**, and **GSC**.
+
+## SEO (traditional search)
+
+- **`metadataBase`**, canonical, and **`alternates`** — follow **`lib-seo-metadata.mdc`** for `**/lib/metadata*.ts` and page-level metadata.
+- **Unique** title, meta description, and **one H1** per route — **`real-estate-page-marketing.mdc`** for `**/app/**/page.tsx`.
+- **Internal links** with descriptive anchor text; align visible **NAP** with GBP and JSON-LD.
+- **Sitemap** absolute URLs, same origin as production — **`app-sitemap-metadata.mdc`** (`**/sitemap.ts`).
+- **Robots**: allow marketing HTML; avoid blocking `/_next/static` CSS/JS needed for rendering — **`app-robots-metadata.mdc`** (`**/robots.ts`).
+- **Structured data**: extend existing generators; avoid conflicting duplicate graphs — **`real-estate-jsonld-schema.mdc`**, **`seo-structured-data-components.mdc`**.
+
+## AEO (answer engine optimization)
+
+- Use **question-shaped headings** (H2/H3) where they match real user queries; **answer in the first paragraph** under each heading when appropriate.
+- **FAQ sections**: pair visible Q&A with valid **`FAQPage`** / **`Question`** + **`Answer`** JSON-LD when content is static and accurate — see **`real-estate-jsonld-schema.mdc`**.
+- Avoid **thin or duplicate** FAQ blocks that repeat the same answer across many URLs without local differentiation.
+
+## GEO (generative / entity optimization)
+
+- **Stable entities**: one canonical business name, phone, and address; reuse **`@id`** and **`url`** in JSON-LD consistently with visible copy and **`lib-site-contact.mdc`**.
+- Prefer **first-party, citable** facts (service area, license, brokerage); align with **content integrity** in **`best-practices-2026.mdc`** (no fabricated review counts, rankings, or volume).
+
+## Google Search Console
+
+- **Property host**: match how the site is served (e.g. `https://www.example.com` vs apex); keep **Search Console**, **sitemap**, **robots `Sitemap:`**, and **`metadataBase`** on the same canonical host.
+- **URL Inspection**: use for a **single URL** (live vs Google, fetch status, indexing). **Request indexing** sparingly for high-priority pages.
+- **Page indexing** reports:
+  - **Page with redirect** for `http://`, apex, or non-canonical `www` variants is often **expected** when the canonical URL is elsewhere; validate the **destination** URL is indexed.
+  - **Discovered – currently not indexed** often reflects **crawl queue / priority**, not necessarily a code bug—confirm sitemap, no `noindex`, and 200 responses for important URLs.
+  - **Blocked by robots.txt** for `/_next/static/...` assets: remove blanket **`Disallow: /_next/`** if present so crawlers can fetch static chunks.
+- **Enhancements** (e.g. Review snippets): fix invalid JSON-LD (e.g. integer **`reviewCount`**, valid parent types, **`itemReviewed`** on **`Review`**); validate with [Rich Results Test](https://search.google.com/test/rich-results).
+- After deploy, allow **days to weeks** for reports to reflect fixes.
+
+## What this rule does not replace
+
+- **GBP-style posts, video scripts, and long-form marketing copy** (voice, local specificity, anti-template rules) — use **`content.mdc`** when those files match its globs.
+- Full NAP tables, GBP field-by-field copy, or every **`page.tsx`** checklist — use **`real-estate-page-marketing.mdc`** and **`lib-site-contact.mdc`**.
+- CSP, RealScout, middleware — **`best-practices-2026.mdc`**, **`middleware-security.mdc`**, **`next-config-headers.mdc`**.

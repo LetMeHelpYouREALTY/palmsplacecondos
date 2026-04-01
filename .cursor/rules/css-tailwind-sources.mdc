@@ -1,0 +1,22 @@
+---
+description: Global CSS — Tailwind v4 entry, layers, @theme, vendor widget tokens
+globs: "**/styles/**/*.css"
+alwaysApply: false
+---
+
+# Stylesheets (`**/styles/**/*.css`)
+
+## Tailwind v4
+- Prefer **`@import 'tailwindcss'`** and project **`@layer`** order that matches **Clerk** / third-party docs (layer conflicts break resets and components).
+- Use **`@source`** / **`@theme`** per current **Tailwind v4** docs when adding content paths or design tokens—avoid legacy `tailwind.config` assumptions unless the repo still uses them.
+
+## Third-party widgets (RealScout, etc.)
+- **CSS variables** on web components (`realscout-*`) should stay **readable** (contrast) and aligned with brand—document why colors differ from Tailwind tokens.
+- Do not strip widget variables without testing the embed in browser.
+
+## Custom CSS
+- Prefer **Tailwind utilities** for layout/spacing; use custom classes for **keyframes**, **print**, or **vendor** overrides.
+- Keep **specificity** low—avoid `!important` wars with Tailwind utilities.
+
+## Performance
+- Large unused CSS is less of an issue with Tailwind’s compiler, but **avoid** duplicating huge blocks across files.

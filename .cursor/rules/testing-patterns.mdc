@@ -1,0 +1,29 @@
+---
+description: Unit and E2E tests — what to test, mocks, and RSC limits (Vitest + Playwright)
+globs: "**/*.{test,spec}.{ts,tsx},**/e2e/**/*.{ts,tsx},**/__tests__/**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Testing Patterns (2026)
+
+Config files use **`vitest-config.mdc`** and **`playwright-config.mdc`**—this rule covers **authoring** tests.
+
+## Division of responsibility
+- **Vitest (jsdom)**: hooks, pure functions, client components, and **extracted** server action logic—**not** full `async` Server Components (see Next.js testing docs).
+- **Playwright**: critical user flows, auth, SSR/RSC pages, and anything needing a real browser.
+
+## Behavior
+- Prefer **user-facing** assertions (`getByRole`, `getByLabelText`) over implementation details (`container.querySelector`).
+- One **behavior** per test when possible; avoid giant integration tests that are hard to debug.
+- **Stable selectors**: `data-testid` only when roles/labels are insufficient.
+
+## Mocks
+- Mock **network** at boundaries (MSW, `fetch`, or route handlers) — do not mock the entire app.
+- **`next/navigation`**: mock **`useRouter`**, **`usePathname`**, **`useSearchParams`** in unit tests per project helpers.
+
+## Real estate / compliance
+- Do not assert on **fabricated** MLS data; use fixtures that mirror **allowed** demo patterns.
+- E2E against **staging** or **preview** URLs when env vars are documented—never commit env with secrets for CI in the repo.
+
+## Flakes
+- Avoid **fixed timeouts** (`waitForTimeout`); use **`expect.poll`** / Playwright **auto-wait** and explicit conditions.

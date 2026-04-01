@@ -1,0 +1,26 @@
+---
+description: next.config — CSP, security headers, images.remotePatterns, env parity
+globs: "**/next.config.*"
+alwaysApply: false
+---
+
+# Next.js Config (`next.config.*`)
+
+## Before changing headers
+- Search the repo for **duplicated** header definitions (`headers()`, `headers` in `vercel.json`, middleware, edge config). Keep **one source of truth** or document why two layers exist.
+- Changing **Content-Security-Policy** can break **Calendly, RealScout, analytics, or fonts**—test embeds after edits.
+
+## RealScout (when used in the project)
+- RealScout typically needs **`em.realscout.com`** and **`www.realscout.com`** in both **`script-src`** and **`connect-src`** (and any other directives your CSP uses for those hosts).
+- Align **CSP** with any **middleware** or platform headers that also set CSP.
+
+## Images and external feeds
+- For **`next/image`**, add **`images.remotePatterns`** (or legacy `domains`) for every host you load listing or feed images from.
+- If the project uses a **rule** to preserve images from RSS/APIs, ensure **`img-src`** and remote patterns allow those hosts.
+
+## Performance and build
+- Prefer **`vercel build`** for production parity when the user’s workflow uses Vercel (see global `best-practices-2026.mdc`).
+- Avoid experimental flags that conflict with the repo’s **Node** and **Next** versions.
+
+## Secrets and env
+- Do not commit **API keys**; use **`process.env`** / Vercel env. Document new required vars in the project’s README or env example only if the repo already does so.

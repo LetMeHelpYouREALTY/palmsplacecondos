@@ -1,0 +1,23 @@
+---
+description: App Router error, not-found, and loading UI — UX, a11y, and logging hygiene
+globs: "**/app/**/error.tsx,**/app/**/not-found.tsx,**/app/**/loading.tsx"
+alwaysApply: false
+---
+
+# Error, Not Found, and Loading (`app/**`)
+
+## `error.tsx` (client boundary)
+- Must be a **Client Component** (`'use client'`) when using `reset()` — keep the file minimal: message, optional **digest** display for support, and **Try again** wired to `reset`.
+- Do not log **secrets** or full request bodies in `useEffect`; prefer **digest** / error codes for support.
+- Preserve **accessible** structure: `role="alert"` or heading hierarchy; ensure **focus** moves to the error region where patterns allow.
+
+## `not-found.tsx`
+- Clear **404** messaging; link back to **home** and primary nav destinations (e.g. search, contact) using existing layout patterns.
+- If the project localizes routes, keep **locale** in links when applicable.
+
+## `loading.tsx`
+- Use **skeleton** or **spinner** patterns consistent with the design system; avoid layout shift (reserve space).
+- Do not block **critical** above-the-fold text with endless spinners—match **`Suspense`** boundaries the parent route expects.
+
+## SEO
+- **`not-found`**: return proper **404** status from the framework (Next handles via `notFound()`); do not `noindex` the generic not-found template unless the project standard says so.

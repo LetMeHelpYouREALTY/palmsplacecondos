@@ -1,0 +1,17 @@
+---
+description: postcss.config — Tailwind/PostCSS pipeline parity with Next and Vercel
+globs: "**/postcss.config.*"
+alwaysApply: false
+---
+
+# PostCSS (`**/postcss.config.*`)
+
+## Plugins
+- Keep **`@tailwindcss/postcss`** (or project equivalent) aligned with **`tailwindcss`** and **`package.json`** versions.
+- Adding plugins (**autoprefixer**, **cssnano** in prod) should match **Next.js** and **Vercel** build behavior—test `vercel build` after changes.
+
+## Monorepo / paths
+- If **`tailwind`** content scanning misses files, fix **`@source`** in CSS or config—do not patch only PostCSS unless required.
+
+## Env
+- Production minification of CSS is usually handled by the framework; avoid experimental PostCSS options that break **source maps** for debugging without a reason.

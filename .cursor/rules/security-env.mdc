@@ -1,0 +1,25 @@
+---
+description: Secrets, env vars, and safe config — never leak keys in client bundles or repos
+globs: "**/.env.example,**/middleware.ts,**/next.config.*,**/astro.config.*,**/app/**/route.ts"
+alwaysApply: false
+---
+
+# Environment and Secrets (2026)
+
+Apply when editing **env templates**, **middleware**, **framework config**, or **API routes** matched by the globs above.
+
+## Never commit secrets
+- **Do not** paste live API keys, tokens, or database URLs into source files, chat logs, or committed `.env` files.
+- Use **`.env.example`** (or `.env.local.example`) with **placeholder** values and document required variables in comments or internal docs.
+- Prefer **platform env** (Vercel, etc.) for production secrets.
+
+## Next.js / Vercel
+- Only **`NEXT_PUBLIC_*`** (or equivalent) belongs in client-exposed env; everything else must stay **server-only** (route handlers, Server Actions, server components).
+- Rotating a leaked key: revoke in the provider dashboard, then update env—never “just” delete from git history without rotation.
+
+## Middleware and CSP
+- When middleware reads cookies or headers, avoid logging **raw tokens**; redact in logs.
+- Changes to **CSP** or headers—keep **`next-config-headers.mdc`** / **`middleware-security.mdc`** in sync; do not weaken security headers to fix a widget without a documented allowlist.
+
+## API routes
+- Validate and **rate-limit** public-facing mutations when the project has a pattern for it; never trust client-only validation for auth or payments.

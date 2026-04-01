@@ -1,0 +1,24 @@
+---
+description: SEO components — StructuredData JSON-LD, meta helpers, visible NAP blocks
+globs: "**/components/seo/**/*.tsx"
+alwaysApply: false
+---
+
+# SEO Components (`**/components/seo/**/*.tsx`)
+
+## JSON-LD injection (`StructuredData` and similar)
+- Emit **`application/ld+json`** from **typed data** produced by **`lib/schema*.ts`** generators when possible—avoid hand-writing large JSON blobs in JSX that drift from NAP.
+- **Do not** interpolate untrusted / user HTML into JSON-LD strings.
+- When a page passes **multiple** schema objects, keep order and **avoid duplicate entity `@id`** collisions unless the pattern is intentional (e.g. `@graph`).
+
+## Consistency
+- **`url`**, **business name**, and **telephone** in injected JSON must match **`metadata`** / **canonical** helpers and **visible** footer or contact blocks.
+
+## FAQ and Q&A markup
+- **FAQPage** vs **QAPage** rules apply (see **`real-estate-jsonld-schema.mdc`**). Do not swap types to chase rich results.
+
+## Performance
+- JSON-LD scripts should be **small** per page; move large repeated blocks to **shared** generators rather than duplicating strings across routes.
+
+## Visible SEO UI
+- Components that render **NAP**, **hours**, or **review** snippets must pull from the same constants as schema (e.g. **`site-contact.ts`**) where the project uses them.

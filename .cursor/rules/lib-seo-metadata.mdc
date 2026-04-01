@@ -1,0 +1,25 @@
+---
+description: lib/metadata — canonical, hreflang, OG/Twitter, metadataBase
+globs: "**/lib/metadata*.ts"
+alwaysApply: false
+---
+
+# SEO Metadata Helpers (`**/lib/metadata*.ts`)
+
+## Canonical and duplicates
+- **`metadataBase`** should be the production origin (e.g. `https://www.example.com`).
+- **Canonical** for duplicate locale URLs (e.g. `/fr/` mirroring English) must follow the project’s **documented policy**—often English URL as canonical until real translations exist, to avoid “Google chose different canonical” issues.
+- **`alternates.languages` / hreflang** should match how locales are actually served; do not declare hreflang for locales that are thin duplicates without a team decision.
+
+## Open Graph and Twitter
+- **OG** and **Twitter** titles/descriptions should align with page-level `generateMetadata` defaults; avoid contradicting the `<title>` user story.
+- **Images** in OG tags must be **absolute** URLs when required by the platform—respect `metadataBase`.
+
+## Robots
+- Default **index/follow** for marketing; use **noindex** only for demos, auth, or drafts—consistent with `robots` in `page`-level metadata.
+
+## Integration with JSON-LD
+- When helpers expose **`getCanonicalSiteUrl`** (or similar), use the **same** resolution for **Article** / **WebPage** `url` in schema as for `link[rel=canonical]`.
+
+## Change discipline
+- Changing defaults here affects **many routes**—run a quick grep for callers and verify locale behavior after edits.
