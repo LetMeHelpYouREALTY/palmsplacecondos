@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SiteFooter } from "@/components/layouts/site-footer";
 import { SiteHeader } from "@/components/layouts/site-header";
 import { siteContact } from "@/lib/site-contact";
 
@@ -44,19 +45,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${displaySerif.variable} min-h-screen bg-palms-charcoal text-palms-cream antialiased`}
       >
         <div className="flex min-h-screen flex-col">
+          <a
+            className="sr-only rounded-md bg-palms-gold px-4 py-2 text-sm font-medium text-palms-charcoal focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:outline-none focus:ring-2 focus:ring-palms-cream"
+            href="#site-footer-nav"
+          >
+            Skip to site navigation
+          </a>
           <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <footer className="border-t border-palms-gold/25 bg-palms-charcoal-elevated px-6 py-10 text-sm text-palms-cream/85">
-            <div className="mx-auto max-w-3xl space-y-2">
-              <p className="font-medium text-palms-cream">{siteContact.agentName}</p>
-              <p>Nevada license {siteContact.license}</p>
-              <p>{siteContact.brokerage}</p>
-              <p className="text-palms-cream/70">
-                Phone, office address, and hours will match Google Business Profile on this site once
-                finalized for launch.
-              </p>
-            </div>
-          </footer>
+          <main className="flex-1" id="main-content">
+            {children}
+          </main>
+          <SiteFooter />
         </div>
       </body>
     </html>
