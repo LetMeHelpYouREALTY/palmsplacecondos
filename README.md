@@ -33,9 +33,17 @@ Open the repo on GitHub and choose **Code → Codespaces → Create codespace on
 
 To adjust tooling (Node version, extensions, post-create commands), edit [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json).
 
+**Validate the dev container (after the codespace opens):**
+
+1. In the integrated terminal, run `node --version` — expect **v20.x** (matches the dev container image).
+2. When you run a dev server on port **3000**, GitHub should offer to forward the port; accept it to open the app in the browser.
+3. If the container fails to build, check the **Codespaces** log in the Command Palette (`Codespaces: View Creation Log`).
+
 ## Collaborators
 
 Repository owners can add collaborators under **Settings → Collaborators** on GitHub and invite people by username or email.
+
+Quick link (this repository): [github.com/DrJanDuffy/palmsplacecondos/settings/access](https://github.com/DrJanDuffy/palmsplacecondos/settings/access). Organization-owned repos may use **Settings → Collaborators and teams** instead.
 
 ## Security
 
@@ -44,4 +52,4 @@ Repository owners can add collaborators under **Settings → Collaborators** on 
 
 ## License
 
-Proprietary unless otherwise noted. Add a `LICENSE` file when the project’s legal terms are finalized.
+See [LICENSE](LICENSE). All rights reserved unless you have a separate written agreement with the copyright holder.
