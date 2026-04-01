@@ -15,7 +15,7 @@
       }
     }
   },
-  "postCreateCommand": "node --version && npm --version",
+  "postCreateCommand": "npm ci && node --version && npm --version",
   "forwardPorts": [3000],
   "portsAttributes": {
     "3000": {

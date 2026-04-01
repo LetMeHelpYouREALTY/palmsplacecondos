@@ -4,7 +4,8 @@ Real estate marketing site for **Palms Place** (Las Vegas). This repository is s
 
 ## Prerequisites
 
-- **Node.js** 20 LTS (or the version pinned in this repo once `package.json` exists)
+- **Node.js** 20+ (see `engines` in [`package.json`](package.json))
+- **npm** (lockfile: [`package-lock.json`](package-lock.json))
 - **Git**
 - A GitHub account with access to this repository
 
@@ -13,9 +14,13 @@ Real estate marketing site for **Palms Place** (Las Vegas). This repository is s
 ```bash
 git clone git@github.com:DrJanDuffy/palmsplacecondos.git
 cd palmsplacecondos
+npm ci
+npm run dev
 ```
 
-After the app is scaffolded (e.g. Next.js), install dependencies and run the dev server using the commands in `package.json` (typically `pnpm install` / `npm install` and `pnpm dev` or `npm run dev`).
+Open [http://localhost:3000](http://localhost:3000). Production build check (aligned with Vercel): `npm run build` or `vercel build` from the project root.
+
+Copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your canonical HTTPS origin when deploying.
 
 ## Git remote (existing repo)
 
