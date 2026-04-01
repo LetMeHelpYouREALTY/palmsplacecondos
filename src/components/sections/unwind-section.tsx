@@ -1,24 +1,23 @@
-import Link from "next/link";
 import { LuxuryPlaceholder } from "@/components/sections/luxury-placeholder";
+import { ButtonLink } from "@/components/shared/button-link";
+import { SectionEyebrow } from "@/components/shared/section-heading";
 
 export function UnwindSection() {
   return (
     <section
       aria-labelledby="unwind-heading"
-      className="border-t border-palms-gold/20 bg-palms-charcoal px-6 py-16 md:py-24"
+      className="border-t border-palms-gold/15 bg-palms-charcoal px-6 py-20 md:py-28"
     >
-      <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2 md:items-center md:gap-14">
+      <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center md:gap-16">
         <LuxuryPlaceholder
           alt="Abstract gradient placeholder for pool and amenity photography"
-          className="min-h-[260px] w-full rounded-lg md:min-h-[320px]"
+          className="min-h-[280px] w-full rounded-2xl shadow-2xl shadow-black/30 md:min-h-[340px]"
           variant="unwind"
         />
         <div>
-          <p className="font-display text-sm font-semibold uppercase tracking-[0.35em] text-palms-gold">
-            Unwind
-          </p>
+          <SectionEyebrow>Unwind</SectionEyebrow>
           <h2
-            className="font-display mt-2 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl"
+            className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl"
             id="unwind-heading"
           >
             AT PALMS PLACE
@@ -29,17 +28,14 @@ export function UnwindSection() {
             apply to condominium ownership.
           </p>
           <div className="mt-8">
-            <Link
-              className="inline-flex rounded-md border border-palms-gold/45 px-5 py-2.5 text-sm font-semibold text-palms-gold transition-colors hover:bg-palms-gold/10"
-              href="/communities"
-            >
+            <ButtonLink href="/communities" variant="secondary">
               Explore communities
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto mt-14 max-w-5xl rounded-lg border border-palms-gold/20 bg-palms-charcoal-elevated p-8 md:p-10">
+      <div className="mx-auto mt-16 max-w-5xl rounded-2xl border border-palms-gold/15 bg-palms-charcoal-elevated/80 p-8 shadow-xl shadow-black/20 backdrop-blur-sm md:mt-20 md:p-10">
         <h3 className="font-display text-xl font-semibold text-palms-cream">Cabanas &amp; daybeds</h3>
         <p className="mt-3 text-palms-cream/80">
           Hotel-adjacent pool experiences may be available through the resort; ownership benefits

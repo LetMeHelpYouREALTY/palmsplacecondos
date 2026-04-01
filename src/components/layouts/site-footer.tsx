@@ -11,7 +11,7 @@ function FooterLink({
   className?: string;
 }) {
   const base = cn(
-    "rounded-sm text-palms-cream/85 transition-colors hover:text-palms-gold",
+    "rounded-sm text-palms-cream/85 underline-offset-4 transition-colors hover:text-palms-gold hover:underline",
     className,
   );
 
@@ -33,7 +33,7 @@ function FooterLink({
 export function SiteFooter() {
   return (
     <footer
-      className="border-t border-palms-gold/25 bg-palms-charcoal-elevated px-6 py-12 text-sm text-palms-cream/85"
+      className="border-t border-palms-gold/20 bg-palms-charcoal-elevated px-6 py-14 text-sm text-palms-cream/85 shadow-[inset_0_1px_0_0_rgba(197,163,90,0.06)]"
       id="site-footer-nav"
     >
       <div className="mx-auto max-w-6xl">

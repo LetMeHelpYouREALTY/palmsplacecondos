@@ -39,6 +39,7 @@ Copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_SITE_UR
 | [`src/hooks/`](src/hooks/) | Client-side React hooks |
 | [`src/types/`](src/types/) | Shared TypeScript types |
 | [`public/images/`](public/images/) | Static images referenced from pages |
+| [`docs/v0-prompt.md`](docs/v0-prompt.md) | Copy-paste prompt for [v0.dev](https://v0.dev) UI iterations (dark luxury + gold) |
 
 Site navigation labels and routes are defined in [`src/lib/navigation.ts`](src/lib/navigation.ts) and rendered in the **footer** ([`src/components/layouts/site-footer.tsx`](src/components/layouts/site-footer.tsx)). The header shows the **Palms Place Condos** site title only. Set `NEXT_PUBLIC_YOUTUBE_URL` in `.env.local` for the YouTube link.
 

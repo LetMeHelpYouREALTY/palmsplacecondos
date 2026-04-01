@@ -1,19 +1,18 @@
 import Link from "next/link";
 import { FadeCarousel } from "@/components/sections/fade-carousel";
 import { LuxuryPlaceholder } from "@/components/sections/luxury-placeholder";
+import { SectionEyebrow } from "@/components/shared/section-heading";
 
 export function StaySection() {
   return (
     <section
       aria-labelledby="stay-heading"
-      className="border-t border-palms-gold/20 bg-palms-charcoal-elevated px-6 py-16 md:py-24"
+      className="border-t border-palms-gold/15 bg-palms-charcoal-elevated px-6 py-20 md:py-28"
     >
       <div className="mx-auto max-w-5xl">
-        <p className="font-display text-sm font-semibold uppercase tracking-[0.35em] text-palms-gold">
-          Stay
-        </p>
+        <SectionEyebrow>Stay</SectionEyebrow>
         <h2
-          className="font-display mt-2 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl"
+          className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl"
           id="stay-heading"
         >
           AT PALMS PLACE
@@ -24,7 +23,7 @@ export function StaySection() {
           energy of the Strip.
         </p>
 
-        <div className="mt-10">
+        <div className="mt-12 overflow-hidden rounded-2xl border border-palms-gold/15 shadow-2xl shadow-black/40">
           <FadeCarousel
             autoplayMs={7500}
             label="Residence highlights"
@@ -100,6 +99,7 @@ export function StaySection() {
                 ),
               },
             ]}
+            className="p-1 md:p-2"
           />
         </div>
       </div>

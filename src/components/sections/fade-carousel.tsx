@@ -95,7 +95,7 @@ export function FadeCarousel({
       role="region"
       tabIndex={0}
     >
-      <div className="relative min-h-[220px] overflow-hidden rounded-lg border border-palms-gold/20 md:min-h-[280px]">
+      <div className="relative min-h-[220px] overflow-hidden rounded-xl md:min-h-[280px]">
         {slides.map((slide, i) => (
           <div
             aria-hidden={i !== index}
