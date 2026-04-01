@@ -40,6 +40,8 @@ Copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_SITE_UR
 | [`src/types/`](src/types/) | Shared TypeScript types |
 | [`public/images/`](public/images/) | Static images referenced from pages |
 
+Site navigation labels and routes are defined in [`src/lib/navigation.ts`](src/lib/navigation.ts). Set `NEXT_PUBLIC_YOUTUBE_URL` in `.env.local` for the header YouTube link.
+
 ## Git remote (existing repo)
 
 If this folder was cloned without `origin`, or you are pushing from a machine that has not added the remote:

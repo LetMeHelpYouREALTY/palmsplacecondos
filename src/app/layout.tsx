@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SiteHeader } from "@/components/layouts/site-header";
 import { siteContact } from "@/lib/site-contact";
 
 const geistSans = Geist({
@@ -36,18 +37,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}
       >
-        {children}
-        <footer className="border-t border-black/10 px-6 py-8 text-sm text-foreground/80 dark:border-white/15">
-          <div className="mx-auto max-w-3xl space-y-2">
-            <p className="font-medium text-foreground">{siteContact.agentName}</p>
-            <p>Nevada license {siteContact.license}</p>
-            <p>{siteContact.brokerage}</p>
-            <p className="text-foreground/70">
-              Phone, office address, and hours will match Google Business Profile on this site once
-              finalized for launch.
-            </p>
-          </div>
-        </footer>
+        <div className="flex min-h-screen flex-col">
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <footer className="border-t border-black/10 px-6 py-8 text-sm text-foreground/80 dark:border-white/15">
+            <div className="mx-auto max-w-3xl space-y-2">
+              <p className="font-medium text-foreground">{siteContact.agentName}</p>
+              <p>Nevada license {siteContact.license}</p>
+              <p>{siteContact.brokerage}</p>
+              <p className="text-foreground/70">
+                Phone, office address, and hours will match Google Business Profile on this site once
+                finalized for launch.
+              </p>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
   );
