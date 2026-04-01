@@ -2,7 +2,9 @@
  * RealScout office listings web component. Script is loaded once in root layout.
  * @see https://support.realscout.com — widget and agent ID configuration.
  */
+import { ButtonAnchor } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
+import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 
 const DEFAULT_AGENT = "QWdlbnQtMjI1MDUw";
 
@@ -11,6 +13,7 @@ function safeAgentEncodedId(value: string): string {
 }
 
 export function RealScoutOfficeListingsEmbed() {
+  const sharedSearchUrl = getRealScoutSharedSearchUrl();
   const agentId = safeAgentEncodedId(
     process.env.NEXT_PUBLIC_REALSCOUT_AGENT_ENCODED_ID ?? DEFAULT_AGENT,
   );
@@ -20,7 +23,7 @@ export function RealScoutOfficeListingsEmbed() {
   return (
     <section
       aria-labelledby="listings-heading"
-      className="border-t border-palms-gold/15 bg-gradient-to-b from-palms-charcoal via-palms-charcoal to-palms-charcoal-elevated py-16 md:py-20"
+      className="border-t border-palms-gold/15 bg-linear-to-b from-palms-charcoal via-palms-charcoal to-palms-charcoal-elevated py-16 md:py-20"
       id="listings"
     >
       <div className="mx-auto max-w-6xl px-6">
@@ -32,8 +35,23 @@ export function RealScoutOfficeListingsEmbed() {
           Featured listings
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-palms-cream/70">
-          Availability and details are provided by the listing service.
+          Availability and details are provided by the listing service. For filters and saved
+          criteria, use Dr. Jan Duffy&apos;s curated RealScout search.
         </p>
+
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+          <ButtonAnchor
+            aria-label="Open Dr. Jan Duffy’s curated home search on RealScout in a new tab"
+            href={sharedSearchUrl}
+            variant="primary"
+          >
+            Open curated home search
+          </ButtonAnchor>
+          <p className="text-xs text-palms-cream/50 sm:max-w-xs">
+            Opens RealScout in a new tab. Same search is linked from the footer as &quot;Curated
+            home search.&quot;
+          </p>
+        </div>
 
         <div className="mt-10 rounded-2xl border border-palms-gold/10 bg-palms-charcoal-muted/40 p-4 shadow-inner shadow-black/20 backdrop-blur-sm md:p-6">
           <div

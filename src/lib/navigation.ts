@@ -1,3 +1,5 @@
+import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
+
 export type NavItem = {
   label: string;
   href: string;
@@ -5,6 +7,7 @@ export type NavItem = {
 };
 
 const youtubeHref = process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "https://www.youtube.com/";
+const realScoutSharedSearchHref = getRealScoutSharedSearchUrl();
 
 /** Top utility links (Connect + YouTube) */
 export const utilityNav: NavItem[] = [
@@ -19,6 +22,11 @@ export const primaryNav: NavItem[] = [
   { label: "Communities", href: "/communities" },
   { label: "SELL", href: "/sell" },
   { label: "Search", href: "/search" },
+  {
+    label: "Curated home search",
+    href: realScoutSharedSearchHref,
+    external: true,
+  },
   { label: "Contact", href: "/contact" },
 ];
 
