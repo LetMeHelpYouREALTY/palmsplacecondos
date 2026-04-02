@@ -96,6 +96,38 @@ export function SiteFooter() {
               ) : (
                 <p className="text-palms-cream/65">Phone: add when it matches your Google Business Profile.</p>
               )}
+              {siteContact.emailGeneral ? (
+                <p>
+                  <a
+                    className="text-palms-gold underline-offset-4 hover:underline"
+                    href={`mailto:${siteContact.emailGeneral}`}
+                  >
+                    {siteContact.emailGeneral}
+                  </a>
+                </p>
+              ) : null}
+              {siteContact.emailListings ? (
+                <p className="text-palms-cream/80">
+                  Listings:{" "}
+                  <a
+                    className="text-palms-gold underline-offset-4 hover:underline"
+                    href={`mailto:${siteContact.emailListings}`}
+                  >
+                    {siteContact.emailListings}
+                  </a>
+                </p>
+              ) : null}
+              {siteContact.emailBuyers ? (
+                <p className="text-palms-cream/80">
+                  Buyers:{" "}
+                  <a
+                    className="text-palms-gold underline-offset-4 hover:underline"
+                    href={`mailto:${siteContact.emailBuyers}`}
+                  >
+                    {siteContact.emailBuyers}
+                  </a>
+                </p>
+              ) : null}
             </div>
           </div>
         </div>

@@ -21,11 +21,10 @@ export function WhyBuySection() {
         </h2>
         <div className="mt-8 space-y-6 text-lg leading-relaxed text-palms-cream/88">
           <p>
-            Buyers choose Palms Place condos for sale when they want Strip-adjacent residences with
-            HOA amenities Palms Place is known for—pool and outdoor living, concierge-style
-            convenience, and a lock-and-leave Las Vegas condo lifestyle. Many owners also view the
-            tower as a condo investment Las Vegas buyers use for a second home or long-term hold;
-            always confirm numbers with your lender and your agent.
+            Buyers work with the {siteContact.teamBrandName} when they want Strip-adjacent residences
+            with HOA amenities the building is known for—pool and outdoor living, concierge-style
+            convenience, and a lock-and-leave lifestyle. Many owners also use the tower as a second
+            home or long-term investment; always confirm numbers with your lender and your agent.
           </p>
           <p>
             Palms Place floor plans range from efficient studios to larger one-bedroom layouts. Work

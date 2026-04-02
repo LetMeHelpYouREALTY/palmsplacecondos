@@ -2,10 +2,16 @@
  * RealScout office listings web component. Script is loaded once in root layout.
  * @see https://support.realscout.com — widget and agent ID configuration.
  */
+import Link from "next/link";
 import { ButtonAnchor } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { siteContact } from "@/lib/site-contact";
+import { cn } from "@/lib/utils";
+
+function telHref(phone: string): string {
+  return `tel:${phone.replace(/\D/g, "")}`;
+}
 
 const DEFAULT_AGENT = "QWdlbnQtMjI1MDUw";
 
@@ -24,7 +30,7 @@ export function RealScoutOfficeListingsEmbed() {
   return (
     <section
       aria-labelledby="listings-heading"
-      className="border-t border-palms-gold/15 bg-linear-to-b from-palms-charcoal via-palms-charcoal to-palms-charcoal-elevated py-16 md:py-20"
+      className="scroll-mt-20 border-t border-palms-gold/15 bg-linear-to-b from-palms-charcoal via-palms-charcoal to-palms-charcoal-elevated py-16 md:py-20"
       id="listings"
     >
       <div className="mx-auto max-w-6xl px-6">
@@ -42,12 +48,31 @@ export function RealScoutOfficeListingsEmbed() {
           team leader for Palms Place).
         </p>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-          <ButtonAnchor href={sharedSearchUrl} variant="primary">
-            Open curated home search
-          </ButtonAnchor>
-          <p className="text-xs text-palms-cream/50 sm:max-w-xs">
-            Opens RealScout in a new tab. Same URL is linked from the footer as &quot;Search homes.&quot;
+        <div className="mt-8 flex flex-col gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <ButtonAnchor href={sharedSearchUrl} variant="primary">
+              Open curated home search
+            </ButtonAnchor>
+            <Link
+              className={cn(
+                "inline-flex min-h-[44px] items-center justify-center rounded-lg border border-palms-gold/45 px-4 py-3 text-sm font-semibold text-palms-cream backdrop-blur-sm transition hover:border-palms-gold hover:bg-palms-gold/10",
+              )}
+              href="/contact"
+            >
+              Ask about a listing
+            </Link>
+            {siteContact.phone ? (
+              <a
+                className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-palms-gold/35 px-4 py-3 text-sm font-semibold text-palms-cream hover:border-palms-gold hover:bg-palms-gold/10"
+                href={telHref(siteContact.phone)}
+              >
+                Call {siteContact.phone}
+              </a>
+            ) : null}
+          </div>
+          <p className="text-xs text-palms-cream/50 sm:max-w-xl">
+            MLS search opens RealScout in a new tab. Same URL is linked from the footer as &quot;Search
+            homes.&quot;
           </p>
         </div>
 

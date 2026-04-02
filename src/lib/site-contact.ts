@@ -4,6 +4,11 @@
  * Optional NAP fields must match visible on-page copy and GBP before use in schema.
  */
 export type SiteContact = {
+  /**
+   * Public-facing team name for marketing (who clients work with—not the building name alone).
+   * Align with Google Business Profile / team branding when published.
+   */
+  teamBrandName: string;
   /** Listing lead / primary licensee on this site. */
   agentName: string;
   agentTitle: string;
@@ -14,6 +19,12 @@ export type SiteContact = {
   buyerSpecialistName: string;
   buyerSpecialistTitle: string;
   phone?: string;
+  /** General office / agent inquiries — must match visible copy and GBP. */
+  emailGeneral?: string;
+  /** Listing-focused inbox (Dr. Jan). */
+  emailListings?: string;
+  /** Buyer inquiries (Chance). */
+  emailBuyers?: string;
   streetAddress?: string;
   addressLocality?: string;
   addressRegion?: string;
@@ -27,12 +38,16 @@ export type SiteContact = {
 };
 
 export const siteContact: SiteContact = {
+  teamBrandName: "Dr. Jan Duffy Palms Place Team",
   agentName: "Dr. Jan Duffy",
   agentTitle: "Realtor, Listing Specialist & Team Leader for Palms Place",
   license: "S.0197614.LLC",
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
   /** Must match visible copy, meta descriptions, and GBP. */
   phone: "702-222-1964",
+  emailGeneral: "DrDuffy@PalmsPlaceCondos.com",
+  emailListings: "DrDuffySells@PalmsPlaceCondos.com",
+  emailBuyers: "ChanceSells@PalmsPlaceCondos.com",
   primaryServiceArea: "Las Vegas — Palms Place and surrounding communities",
   buyerSpecialistName: "Chance Fuller",
   buyerSpecialistTitle: "Buyers Specialist",

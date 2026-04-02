@@ -5,7 +5,7 @@ import { formatOfficeAddressLine, formatTeamPhrase, siteContact } from "@/lib/si
 
 export const metadata: Metadata = {
   title: "Contact Dr. Jan Duffy — Palms Place real estate",
-  description: `Call ${siteContact.phone ?? ""} — contact ${formatTeamPhrase()} at ${formatOfficeAddressLine()}. ${siteContact.officeHoursLine ?? ""}. Palms Place tours and Las Vegas high-rise questions—${siteContact.brokerage}.`,
+  description: `Call ${siteContact.phone ?? ""} or email ${siteContact.emailGeneral ?? ""} — ${formatTeamPhrase()} at ${formatOfficeAddressLine()}. ${siteContact.officeHoursLine ?? ""}. Palms Place tours and Las Vegas high-rise questions—${siteContact.brokerage}.`,
   ...canonicalMetadata("/contact"),
 };
 

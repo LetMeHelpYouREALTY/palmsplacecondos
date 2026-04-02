@@ -46,6 +46,49 @@ export function ContactPageBody() {
           </p>
         ) : null}
 
+        {(siteContact.emailGeneral || siteContact.emailListings || siteContact.emailBuyers) && (
+          <div className="mt-6 border-t border-palms-gold/15 pt-6">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-palms-gold-muted">
+              Email
+            </h3>
+            <ul className="mt-3 space-y-2 text-palms-cream/90">
+              {siteContact.emailGeneral ? (
+                <li>
+                  General:{" "}
+                  <a
+                    className="font-medium text-palms-gold underline-offset-4 hover:underline"
+                    href={`mailto:${siteContact.emailGeneral}`}
+                  >
+                    {siteContact.emailGeneral}
+                  </a>
+                </li>
+              ) : null}
+              {siteContact.emailListings ? (
+                <li>
+                  Listings ({siteContact.agentName}):{" "}
+                  <a
+                    className="font-medium text-palms-gold underline-offset-4 hover:underline"
+                    href={`mailto:${siteContact.emailListings}`}
+                  >
+                    {siteContact.emailListings}
+                  </a>
+                </li>
+              ) : null}
+              {siteContact.emailBuyers ? (
+                <li>
+                  Buyers ({siteContact.buyerSpecialistName}):{" "}
+                  <a
+                    className="font-medium text-palms-gold underline-offset-4 hover:underline"
+                    href={`mailto:${siteContact.emailBuyers}`}
+                  >
+                    {siteContact.emailBuyers}
+                  </a>
+                </li>
+              ) : null}
+            </ul>
+          </div>
+        )}
+
         <div className="mt-6 flex flex-wrap gap-3">
           {tel ? (
             <a

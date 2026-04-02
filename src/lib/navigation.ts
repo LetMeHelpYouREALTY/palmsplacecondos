@@ -15,6 +15,13 @@ export const utilityNav: NavItem[] = [
   { label: "YouTube", href: youtubeHref, external: true },
 ];
 
+/** Sticky header — high-intent routes visible without scrolling to footer */
+export const headerNav: NavItem[] = [
+  { label: "Condos", href: "/condos" },
+  { label: "Sell", href: "/sell" },
+  { label: "Contact", href: "/contact" },
+];
+
 /** Primary site navigation */
 export const primaryNav: NavItem[] = [
   { label: "Homes", href: "/homes" },

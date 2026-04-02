@@ -30,6 +30,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Sticky header: anchor links (#listings, etc.) land with room below chrome */
+  scroll-padding-top: 5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

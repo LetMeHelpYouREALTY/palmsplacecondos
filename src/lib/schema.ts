@@ -98,6 +98,9 @@ export function getBaseJsonLd(): JsonLdGraph {
   if (hoursSpec) {
     brokerage.openingHoursSpecification = hoursSpec;
   }
+  if (siteContact.emailGeneral) {
+    brokerage.email = siteContact.emailGeneral;
+  }
 
   const listingAgent: Record<string, unknown> = {
     "@type": "RealEstateAgent",
@@ -115,6 +118,9 @@ export function getBaseJsonLd(): JsonLdGraph {
   }
 
   applyOfficeNapAndHours(listingAgent, brokerageId, postalAddress, hoursSpec, true);
+  if (siteContact.emailListings) {
+    listingAgent.email = siteContact.emailListings;
+  }
 
   const buyersAgent: Record<string, unknown> = {
     "@type": "RealEstateAgent",
@@ -126,6 +132,9 @@ export function getBaseJsonLd(): JsonLdGraph {
   };
 
   applyOfficeNapAndHours(buyersAgent, brokerageId, postalAddress, hoursSpec, true);
+  if (siteContact.emailBuyers) {
+    buyersAgent.email = siteContact.emailBuyers;
+  }
 
   const placePalmsId = id(siteUrl, "place-palms-place");
   const palmsPlace: Record<string, unknown> = {
