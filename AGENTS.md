@@ -46,6 +46,16 @@ This file is the **repository-specific** companion to the shared Cursor rules in
 - **Primary domain:** add **`www`** as the production hostname in Vercel; set **`NEXT_PUBLIC_SITE_URL`** to `https://www.yourdomain.com` so metadata, sitemap, and middleware match.
 - **Cloudflare (DNS):** use **DNS only** (gray cloud); do not orange-cloud proxy in front of Vercel (avoids SSL conflicts).
 
+### Vercel Toolbar + v0
+
+On a **preview or deployment** with the [Vercel Toolbar](https://vercel.com/docs/workflow-collaboration/vercel-toolbar) enabled:
+
+1. **Tag `@v0`** in a comment or reply to ask UI questions or request changes.
+2. **Tag `@v0` again** in a follow-up to continue the same thread.
+3. v0 receives **full context**: the conversation, the page, and the elements in focus—use it for layout/components; merge any exported code with this repo’s tokens ([`src/app/globals.css`](src/app/globals.css)) and run lint/typecheck before merging.
+
+Toolbar visibility is controlled in the **Vercel project** (not in this repo by default).
+
 ## Security
 
 - No live API keys or secrets in git; use `.env.example` and platform env vars.
