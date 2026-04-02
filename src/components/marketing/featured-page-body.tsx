@@ -16,7 +16,7 @@ export function FeaturedPageBody() {
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Highlights rotate with market activity—{siteContact.buyerSpecialistName} and{" "}
-        {siteContact.agentName} curate search experiences rather than a static grid of fake MLS rows
+        {siteContact.agentName} curate search experiences rather than a static grid of fake listing rows
         on this marketing page.
       </p>
 

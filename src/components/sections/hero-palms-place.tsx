@@ -56,7 +56,7 @@ export function HeroPalmsPlace() {
           <p>
             Strip-adjacent living puts dining, entertainment, and resort-style amenities within
             easy reach—whether you need a primary home, a second home, or a long-term hold. Start
-            with live MLS-backed search and verified disclosures; pricing and availability change
+            with a live search of active listings and verified disclosures; pricing and availability change
             daily.
           </p>
           <p>

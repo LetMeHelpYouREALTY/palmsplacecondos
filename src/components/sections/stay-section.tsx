@@ -45,7 +45,7 @@ export function StaySection() {
                       <p className="mt-3 text-palms-cream/80">
                         Efficient layouts suit many lock-and-leave Las Vegas condo buyers. Pricing
                         and availability for Palms Place condos for sale change with the market—
-                        verify with your agent and official MLS data before you offer.
+                        verify with your agent and the official listing information before you offer.
                       </p>
                       <div className="mt-6 flex flex-wrap gap-3">
                         <Link

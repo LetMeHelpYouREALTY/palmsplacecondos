@@ -71,7 +71,7 @@ export function RealScoutOfficeListingsEmbed() {
             ) : null}
           </div>
           <p className="text-xs text-palms-cream/50 sm:max-w-xl">
-            MLS search opens RealScout in a new tab. Same URL is linked from the footer as &quot;Search
+            Full property search opens RealScout in a new tab. Same URL is linked from the footer as &quot;Search
             homes.&quot;
           </p>
         </div>
@@ -84,7 +84,7 @@ export function RealScoutOfficeListingsEmbed() {
         </div>
 
         <p className="mt-6 max-w-3xl text-xs leading-relaxed text-palms-cream/55">
-          MLS disclaimer: Information deemed reliable but not guaranteed. Listing details (price,
+          Listing disclaimer: Information deemed reliable but not guaranteed. Listing details (price,
           status, HOA, square footage) must be verified with your agent and official sources. Not
           intended as legal or tax advice.
         </p>

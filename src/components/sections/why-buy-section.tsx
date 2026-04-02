@@ -3,7 +3,7 @@ import { SectionEyebrow } from "@/components/shared/section-heading";
 import { siteContact } from "@/lib/site-contact";
 
 /**
- * Commercial-intent section — avoid fabricated stats; align with MLS/brokerage disclaimers.
+ * Commercial-intent section — avoid fabricated stats; align with listing/brokerage disclaimers.
  */
 export function WhyBuySection() {
   return (

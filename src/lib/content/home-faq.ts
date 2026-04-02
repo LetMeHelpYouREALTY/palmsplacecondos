@@ -8,7 +8,7 @@ export const homeFaqItems: FaqItem[] = [
   {
     question: "Are there Palms Place condos for sale?",
     answer:
-      "Yes—inventory for Palms Place condos for sale changes daily. Use the curated RealScout search linked on this site and confirm status, price, and HOA fees with your agent and official MLS sources before you make an offer.",
+      "Yes—inventory for Palms Place condos for sale changes daily. Use the curated RealScout search linked on this site and confirm status, price, and HOA fees with your agent and the official listing records before you make an offer.",
   },
   {
     question: "Where is Palms Place in Las Vegas?",
@@ -23,7 +23,7 @@ export const homeFaqItems: FaqItem[] = [
   {
     question: "How do I search Palms Place condos for sale?",
     answer:
-      "Use the curated RealScout home search linked from this site to filter by price, property type, and status (managed with Dr. Jan Duffy, listing specialist and team leader). You can also browse featured office listings on this page; MLS-backed details should always be verified before you make an offer.",
+      "Use the curated RealScout home search linked from this site to filter by price, property type, and status (managed with Dr. Jan Duffy, listing specialist and team leader). You can also browse featured office listings on this page; listing details should always be verified with your agent before you make an offer.",
   },
   {
     question: "Who helps buyers vs. sellers at Palms Place?",

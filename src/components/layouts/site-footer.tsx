@@ -172,7 +172,7 @@ export function SiteFooter() {
             © {year} {siteContact.teamBrandName}. {siteContact.brokerage}. All rights reserved.
           </p>
           <p className="mt-2">
-            Equal Housing Opportunity. MLS data deemed reliable but not guaranteed; verify with your
+            Equal Housing Opportunity. Listing data is deemed reliable but not guaranteed; verify with your
             agent.
           </p>
         </div>

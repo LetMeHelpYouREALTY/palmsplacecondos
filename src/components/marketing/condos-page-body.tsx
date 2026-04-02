@@ -55,7 +55,7 @@ export function CondosPageBody() {
 
       <section className="mt-12">
         <h2 className="font-display text-2xl font-semibold text-palms-cream">
-          Search live MLS-backed listings
+          Search live listings
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           Run the team&apos;s curated search to filter by price, property type, and status. You can
@@ -83,7 +83,7 @@ export function CondosPageBody() {
       </section>
 
       <section className="mt-12 rounded-xl border border-palms-gold/15 bg-palms-charcoal-muted/30 p-6">
-        <h2 className="font-display text-xl font-semibold text-palms-cream">MLS disclaimer</h2>
+        <h2 className="font-display text-xl font-semibold text-palms-cream">Listing data disclaimer</h2>
         <p className="mt-3 text-sm leading-relaxed text-palms-cream/70">
           Information is deemed reliable but not guaranteed. Verify price, square footage, HOA
           fees, and status with your agent and official sources—not intended as legal or tax advice.

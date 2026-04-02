@@ -8,7 +8,7 @@ Copy into [v0.dev](https://v0.dev) when you want UI iterations. Stack: **Next.js
 - Palette: charcoal background `#0d0d0d`, cream text `#f5f0e6`, gold accent `#c5a35a` (dividers, CTAs).
 - Typography: **Cormorant Garamond** (display/headings), **Geist** (body) — already wired in `layout.tsx`.
 - Header: site title only. **Footer** holds full navigation (Connect, YouTube, Homes, Condos, etc.).
-- **RealScout** listings embed lives above footer; do not duplicate script tags; MLS disclaimer required near widgets.
+- **RealScout** listings embed lives above footer; do not duplicate script tags; listing disclaimer required near widgets.
 
 ## Prompt template
 

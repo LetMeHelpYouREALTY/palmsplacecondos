@@ -55,7 +55,7 @@ export function PopularSearchesPageBody() {
       </section>
 
       <section className="mt-12">
-        <h2 className="font-display text-xl font-semibold text-palms-cream">Live MLS search</h2>
+        <h2 className="font-display text-xl font-semibold text-palms-cream">Live listing search</h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           <a
             className="font-medium text-palms-gold underline-offset-4 hover:underline"

@@ -9,7 +9,7 @@ function telHref(phone: string): string {
 }
 
 /**
- * Sticky header with primary nav + conversion CTAs (call, on-site listings hub, MLS search).
+ * Sticky header with primary nav + conversion CTAs (call, on-site listings hub, full RealScout search).
  * Full site map remains in the footer.
  */
 export function SiteHeader() {
@@ -63,7 +63,7 @@ export function SiteHeader() {
             rel="noopener noreferrer"
             target="_blank"
           >
-            MLS search
+            Full search
           </a>
         </div>
       </div>

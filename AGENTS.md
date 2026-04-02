@@ -19,7 +19,7 @@ This file is the **repository-specific** companion to the shared Cursor rules in
 - Load the RealScout script **once** in the root layout ([`src/app/layout.tsx`](src/app/layout.tsx)).
 - Widget markup: [`src/components/seo/realscout-office-listings-embed.tsx`](src/components/seo/realscout-office-listings-embed.tsx) uses `dangerouslySetInnerHTML`; do not duplicate script tags.
 - **CSP:** when you add `Content-Security-Policy`, allow **`em.realscout.com`** and **`www.realscout.com`** in both **`script-src`** and **`connect-src`** (see [`next.config.ts`](next.config.ts) comment). Test embeds after any CSP change.
-- **MLS:** visible disclaimer must accompany listing widgets (see embed component). Do not remove without broker/MLS compliance review.
+- **Listing data / MLS:** visible disclaimer must accompany listing widgets (see embed component). Do not remove without broker/MLS compliance review. **Consumer-facing copy** should use plain terms like “listings” and “listing disclaimer,” not “MLS,” unless your broker requires the acronym on-page.
 
 ## IDX / MLS
 

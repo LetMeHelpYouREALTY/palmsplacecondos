@@ -9,7 +9,7 @@ import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 
 export const metadata: Metadata = {
   title: "Palms Place & Las Vegas condo search (RealScout)",
-  description: `Curated MLS-style search for Palms Place condos for sale and Las Vegas-area listings (${formatTeamPhrase()})—${siteContact.primaryServiceArea}.`,
+  description: `Curated home search for Palms Place condos for sale and Las Vegas-area listings (${formatTeamPhrase()})—${siteContact.primaryServiceArea}.`,
   ...canonicalMetadata("/search"),
 };
 
@@ -42,7 +42,7 @@ export default function SearchPage() {
           </p>
         </div>
         <p className="mt-10 max-w-2xl text-sm leading-relaxed text-palms-cream/60">
-          MLS disclaimer: Information deemed reliable but not guaranteed. Verify listing details with
+          Listing disclaimer: Information deemed reliable but not guaranteed. Verify listing details with
           your agent and official sources. Not intended as legal or tax advice.
         </p>
         <RelatedPages links={related} />

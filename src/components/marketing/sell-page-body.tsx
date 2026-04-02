@@ -47,7 +47,7 @@ export function SellPageBody() {
           Listing strategy &amp; marketing
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          Plans can include professional media, MLS syndication, and targeted outreach appropriate to
+          Plans can include professional media, syndication to major listing sites, and targeted outreach appropriate to
           your building and price band. HOA rules and tenant-occupied units add steps—your listing
           team coordinates timelines with disclosures and association requirements.
         </p>
