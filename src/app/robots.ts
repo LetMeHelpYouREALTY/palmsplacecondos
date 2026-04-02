@@ -1,14 +1,16 @@
 import type { MetadataRoute } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+import { getPublicSiteOrigin } from "@/lib/public-site-origin";
 
-export default function robots(): MetadataRoute.Robots {
-  const base = getSiteUrl();
+export const dynamic = "force-dynamic";
+
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const base = await getPublicSiteOrigin();
 
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${base}/sitemap.xml`,
+    sitemap: `${base.replace(/\/$/, "")}/sitemap.xml`,
   };
 }

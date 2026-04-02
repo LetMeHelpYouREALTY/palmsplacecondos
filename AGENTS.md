@@ -37,6 +37,7 @@ This file is the **repository-specific** companion to the shared Cursor rules in
 
 - **Primary host is `www`.** Set **`NEXT_PUBLIC_SITE_URL`** to `https://www.yourdomain.com` (no trailing slash) and use the **same** URL-prefix property in GSC. Apex traffic is redirected to **`www`** via [`src/middleware.ts`](src/middleware.ts) when the env URL includes `www`.
 - Submit **`https://www.yourdomain.com/sitemap.xml`** in GSC after deploy; **`robots.txt`** uses the same origin.
+- **Sitemap URL errors:** [`sitemap.ts`](src/app/sitemap.ts) and [`robots.ts`](src/app/robots.ts) resolve the public origin per request (so URLs match `www` or your custom domain). Still set **`NEXT_PUBLIC_SITE_URL`** on Vercel so metadata and JSON-LD stay aligned. Vercel also exposes **`VERCEL_PROJECT_PRODUCTION_URL`** as a build-time fallback for [`getSiteUrl()`](src/lib/site-url.ts) when the public env is unset (enable system env vars in the project).
 - Add **`GOOGLE_SITE_VERIFICATION`** (or `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`) from GSC’s HTML tag method so the site can be verified without extra file deploys.
 
 ## Hosting

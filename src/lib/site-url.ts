@@ -8,6 +8,19 @@ export function getSiteUrl(): string {
   if (fromEnv) {
     return fromEnv.replace(/\/$/, "");
   }
+  /**
+   * Vercel: primary production hostname when assigned (helps sitemap/robots at build if set).
+   * @see https://vercel.com/docs/projects/environment-variables/system-environment-variables
+   */
+  const vercelProd = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (vercelProd) {
+    try {
+      const withProto = vercelProd.startsWith("http") ? vercelProd : `https://${vercelProd}`;
+      return new URL(withProto).origin.replace(/\/$/, "");
+    } catch {
+      /* fall through */
+    }
+  }
   /* Vercel sets VERCEL_URL on preview/production deployments (no protocol). */
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL.replace(/\/$/, "")}`;

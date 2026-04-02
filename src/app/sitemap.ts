@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+import { absoluteUrlForSitemap, getPublicSiteOrigin } from "@/lib/public-site-origin";
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[0]["changeFrequency"]>;
 
@@ -21,12 +21,15 @@ const PATHS: { path: string; changeFrequency: ChangeFrequency; priority: number 
   { path: "/buyers/calculators", changeFrequency: "monthly", priority: 0.7 },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = getSiteUrl();
+/** Per-request URLs so sitemap matches the host Google fetches (www vs deployment URL). */
+export const dynamic = "force-dynamic";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const base = await getPublicSiteOrigin();
   const lastModified = new Date();
 
   return PATHS.map(({ path, changeFrequency, priority }) => ({
-    url: `${base}${path}`,
+    url: absoluteUrlForSitemap(base, path),
     lastModified,
     changeFrequency,
     priority,
