@@ -1,3 +1,5 @@
+import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
+
 /**
  * Contextual internal links for SEO topic clusters — descriptive anchor text, not “click here.”
  */
@@ -5,16 +7,23 @@ export type RelatedLink = {
   href: string;
   label: string;
   description?: string;
+  external?: boolean;
 };
 
 /** Paths that should not link to themselves. */
 export function relatedLinksForPath(pathname: string): RelatedLink[] {
   const normalized = pathname === "" ? "/" : pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const searchUrl = getRealScoutSharedSearchUrl();
   const pool: RelatedLink[] = [
     { href: "/homes", label: "Homes for sale in Las Vegas", description: "Single-family and attached" },
     { href: "/condos", label: "Condos & high-rise living", description: "Including Palms Place" },
     { href: "/high-rises", label: "Las Vegas high-rises", description: "Strip towers and amenities" },
-    { href: "/search", label: "Search homes", description: "Filters and curated search" },
+    {
+      href: searchUrl,
+      label: "Search homes",
+      description: "Dr. Jan Duffy’s curated RealScout search",
+      external: true,
+    },
     { href: "/sell", label: "Sell with the Palms Place team", description: "Listing specialist & marketing" },
     { href: "/contact", label: "Schedule a conversation", description: "Buy or sell" },
     { href: "/communities", label: "Neighborhoods & communities", description: "Near the Strip" },
@@ -22,6 +31,10 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
     { href: "/buyers/calculators", label: "Buyer calculators", description: "Payments and affordability" },
   ];
 
-  const filtered = pool.filter((item) => item.href !== normalized);
+  const filtered = pool.filter((item) => {
+    if (item.href === normalized) return false;
+    if (normalized === "/search" && item.external && item.href === searchUrl) return false;
+    return true;
+  });
   return filtered.slice(0, 5);
 }

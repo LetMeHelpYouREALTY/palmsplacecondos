@@ -2,8 +2,11 @@ import Link from "next/link";
 import { FadeCarousel } from "@/components/sections/fade-carousel";
 import { LuxuryPlaceholder } from "@/components/sections/luxury-placeholder";
 import { SectionEyebrow } from "@/components/shared/section-heading";
+import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 
 export function StaySection() {
+  const sharedSearchUrl = getRealScoutSharedSearchUrl();
+
   return (
     <section
       aria-labelledby="stay-heading"
@@ -52,12 +55,14 @@ export function StaySection() {
                         >
                           View condos
                         </Link>
-                        <Link
+                        <a
                           className="text-sm font-semibold text-palms-cream/80 underline-offset-4 hover:text-palms-gold hover:underline"
-                          href="/search"
+                          href={sharedSearchUrl}
+                          rel="noopener noreferrer"
+                          target="_blank"
                         >
                           Search inventory
-                        </Link>
+                        </a>
                       </div>
                     </div>
                   </div>

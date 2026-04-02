@@ -19,13 +19,24 @@ export function RelatedPages({
       <h2 className="font-display text-lg font-semibold tracking-tight text-palms-cream">{title}</h2>
       <ul className="mt-4 flex flex-col gap-3">
         {links.map((item) => (
-          <li key={item.href}>
-            <Link
-              className="font-medium text-palms-gold underline-offset-4 transition-colors hover:text-palms-gold-hover hover:underline"
-              href={item.href}
-            >
-              {item.label}
-            </Link>
+          <li key={`${item.href}-${item.label}`}>
+            {item.external ? (
+              <a
+                className="font-medium text-palms-gold underline-offset-4 transition-colors hover:text-palms-gold-hover hover:underline"
+                href={item.href}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                className="font-medium text-palms-gold underline-offset-4 transition-colors hover:text-palms-gold-hover hover:underline"
+                href={item.href}
+              >
+                {item.label}
+              </Link>
+            )}
             {item.description ? (
               <span className="mt-0.5 block text-sm text-palms-cream/60">{item.description}</span>
             ) : null}

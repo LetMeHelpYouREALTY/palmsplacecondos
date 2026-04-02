@@ -21,12 +21,7 @@ export const primaryNav: NavItem[] = [
   { label: "Condos", href: "/condos" },
   { label: "Communities", href: "/communities" },
   { label: "SELL", href: "/sell" },
-  { label: "Search", href: "/search" },
-  {
-    label: "Curated home search",
-    href: realScoutSharedSearchHref,
-    external: true,
-  },
+  { label: "Search homes", href: realScoutSharedSearchHref, external: true },
   { label: "Contact", href: "/contact" },
 ];
 

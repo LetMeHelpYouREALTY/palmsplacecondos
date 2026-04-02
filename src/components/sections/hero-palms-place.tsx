@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ButtonLink } from "@/components/shared/button-link";
+import { ButtonAnchor, ButtonLink } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
+import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { siteContact } from "@/lib/site-contact";
 
 export function HeroPalmsPlace() {
+  const sharedSearchUrl = getRealScoutSharedSearchUrl();
+
   return (
     <section aria-labelledby="hero-heading" className="relative isolate min-h-[80vh] w-full overflow-hidden">
       <div className="absolute inset-0">
@@ -42,9 +45,9 @@ export function HeroPalmsPlace() {
           {siteContact.buyerSpecialistTitle}—{siteContact.brokerage}.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-4">
-          <ButtonLink href="/search" variant="primary">
+          <ButtonAnchor href={sharedSearchUrl} variant="primary">
             Search homes
-          </ButtonLink>
+          </ButtonAnchor>
           <ButtonLink href="/contact" variant="secondary">
             Contact
           </ButtonLink>

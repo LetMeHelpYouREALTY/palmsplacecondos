@@ -50,8 +50,7 @@ export function RealScoutOfficeListingsEmbed() {
             Open curated home search
           </ButtonAnchor>
           <p className="text-xs text-palms-cream/50 sm:max-w-xs">
-            Opens RealScout in a new tab. Same search is linked from the footer as &quot;Curated
-            home search.&quot;
+            Opens RealScout in a new tab. Same URL is linked from the footer as &quot;Search homes.&quot;
           </p>
         </div>
 
