@@ -5,7 +5,10 @@ import "./globals.css";
 import { SiteFooter } from "@/components/layouts/site-footer";
 import { SiteHeader } from "@/components/layouts/site-header";
 import { RealScoutOfficeListingsEmbed } from "@/components/seo/realscout-office-listings-embed";
-import { siteContact } from "@/lib/site-contact";
+import { StructuredData } from "@/components/seo/structured-data";
+import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
+import { getBaseJsonLd } from "@/lib/schema";
+import { getSiteUrl } from "@/lib/site-url";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,18 +26,52 @@ const displaySerif = Cormorant_Garamond({
   weight: ["400", "600", "700"],
 });
 
-const metadataBaseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+const siteUrl = getSiteUrl();
+const googleSiteVerification = getGoogleSiteVerification();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(metadataBaseUrl),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Palms Place Condos | Las Vegas Strip High-Rise Real Estate",
     template: "%s | Palms Place Condos",
   },
-  description: `Palms Place high-rise condos near the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${siteContact.agentName}, ${siteContact.brokerage}.`,
+  description: `Palms Place high-rise condos near the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Palms Place Condos",
+    title: "Palms Place Condos | Las Vegas Strip High-Rise Real Estate",
+    description: `Palms Place high-rise condos near the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Palms Place Condos | Las Vegas Strip High-Rise Real Estate",
+    description: `Palms Place high-rise condos near the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}.`,
+  },
+  ...(googleSiteVerification
+    ? {
+        verification: {
+          google: googleSiteVerification,
+        },
+      }
+    : {}),
 };
+
+function getGoogleSiteVerification(): string | undefined {
+  const v =
+    process.env.GOOGLE_SITE_VERIFICATION?.trim() ||
+    process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+  return v || undefined;
+}
 
 export default function RootLayout({
   children,
@@ -46,6 +83,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${displaySerif.variable} min-h-screen bg-palms-charcoal text-palms-cream antialiased`}
       >
+        <StructuredData data={getBaseJsonLd()} />
         <Script
           src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
           strategy="afterInteractive"

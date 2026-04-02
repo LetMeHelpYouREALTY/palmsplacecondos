@@ -38,7 +38,8 @@ export function HeroPalmsPlace() {
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-palms-cream/88 md:text-xl">
           Strip-adjacent residences with resort amenities nearby. Explore listings and floor plans
-          with {siteContact.agentName}, {siteContact.brokerage}.
+          with {siteContact.agentName} ({siteContact.agentTitle}) and {siteContact.buyerSpecialistName},{" "}
+          {siteContact.buyerSpecialistTitle}—{siteContact.brokerage}.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <ButtonLink href="/search" variant="primary">

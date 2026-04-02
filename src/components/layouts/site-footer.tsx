@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { popularNav, primaryNav, utilityNav } from "@/lib/navigation";
-import { siteContact } from "@/lib/site-contact";
+import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
 import { cn } from "@/lib/utils";
 
 function FooterLink({
@@ -65,16 +65,37 @@ export function SiteFooter() {
 
           <div className="lg:pl-4">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-palms-gold-muted">
-              Agent
+              Team
             </p>
-            <div className="mt-4 space-y-2 text-palms-cream/90">
-              <p className="font-medium text-palms-cream">{siteContact.agentName}</p>
-              <p>Nevada license {siteContact.license}</p>
+            <div className="mt-4 space-y-3 text-palms-cream/90">
+              <div>
+                <p className="font-medium text-palms-cream">{siteContact.agentName}</p>
+                <p className="text-palms-cream/80">{siteContact.agentTitle}</p>
+                <p className="text-sm text-palms-cream/70">Nevada license {siteContact.license}</p>
+              </div>
+              <div>
+                <p className="font-medium text-palms-cream">{siteContact.buyerSpecialistName}</p>
+                <p className="text-palms-cream/80">{siteContact.buyerSpecialistTitle}</p>
+              </div>
               <p>{siteContact.brokerage}</p>
-              <p className="text-palms-cream/70">
-                Phone, office address, and hours will match Google Business Profile on this site once
-                finalized for launch.
-              </p>
+              <address className="not-italic text-palms-cream/85">
+                {formatOfficeAddressLine()}
+              </address>
+              {siteContact.officeHoursLine ? (
+                <p className="text-palms-cream/80">{siteContact.officeHoursLine}</p>
+              ) : null}
+              {siteContact.phone ? (
+                <p>
+                  <a
+                    className="text-palms-gold underline-offset-4 hover:underline"
+                    href={`tel:${siteContact.phone.replace(/\D/g, "")}`}
+                  >
+                    {siteContact.phone}
+                  </a>
+                </p>
+              ) : (
+                <p className="text-palms-cream/65">Phone: add when it matches your Google Business Profile.</p>
+              )}
             </div>
           </div>
         </div>

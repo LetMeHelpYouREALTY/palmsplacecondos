@@ -1,6 +1,7 @@
 /**
  * Factual outbound link to the Palms Casino Resort (hotel) site—not affiliated with this brokerage site.
  */
+import Link from "next/link";
 import { ButtonAnchor } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 
@@ -21,7 +22,28 @@ export function PalmsBridgeSection() {
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-palms-cream/85">
             Gaming, dining, and entertainment are steps away at Palms Casino Resort—separate from
-            condominium ownership and HOA rules.
+            condominium ownership and HOA rules. Explore{" "}
+            <Link
+              className="font-medium text-palms-gold underline-offset-4 hover:underline"
+              href="/homes"
+            >
+              Las Vegas homes for sale
+            </Link>
+            ,{" "}
+            <Link
+              className="font-medium text-palms-gold underline-offset-4 hover:underline"
+              href="/sell"
+            >
+              selling your condo
+            </Link>
+            , or{" "}
+            <Link
+              className="font-medium text-palms-gold underline-offset-4 hover:underline"
+              href="/contact"
+            >
+              contact the agent
+            </Link>{" "}
+            for Palms Place market questions.
           </p>
         </div>
         <div className="mt-10 shrink-0 md:mt-0">

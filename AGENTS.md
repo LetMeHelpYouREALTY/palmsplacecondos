@@ -4,8 +4,9 @@ This file is the **repository-specific** companion to the shared Cursor rules in
 
 ## Business and branding
 
-- **Agent:** Dr. **Jan** Duffy (never “Janet” or other variants).
-- **License:** Nevada real estate license **S.0197614.LLC** (verify in copy and schema when the app layer exists).
+- **Listing / team lead:** Dr. **Jan** Duffy (never “Janet” or other variants), **Realtor**, listing specialist and team leader for Palms Place.
+- **Buyers specialist:** **Chance** Fuller.
+- **License (on-site):** Nevada real estate license **S.0197614.LLC** for Dr. Jan Duffy (verify in copy and schema; add Chance’s license to [`site-contact.ts`](src/lib/site-contact.ts) when published on GBP/site).
 - **Brokerage:** Berkshire Hathaway HomeServices Nevada Properties (use exact approved wording on marketing pages).
 
 ## Stack (when the app is scaffolded)
@@ -29,11 +30,20 @@ This file is the **repository-specific** companion to the shared Cursor rules in
 
 - **NAP** (name, address, phone) in visible copy and **LocalBusiness** JSON-LD must match the **Google Business Profile** when those pages exist.
 - No placeholder phone numbers, fake review counts, or wrong metro/area codes.
+- **Structured data** ([`src/lib/schema.ts`](src/lib/schema.ts)): optional `telephone` and `PostalAddress` on `RealEstateAgent` only when the same values are added to [`site-contact.ts`](src/lib/site-contact.ts) and shown on-page. Optional `sameAs` URLs via `NEXT_PUBLIC_SAME_AS_URLS` must match real profile links.
+- After deploy, spot-check JSON-LD with Google’s [Rich Results Test](https://search.google.com/test/rich-results) on key URLs (home, `/search`).
+
+## Google Search Console
+
+- **Primary host is `www`.** Set **`NEXT_PUBLIC_SITE_URL`** to `https://www.yourdomain.com` (no trailing slash) and use the **same** URL-prefix property in GSC. Apex traffic is redirected to **`www`** via [`src/middleware.ts`](src/middleware.ts) when the env URL includes `www`.
+- Submit **`https://www.yourdomain.com/sitemap.xml`** in GSC after deploy; **`robots.txt`** uses the same origin.
+- Add **`GOOGLE_SITE_VERIFICATION`** (or `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`) from GSC’s HTML tag method so the site can be verified without extra file deploys.
 
 ## Hosting
 
-- **Vercel** deployment: follow project scripts; prefer **`vercel build`** for production build checks when tooling is present.
-- **Cloudflare:** use **DNS only** (gray cloud); do not orange-cloud proxy in front of Vercel (avoids SSL conflicts).
+- **Production is on [Vercel](https://vercel.com)** (Next.js App Router). Connect this GitHub repo, use the default **Next.js** framework preset, and set environment variables in **Project → Settings → Environment Variables** (Production / Preview as needed). Builds use `npm run build` (or `vercel build` from the CLI).
+- **Primary domain:** add **`www`** as the production hostname in Vercel; set **`NEXT_PUBLIC_SITE_URL`** to `https://www.yourdomain.com` so metadata, sitemap, and middleware match.
+- **Cloudflare (DNS):** use **DNS only** (gray cloud); do not orange-cloud proxy in front of Vercel (avoids SSL conflicts).
 
 ## Security
 

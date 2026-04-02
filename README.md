@@ -20,7 +20,16 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). Production build check (aligned with Vercel): `npm run build` or `vercel build` from the project root.
 
-Copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your canonical HTTPS origin when deploying.
+Copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your canonical HTTPS origin when deploying (**`https://www.`…** is the primary host; apex redirects to `www` when that env uses a `www` hostname).
+
+## Deployment (Vercel)
+
+This site is built for **[Vercel](https://vercel.com)** (recommended production host for this Next.js app).
+
+1. Import the GitHub repository in the Vercel dashboard and keep the default **Next.js** settings.
+2. Under **Settings → Environment Variables**, add the values from [`.env.example`](.env.example) for **Production** (at minimum **`NEXT_PUBLIC_SITE_URL`** = `https://www.yourdomain.com` for the live `www` domain).
+3. Under **Settings → Domains**, assign the production domain and prefer **`www`** as described in [AGENTS.md](AGENTS.md).
+4. Preview deployments use **`VERCEL_URL`** automatically for `metadataBase` when `NEXT_PUBLIC_SITE_URL` is unset; production should always set `NEXT_PUBLIC_SITE_URL` to the public `www` URL.
 
 ## Project structure
 

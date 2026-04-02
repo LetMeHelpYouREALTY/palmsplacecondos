@@ -5,6 +5,7 @@
 import { ButtonAnchor } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
+import { siteContact } from "@/lib/site-contact";
 
 const DEFAULT_AGENT = "QWdlbnQtMjI1MDUw";
 
@@ -36,7 +37,8 @@ export function RealScoutOfficeListingsEmbed() {
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-palms-cream/70">
           Availability and details are provided by the listing service. For filters and saved
-          criteria, use Dr. Jan Duffy&apos;s curated RealScout search.
+          criteria, use the curated RealScout search ({siteContact.agentName}, listing specialist and
+          team leader for Palms Place).
         </p>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">

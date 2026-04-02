@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
+import { RelatedPages } from "@/components/seo/related-pages";
 import { ButtonAnchor } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
-import { siteContact } from "@/lib/site-contact";
+import { relatedLinksForPath } from "@/lib/internal-links";
+import { canonicalMetadata } from "@/lib/metadata-helpers";
+import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 
 export const metadata: Metadata = {
   title: "Search homes",
-  description: `Search active Las Vegas area listings with Dr. Jan Duffy’s curated RealScout filters. ${siteContact.primaryServiceArea}.`,
+  description: `Search active Las Vegas-area listings with the Palms Place team’s curated RealScout filters (${formatTeamPhrase()})—${siteContact.primaryServiceArea}.`,
+  ...canonicalMetadata("/search"),
 };
 
 export default function SearchPage() {
   const sharedSearchUrl = getRealScoutSharedSearchUrl();
+  const related = relatedLinksForPath("/search");
 
   return (
     <div className="border-b border-palms-gold/10 bg-linear-to-b from-palms-charcoal to-palms-charcoal-muted/30">
@@ -20,12 +25,13 @@ export default function SearchPage() {
           Search homes
         </h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-palms-cream/85">
-          Run Dr. Jan Duffy&apos;s saved RealScout search to filter by price, property type, and
-          more—aligned with how we work with buyers around {siteContact.primaryServiceArea}.
+          Run the team&apos;s saved RealScout search to filter by price, property type, and more—buyer
+          questions often start with {siteContact.buyerSpecialistName} ({siteContact.buyerSpecialistTitle}
+          ); listing context with {siteContact.agentName} around {siteContact.primaryServiceArea}.
         </p>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
           <ButtonAnchor
-            aria-label="Open Dr. Jan Duffy’s curated home search on RealScout in a new tab"
+            aria-label="Open the Palms Place team curated home search on RealScout in a new tab"
             href={sharedSearchUrl}
             variant="primary"
           >
@@ -39,6 +45,7 @@ export default function SearchPage() {
           MLS disclaimer: Information deemed reliable but not guaranteed. Verify listing details with
           your agent and official sources. Not intended as legal or tax advice.
         </p>
+        <RelatedPages links={related} />
       </div>
     </div>
   );
