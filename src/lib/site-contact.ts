@@ -73,7 +73,7 @@ export const siteContact: SiteContact = {
   license: "S.0197614.LLC",
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
   /** Must match visible copy, meta descriptions, and GBP. */
-  phone: "702-222-1964",
+  phone: "(702) 827-4544",
   emailGeneral: "DrDuffy@PalmsPlaceCondos.com",
   emailListings: "DrDuffySells@PalmsPlaceCondos.com",
   emailBuyers: "ChanceSells@PalmsPlaceCondos.com",

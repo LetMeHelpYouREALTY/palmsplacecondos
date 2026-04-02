@@ -6,6 +6,7 @@ import { UnwindSection } from "@/components/sections/unwind-section";
 import { WhyBuySection } from "@/components/sections/why-buy-section";
 import { StructuredData } from "@/components/seo/structured-data";
 import { canonicalMetadata, canonicalPath } from "@/lib/metadata-helpers";
+import { siteContact } from "@/lib/site-contact";
 import { getHomeWebPageJsonLd } from "@/lib/schema";
 
 const ogDescription =
@@ -13,8 +14,7 @@ const ogDescription =
 
 export const metadata: Metadata = {
   title: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
-  description:
-    "Browse Palms Place condos for sale on the Las Vegas Strip. Studio, 1-bedroom & penthouse residences with resort amenities. Call Dr. Jan Duffy 702-222-1964 — Berkshire Hathaway HomeServices Nevada Properties.",
+  description: `Browse Palms Place condos for sale on the Las Vegas Strip. Studio, 1-bedroom & penthouse residences with resort amenities. Call Dr. Jan Duffy ${siteContact.phone} — ${siteContact.brokerage}.`,
   keywords: [
     "Palms Place condos for sale",
     "Palms Place Las Vegas",
