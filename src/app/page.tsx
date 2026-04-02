@@ -1,19 +1,42 @@
 import type { Metadata } from "next";
 import { HeroPalmsPlace } from "@/components/sections/hero-palms-place";
 import { HomeFaqSection } from "@/components/sections/home-faq-section";
-import { PalmsBridgeSection } from "@/components/sections/palms-bridge-section";
 import { StaySection } from "@/components/sections/stay-section";
 import { UnwindSection } from "@/components/sections/unwind-section";
+import { WhyBuySection } from "@/components/sections/why-buy-section";
+import { StructuredData } from "@/components/seo/structured-data";
 import { canonicalMetadata, canonicalPath } from "@/lib/metadata-helpers";
-import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
+import { getHomeWebPageJsonLd } from "@/lib/schema";
+
+const ogDescription =
+  "Studio to penthouse high-rise condos steps from the Las Vegas Strip. Expert guidance from Dr. Jan Duffy, 35+ years Vegas real estate.";
 
 export const metadata: Metadata = {
-  title: "Las Vegas Strip high-rise condos at Palms Place",
-  description: `Palms Place high-rise condos near the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
+  title: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
+  description:
+    "Browse Palms Place condos for sale on the Las Vegas Strip. Studio, 1-bedroom & penthouse residences with resort amenities. Call Dr. Jan Duffy 702-222-1964 — Berkshire Hathaway HomeServices Nevada Properties.",
+  keywords: [
+    "Palms Place condos for sale",
+    "Palms Place Las Vegas",
+    "Las Vegas Strip condos for sale",
+    "high-rise condos Las Vegas",
+    "Palms Place floor plans",
+    "Las Vegas condo investment",
+    "Palms Place real estate",
+    "strip adjacent condos Las Vegas",
+  ],
   openGraph: {
-    title: "Palms Place Condos | Las Vegas Strip high-rise real estate",
-    description: `Strip-adjacent Palms Place condos and Las Vegas high-rise real estate. ${formatTeamPhrase()}.`,
+    title: "Palms Place Condos for Sale | Las Vegas Strip",
+    description: ogDescription,
     url: canonicalPath("/"),
+    siteName: "Palms Place Condos",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
+    description: ogDescription,
   },
   ...canonicalMetadata("/"),
 };
@@ -21,10 +44,11 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <StructuredData data={getHomeWebPageJsonLd()} />
       <HeroPalmsPlace />
       <StaySection />
+      <WhyBuySection />
       <UnwindSection />
-      <PalmsBridgeSection />
       <HomeFaqSection />
     </>
   );

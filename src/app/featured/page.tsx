@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/layouts/page-placeholder";
+import { FeaturedPageBody } from "@/components/marketing/featured-page-body";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
@@ -10,11 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function FeaturedPage() {
-  return (
-    <PagePlaceholder
-      description="Featured homes and condos will display here when connected to your feed."
-      path="/featured"
-      title="Featured"
-    />
-  );
+  return <FeaturedPageBody />;
 }

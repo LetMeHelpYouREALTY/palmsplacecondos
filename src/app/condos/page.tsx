@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/layouts/page-placeholder";
+import { CondosPageBody } from "@/components/marketing/condos-page-body";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
-  title: "Condos & high-rise condos",
+  title: "Las Vegas high-rise & Palms Place condos for sale",
   description:
-    "Las Vegas condos and Strip-area high-rise residences, including Palms Place—listings with Dr. Jan Duffy (listing specialist) and buyer tours with Chance Fuller.",
+    "Compare Las Vegas high-rise condos and Palms Place inventory with Dr. Jan Duffy (listing specialist) and Chance Fuller (buyers)—Strip-adjacent residences and HOA context.",
   ...canonicalMetadata("/condos"),
 };
 
 export default function CondosPage() {
-  return (
-    <PagePlaceholder
-      description="Explore condo and high-rise inventory with the Palms Place team—Dr. Jan Duffy (listing) and Chance Fuller (buyers)."
-      path="/condos"
-      title="Condos"
-    />
-  );
+  return <CondosPageBody />;
 }

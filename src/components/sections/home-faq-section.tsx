@@ -18,7 +18,7 @@ export function HomeFaqSection() {
           className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl"
           id="home-faq-heading"
         >
-          Palms Place & Las Vegas real estate FAQ
+          Palms Place Condos FAQ — Everything Buyers Need to Know
         </h2>
         <div className="mt-10 space-y-10">
           {homeFaqItems.map((item) => (

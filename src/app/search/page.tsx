@@ -8,8 +8,8 @@ import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 
 export const metadata: Metadata = {
-  title: "Search homes",
-  description: `Search active Las Vegas-area listings with the Palms Place team’s curated RealScout filters (${formatTeamPhrase()})—${siteContact.primaryServiceArea}.`,
+  title: "Palms Place & Las Vegas condo search (RealScout)",
+  description: `Curated MLS-style search for Palms Place condos for sale and Las Vegas-area listings (${formatTeamPhrase()})—${siteContact.primaryServiceArea}.`,
   ...canonicalMetadata("/search"),
 };
 
@@ -22,7 +22,7 @@ export default function SearchPage() {
       <div className="mx-auto max-w-3xl px-6 py-16 md:py-20">
         <SectionEyebrow>Property search</SectionEyebrow>
         <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
-          Search homes
+          Palms Place & Las Vegas home search
         </h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-palms-cream/85">
           Run the team&apos;s saved RealScout search to filter by price, property type, and more—buyer

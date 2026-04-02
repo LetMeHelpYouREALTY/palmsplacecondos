@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/layouts/page-placeholder";
+import { BuyerCalculatorsPageBody } from "@/components/marketing/buyer-calculators-page-body";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
@@ -10,11 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function BuyerCalculatorsPage() {
-  return (
-    <PagePlaceholder
-      description="Payment, affordability, and closing-cost tools will be embedded here."
-      path="/buyers/calculators"
-      title="Buyer Calculators"
-    />
-  );
+  return <BuyerCalculatorsPageBody />;
 }

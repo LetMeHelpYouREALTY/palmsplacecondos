@@ -15,6 +15,11 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
   const normalized = pathname === "" ? "/" : pathname.startsWith("/") ? pathname : `/${pathname}`;
   const searchUrl = getRealScoutSharedSearchUrl();
   const pool: RelatedLink[] = [
+    {
+      href: "/",
+      label: "Palms Place condos for sale — Las Vegas Strip high-rise",
+      description: "Homepage overview and search",
+    },
     { href: "/homes", label: "Homes for sale in Las Vegas", description: "Single-family and attached" },
     { href: "/condos", label: "Condos & high-rise living", description: "Including Palms Place" },
     { href: "/high-rises", label: "Las Vegas high-rises", description: "Strip towers and amenities" },
@@ -26,7 +31,11 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
     },
     { href: "/sell", label: "Sell with the Palms Place team", description: "Listing specialist & marketing" },
     { href: "/contact", label: "Schedule a conversation", description: "Buy or sell" },
+    { href: "/connect", label: "Connect & YouTube", description: "Stay in touch" },
     { href: "/communities", label: "Neighborhoods & communities", description: "Near the Strip" },
+    { href: "/luxury-homes", label: "Luxury homes in Summerlin & Henderson", description: "Estates & luxury SF" },
+    { href: "/featured", label: "Featured listings", description: "Spotlight inventory" },
+    { href: "/under-500k", label: "Homes & condos under $500K", description: "Price band shortcut" },
     { href: "/popular-searches", label: "Popular buyer searches", description: "Shortcuts by topic" },
     { href: "/buyers/calculators", label: "Buyer calculators", description: "Payments and affordability" },
   ];

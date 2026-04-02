@@ -13,29 +13,35 @@ import { getSiteUrl } from "@/lib/site-url";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const displaySerif = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-display",
   weight: ["400", "600", "700"],
+  display: "swap",
 });
 
 const siteUrl = getSiteUrl();
 const googleSiteVerification = getGoogleSiteVerification();
 
+const rootOgDescription =
+  "Studio to penthouse high-rise condos steps from the Las Vegas Strip. Expert guidance from Dr. Jan Duffy, 35+ years Vegas real estate.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Palms Place Condos | Las Vegas Strip High-Rise Real Estate",
+    default: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
     template: "%s | Palms Place Condos",
   },
-  description: `Palms Place high-rise condos near the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
+  description: `Browse Palms Place condos for sale on the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
   robots: {
     index: true,
     follow: true,
@@ -49,13 +55,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Palms Place Condos",
-    title: "Palms Place Condos | Las Vegas Strip High-Rise Real Estate",
-    description: `Palms Place high-rise condos near the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
+    title: "Palms Place Condos for Sale | Las Vegas Strip",
+    description: rootOgDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Palms Place Condos | Las Vegas Strip High-Rise Real Estate",
-    description: `Palms Place high-rise condos near the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}.`,
+    title: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
+    description: rootOgDescription,
   },
   ...(googleSiteVerification
     ? {
@@ -80,13 +86,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${displaySerif.variable} min-h-screen bg-palms-charcoal text-palms-cream antialiased`}
       >
         <StructuredData data={getBaseJsonLd()} />
         <Script
           src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <div className="flex min-h-screen flex-col">
           <a

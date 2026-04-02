@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/layouts/page-placeholder";
+import { ConnectPageBody } from "@/components/marketing/connect-page-body";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
@@ -10,11 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function ConnectPage() {
-  return (
-    <PagePlaceholder
-      description="Social links and ways to connect will be added here alongside your Google Business Profile details."
-      path="/connect"
-      title="Connect"
-    />
-  );
+  return <ConnectPageBody />;
 }

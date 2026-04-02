@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/layouts/page-placeholder";
+import { Under500kPageBody } from "@/components/marketing/under-500k-page-body";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
@@ -10,11 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function Under500kPage() {
-  return (
-    <PagePlaceholder
-      description="Price-filtered search results will be wired to your IDX or search provider."
-      path="/under-500k"
-      title="Under $500K"
-    />
-  );
+  return <Under500kPageBody />;
 }

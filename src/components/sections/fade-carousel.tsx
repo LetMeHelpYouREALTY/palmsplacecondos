@@ -14,7 +14,7 @@ export type FadeCarouselSlide = {
   content: React.ReactNode;
 };
 
-type FadeCarouselProps = {
+export type FadeCarouselProps = {
   slides: FadeCarouselSlide[];
   /** Autoplay interval in ms (disabled when reduced motion is on). */
   autoplayMs?: number;

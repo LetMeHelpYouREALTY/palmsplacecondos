@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/layouts/page-placeholder";
+import { HighRisesPageBody } from "@/components/marketing/high-rises-page-body";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
-  title: "Las Vegas high-rises",
+  title: "Las Vegas Strip high-rise condos & towers",
   description:
-    "High-rise condos and towers on and near the Las Vegas Strip, including Palms Place—floor plans, amenities, and listings context.",
+    "High-rise condos on and near the Las Vegas Strip, including Palms Place—amenities, floor-plan context, and how to search live inventory.",
   ...canonicalMetadata("/high-rises"),
 };
 
 export default function HighRisesPage() {
-  return (
-    <PagePlaceholder
-      description="Strip and urban high-rise inventory and building notes will live here."
-      path="/high-rises"
-      title="High Rises"
-    />
-  );
+  return <HighRisesPageBody />;
 }

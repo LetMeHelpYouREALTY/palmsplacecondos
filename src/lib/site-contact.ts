@@ -31,6 +31,8 @@ export const siteContact: SiteContact = {
   agentTitle: "Realtor, Listing Specialist & Team Leader for Palms Place",
   license: "S.0197614.LLC",
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
+  /** Must match visible copy, meta descriptions, and GBP. */
+  phone: "702-222-1964",
   primaryServiceArea: "Las Vegas — Palms Place and surrounding communities",
   buyerSpecialistName: "Chance Fuller",
   buyerSpecialistTitle: "Buyers Specialist",

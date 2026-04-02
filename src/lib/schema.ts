@@ -127,6 +127,20 @@ export function getBaseJsonLd(): JsonLdGraph {
 
   applyOfficeNapAndHours(buyersAgent, brokerageId, postalAddress, hoursSpec, true);
 
+  const placePalmsId = id(siteUrl, "place-palms-place");
+  const palmsPlace: Record<string, unknown> = {
+    "@type": "Place",
+    "@id": placePalmsId,
+    name: "Palms Place",
+    containedInPlace: {
+      "@type": "City",
+      name: "Las Vegas",
+      containedInPlace: { "@type": "State", name: "Nevada" },
+    },
+  };
+
+  listingAgent.knowsAbout = [{ "@id": placePalmsId }];
+
   const website: Record<string, unknown> = {
     "@type": "WebSite",
     "@id": webId,
@@ -134,12 +148,38 @@ export function getBaseJsonLd(): JsonLdGraph {
     name: "Palms Place Condos",
     inLanguage: "en-US",
     publisher: { "@id": listingAgentId },
-    about: [{ "@id": listingAgentId }, { "@id": buyersAgentId }, { "@id": brokerageId }],
+    about: [
+      { "@id": placePalmsId },
+      { "@id": listingAgentId },
+      { "@id": buyersAgentId },
+      { "@id": brokerageId },
+    ],
   };
 
   return {
     "@context": CONTEXT,
-    "@graph": [website, brokerage, listingAgent, buyersAgent],
+    "@graph": [website, brokerage, listingAgent, buyersAgent, palmsPlace],
+  };
+}
+
+/** Homepage WebPage entity — emit on `/` only. */
+export function getHomeWebPageJsonLd(): JsonLdGraph {
+  const siteUrl = getSiteUrl();
+  const webId = id(siteUrl, "website");
+  const placePalmsId = id(siteUrl, "place-palms-place");
+  const pageUrl = `${siteUrl.replace(/\/$/, "")}/`;
+  const webPage: Record<string, unknown> = {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: "Palms Place Condos for Sale — Las Vegas Strip High-Rise Residences",
+    isPartOf: { "@id": webId },
+    about: { "@id": placePalmsId },
+  };
+
+  return {
+    "@context": CONTEXT,
+    "@graph": [webPage],
   };
 }
 

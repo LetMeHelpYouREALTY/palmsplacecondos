@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/layouts/page-placeholder";
+import { PopularSearchesPageBody } from "@/components/marketing/popular-searches-page-body";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
@@ -10,11 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function PopularSearchesPage() {
-  return (
-    <PagePlaceholder
-      description="Curated shortcuts to high-intent searches will be listed here."
-      path="/popular-searches"
-      title="Popular Searches"
-    />
-  );
+  return <PopularSearchesPageBody />;
 }
