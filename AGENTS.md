@@ -31,6 +31,8 @@ This file is the **repository-specific** companion to the shared Cursor rules in
 - **NAP** (name, address, phone) in visible copy and **LocalBusiness** JSON-LD must match the **Google Business Profile** when those pages exist.
 - No placeholder phone numbers, fake review counts, or wrong metro/area codes.
 - **Structured data** ([`src/lib/schema.ts`](src/lib/schema.ts)): optional `telephone` and `PostalAddress` on `RealEstateAgent` only when the same values are added to [`site-contact.ts`](src/lib/site-contact.ts) and shown on-page. Optional `sameAs` URLs via `NEXT_PUBLIC_SAME_AS_URLS` must match real profile links.
+- **LocalBusiness + listing agent:** the primary listing agent node is typed as both `RealEstateAgent` and `LocalBusiness` with a single stable `@id` (`#dr-jan-duffy`). Phone, email, address, hours, and optional `geo` / `hasMap` must match **Google Business Profile** and visible NAP—do not add weekend hours or building addresses in schema until GBP / HOA sources are updated. Optional tower `Apartment` data lives in `siteContact.palmsPlaceBuilding` (omit until verified).
+- **Agent image URL:** set `NEXT_PUBLIC_AGENT_IMAGE_URL` when a production image URL is ready (see [`.env.example`](.env.example)); omit `image` in JSON-LD until then.
 - After deploy, spot-check JSON-LD with Google’s [Rich Results Test](https://search.google.com/test/rich-results) on key URLs (home, `/search`).
 
 ## Google Search Console

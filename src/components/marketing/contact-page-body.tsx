@@ -14,7 +14,11 @@ export function ContactPageBody() {
   const phone = siteContact.phone;
   const tel = phone ? `tel:${phone.replace(/\D/g, "")}` : undefined;
   const mapsQuery = buildMapsQuery();
-  const embedSrc = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
+  const fallbackEmbedSrc = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
+  const embedSrc =
+    process.env.NEXT_PUBLIC_CONTACT_MAP_EMBED_URL?.trim() ||
+    siteContact.contactMapEmbedUrl?.trim() ||
+    fallbackEmbedSrc;
   const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`;
   const placeSearchHref = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
 
@@ -125,11 +129,11 @@ export function ContactPageBody() {
         <h2 className="font-display text-xl font-semibold text-palms-cream">Map</h2>
         <div className="mt-4 overflow-hidden rounded-lg border border-palms-gold/15">
           <iframe
-            className="h-64 w-full md:h-80"
+            className="aspect-[4/3] min-h-[240px] w-full max-w-full md:min-h-[360px] md:aspect-auto md:h-[480px]"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             src={embedSrc}
-            title="Office location on Google Maps"
+            title="Map — Palms Place and Las Vegas area"
           />
         </div>
       </section>

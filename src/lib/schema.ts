@@ -2,7 +2,7 @@
  * JSON-LD builders for GEO/SEO. NAP fields (telephone, address) are added only when
  * present in siteContact—must match visible copy and GBP (see site-contact.ts).
  */
-import { siteContact } from "@/lib/site-contact";
+import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
 import { getSiteUrl } from "@/lib/site-url";
 
 const CONTEXT = "https://schema.org" as const;
@@ -14,6 +14,53 @@ export type JsonLdGraph = {
 
 function id(siteUrl: string, fragment: string): string {
   return `${siteUrl.replace(/\/$/, "")}#${fragment}`;
+}
+
+/** E.164-style telephone for structured data when digits are US-based. */
+function toTelE164(phone: string): string {
+  const d = phone.replace(/\D/g, "");
+  if (d.length === 10) return `+1${d}`;
+  if (d.length === 11 && d.startsWith("1")) return `+${d}`;
+  return phone;
+}
+
+function googleMapsSearchUrlForAddress(addressLine: string): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressLine)}`;
+}
+
+/** Absolute agent/team photo URL for JSON-LD — set NEXT_PUBLIC_AGENT_IMAGE_URL in production when ready. */
+function getAgentImageUrlForSchema(): string | undefined {
+  const env = process.env.NEXT_PUBLIC_AGENT_IMAGE_URL?.trim();
+  if (env) return env;
+  return undefined;
+}
+
+/** Office pin for JSON-LD — site-contact first, then NEXT_PUBLIC_OFFICE_LAT/LNG (must match GBP). */
+function getOfficeLatitude(): number | undefined {
+  if (siteContact.officeLatitude != null) return siteContact.officeLatitude;
+  const e = process.env.NEXT_PUBLIC_OFFICE_LAT?.trim();
+  if (e) {
+    const n = Number.parseFloat(e);
+    return Number.isFinite(n) ? n : undefined;
+  }
+  return undefined;
+}
+
+function getOfficeLongitude(): number | undefined {
+  if (siteContact.officeLongitude != null) return siteContact.officeLongitude;
+  const e = process.env.NEXT_PUBLIC_OFFICE_LNG?.trim();
+  if (e) {
+    const n = Number.parseFloat(e);
+    return Number.isFinite(n) ? n : undefined;
+  }
+  return undefined;
+}
+
+function defaultListingAgentDescription(): string {
+  return (
+    siteContact.schemaAgentDescription ??
+    `Licensed Nevada Realtor specializing in Palms Place and Las Vegas high-rise condos. 35+ years Las Vegas market experience. ${siteContact.brokerage}.`
+  );
 }
 
 /** Optional profile URLs (YouTube, GBP, etc.) — same as visible links only. */
@@ -50,8 +97,53 @@ function applyOfficeNapAndHours(
   }
 }
 
+function buildPalmsPlaceEntity(siteUrl: string): Record<string, unknown> {
+  const placePalmsId = id(siteUrl, "place-palms-place");
+  const b = siteContact.palmsPlaceBuilding;
+
+  if (b) {
+    return {
+      "@type": "Apartment",
+      "@id": placePalmsId,
+      name: "Palms Place",
+      description:
+        "Las Vegas high-rise condominium residences near the Strip. Verify unit details, HOA rules, and amenities with your agent and official building disclosures.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: b.streetAddress,
+        addressLocality: b.addressLocality,
+        addressRegion: b.addressRegion,
+        postalCode: b.postalCode,
+        addressCountry: siteContact.addressCountry ?? "US",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: b.latitude,
+        longitude: b.longitude,
+      },
+      containedInPlace: {
+        "@type": "City",
+        name: "Las Vegas",
+        containedInPlace: { "@type": "State", name: "Nevada" },
+      },
+    };
+  }
+
+  return {
+    "@type": "Place",
+    "@id": placePalmsId,
+    name: "Palms Place",
+    containedInPlace: {
+      "@type": "City",
+      name: "Las Vegas",
+      containedInPlace: { "@type": "State", name: "Nevada" },
+    },
+  };
+}
+
 /**
- * Core entities: WebSite, brokerage RealEstateOffice, two RealEstateAgent profiles (listing + buyers).
+ * Core entities: WebSite, brokerage RealEstateOffice (+ LocalBusiness), two RealEstateAgent profiles,
+ * Place or Apartment for Palms Place. Listing lead agent also typed as LocalBusiness when enriched.
  */
 export function getBaseJsonLd(): JsonLdGraph {
   const siteUrl = getSiteUrl();
@@ -61,7 +153,7 @@ export function getBaseJsonLd(): JsonLdGraph {
   const buyersAgentId = id(siteUrl, "chance-fuller");
 
   const brokerage: Record<string, unknown> = {
-    "@type": "RealEstateOffice",
+    "@type": ["RealEstateOffice", "LocalBusiness"],
     "@id": brokerageId,
     name: siteContact.brokerage,
     url: siteUrl,
@@ -101,16 +193,42 @@ export function getBaseJsonLd(): JsonLdGraph {
   if (siteContact.emailGeneral) {
     brokerage.email = siteContact.emailGeneral;
   }
+  if (siteContact.phone) {
+    brokerage.telephone = toTelE164(siteContact.phone);
+  }
 
   const listingAgent: Record<string, unknown> = {
-    "@type": "RealEstateAgent",
+    "@type": ["RealEstateAgent", "LocalBusiness"],
     "@id": listingAgentId,
     name: siteContact.agentName,
+    alternateName: siteContact.teamBrandName,
+    description: defaultListingAgentDescription(),
     jobTitle: siteContact.agentTitle,
     url: siteUrl,
     identifier: siteContact.license,
     colleague: { "@id": buyersAgentId },
+    priceRange: siteContact.schemaPriceRange ?? "$$$$",
   };
+
+  const officeLine = formatOfficeAddressLine();
+  if (officeLine) {
+    listingAgent.hasMap = googleMapsSearchUrlForAddress(officeLine);
+  }
+
+  const lat = getOfficeLatitude();
+  const lng = getOfficeLongitude();
+  if (lat != null && lng != null) {
+    listingAgent.geo = {
+      "@type": "GeoCoordinates",
+      latitude: lat,
+      longitude: lng,
+    };
+  }
+
+  const agentImage = getAgentImageUrlForSchema();
+  if (agentImage) {
+    listingAgent.image = agentImage;
+  }
 
   const sameAs = getSameAs();
   if (sameAs) {
@@ -120,6 +238,9 @@ export function getBaseJsonLd(): JsonLdGraph {
   applyOfficeNapAndHours(listingAgent, brokerageId, postalAddress, hoursSpec, true);
   if (siteContact.emailListings) {
     listingAgent.email = siteContact.emailListings;
+  }
+  if (siteContact.phone) {
+    listingAgent.telephone = toTelE164(siteContact.phone);
   }
 
   const buyersAgent: Record<string, unknown> = {
@@ -135,18 +256,12 @@ export function getBaseJsonLd(): JsonLdGraph {
   if (siteContact.emailBuyers) {
     buyersAgent.email = siteContact.emailBuyers;
   }
+  if (siteContact.phone) {
+    buyersAgent.telephone = toTelE164(siteContact.phone);
+  }
 
+  const palmsPlace = buildPalmsPlaceEntity(siteUrl);
   const placePalmsId = id(siteUrl, "place-palms-place");
-  const palmsPlace: Record<string, unknown> = {
-    "@type": "Place",
-    "@id": placePalmsId,
-    name: "Palms Place",
-    containedInPlace: {
-      "@type": "City",
-      name: "Las Vegas",
-      containedInPlace: { "@type": "State", name: "Nevada" },
-    },
-  };
 
   listingAgent.knowsAbout = [{ "@id": placePalmsId }];
 

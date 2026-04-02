@@ -3,6 +3,17 @@
  * Add phone, full street address, and hours from Google Business Profile when verified for this domain.
  * Optional NAP fields must match visible on-page copy and GBP before use in schema.
  */
+
+/** Verified building facts for schema.org `Apartment` — do not fabricate. */
+export type PalmsPlaceBuilding = {
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  latitude: number;
+  longitude: number;
+};
+
 export type SiteContact = {
   /**
    * Public-facing team name for marketing (who clients work with—not the building name alone).
@@ -35,6 +46,24 @@ export type SiteContact = {
    * If you change this line, update `openingHoursSpecification` in `lib/schema.ts` to match (opens/closes, days).
    */
   officeHoursLine?: string;
+  /** Optional override for JSON-LD `RealEstateAgent` / `LocalBusiness` description (must match on-site claims). */
+  schemaAgentDescription?: string;
+  /** Optional `priceRange` for LocalBusiness JSON-LD (e.g. "$$$$"). */
+  schemaPriceRange?: string;
+  /** Office latitude for JSON-LD `geo` — must match Google Maps / GBP pin for the office address. */
+  officeLatitude?: number;
+  /** Office longitude for JSON-LD `geo` — must match Google Maps / GBP pin. */
+  officeLongitude?: number;
+  /**
+   * Palms Place tower address + coordinates for JSON-LD `Apartment` when fully verified (HOA / public records).
+   * Omit to emit a minimal `Place` only.
+   */
+  palmsPlaceBuilding?: PalmsPlaceBuilding;
+  /**
+   * Google My Maps (or Maps) iframe embed URL for the contact page.
+   * Example: https://www.google.com/maps/d/embed?mid=...
+   */
+  contactMapEmbedUrl?: string;
 };
 
 export const siteContact: SiteContact = {
@@ -58,6 +87,8 @@ export const siteContact: SiteContact = {
   postalCode: "89103",
   addressCountry: "US",
   officeHoursLine: "Monday through Friday, 9:00 AM to 5:00 PM",
+  contactMapEmbedUrl:
+    "https://www.google.com/maps/d/embed?mid=1fl048P0dAxnuNvwqHLrJU4i4zZmkwpE&hl=en&ehbc=2E312F",
 };
 
 /** Single-line office address for visible copy (footer, contact). */
