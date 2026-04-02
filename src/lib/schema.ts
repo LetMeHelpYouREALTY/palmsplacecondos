@@ -249,6 +249,7 @@ export function getBaseJsonLd(): JsonLdGraph {
     name: siteContact.buyerSpecialistName,
     jobTitle: siteContact.buyerSpecialistTitle,
     url: siteUrl,
+    identifier: siteContact.buyerSpecialistLicense,
     colleague: { "@id": listingAgentId },
   };
 

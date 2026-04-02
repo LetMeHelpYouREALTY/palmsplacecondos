@@ -6,7 +6,7 @@ This file is the **repository-specific** companion to the shared Cursor rules in
 
 - **Listing / team lead:** Dr. **Jan** Duffy (never “Janet” or other variants), **Realtor**, listing specialist and team leader for Palms Place.
 - **Buyers specialist:** **Chance** Fuller.
-- **License (on-site):** Nevada real estate license **S.0197614.LLC** for Dr. Jan Duffy (verify in copy and schema; add Chance’s license to [`site-contact.ts`](src/lib/site-contact.ts) when published on GBP/site).
+- **License (on-site):** Nevada real estate licenses **S.0197614.LLC** (Dr. Jan Duffy) and **S.204454** (Chance Fuller)—verify in copy, footer, and schema; keep [`site-contact.ts`](src/lib/site-contact.ts) aligned with GBP / REC.
 - **Brokerage:** Berkshire Hathaway HomeServices Nevada Properties (use exact approved wording on marketing pages).
 
 ## Stack (when the app is scaffolded)

@@ -28,7 +28,7 @@ export const homeFaqItems: FaqItem[] = [
   {
     question: "Who helps buyers vs. sellers at Palms Place?",
     answer:
-      "Dr. Jan Duffy, Realtor, is the listing specialist and team leader for Palms Place. Chance Fuller is the buyers specialist—buyers often start with Chance for showings and offer strategy; listing and marketing conversations typically route through Dr. Jan. This is general guidance, not legal or tax advice.",
+      "Dr. Jan Duffy, Realtor, is the listing specialist and team leader for Palms Place. Chance Fuller, Realtor, is the Palms Place Buyers Specialist—buyers often start with Chance for showings and offer strategy; listing and marketing conversations typically route through Dr. Jan. This is general guidance, not legal or tax advice.",
   },
   {
     question: "Where does listing information come from?",

@@ -102,6 +102,9 @@ export function SiteFooter() {
                 <div>
                   <p className="font-medium text-palms-cream">{siteContact.buyerSpecialistName}</p>
                   <p className="text-palms-cream/80">{siteContact.buyerSpecialistTitle}</p>
+                  <p className="text-sm text-palms-cream/70">
+                    Nevada license {siteContact.buyerSpecialistLicense}
+                  </p>
                 </div>
                 <p className="text-palms-cream/85">{siteContact.brokerage}</p>
                 <address className="not-italic text-palms-cream/85">

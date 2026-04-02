@@ -50,6 +50,15 @@ export function ContactPageBody() {
           </p>
         ) : null}
 
+        <div className="mt-4 space-y-1 text-sm text-palms-cream/70">
+          <p>
+            {siteContact.agentName}: Nevada license {siteContact.license}
+          </p>
+          <p>
+            Nevada license {siteContact.buyerSpecialistLicense} — {siteContact.buyerSpecialistTitle}
+          </p>
+        </div>
+
         {(siteContact.emailGeneral || siteContact.emailListings || siteContact.emailBuyers) && (
           <div className="mt-6 border-t border-palms-gold/15 pt-6">
             <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-palms-gold-muted">

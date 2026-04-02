@@ -29,6 +29,9 @@ export type SiteContact = {
   /** Buyer-side specialist (name + role for copy and schema). */
   buyerSpecialistName: string;
   buyerSpecialistTitle: string;
+  /** Nevada real estate license for the buyers specialist — must match GBP / REC when published. */
+  buyerSpecialistLicense: string;
+  /** Office phone — single NAP line for this site; must match GBP. */
   phone?: string;
   /** General office / agent inquiries — must match visible copy and GBP. */
   emailGeneral?: string;
@@ -72,14 +75,15 @@ export const siteContact: SiteContact = {
   agentTitle: "Realtor, Listing Specialist & Team Leader for Palms Place",
   license: "S.0197614.LLC",
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
-  /** Must match visible copy, meta descriptions, and GBP. */
-  phone: "(702) 827-4544",
+  /** Must match visible copy, meta descriptions, and GBP — sole office line for this site. */
+  phone: "(702) 837-4544",
   emailGeneral: "DrDuffy@PalmsPlaceCondos.com",
   emailListings: "DrDuffySells@PalmsPlaceCondos.com",
   emailBuyers: "ChanceSells@PalmsPlaceCondos.com",
   primaryServiceArea: "Las Vegas — Palms Place and surrounding communities",
-  buyerSpecialistName: "Chance Fuller",
-  buyerSpecialistTitle: "Buyers Specialist",
+  buyerSpecialistName: "Chance Fuller, Realtor",
+  buyerSpecialistTitle: "Palms Place Buyers Specialist",
+  buyerSpecialistLicense: "S.204454",
   /** Office — must match Google Business Profile and JSON-LD. */
   streetAddress: "3651 Lindell Rd Suite D",
   addressLocality: "Las Vegas",

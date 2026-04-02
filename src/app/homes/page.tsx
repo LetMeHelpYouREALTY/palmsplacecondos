@@ -5,7 +5,7 @@ import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title: "Las Vegas homes for sale & Palms Place context",
-  description: `Browse single-family and attached homes for sale in Las Vegas and near Palms Place with Dr. Jan Duffy and Chance Fuller, ${siteContact.brokerage}.`,
+  description: `Browse single-family and attached homes for sale in Las Vegas and near Palms Place with Dr. Jan Duffy and ${siteContact.buyerSpecialistName}, ${siteContact.brokerage}.`,
   ...canonicalMetadata("/homes"),
 };
 
