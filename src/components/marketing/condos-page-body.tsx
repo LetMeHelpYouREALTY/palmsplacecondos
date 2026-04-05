@@ -15,12 +15,38 @@ export function CondosPageBody() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
-        Las Vegas high-rise &amp; Palms Place condos
+        Las Vegas high-rise &amp; Palms Place condos for sale
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        Compare inventory and HOA context with {siteContact.agentName} (listing specialist) and{" "}
-        {siteContact.buyerSpecialistName} (buyers)—{siteContact.brokerage}.
+        If you are searching for condos for sale on the Las Vegas Strip or a luxury condo in Las
+        Vegas, start here—Palms Place for sale and comparable high-rise inventory with{" "}
+        {siteContact.agentName} (listing specialist) and {siteContact.buyerSpecialistName}{" "}
+        (buyers)—{siteContact.brokerage}.
       </p>
+
+      <section className="mt-12">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream">
+          Strip and downtown Las Vegas condos — different corridors
+        </h2>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          Downtown Las Vegas condos cluster near the Fremont and Arts District vibe, while Strip and
+          west-of-Strip towers (including Palms Place) emphasize resort proximity and vertical
+          amenities. HOA fees, parking, views, and rental rules vary sharply by building—compare
+          disclosures side by side, not just listing photos.
+        </p>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream">
+          Luxury high-rise condos and penthouses
+        </h2>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          Las Vegas luxury penthouses for sale and large high-rise floor plans trade on view, ceiling
+          height, outdoor space, and building services. Inventory and pricing change often—use the
+          curated search below and verify every material fact with your agent before you write an
+          offer.
+        </p>
+      </section>
 
       <section className="mt-12">
         <h2 className="font-display text-2xl font-semibold text-palms-cream">

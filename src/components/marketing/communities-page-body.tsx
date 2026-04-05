@@ -12,7 +12,7 @@ export function CommunitiesPageBody() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
-        Las Vegas condo communities overview
+        Las Vegas communities &amp; guard-gated neighborhoods
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Use this hub to orient your search before you tour. {siteContact.agentName} and{" "}
@@ -29,6 +29,25 @@ export function CommunitiesPageBody() {
           and employment centers—but HOA rules, noise, and parking differ by tower. Palms Place
           condos for sale attract buyers who want resort-adjacent living with a private residential
           tower experience; always compare HOA packets side by side.
+        </p>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream">
+          Guard-gated and master-planned neighborhoods
+        </h2>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          Guard-gated communities in Las Vegas and Henderson layer controlled access and often
+          stronger amenity packages—but HOA costs and rules vary. If that product fits your
+          timeline, pair community tours with{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/luxury-homes">
+            Las Vegas luxury homes for sale
+          </Link>{" "}
+          context and compare against high-rise trade-offs on{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/condos">
+            Strip and high-rise condos
+          </Link>
+          .
         </p>
       </section>
 

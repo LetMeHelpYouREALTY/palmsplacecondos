@@ -10,12 +10,26 @@ export function LuxuryHomesPageBody() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
-        Luxury homes in Summerlin, Henderson &amp; Las Vegas
+        Las Vegas luxury homes for sale — Summerlin, Henderson &amp; the valley
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        Buyer tours with {siteContact.buyerSpecialistName}, {siteContact.buyerSpecialistTitle}, and
-        the Palms Place team—{siteContact.brokerage}.
+        Explore luxury homes for sale in Las Vegas—from Summerlin and Henderson estates to
+        executive single-family in the broader valley. Buyer tours with{" "}
+        {siteContact.buyerSpecialistName}, {siteContact.buyerSpecialistTitle}, and the Palms Place
+        team—{siteContact.brokerage}.
       </p>
+
+      <section className="mt-12">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream">
+          Estates, mansions, and high-end single-family
+        </h2>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          When people search for expensive homes in Las Vegas or estate-caliber properties, they
+          are usually balancing schools, lot size, privacy, and commute. Your agent helps you
+          compare active luxury inventory against recent sales—not generic online estimates—and
+          aligns showings with disclosure review.
+        </p>
+      </section>
 
       <section className="mt-12">
         <h2 className="font-display text-2xl font-semibold text-palms-cream">

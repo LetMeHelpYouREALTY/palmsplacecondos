@@ -12,7 +12,28 @@ type PopularSearchLink = {
 
 const staticLinks: PopularSearchLink[] = [
   { href: "/condos", label: "Palms Place & high-rise condos", description: "Strip-adjacent towers" },
-  { href: "/high-rises", label: "Las Vegas high-rises", description: "Urban towers & amenities" },
+  {
+    href: "/condos",
+    label: "Condos for sale on the Las Vegas Strip",
+    description: "Strip & west-of-Strip high-rises including Palms Place",
+  },
+  {
+    href: "/luxury-homes",
+    label: "Las Vegas luxury homes for sale",
+    description: "Summerlin, Henderson & valley estates",
+  },
+  {
+    href: "/high-rises",
+    label: "Vegas high-rise condos for sale",
+    description: "Tower comparison & HOA context",
+  },
+  {
+    href: "/high-rises",
+    label: "Downtown Las Vegas condos vs Strip towers",
+    description: "How corridors and HOAs differ",
+  },
+  { href: "/condos", label: "Luxury condos on and near the Strip", description: "High-rise & penthouse inventory" },
+  { href: "/high-rises", label: "Las Vegas Strip high-rise condos", description: "Urban towers & amenities" },
   { href: "/homes", label: "Homes for sale in Las Vegas", description: "Single-family & attached" },
   {
     href: "/luxury-homes",
@@ -22,7 +43,7 @@ const staticLinks: PopularSearchLink[] = [
   { href: "/under-500k", label: "Under $500K", description: "Starter & move-up bands" },
   { href: "/featured", label: "Featured listings", description: "Spotlight inventory" },
   { href: "/sell", label: "Sell with the Palms Place team", description: "Listing specialist" },
-  { href: "/communities", label: "Neighborhoods & communities", description: "West side & valley" },
+  { href: "/communities", label: "Neighborhoods & guard-gated communities", description: "West side & valley" },
 ];
 
 /** Expanded /popular-searches — curated internal links + RealScout. */
@@ -44,7 +65,7 @@ export function PopularSearchesPageBody() {
         <h2 className="font-display text-xl font-semibold text-palms-cream">On this site</h2>
         <ul className="mt-6 space-y-4">
           {staticLinks.map((item) => (
-            <li key={item.href}>
+            <li key={`${item.href}-${item.label}`}>
               <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href={item.href}>
                 {item.label}
               </Link>

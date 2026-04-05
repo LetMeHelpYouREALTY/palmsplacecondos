@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     "Palms Place Las Vegas",
     "Las Vegas Strip condos for sale",
     "high-rise condos Las Vegas",
+    "Las Vegas luxury penthouses for sale",
+    "luxury condo Las Vegas",
     "Palms Place floor plans",
     "Las Vegas condo investment",
     "Palms Place real estate",

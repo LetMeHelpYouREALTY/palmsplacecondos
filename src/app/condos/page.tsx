@@ -4,8 +4,8 @@ import { canonicalMetadata } from "@/lib/metadata-helpers";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: "Las Vegas high-rise & Palms Place condos for sale",
-  description: `Compare Las Vegas high-rise condos and Palms Place inventory with Dr. Jan Duffy (listing specialist) and ${siteContact.buyerSpecialistName} (${siteContact.buyerSpecialistTitle})—Strip-adjacent residences and HOA context.`,
+  title: "Condos for sale on the Las Vegas Strip & high-rises | Palms Place",
+  description: `Luxury condos and high-rise condos on and near the Las Vegas Strip, including Palms Place for sale—plus how Strip-adjacent towers differ from downtown Las Vegas condos. Dr. Jan Duffy (listing) and ${siteContact.buyerSpecialistName} (${siteContact.buyerSpecialistTitle}), ${siteContact.brokerage}.`,
   ...canonicalMetadata("/condos"),
 };
 
