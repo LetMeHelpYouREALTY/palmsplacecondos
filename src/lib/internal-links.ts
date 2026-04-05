@@ -37,6 +37,11 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
     { href: "/featured", label: "Featured listings", description: "Spotlight inventory" },
     { href: "/under-500k", label: "Homes & condos under $500K", description: "Price band shortcut" },
     { href: "/popular-searches", label: "Popular buyer searches", description: "Shortcuts by topic" },
+    {
+      href: "/faq",
+      label: "Palms Place Las Vegas FAQ",
+      description: "Building, location, amenities, booking",
+    },
     { href: "/buyers/calculators", label: "Buyer calculators", description: "Payments and affordability" },
   ];
 

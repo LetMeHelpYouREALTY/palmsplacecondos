@@ -3,11 +3,13 @@ import { RelatedPages } from "@/components/seo/related-pages";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
 
-/** Expanded /connect — stay in touch; aligns with utility nav + YouTube. */
+/** Expanded /connect — stay in touch; aligns with utility nav + social links. */
 export function ConnectPageBody() {
   const related = relatedLinksForPath("/connect");
   const phone = siteContact.phone;
   const tel = phone ? `tel:${phone.replace(/\D/g, "")}` : undefined;
+  const facebookHref =
+    process.env.NEXT_PUBLIC_FACEBOOK_URL ?? siteContact.facebookUrl ?? "https://www.facebook.com/palmsplace";
   const youtubeHref = process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "https://www.youtube.com/";
 
   return (
@@ -42,9 +44,18 @@ export function ConnectPageBody() {
       </section>
 
       <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">Video</h2>
+        <h2 className="font-display text-2xl font-semibold text-palms-cream">Social &amp; video</h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          The site header links to YouTube for tours and market updates—open{" "}
+          Follow{" "}
+          <a
+            className="text-palms-gold underline-offset-4 hover:underline"
+            href={facebookHref}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Palms Place on Facebook
+          </a>{" "}
+          for building and area updates. The footer also links to{" "}
           <a
             className="text-palms-gold underline-offset-4 hover:underline"
             href={youtubeHref}
@@ -52,8 +63,8 @@ export function ConnectPageBody() {
             target="_blank"
           >
             YouTube
-          </a>
-          .
+          </a>{" "}
+          for tours and market context.
         </p>
       </section>
 

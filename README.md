@@ -20,16 +20,32 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). Production build check (aligned with Vercel): `npm run build` or `vercel build` from the project root.
 
-Copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your canonical HTTPS origin when deploying (**`https://www.`…** is the primary host; apex redirects to `www` when that env uses a `www` hostname).
+Copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_SITE_URL` when testing canonical URLs locally. Production should use **`https://www.palmsplacecondos.com`** (no trailing slash; apex redirects to `www` when that env uses a `www` hostname).
 
 ## Deployment (Vercel)
 
 This site is built for **[Vercel](https://vercel.com)** (recommended production host for this Next.js app).
 
 1. Import the GitHub repository in the Vercel dashboard and keep the default **Next.js** settings.
-2. Under **Settings → Environment Variables**, add the values from [`.env.example`](.env.example) for **Production** (at minimum **`NEXT_PUBLIC_SITE_URL`** = `https://www.yourdomain.com` for the live `www` domain).
+2. Under **Settings → Environment Variables**, add the values from [`.env.example`](.env.example) for **Production** (at minimum **`NEXT_PUBLIC_SITE_URL`** = `https://www.palmsplacecondos.com`).
 3. Under **Settings → Domains**, assign the production domain and prefer **`www`** as described in [AGENTS.md](AGENTS.md).
 4. Preview deployments use **`VERCEL_URL`** automatically for `metadataBase` when `NEXT_PUBLIC_SITE_URL` is unset; production should always set `NEXT_PUBLIC_SITE_URL` to the public `www` URL.
+
+### DNS (Cloudflare nameservers + Vercel)
+
+Keep **apex** (`palmsplacecondos.com`) and **`www`** on **DNS only** (gray cloud in Cloudflare), not proxied, so traffic terminates TLS at Vercel and you avoid SSL/origin conflicts ([AGENTS.md](AGENTS.md)).
+
+**Vercel → Project → Settings → Domains** is the source of truth for values: open each hostname and copy the recommended **A** record (apex) and **CNAME** (`www`) into Cloudflare. Project-specific targets (for example `*.vercel-dns-*.com`) can differ from generic documentation; if Vercel shows a different IP or hostname than your zone, update Cloudflare to match.
+
+### Google Search Console
+
+- Add a **URL-prefix** property for **`https://www.palmsplacecondos.com`** (same host as `NEXT_PUBLIC_SITE_URL` and the app’s apex → `www` redirect).
+- After deploy, submit **`https://www.palmsplacecondos.com/sitemap.xml`** in GSC.
+- **Verification:** DNS **TXT** at the apex (as in your Cloudflare zone) **or** set `GOOGLE_SITE_VERIFICATION` / `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` per [`.env.example`](.env.example) for the HTML-tag method.
+
+### Optional: DMARC (email only)
+
+If you use **Cloudflare Email Routing** (MX on the zone), run Cloudflare’s **DMARC** wizard to add a `_dmarc` TXT record. This does not affect the Next.js site; it helps mail authentication and reporting.
 
 ## Project structure
 

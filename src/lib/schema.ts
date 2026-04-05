@@ -63,15 +63,28 @@ function defaultListingAgentDescription(): string {
   );
 }
 
-/** Optional profile URLs (YouTube, GBP, etc.) — same as visible links only. */
+/** Optional profile URLs (Facebook, YouTube, GBP, etc.) — same as visible links only. */
 function getSameAs(): string[] | undefined {
   const raw = process.env.NEXT_PUBLIC_SAME_AS_URLS?.trim();
-  if (!raw) return undefined;
-  const urls = raw
-    .split(",")
-    .map((s) => s.trim())
-    .filter((s) => s.startsWith("http"));
-  return urls.length > 0 ? urls : undefined;
+  const fromEnv = raw
+    ? raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => s.startsWith("http"))
+    : [];
+  const fromSite: string[] = [];
+  const fb = siteContact.facebookUrl?.trim();
+  if (fb?.startsWith("http")) fromSite.push(fb);
+  const merged = [...fromSite, ...fromEnv];
+  const seen = new Set<string>();
+  const unique: string[] = [];
+  for (const u of merged) {
+    if (!seen.has(u)) {
+      seen.add(u);
+      unique.push(u);
+    }
+  }
+  return unique.length > 0 ? unique : undefined;
 }
 
 function applyOfficeNapAndHours(
@@ -316,6 +329,30 @@ export function getHomeFaqPageJsonLd(items: FaqItem[]): JsonLdGraph {
   const faqPage: Record<string, unknown> = {
     "@type": "FAQPage",
     "@id": `${siteUrl.replace(/\/$/, "")}#faq`,
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  return {
+    "@context": CONTEXT,
+    "@graph": [faqPage],
+  };
+}
+
+/** FAQPage JSON-LD for a dedicated FAQ route (e.g. `/faq`). Must mirror visible copy on that URL. */
+export function getFaqPageJsonLdForPath(pathname: string, items: FaqItem[]): JsonLdGraph {
+  const siteUrl = getSiteUrl().replace(/\/$/, "");
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const pageUrl = `${siteUrl}${path}`;
+  const faqPage: Record<string, unknown> = {
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
     mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,

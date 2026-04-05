@@ -67,6 +67,8 @@ export type SiteContact = {
    * Example: https://www.google.com/maps/d/embed?mid=...
    */
   contactMapEmbedUrl?: string;
+  /** Official Palms Place Facebook page — merged into JSON-LD `sameAs` when set. */
+  facebookUrl?: string;
 };
 
 export const siteContact: SiteContact = {
@@ -93,6 +95,7 @@ export const siteContact: SiteContact = {
   officeHoursLine: "Monday through Friday, 9:00 AM to 5:00 PM",
   contactMapEmbedUrl:
     "https://www.google.com/maps/d/embed?mid=1fl048P0dAxnuNvwqHLrJU4i4zZmkwpE&hl=en&ehbc=2E312F",
+  facebookUrl: "https://www.facebook.com/palmsplace",
 };
 
 /** Single-line office address for visible copy (footer, contact). */

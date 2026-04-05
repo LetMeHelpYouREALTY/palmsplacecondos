@@ -12,6 +12,7 @@ const PATHS: { path: string; changeFrequency: ChangeFrequency; priority: number 
   { path: "/sell", changeFrequency: "monthly", priority: 0.85 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.85 },
   { path: "/connect", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/faq", changeFrequency: "monthly", priority: 0.78 },
   { path: "/communities", changeFrequency: "monthly", priority: 0.8 },
   { path: "/featured", changeFrequency: "weekly", priority: 0.75 },
   { path: "/high-rises", changeFrequency: "monthly", priority: 0.8 },
