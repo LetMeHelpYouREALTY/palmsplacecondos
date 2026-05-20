@@ -14,7 +14,7 @@ export function getFieldNoteBySlug(slug: string): FieldNote | undefined {
 }
 
 export const fieldNotesHubMeta = {
-  title: "Palms Place field notes — team insights from tours & listings",
+  name: "Palms Place field notes — team insights from tours & listings",
   description:
     "First-hand Palms Place field notes from Dr. Jan Duffy and Chance Fuller: specific tour, HOA, and furnished-resale situations—not generic Las Vegas condo tips.",
 };
