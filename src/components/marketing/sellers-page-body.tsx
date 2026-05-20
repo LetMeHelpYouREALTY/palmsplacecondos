@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
-import { ButtonAnchor } from "@/components/shared/button-link";
+import { ButtonLink } from "@/components/shared/button-link";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
@@ -64,12 +64,12 @@ export function SellersPageBody() {
           covers valuation conversations, marketing, and cross-links for buyers still searching.
         </p>
         <div className="mt-6 flex flex-wrap gap-4">
-          <ButtonAnchor href="/sell" variant="gold">
+          <ButtonLink href="/sell" variant="primary">
             Sell page overview
-          </ButtonAnchor>
-          <ButtonAnchor href="/contact" variant="outline">
+          </ButtonLink>
+          <ButtonLink href="/contact" variant="secondary">
             Contact the team
-          </ButtonAnchor>
+          </ButtonLink>
         </div>
       </section>
 

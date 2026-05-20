@@ -1,6 +1,6 @@
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
-import { ButtonAnchor } from "@/components/shared/button-link";
+import { ButtonAnchor, ButtonLink } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import type { RelatedLink } from "@/lib/internal-links";
 import type { BreadcrumbItem } from "@/lib/schema";
@@ -103,12 +103,12 @@ export function MarketingGuidePageShell({
 
       <div className="mt-12 flex flex-wrap gap-4">
         {footerCtas.map((cta) => (
-          <ButtonAnchor key={cta.href} href={cta.href} variant="gold">
+          <ButtonLink key={cta.href} href={cta.href} variant="primary">
             {cta.label}
-          </ButtonAnchor>
+          </ButtonLink>
         ))}
         {searchUrl ? (
-          <ButtonAnchor href={searchUrl} variant="outline" external>
+          <ButtonAnchor href={searchUrl} variant="secondary">
             Search listings
           </ButtonAnchor>
         ) : null}

@@ -1,6 +1,6 @@
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
-import { ButtonAnchor } from "@/components/shared/button-link";
+import { ButtonLink } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import type { FieldNote } from "@/lib/content/field-notes/types";
 import { relatedLinksForPath } from "@/lib/internal-links";
@@ -90,12 +90,12 @@ export function FieldNotePageBody({ note }: FieldNotePageBodyProps) {
       </section>
 
       <div className="mt-10 flex flex-wrap gap-4">
-        <ButtonAnchor href="/guide/buying-palms-place" variant="gold">
+        <ButtonLink href="/guide/buying-palms-place" variant="primary">
           Buying field guide
-        </ButtonAnchor>
-        <ButtonAnchor href="/insights" variant="outline">
+        </ButtonLink>
+        <ButtonLink href="/insights" variant="secondary">
           All field notes
-        </ButtonAnchor>
+        </ButtonLink>
       </div>
 
       <p className="mt-8 text-sm text-palms-cream/60">
