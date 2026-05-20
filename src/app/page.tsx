@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FeaturedListingBanner } from "@/components/sections/featured-listing-banner";
 import { HeroPalmsPlace } from "@/components/sections/hero-palms-place";
 import { HomeFaqSection } from "@/components/sections/home-faq-section";
 import { StaySection } from "@/components/sections/stay-section";
@@ -48,6 +49,7 @@ export default function HomePage() {
     <>
       <StructuredData data={getHomeWebPageJsonLd()} />
       <HeroPalmsPlace />
+      <FeaturedListingBanner />
       <StaySection />
       <WhyBuySection />
       <UnwindSection />
