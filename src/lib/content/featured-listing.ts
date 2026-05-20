@@ -2,7 +2,7 @@ import { palmsPlaceTower } from "@/lib/content/palms-place-building";
 
 /**
  * Homepage “just listed” spotlight — update when the featured unit changes.
- * Set NEXT_PUBLIC_FEATURED_LISTING_URL to the live listing detail page (RealScout / MLS).
+ * Override with NEXT_PUBLIC_FEATURED_LISTING_URL in Vercel when the listing URL changes.
  */
 export const featuredListing = {
   price: "$437,777",
@@ -11,12 +11,14 @@ export const featuredListing = {
   squareFeet: "1,220 SF",
   highlights: "Strip Views • High-Rise Condo • Turnkey Investor Play",
   ctaLabel: "View Full Details",
+  detailsUrl:
+    "https://drjanduffy.realscout.com/homesearch/listings/p-4381-w-flamingo-road-822-las-vegas-89103-glvartrestle-932",
 } as const;
 
 export function getFeaturedListingDetailsUrl(): string {
   const url = process.env.NEXT_PUBLIC_FEATURED_LISTING_URL?.trim();
   if (url) return url;
-  return "/search";
+  return featuredListing.detailsUrl;
 }
 
 export function isFeaturedListingExternalUrl(): boolean {
