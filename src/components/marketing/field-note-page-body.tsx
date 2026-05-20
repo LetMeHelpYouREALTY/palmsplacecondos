@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonAnchor } from "@/components/shared/button-link";
@@ -97,7 +96,7 @@ export function FieldNotePageBody({ note }: FieldNotePageBodyProps) {
         <ButtonAnchor href="/insights" variant="outline">
           All field notes
         </ButtonAnchor>
-      </motion.div>
+      </div>
 
       <p className="mt-8 text-sm text-palms-cream/60">
         Not legal or tax advice. HOA rules and assessments change—verify in official documents for your unit.
