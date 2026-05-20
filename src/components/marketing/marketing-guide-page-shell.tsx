@@ -115,7 +115,7 @@ export function MarketingGuidePageShell({
       </div>
 
       <p className="mt-8 text-sm text-palms-cream/60">
-        {siteContact.brokerage} · Nevada real estate license {siteContact.agentLicense}
+        {siteContact.brokerage} · Nevada real estate license {siteContact.license}
         {siteContact.buyerSpecialistLicense
           ? ` · ${siteContact.buyerSpecialistName} ${siteContact.buyerSpecialistLicense}`
           : null}
