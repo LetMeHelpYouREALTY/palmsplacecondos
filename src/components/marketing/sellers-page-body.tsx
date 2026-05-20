@@ -1,0 +1,94 @@
+import Link from "next/link";
+import { RelatedPages } from "@/components/seo/related-pages";
+import { StructuredData } from "@/components/seo/structured-data";
+import { ButtonAnchor } from "@/components/shared/button-link";
+import { relatedLinksForPath } from "@/lib/internal-links";
+import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
+import { siteContact } from "@/lib/site-contact";
+
+const pageMeta = {
+  name: "Sell Palms Place & Las Vegas condos — seller guide",
+  description:
+    "Seller hub for Palms Place and Las Vegas high-rise listings: listing prep field guide, valuation conversations, and Dr. Jan Duffy as Palms Place listing specialist.",
+};
+
+export function SellersPageBody() {
+  const related = relatedLinksForPath("/sellers");
+  const webPageJsonLd = getWebPageJsonLdForPath("/sellers", pageMeta);
+  const breadcrumbJsonLd = getBreadcrumbListJsonLd("/sellers", [
+    { name: "Home", path: "/" },
+    { name: "Sellers", path: "/sellers" },
+  ]);
+
+  return (
+    <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <StructuredData data={webPageJsonLd} />
+      <StructuredData data={breadcrumbJsonLd} />
+      <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
+        Sell Palms Place &amp; Las Vegas condos
+      </h1>
+      <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
+        <strong className="font-semibold text-palms-cream">Sellers start here</strong> for listing
+        strategy at Palms Place and comparable Las Vegas high-rises with {siteContact.agentName},{" "}
+        {siteContact.agentTitle}, at {siteContact.brokerage}.
+      </p>
+
+      <section
+        className="mt-10 rounded-xl border border-palms-gold/20 bg-palms-gold/5 p-6"
+        aria-labelledby="sellers-field-guide-heading"
+      >
+        <h2 className="font-display text-xl font-semibold text-palms-cream" id="sellers-field-guide-heading">
+          First-hand Palms Place selling field guide
+        </h2>
+        <p className="mt-3 leading-relaxed text-palms-cream/85">
+          HOA packets, furnished inventory, and buyer questions differ at Palms Place. Read the team’s
+          listing prep checklist before you price or photograph.
+        </p>
+        <p className="mt-4">
+          <Link
+            className="font-medium text-palms-gold underline-offset-4 hover:underline"
+            href="/guide/selling-palms-place"
+          >
+            Selling a Palms Place condo — field guide
+          </Link>
+        </p>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream">Listing services</h2>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          The expanded{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/sell">
+            sell page
+          </Link>{" "}
+          covers valuation conversations, marketing, and cross-links for buyers still searching.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-4">
+          <ButtonAnchor href="/sell" variant="gold">
+            Sell page overview
+          </ButtonAnchor>
+          <ButtonAnchor href="/contact" variant="outline">
+            Contact the team
+          </ButtonAnchor>
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream">Help buyers understand your building</h2>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          Share our{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/guide/buying-palms-place">
+            buying field guide
+          </Link>{" "}
+          or{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/guide/palms-place-unit-types">
+            studio vs one-bedroom guide
+          </Link>{" "}
+          with co-owners so showings stay focused on facts—not surprises.
+        </p>
+      </section>
+
+      <RelatedPages links={related} />
+    </article>
+  );
+}

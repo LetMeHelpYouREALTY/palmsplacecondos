@@ -45,14 +45,15 @@ export function HeroPalmsPlace() {
           Palms Place Condos for Sale — Las Vegas Strip High-Rise Residences
         </h1>
 
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-palms-cream/90 md:text-lg">
+          <strong className="font-semibold text-palms-cream">Palms Place condos for sale</strong> are
+          studio-to-penthouse residences near the Las Vegas Strip, listed with the{" "}
+          {siteContact.teamBrandName} at {siteContact.brokerage}. Browse live inventory, compare HOA
+          rules, and schedule tours with {siteContact.agentName} (listings) or{" "}
+          {siteContact.buyerSpecialistName} (buyers).
+        </p>
+
         <div className="mt-6 max-w-3xl space-y-5 text-base leading-relaxed text-palms-cream/88 md:text-lg">
-          <p>
-            You work with the{" "}
-            <strong className="font-semibold text-palms-cream">{siteContact.teamBrandName}</strong>{" "}
-            at {siteContact.brokerage}. {siteContact.agentName} leads listing strategy;{" "}
-            {siteContact.buyerSpecialistName}, {siteContact.buyerSpecialistTitle}, guides buyers on
-            tours and offers.
-          </p>
           <p>
             Strip-adjacent living puts dining, entertainment, and resort-style amenities within
             easy reach—whether you need a primary home, a second home, or a long-term hold. Start

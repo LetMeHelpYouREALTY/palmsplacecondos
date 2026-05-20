@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { StructuredData } from "@/components/seo/structured-data";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import { homeFaqItems } from "@/lib/content/home-faq";
@@ -18,16 +19,28 @@ export function HomeFaqSection() {
           className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl"
           id="home-faq-heading"
         >
-          Palms Place Condos FAQ — Everything Buyers Need to Know
+          Palms Place condos FAQ — Las Vegas Strip high-rise buyers
         </h2>
-        <div className="mt-10 space-y-10">
+        <p className="mt-4 text-base leading-relaxed text-palms-cream/80">
+          Direct answers about Palms Place location, inventory, and how to tour with the local team.
+          For the building overview, see{" "}
+          <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/palms-place">
+            Palms Place Las Vegas guide
+          </Link>
+          ; for tower history, amenities, and stay planning, see the{" "}
+          <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/faq">
+            full FAQ
+          </Link>
+          .
+        </p>
+        <dl className="mt-10 space-y-10">
           {homeFaqItems.map((item) => (
             <div key={item.question}>
-              <h3 className="text-lg font-semibold text-palms-cream">{item.question}</h3>
-              <p className="mt-3 text-base leading-relaxed text-palms-cream/80">{item.answer}</p>
+              <dt className="text-lg font-semibold text-palms-cream">{item.question}</dt>
+              <dd className="mt-3 text-base leading-relaxed text-palms-cream/80">{item.answer}</dd>
             </div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   );

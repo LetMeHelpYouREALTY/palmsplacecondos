@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/schema";
+import { formatPalmsPlaceTowerAddressLine } from "@/lib/content/palms-place-building";
 
 /** Extended FAQ entry for on-page anchors and grouping (JSON-LD uses question + answer only). */
 export type PalmsPlaceFaqEntry = {
@@ -53,9 +54,8 @@ export const palmsPlaceFaqPrimary: PalmsPlaceFaqEntry[] = [
   },
   {
     question: "What is the address of Palms Place Las Vegas?",
-    answer:
-      "The address most commonly used for Palms Place is 4381 W Flamingo Road, Las Vegas, NV 89103.",
-    shortAnswer: "4381 W Flamingo Road, Las Vegas, NV 89103.",
+    answer: `The address most commonly used for Palms Place is ${formatPalmsPlaceTowerAddressLine()}.`,
+    shortAnswer: `${formatPalmsPlaceTowerAddressLine()}.`,
     category: "Location",
     slug: "what-is-the-address-of-palms-place-las-vegas",
   },

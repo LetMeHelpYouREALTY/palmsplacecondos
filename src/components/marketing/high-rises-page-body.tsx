@@ -27,7 +27,11 @@ export function HighRisesPageBody() {
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           For Palms Place-specific context—residences, resort-style amenities, and how listings
-          present in the current market—start with{" "}
+          present in the current market—start with the{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/palms-place">
+            Palms Place Las Vegas building guide
+          </Link>{" "}
+          or{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/condos">
             Las Vegas high-rise &amp; Palms Place condos
           </Link>
@@ -43,7 +47,15 @@ export function HighRisesPageBody() {
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           HOA fees, parking, rental restrictions, and reserve studies affect value and monthly
           carry. Your agent reviews disclosures with you and coordinates tours that match your
-          timeline—not a generic list of every high-rise on the Strip.
+          timeline—not a generic list of every high-rise on the Strip. For a Palms Place–first
+          framework, read our{" "}
+          <Link
+            className="text-palms-gold underline-offset-4 hover:underline"
+            href="/guide/compare-strip-high-rises"
+          >
+            Strip high-rise comparison guide
+          </Link>
+          .
         </p>
       </section>
 

@@ -10,7 +10,7 @@ import {
   palmsPlaceFaqPrimary,
 } from "@/lib/content/palms-place-faq";
 import { relatedLinksForPath } from "@/lib/internal-links";
-import { getFaqPageJsonLdForPath } from "@/lib/schema";
+import { getBreadcrumbListJsonLd, getFaqPageJsonLdForPath } from "@/lib/schema";
 
 function FaqAccordionList({ items }: { items: PalmsPlaceFaqEntry[] }) {
   return (
@@ -46,11 +46,16 @@ function FaqAccordionList({ items }: { items: PalmsPlaceFaqEntry[] }) {
 export function FaqPageBody() {
   const faqItems = palmsPlaceFaqAllAsFaqItems();
   const faqJsonLd = getFaqPageJsonLdForPath("/faq", faqItems);
+  const breadcrumbJsonLd = getBreadcrumbListJsonLd("/faq", [
+    { name: "Home", path: "/" },
+    { name: "FAQ", path: "/faq" },
+  ]);
   const related = relatedLinksForPath("/faq");
 
   return (
     <article className="border-t border-palms-gold/15 bg-palms-charcoal-muted/20">
       <StructuredData data={faqJsonLd} />
+      <StructuredData data={breadcrumbJsonLd} />
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-16">
         <SectionEyebrow>Questions</SectionEyebrow>
         <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">

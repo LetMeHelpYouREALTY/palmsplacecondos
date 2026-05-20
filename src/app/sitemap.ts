@@ -6,6 +6,18 @@ type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[0]["changeFrequency"]>;
 // Static marketing routes — keep in sync with app route pages.
 const PATHS: { path: string; changeFrequency: ChangeFrequency; priority: number }[] = [
   { path: "", changeFrequency: "weekly", priority: 1 },
+  { path: "/palms-place", changeFrequency: "weekly", priority: 0.95 },
+  { path: "/buyers", changeFrequency: "monthly", priority: 0.88 },
+  { path: "/sellers", changeFrequency: "monthly", priority: 0.88 },
+  { path: "/guide/buying-palms-place", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/guide/selling-palms-place", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/guide/palms-place-unit-types", changeFrequency: "monthly", priority: 0.86 },
+  { path: "/guide/compare-strip-high-rises", changeFrequency: "monthly", priority: 0.86 },
+  { path: "/insights", changeFrequency: "monthly", priority: 0.84 },
+  { path: "/insights/palms-place-tour-red-flags", changeFrequency: "monthly", priority: 0.82 },
+  { path: "/insights/why-we-request-hoa-packets-early", changeFrequency: "monthly", priority: 0.82 },
+  { path: "/insights/furnished-resale-inventory-surprises", changeFrequency: "monthly", priority: 0.82 },
+  { path: "/team", changeFrequency: "monthly", priority: 0.85 },
   { path: "/homes", changeFrequency: "monthly", priority: 0.85 },
   { path: "/condos", changeFrequency: "monthly", priority: 0.85 },
   { path: "/search", changeFrequency: "weekly", priority: 0.9 },

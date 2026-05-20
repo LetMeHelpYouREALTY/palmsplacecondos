@@ -20,6 +20,61 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
       label: "Palms Place condos for sale — Las Vegas Strip high-rise",
       description: "Homepage overview and search",
     },
+    {
+      href: "/palms-place",
+      label: "Palms Place Las Vegas — building guide",
+      description: "Address, tower, amenities & buying",
+    },
+    {
+      href: "/buyers",
+      label: "Buy Palms Place & high-rise condos — buyer guide",
+      description: "Search, calculators & tours",
+    },
+    {
+      href: "/guide/buying-palms-place",
+      label: "Buying a Palms Place condo — team field guide",
+      description: "Tour checklist & HOA due diligence",
+    },
+    {
+      href: "/sellers",
+      label: "Sell Palms Place & high-rise condos — seller hub",
+      description: "Listing prep & valuation",
+    },
+    {
+      href: "/guide/selling-palms-place",
+      label: "Selling a Palms Place condo — team field guide",
+      description: "HOA packets & furnished resale prep",
+    },
+    {
+      href: "/guide/palms-place-unit-types",
+      label: "Palms Place studios vs one-bedroom — buyer guide",
+      description: "Floor plan decision framework",
+    },
+    {
+      href: "/guide/compare-strip-high-rises",
+      label: "Palms Place vs Strip high-rises — comparison",
+      description: "Tour order & HOA comparison",
+    },
+    {
+      href: "/insights",
+      label: "Palms Place field notes — tour & listing insights",
+      description: "Non-commodity team POV articles",
+    },
+    {
+      href: "/insights/palms-place-tour-red-flags",
+      label: "Palms Place tour red flags (field note)",
+      description: "Sound, parking & furnished mismatches",
+    },
+    {
+      href: "/insights/why-we-request-hoa-packets-early",
+      label: "HOA packets before offer (field note)",
+      description: "Rental caps & assessment timing",
+    },
+    {
+      href: "/team",
+      label: "Palms Place real estate team",
+      description: "Dr. Jan Duffy & Chance Fuller",
+    },
     { href: "/homes", label: "Homes for sale in Las Vegas", description: "Single-family and attached" },
     {
       href: "/condos",

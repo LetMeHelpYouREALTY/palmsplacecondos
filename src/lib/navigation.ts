@@ -20,6 +20,7 @@ export const utilityNav: NavItem[] = [
 
 /** Sticky header — high-intent routes visible without scrolling to footer */
 export const headerNav: NavItem[] = [
+  { label: "Palms Place", href: "/palms-place" },
   { label: "Condos", href: "/condos" },
   { label: "Sell", href: "/sell" },
   { label: "Contact", href: "/contact" },
@@ -37,6 +38,15 @@ export const primaryNav: NavItem[] = [
 
 /** Secondary “popular searches / buyer” shortcuts */
 export const popularNav: NavItem[] = [
+  { label: "Palms Place guide", href: "/palms-place" },
+  { label: "Buyers", href: "/buyers" },
+  { label: "Sellers", href: "/sellers" },
+  { label: "Buying guide", href: "/guide/buying-palms-place" },
+  { label: "Selling guide", href: "/guide/selling-palms-place" },
+  { label: "Unit types", href: "/guide/palms-place-unit-types" },
+  { label: "Compare towers", href: "/guide/compare-strip-high-rises" },
+  { label: "Field notes", href: "/insights" },
+  { label: "Team", href: "/team" },
   { label: "Buyer Calculators", href: "/buyers/calculators" },
   { label: "FAQ", href: "/faq" },
   { label: "Popular Searches", href: "/popular-searches" },

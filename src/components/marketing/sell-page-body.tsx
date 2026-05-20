@@ -44,6 +44,30 @@ export function SellPageBody() {
 
       <section className="mt-12">
         <h2 className="font-display text-2xl font-semibold text-palms-cream">
+          What listing prep looks like at Palms Place (seller perspective)
+        </h2>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          {siteContact.agentName} approaches Palms Place listings as a building-specific campaign—not
+          a template MLS upload. That usually means clarifying how the unit is used today (owner,
+          tenant, or rental program), aligning remarks with furniture and parking actually included,
+          and timing photography when the residence shows the view buyers expect. We also flag when a
+          buyer will need extra HOA packets because the tower mixes furnished and unfurnished resales.
+        </p>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          Start with our{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/guide/selling-palms-place">
+            Palms Place selling field guide
+          </Link>{" "}
+          for the listing prep checklist. Buyers comparing your unit may use the{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/guide/buying-palms-place">
+            buying field guide
+          </Link>{" "}
+          on tours—sellers who read both understand which questions surface before offers arrive.
+        </p>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream">
           Listing strategy &amp; marketing
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">

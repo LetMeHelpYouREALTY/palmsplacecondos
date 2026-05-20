@@ -67,7 +67,11 @@ export function CondosPageBody() {
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           Review Palms Place floor plans (studio vs one-bedroom), HOA amenities Palms Place
           documents describe, and how Palms Casino Resort residences access differs from hotel guest
-          programs. For a wider luxury baseline, see{" "}
+          programs—start with the{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/palms-place">
+            Palms Place building guide
+          </Link>
+          . For a wider luxury baseline, see{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/luxury-homes">
             luxury homes in Summerlin and Henderson
           </Link>{" "}

@@ -17,14 +17,15 @@ export function WhyBuySection() {
           className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl"
           id="why-buy-heading"
         >
-          Why Buy a Palms Place Condo?
+          Why buy a Palms Place condo in Las Vegas?
         </h2>
         <div className="mt-8 space-y-6 text-lg leading-relaxed text-palms-cream/88">
           <p>
-            Buyers work with the {siteContact.teamBrandName} when they want Strip-adjacent residences
-            with HOA amenities the building is known for—pool and outdoor living, concierge-style
-            convenience, and a lock-and-leave lifestyle. Many owners also use the tower as a second
-            home or long-term investment; always confirm numbers with your lender and your agent.
+            <strong className="font-semibold text-palms-cream">Buyers choose Palms Place</strong> for
+            Strip-adjacent high-rise living with HOA amenities such as pool and outdoor space,
+            concierge-style convenience, and a lock-and-leave lifestyle—often as a primary home,
+            second home, or long-term hold. Confirm HOA rules, fees, and rental restrictions with your
+            agent and official disclosures before you write an offer.
           </p>
           <p>
             Palms Place floor plans range from efficient studios to larger one-bedroom layouts. Work
@@ -46,8 +47,12 @@ export function WhyBuySection() {
               Las Vegas condo communities overview
             </Link>
             . When you are ready to tour,{" "}
+            <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/guide/buying-palms-place">
+              Palms Place buying field guide
+            </Link>
+            , or{" "}
             <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/contact">
-              Schedule a Palms Place showing with Dr. Jan
+              schedule a showing
             </Link>
             . Thinking about selling? See{" "}
             <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/sell">

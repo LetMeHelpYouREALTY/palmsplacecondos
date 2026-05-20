@@ -16,6 +16,15 @@ function id(siteUrl: string, fragment: string): string {
   return `${siteUrl.replace(/\/$/, "")}#${fragment}`;
 }
 
+function siteOrigin(siteUrl: string): string {
+  return siteUrl.replace(/\/$/, "");
+}
+
+/** Stable FAQ graph id — homepage and FAQPage JSON-LD must match. */
+export function getHomeFaqSchemaId(siteUrl: string): string {
+  return `${siteOrigin(siteUrl)}#faq`;
+}
+
 /** E.164-style telephone for structured data when digits are US-based. */
 function toTelE164(phone: string): string {
   const d = phone.replace(/\D/g, "");
@@ -277,13 +286,22 @@ export function getBaseJsonLd(): JsonLdGraph {
   const palmsPlace = buildPalmsPlaceEntity(siteUrl);
   const placePalmsId = id(siteUrl, "place-palms-place");
 
-  listingAgent.knowsAbout = [{ "@id": placePalmsId }];
+  listingAgent.knowsAbout = [
+    { "@id": placePalmsId },
+    { "@type": "Thing", name: "Palms Place condos for sale" },
+    { "@type": "Thing", name: "Las Vegas Strip high-rise condos" },
+    { "@type": "Thing", name: "Las Vegas luxury penthouses for sale" },
+  ];
+
+  const searchTarget = `${siteOrigin(siteUrl)}/search`;
 
   const website: Record<string, unknown> = {
     "@type": "WebSite",
     "@id": webId,
     url: siteUrl,
     name: "Palms Place Condos",
+    description:
+      "Palms Place condos for sale on the Las Vegas Strip — studio to penthouse high-rise residences with expert guidance from Dr. Jan Duffy and the Palms Place team at Berkshire Hathaway HomeServices Nevada Properties.",
     inLanguage: "en-US",
     publisher: { "@id": listingAgentId },
     about: [
@@ -292,6 +310,14 @@ export function getBaseJsonLd(): JsonLdGraph {
       { "@id": buyersAgentId },
       { "@id": brokerageId },
     ],
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: searchTarget,
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return {
@@ -300,19 +326,58 @@ export function getBaseJsonLd(): JsonLdGraph {
   };
 }
 
-/** Homepage WebPage entity — emit on `/` only. */
+/** Route-level WebPage JSON-LD (marketing pages). */
+export function getWebPageJsonLdForPath(
+  pathname: string,
+  page: { name: string; description: string },
+  options?: { aboutPalmsPlace?: boolean; aboutListingAgent?: boolean },
+): JsonLdGraph {
+  const siteUrl = getSiteUrl();
+  const webId = id(siteUrl, "website");
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const pageUrl = path === "/" ? `${siteOrigin(siteUrl)}/` : `${siteOrigin(siteUrl)}${path}`;
+  const webPage: Record<string, unknown> = {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: page.name,
+    description: page.description,
+    isPartOf: { "@id": webId },
+  };
+  if (options?.aboutPalmsPlace) {
+    webPage.about = { "@id": id(siteUrl, "place-palms-place") };
+  }
+  if (options?.aboutListingAgent) {
+    webPage.about = { "@id": id(siteUrl, "dr-jan-duffy") };
+  }
+  return {
+    "@context": CONTEXT,
+    "@graph": [webPage],
+  };
+}
+
+/** Homepage WebPage entity — emit on `/` only. Links to homepage FAQPage for AEO/GEO. */
 export function getHomeWebPageJsonLd(): JsonLdGraph {
   const siteUrl = getSiteUrl();
   const webId = id(siteUrl, "website");
   const placePalmsId = id(siteUrl, "place-palms-place");
-  const pageUrl = `${siteUrl.replace(/\/$/, "")}/`;
+  const listingAgentId = id(siteUrl, "dr-jan-duffy");
+  const pageUrl = `${siteOrigin(siteUrl)}/`;
   const webPage: Record<string, unknown> = {
     "@type": "WebPage",
     "@id": `${pageUrl}#webpage`,
     url: pageUrl,
     name: "Palms Place Condos for Sale — Las Vegas Strip High-Rise Residences",
+    description:
+      "Browse Palms Place condos for sale near the Las Vegas Strip. Compare studio and one-bedroom high-rise listings, HOA details, and tours with Dr. Jan Duffy and Chance Fuller, Realtors.",
     isPartOf: { "@id": webId },
     about: { "@id": placePalmsId },
+    mainEntity: { "@id": getHomeFaqSchemaId(siteUrl) },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["#hero-heading", "#home-faq-heading"],
+    },
+    author: { "@id": listingAgentId },
   };
 
   return {
@@ -323,12 +388,84 @@ export function getHomeWebPageJsonLd(): JsonLdGraph {
 
 export type FaqItem = { question: string; answer: string };
 
+export type BreadcrumbItem = { name: string; path: string };
+
+export type ArticleJsonLdInput = {
+  pathname: string;
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  authorName: string;
+  authorJobTitle: string;
+  aboutPalmsPlace?: boolean;
+};
+
+/** Article JSON-LD for first-party field guides (author must match visible byline). */
+export function getArticleJsonLdForPath(input: ArticleJsonLdInput): JsonLdGraph {
+  const siteUrl = getSiteUrl();
+  const path = input.pathname.startsWith("/") ? input.pathname : `/${input.pathname}`;
+  const pageUrl = `${siteOrigin(siteUrl)}${path}`;
+  const article: Record<string, unknown> = {
+    "@type": "Article",
+    "@id": `${pageUrl}#article`,
+    headline: input.headline,
+    description: input.description,
+    datePublished: input.datePublished,
+    dateModified: input.dateModified,
+    author: {
+      "@type": "Person",
+      name: input.authorName,
+      jobTitle: input.authorJobTitle,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteContact.brokerage,
+    },
+    inLanguage: "en-US",
+    mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
+  };
+  if (input.aboutPalmsPlace) {
+    article.about = { "@type": "Place", name: "Palms Place" };
+  }
+  return {
+    "@context": CONTEXT,
+    "@graph": [article],
+  };
+}
+
+/** BreadcrumbList for dedicated routes (absolute URLs, matches canonical host). */
+export function getBreadcrumbListJsonLd(pathname: string, items: BreadcrumbItem[]): JsonLdGraph {
+  const siteUrl = siteOrigin(getSiteUrl());
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const pageUrl = `${siteUrl}${path}`;
+  const breadcrumb: Record<string, unknown> = {
+    "@type": "BreadcrumbList",
+    "@id": `${pageUrl}#breadcrumb`,
+    itemListElement: items.map((item, index) => {
+      const itemPath = item.path === "/" ? "/" : item.path.startsWith("/") ? item.path : `/${item.path}`;
+      const itemUrl = itemPath === "/" ? `${siteUrl}/` : `${siteUrl}${itemPath}`;
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        item: itemUrl,
+      };
+    }),
+  };
+
+  return {
+    "@context": CONTEXT,
+    "@graph": [breadcrumb],
+  };
+}
+
 /** FAQPage for use on the homepage only — must mirror visible FAQ copy. */
 export function getHomeFaqPageJsonLd(items: FaqItem[]): JsonLdGraph {
   const siteUrl = getSiteUrl();
   const faqPage: Record<string, unknown> = {
     "@type": "FAQPage",
-    "@id": `${siteUrl.replace(/\/$/, "")}#faq`,
+    "@id": getHomeFaqSchemaId(siteUrl),
     mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,

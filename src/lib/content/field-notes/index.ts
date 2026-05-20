@@ -1,0 +1,20 @@
+import { furnishedInventorySurprisesNote } from "@/lib/content/field-notes/furnished-inventory-surprises";
+import { hoaPacketBeforeOfferNote } from "@/lib/content/field-notes/hoa-packet-before-offer";
+import { palmsPlaceTourRedFlagsNote } from "@/lib/content/field-notes/palms-place-tour-red-flags";
+import type { FieldNote } from "@/lib/content/field-notes/types";
+
+export const fieldNotes: FieldNote[] = [
+  palmsPlaceTourRedFlagsNote,
+  hoaPacketBeforeOfferNote,
+  furnishedInventorySurprisesNote,
+];
+
+export function getFieldNoteBySlug(slug: string): FieldNote | undefined {
+  return fieldNotes.find((note) => note.slug === slug);
+}
+
+export const fieldNotesHubMeta = {
+  title: "Palms Place field notes — team insights from tours & listings",
+  description:
+    "First-hand Palms Place field notes from Dr. Jan Duffy and Chance Fuller: specific tour, HOA, and furnished-resale situations—not generic Las Vegas condo tips.",
+};
