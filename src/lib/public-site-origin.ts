@@ -6,13 +6,19 @@ import { getSiteUrl } from "@/lib/site-url";
  * avoiding baked-in `*.vercel.app` URLs when `NEXT_PUBLIC_SITE_URL` was missing at build time.
  */
 export async function getPublicSiteOrigin(): Promise<string> {
+  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (fromEnv) {
+    return fromEnv.replace(/\/$/, "");
+  }
+
   try {
     const h = await headers();
-    const host = h.get("x-forwarded-host") ?? h.get("host");
+    const rawHost = h.get("x-forwarded-host") ?? h.get("host");
+    const host = rawHost?.split(",")[0]?.trim();
     if (host && !host.includes("127.0.0.1")) {
       const isLocalhost = /^localhost(:\d+)?$/i.test(host);
       if (!isLocalhost) {
-        const proto = h.get("x-forwarded-proto") ?? "https";
+        const proto = (h.get("x-forwarded-proto") ?? "https").split(",")[0]?.trim() ?? "https";
         const hostname = host.split(":")[0];
         return `${proto}://${hostname}`.replace(/\/$/, "");
       }
