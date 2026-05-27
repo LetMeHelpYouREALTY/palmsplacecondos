@@ -246,3 +246,117 @@ export const sellingGuidePageFaq: FaqItem[] = [
       "Dr. Jan Duffy leads listing marketing and positioning; buyer inquiries on active listings are coordinated per brokerage workflow. Use the sell page for valuation conversations.",
   },
 ];
+
+/** `/guide/palms-place-hoa-and-monthly-costs` — must mirror visible FAQ on that page. */
+export const hoaGuidePageFaq: FaqItem[] = [
+  {
+    question: "Where do I find Palms Place HOA fees for a specific unit?",
+    answer:
+      "In the HOA resale certificate and governing documents for that unit—not on a generic blog average. Your agent requests the packet early so assessments, parking, and any special assessments are visible before you offer.",
+  },
+  {
+    question: "Does this page quote current Palms Place HOA dollar amounts?",
+    answer:
+      "No. Assessments change and vary by unit. Use this guide to know what to ask for, then confirm numbers in official documents and with your lender for payment modeling.",
+  },
+  {
+    question: "How does HOA review connect to the buyer calculators page?",
+    answer:
+      "Calculators help you frame lender questions; HOA documents supply the monthly assessment and fee lines to plug into your carry estimate. Both are needed for a realistic budget.",
+  },
+];
+
+/** `/guide/furnished-palms-place-condos` — must mirror visible FAQ on that page. */
+export const furnishedGuidePageFaq: FaqItem[] = [
+  {
+    question: "Are all furnished Palms Place listings investor-ready?",
+    answer:
+      "Not automatically. Furnishing and rental eligibility are separate questions—HOA rental caps and registration rules in the resale certificate govern what you can do after closing.",
+  },
+  {
+    question: "What if furniture in photos is not included in the sale?",
+    answer:
+      "The purchase agreement and listing remarks control what conveys. Clarify personal property in writing before you assume a turnkey package from marketing photos.",
+  },
+  {
+    question: "Where can I read team field notes on furnished surprises?",
+    answer:
+      "See the furnished resale inventory surprises field note under insights—it complements this guide but does not replace unit-specific HOA documents.",
+  },
+];
+
+/** `/guide/palms-place-amenities-and-resort-access` — must mirror visible FAQ on that page. */
+export const amenitiesGuidePageFaq: FaqItem[] = [
+  {
+    question: "Do Palms Place owners get the same access as hotel guests?",
+    answer:
+      "Residential ownership follows HOA and building rules—not a nightly hotel folio. Verify owner amenity rights and any separate fees in the resale certificate for your unit.",
+  },
+  {
+    question: "Can amenities change after you buy?",
+    answer:
+      "HOA budgets, management decisions, and resort programming can change over time. Base your decision on documents at purchase and maintain realistic expectations about updates.",
+  },
+  {
+    question: "Where is the full amenities FAQ on this site?",
+    answer:
+      "The main Palms Place FAQ page groups amenities, transportation, and booking-style questions. This guide focuses on owner verification before you buy.",
+  },
+];
+
+/** `/area/palms-place-las-vegas` — must mirror visible FAQ on that page. */
+export const areaPalmsPlacePageFaq: FaqItem[] = [
+  {
+    question: "What is the official address of Palms Place?",
+    answer:
+      "The residential tower is at 4381 W Flamingo Road, Las Vegas, NV 89103. That is the building address for tours and maps—not the team office address on the contact page.",
+  },
+  {
+    question: "Is Palms Place in the City of Las Vegas or Paradise?",
+    answer:
+      "Many Strip-adjacent properties use Paradise or Las Vegas addressing in public records and maps. Use the tower address and ZIP 89103 for directions; confirm tour meeting points with your agent.",
+  },
+  {
+    question: "How far is Palms Place from the Las Vegas Strip?",
+    answer:
+      "It is west of the Strip corridor on Flamingo Road—close enough for resort-adjacent living but not interchangeable with every venue on Las Vegas Boulevard. Tour at the times you plan to come and go.",
+  },
+];
+
+/** `/condos` — must mirror visible FAQ on that page. */
+export const condosPageFaq: FaqItem[] = [
+  {
+    question: "Does this page list every Palms Place condo for sale?",
+    answer:
+      "No. It orients you to high-rise and Palms Place context, then points to live RealScout search for current MLS inventory. Status and pricing change daily.",
+  },
+  {
+    question: "How is this different from the Palms Place building guide?",
+    answer:
+      "The building guide focuses on Palms Place specifically. This condos hub also covers comparable Strip and west-of-Strip towers buyers cross-shop.",
+  },
+  {
+    question: "Where do I compare HOA costs before I offer?",
+    answer:
+      "Use the Palms Place HOA and monthly costs buyer guide and buyer calculators, then confirm assessments in the resale certificate for your unit.",
+  },
+];
+
+/** `/luxury-homes` — must mirror visible FAQ on that page. */
+export const luxuryHomesPageFaq: FaqItem[] = [
+  {
+    question: "Does the Palms Place team list luxury single-family homes?",
+    answer:
+      "Yes—buyers often compare Summerlin and Henderson estates with Strip high-rises. This page covers luxury single-family; use the condos hub if a tower fits better.",
+  },
+  {
+    question: "When should I choose a luxury home instead of Palms Place?",
+    answer:
+      "When land, schools, and outdoor space outweigh lock-and-leave amenities and Strip proximity. Compare monthly carry including HOA versus maintenance, not list price alone.",
+  },
+  {
+    question: "How do I search luxury homes near Las Vegas?",
+    answer:
+      "Start with the homes hub and RealScout search, or browse popular searches for price-band shortcuts. Your agent aligns showings with disclosure review.",
+  },
+];

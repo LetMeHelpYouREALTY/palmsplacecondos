@@ -4,8 +4,8 @@ import { canonicalMetadata } from "@/lib/metadata-helpers";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: "Las Vegas luxury homes for sale | Summerlin, Henderson & estates",
-  description: `Las Vegas luxury homes for sale—estates, executive homes, and guard-gated neighborhoods in Summerlin, Henderson, and the valley. Buyer tours with ${siteContact.buyerSpecialistName} and the Palms Place team, ${siteContact.brokerage}.`,
+  title: "Las Vegas luxury homes for sale | Summerlin & Henderson",
+  description: `Luxury homes and estates in Summerlin, Henderson, and the Las Vegas valley—compare with Palms Place high-rises. ${siteContact.buyerSpecialistName}, ${siteContact.brokerage}.`,
   ...canonicalMetadata("/luxury-homes"),
 };
 

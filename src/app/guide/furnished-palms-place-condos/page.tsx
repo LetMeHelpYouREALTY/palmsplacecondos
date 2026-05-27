@@ -1,0 +1,16 @@
+import type { Metadata } from "next";
+import { GuideFurnishedPalmsPlacePageBody } from "@/components/marketing/guide-furnished-palms-place-page-body";
+import { canonicalMetadata } from "@/lib/metadata-helpers";
+
+const path = "/guide/furnished-palms-place-condos";
+
+export const metadata: Metadata = {
+  title: "Furnished Palms Place condos for sale | Buyer guide",
+  description:
+    "Buying a furnished Palms Place condo—what conveys, HOA rental rules, and resale documents to verify before you write on a Las Vegas high-rise listing.",
+  ...canonicalMetadata(path),
+};
+
+export default function GuideFurnishedPalmsPlacePage() {
+  return <GuideFurnishedPalmsPlacePageBody />;
+}

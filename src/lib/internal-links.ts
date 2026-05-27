@@ -56,6 +56,26 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
       description: "Tour order & HOA comparison",
     },
     {
+      href: "/guide/palms-place-hoa-and-monthly-costs",
+      label: "Palms Place HOA fees & monthly costs",
+      description: "Assessments, reserves & true carry",
+    },
+    {
+      href: "/guide/furnished-palms-place-condos",
+      label: "Furnished Palms Place condos — buyer guide",
+      description: "What conveys & rental rules",
+    },
+    {
+      href: "/guide/palms-place-amenities-and-resort-access",
+      label: "Palms Place amenities & resort access",
+      description: "Owner verification before you buy",
+    },
+    {
+      href: "/area/palms-place-las-vegas",
+      label: "Palms Place location — West Flamingo & Paradise",
+      description: "Map, directions & Strip context",
+    },
+    {
       href: "/insights",
       label: "Palms Place field notes — tour & listing insights",
       description: "Non-commodity team POV articles",

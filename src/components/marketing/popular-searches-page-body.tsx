@@ -23,6 +23,30 @@ const staticLinks: PopularSearchLink[] = [
     description: "4381 W Flamingo Rd tower context",
   },
   {
+    id: "palms-place-location",
+    href: "/area/palms-place-las-vegas",
+    label: "Palms Place location — West Flamingo & Paradise",
+    description: "Map, directions & Strip adjacency",
+  },
+  {
+    id: "palms-place-hoa",
+    href: "/guide/palms-place-hoa-and-monthly-costs",
+    label: "Palms Place HOA fees & monthly costs",
+    description: "True carry before you offer",
+  },
+  {
+    id: "palms-place-furnished",
+    href: "/guide/furnished-palms-place-condos",
+    label: "Furnished Palms Place condos",
+    description: "What conveys & rental rules",
+  },
+  {
+    id: "palms-place-amenities",
+    href: "/guide/palms-place-amenities-and-resort-access",
+    label: "Palms Place amenities & resort access",
+    description: "Owner rights to verify",
+  },
+  {
     id: "strip-condos",
     href: "/condos",
     label: "Palms Place & Strip high-rise condos for sale",

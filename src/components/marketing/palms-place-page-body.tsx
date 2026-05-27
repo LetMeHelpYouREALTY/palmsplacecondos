@@ -48,9 +48,12 @@ export function PalmsPlacePageBody() {
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           Palms Place is <strong className="font-semibold text-palms-cream">near the Strip, not on</strong>{" "}
           Las Vegas Boulevard. The tower sits on West Flamingo Road in Paradise, Nevada—typically a
-          short drive to resort corridors without sitting in the center of Strip traffic. Directions,
-          parking, and guest-access rules can differ from hotel-only flows; confirm with your agent and
-          current HOA or management materials.
+          short drive to resort corridors without sitting in the center of Strip traffic. See the{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/area/palms-place-las-vegas">
+            Palms Place location page
+          </Link>{" "}
+          for a map and directions; confirm parking and guest-access rules with your agent and current
+          HOA or management materials.
         </p>
       </section>
 
@@ -117,6 +120,28 @@ export function PalmsPlacePageBody() {
           </Link>{" "}
           explains how we run tours, which HOA documents we request, and why hotel stays feel
           different from owning a unit—written for buyers working with {siteContact.buyerSpecialistName}.
+          Also see{" "}
+          <Link
+            className="text-palms-gold underline-offset-4 hover:underline"
+            href="/guide/palms-place-amenities-and-resort-access"
+          >
+            amenities &amp; resort access
+          </Link>
+          ,{" "}
+          <Link
+            className="text-palms-gold underline-offset-4 hover:underline"
+            href="/guide/palms-place-hoa-and-monthly-costs"
+          >
+            HOA &amp; monthly costs
+          </Link>
+          , and{" "}
+          <Link
+            className="text-palms-gold underline-offset-4 hover:underline"
+            href="/guide/furnished-palms-place-condos"
+          >
+            furnished resales
+          </Link>
+          .
         </p>
       </section>
 
