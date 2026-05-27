@@ -1,28 +1,67 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { StructuredData } from "@/components/seo/structured-data";
+import { featuredPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
+import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+
+const pageMeta = {
+  name: "Featured Palms Place & Las Vegas listings — spotlight inventory",
+  description:
+    "Spotlight Palms Place and Las Vegas high-rise listings curated by the local team—live RealScout search, new inventory highlights, and private tour lists.",
+};
 
 /** Expanded /featured — spotlight inventory without fabricating listing rows. */
 export function FeaturedPageBody() {
   const related = relatedLinksForPath("/featured");
   const searchUrl = getRealScoutSharedSearchUrl();
+  const webPageJsonLd = getWebPageJsonLdForPath("/featured", pageMeta, { aboutPalmsPlace: true });
+  const breadcrumbJsonLd = getBreadcrumbListJsonLd("/featured", [
+    { name: "Home", path: "/" },
+    { name: "Featured listings", path: "/featured" },
+  ]);
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <StructuredData data={webPageJsonLd} />
+      <StructuredData data={breadcrumbJsonLd} />
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
-        Featured listings
+        Featured Palms Place &amp; Las Vegas listings
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Highlights rotate with market activity—{siteContact.buyerSpecialistName} and{" "}
-        {siteContact.agentName} curate search experiences rather than a static grid of fake listing rows
-        on this marketing page.
+        {siteContact.agentName} curate search experiences and tour lists for{" "}
+        {siteContact.primaryServiceArea}. This page does not show a static grid of listing cards that
+        can go stale; use live search and the team for what is on market today.
       </p>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
-          See current inventory
+      <section className="mt-12" aria-labelledby="featured-palms-place-heading">
+        <h2
+          className="font-display text-2xl font-semibold text-palms-cream"
+          id="featured-palms-place-heading"
+        >
+          What counts as a featured Palms Place listing?
+        </h2>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          Featured inventory can include new-to-market studios and one-bedrooms at{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/palms-place">
+            Palms Place on Flamingo Road
+          </Link>
+          , furnished resales, and comparable Strip-adjacent towers when buyers want side-by-side tours.
+          Before you prioritize a unit, read the{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/guide/buying-palms-place">
+            Palms Place buying field guide
+          </Link>{" "}
+          for HOA packet timing and tour red flags from recent field notes.
+        </p>
+      </section>
+
+      <section className="mt-12" aria-labelledby="featured-search-heading">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream" id="featured-search-heading">
+          How do I see current featured inventory?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           Open{" "}
@@ -34,8 +73,11 @@ export function FeaturedPageBody() {
           >
             Dr. Jan Duffy&apos;s RealScout search
           </a>{" "}
-          for live Palms Place and Las Vegas listings with filters you control. For building-specific
-          context first, see{" "}
+          for live Palms Place and Las Vegas listings with filters you control, or start from the{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/search">
+            on-site search page
+          </Link>
+          . For building context first, see{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/condos">
             Las Vegas high-rise &amp; Palms Place condos
           </Link>
@@ -43,17 +85,33 @@ export function FeaturedPageBody() {
         </p>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
-          Want a private list?
+      <section className="mt-12" aria-labelledby="featured-private-list-heading">
+        <h2
+          className="font-display text-2xl font-semibold text-palms-cream"
+          id="featured-private-list-heading"
+        >
+          Can I get a private featured list for my price band?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
             Contact the office
           </Link>{" "}
-          for tours and off-market conversations appropriate to your price band and timeline.
+          for tours and conversations appropriate to your timeline. If you are shopping under $500K,
+          also review{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/under-500k">
+            homes and condos under $500K
+          </Link>{" "}
+          for HOA carry context before you tour high-rises.
         </p>
       </section>
+
+      <PageFaqSection
+        pathname="/featured"
+        headingId="featured-faq-heading"
+        heading="Featured listings FAQ"
+        intro="Quick answers about how spotlight inventory works on this Palms Place marketing site."
+        items={featuredPageFaq}
+      />
 
       <RelatedPages links={related} />
     </article>

@@ -3,9 +3,9 @@ import { FeaturedPageBody } from "@/components/marketing/featured-page-body";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
-  title: "Featured listings",
+  title: "Featured Palms Place & Las Vegas listings | Spotlight inventory",
   description:
-    "Featured Las Vegas and Palms Place listings—spotlight properties and new inventory highlights.",
+    "Spotlight Palms Place and Las Vegas high-rise listings—live RealScout search, new inventory, and private tour lists with Dr. Jan Duffy's team.",
   ...canonicalMetadata("/featured"),
 };
 

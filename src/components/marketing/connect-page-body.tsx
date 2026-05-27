@@ -1,7 +1,17 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { StructuredData } from "@/components/seo/structured-data";
+import { connectPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
+import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
+
+const pageMeta = {
+  name: "Connect with the Palms Place team — Las Vegas Strip condos",
+  description:
+    "Follow Palms Place updates, office NAP, and social channels for Las Vegas Strip high-rise condos with Dr. Jan Duffy and Chance Fuller at Berkshire Hathaway.",
+};
 
 /** Expanded /connect — stay in touch; aligns with utility nav + social links. */
 export function ConnectPageBody() {
@@ -11,23 +21,32 @@ export function ConnectPageBody() {
   const facebookHref =
     process.env.NEXT_PUBLIC_FACEBOOK_URL ?? siteContact.facebookUrl ?? "https://www.facebook.com/palmsplace";
   const youtubeHref = process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "https://www.youtube.com/";
+  const webPageJsonLd = getWebPageJsonLdForPath("/connect", pageMeta, { aboutListingAgent: true });
+  const breadcrumbJsonLd = getBreadcrumbListJsonLd("/connect", [
+    { name: "Home", path: "/" },
+    { name: "Connect", path: "/connect" },
+  ]);
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <StructuredData data={webPageJsonLd} />
+      <StructuredData data={breadcrumbJsonLd} />
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
-        Connect
+        Connect with the Palms Place team
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        Stay in touch with the Palms Place team—{siteContact.brokerage}. Same office NAP as
-        throughout the site; details on the{" "}
+        Stay in touch with {siteContact.teamBrandName}—{siteContact.brokerage}. Use this page for
+        office location, hours, and social follow-ups; use{" "}
         <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
-          contact page
-        </Link>
-        .
+          contact
+        </Link>{" "}
+        when you are ready to schedule tours or buyer and seller conversations.
       </p>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">Office</h2>
+      <section className="mt-12" aria-labelledby="connect-office-heading">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream" id="connect-office-heading">
+          Where is the Palms Place real estate office?
+        </h2>
         <address className="mt-4 not-italic leading-relaxed text-palms-cream/85">
           {formatOfficeAddressLine()}
         </address>
@@ -37,14 +56,24 @@ export function ConnectPageBody() {
         {phone && tel ? (
           <p className="mt-4">
             <a className="font-medium text-palms-gold underline-offset-4 hover:underline" href={tel}>
-              {phone}
+              Call {phone}
             </a>
           </p>
         ) : null}
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          NAP here should match your Google Business Profile and the footer on every page. Buying or
+          selling at the tower? Start with the{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/palms-place">
+            Palms Place building guide
+          </Link>
+          .
+        </p>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">Social &amp; video</h2>
+      <section className="mt-12" aria-labelledby="connect-social-heading">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream" id="connect-social-heading">
+          How do I follow Palms Place on social and video?
+        </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           Follow{" "}
           <a
@@ -64,15 +93,28 @@ export function ConnectPageBody() {
           >
             YouTube
           </a>{" "}
-          for tours and market context.
+          for tours and market context. For curated topic shortcuts, see{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/popular-searches">
+            popular Palms Place &amp; Las Vegas searches
+          </Link>
+          .
         </p>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">Next step</h2>
+      <section className="mt-12" aria-labelledby="connect-next-step-heading">
+        <h2
+          className="font-display text-2xl font-semibold text-palms-cream"
+          id="connect-next-step-heading"
+        >
+          What is the best next step after connecting?
+        </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/contact">
             Schedule a call or visit
+          </Link>
+          , browse{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/buyers">
+            the buyer guide
           </Link>
           , or return to{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/">
@@ -81,6 +123,14 @@ export function ConnectPageBody() {
           .
         </p>
       </section>
+
+      <PageFaqSection
+        pathname="/connect"
+        headingId="connect-faq-heading"
+        heading="Connect FAQ"
+        intro="How this page differs from contact and how office details stay aligned with GBP."
+        items={connectPageFaq}
+      />
 
       <RelatedPages links={related} />
     </article>

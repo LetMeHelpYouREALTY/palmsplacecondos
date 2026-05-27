@@ -1,9 +1,14 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { StructuredData } from "@/components/seo/structured-data";
+import { popularSearchesPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
+import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 
 type PopularSearchLink = {
+  id: string;
   href: string;
   label: string;
   description: string;
@@ -11,61 +16,134 @@ type PopularSearchLink = {
 };
 
 const staticLinks: PopularSearchLink[] = [
-  { href: "/condos", label: "Palms Place & high-rise condos", description: "Strip-adjacent towers" },
   {
-    href: "/condos",
-    label: "Condos for sale on the Las Vegas Strip",
-    description: "Strip & west-of-Strip high-rises including Palms Place",
+    id: "palms-place-condos",
+    href: "/palms-place",
+    label: "Palms Place Las Vegas building guide",
+    description: "4381 W Flamingo Rd tower context",
   },
   {
+    id: "strip-condos",
+    href: "/condos",
+    label: "Palms Place & Strip high-rise condos for sale",
+    description: "Strip-adjacent towers and search entry",
+  },
+  {
+    id: "luxury-homes",
     href: "/luxury-homes",
     label: "Las Vegas luxury homes for sale",
     description: "Summerlin, Henderson & valley estates",
   },
   {
+    id: "vegas-high-rises",
     href: "/high-rises",
     label: "Vegas high-rise condos for sale",
     description: "Tower comparison & HOA context",
   },
   {
-    href: "/high-rises",
-    label: "Downtown Las Vegas condos vs Strip towers",
-    description: "How corridors and HOAs differ",
+    id: "downtown-vs-strip",
+    href: "/guide/compare-strip-high-rises",
+    label: "Palms Place vs other Strip high-rises",
+    description: "Tour order & HOA comparison guide",
   },
-  { href: "/condos", label: "Luxury condos on and near the Strip", description: "High-rise & penthouse inventory" },
-  { href: "/high-rises", label: "Las Vegas Strip high-rise condos", description: "Urban towers & amenities" },
-  { href: "/homes", label: "Homes for sale in Las Vegas", description: "Single-family & attached" },
   {
+    id: "luxury-condos-strip",
+    href: "/condos",
+    label: "Luxury condos on and near the Las Vegas Strip",
+    description: "High-rise & penthouse inventory",
+  },
+  {
+    id: "strip-high-rise-condos",
+    href: "/high-rises",
+    label: "Las Vegas Strip high-rise condos",
+    description: "Urban towers & amenities",
+  },
+  {
+    id: "homes-las-vegas",
+    href: "/homes",
+    label: "Homes for sale in Las Vegas",
+    description: "Single-family & attached",
+  },
+  {
+    id: "luxury-summerlin-henderson",
     href: "/luxury-homes",
     label: "Luxury homes in Summerlin & Henderson",
     description: "Estates & luxury single-family",
   },
-  { href: "/under-500k", label: "Under $500K", description: "Starter & move-up bands" },
-  { href: "/featured", label: "Featured listings", description: "Spotlight inventory" },
-  { href: "/sell", label: "Sell with the Palms Place team", description: "Listing specialist" },
-  { href: "/communities", label: "Neighborhoods & guard-gated communities", description: "West side & valley" },
+  {
+    id: "under-500k",
+    href: "/under-500k",
+    label: "Homes & condos under $500K",
+    description: "Starter & move-up price band",
+  },
+  {
+    id: "featured",
+    href: "/featured",
+    label: "Featured Palms Place & Las Vegas listings",
+    description: "Spotlight & new inventory",
+  },
+  {
+    id: "buyers-calculators",
+    href: "/buyers/calculators",
+    label: "Palms Place buyer calculators",
+    description: "PITI, HOA & closing-cost planning",
+  },
+  {
+    id: "sell",
+    href: "/sell",
+    label: "Sell with the Palms Place team",
+    description: "Listing specialist",
+  },
+  {
+    id: "communities",
+    href: "/communities",
+    label: "Las Vegas neighborhoods & communities",
+    description: "West side & valley context",
+  },
+  {
+    id: "connect",
+    href: "/connect",
+    label: "Connect with the Palms Place team",
+    description: "Office, social & follow-up",
+  },
 ];
+
+const pageMeta = {
+  name: "Popular Palms Place & Las Vegas real estate searches",
+  description:
+    "Shortcuts to Palms Place condos, Strip high-rises, luxury homes, and price bands—curated links plus live RealScout search with the local team.",
+};
 
 /** Expanded /popular-searches — curated internal links + RealScout. */
 export function PopularSearchesPageBody() {
   const related = relatedLinksForPath("/popular-searches");
   const searchUrl = getRealScoutSharedSearchUrl();
+  const webPageJsonLd = getWebPageJsonLdForPath("/popular-searches", pageMeta, { aboutPalmsPlace: true });
+  const breadcrumbJsonLd = getBreadcrumbListJsonLd("/popular-searches", [
+    { name: "Home", path: "/" },
+    { name: "Popular searches", path: "/popular-searches" },
+  ]);
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <StructuredData data={webPageJsonLd} />
+      <StructuredData data={breadcrumbJsonLd} />
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
-        Popular searches
+        Popular Palms Place &amp; Las Vegas real estate searches
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        High-intent shortcuts to Palms Place, Strip high-rises, and valley homes—each page expands
-        topic context without duplicating the homepage FAQ.
+        High-intent shortcuts to Palms Place, Strip high-rises, and valley homes—each destination page
+        adds local context without repeating the homepage FAQ. Use this hub when you know the topic but
+        not the best on-site guide yet.
       </p>
 
-      <section className="mt-10">
-        <h2 className="font-display text-xl font-semibold text-palms-cream">On this site</h2>
+      <section className="mt-10" aria-labelledby="popular-on-site-heading">
+        <h2 className="font-display text-xl font-semibold text-palms-cream" id="popular-on-site-heading">
+          Browse by topic on this site
+        </h2>
         <ul className="mt-6 space-y-4">
           {staticLinks.map((item) => (
-            <li key={`${item.href}-${item.label}`}>
+            <li key={item.id}>
               <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href={item.href}>
                 {item.label}
               </Link>
@@ -75,20 +153,58 @@ export function PopularSearchesPageBody() {
         </ul>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-xl font-semibold text-palms-cream">Live listing search</h2>
+      <section className="mt-12" aria-labelledby="popular-live-search-heading">
+        <h2
+          className="font-display text-xl font-semibold text-palms-cream"
+          id="popular-live-search-heading"
+        >
+          When should I open live listing search?
+        </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
+          After you pick a topic above, use{" "}
           <a
             className="font-medium text-palms-gold underline-offset-4 hover:underline"
             href={searchUrl}
             rel="noopener noreferrer"
             target="_blank"
           >
-            Open RealScout search
+            RealScout search
           </a>{" "}
-          for filters, saved searches, and alerts managed with your agent.
+          for filters, saved searches, and alerts managed with your agent. For payment planning first, see{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/buyers/calculators">
+            buyer calculators
+          </Link>
+          .
         </p>
       </section>
+
+      <section className="mt-12" aria-labelledby="popular-guides-heading">
+        <h2 className="font-display text-xl font-semibold text-palms-cream" id="popular-guides-heading">
+          Palms Place guides buyers search most
+        </h2>
+        <p className="mt-4 leading-relaxed text-palms-cream/85">
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/guide/buying-palms-place">
+            Buying a Palms Place condo
+          </Link>
+          ,{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/guide/selling-palms-place">
+            selling a Palms Place condo
+          </Link>
+          , and{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/insights">
+            field notes from recent tours
+          </Link>{" "}
+          go deeper than this shortcut list.
+        </p>
+      </section>
+
+      <PageFaqSection
+        pathname="/popular-searches"
+        headingId="popular-searches-faq-heading"
+        heading="Popular searches FAQ"
+        intro="How this hub relates to the building guide and live MLS search."
+        items={popularSearchesPageFaq}
+      />
 
       <RelatedPages links={related} />
     </article>

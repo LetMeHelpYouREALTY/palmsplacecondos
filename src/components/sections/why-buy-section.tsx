@@ -46,6 +46,18 @@ export function WhyBuySection() {
             <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/communities">
               Las Vegas condo communities overview
             </Link>
+            , or jump to{" "}
+            <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/popular-searches">
+              popular Palms Place &amp; Las Vegas searches
+            </Link>
+            ,{" "}
+            <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/featured">
+              featured listings
+            </Link>
+            , and{" "}
+            <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/under-500k">
+              homes under $500K
+            </Link>
             . When you are ready to tour,{" "}
             <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/guide/buying-palms-place">
               Palms Place buying field guide

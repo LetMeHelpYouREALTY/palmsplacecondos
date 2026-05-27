@@ -3,9 +3,9 @@ import { PopularSearchesPageBody } from "@/components/marketing/popular-searches
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
-  title: "Popular searches",
+  title: "Popular Palms Place & Las Vegas real estate searches",
   description:
-    "High-intent Las Vegas real estate searches—Palms Place, Strip high-rises, condos, and price bands.",
+    "Shortcuts to Palms Place condos, Strip high-rises, luxury homes, and price bands—curated links plus live RealScout search with the local team.",
   ...canonicalMetadata("/popular-searches"),
 };
 

@@ -4,8 +4,8 @@ import { canonicalMetadata } from "@/lib/metadata-helpers";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: "Connect",
-  description: `Connect with Dr. Jan Duffy and ${siteContact.buyerSpecialistName} for Palms Place, Las Vegas high-rise condos, and Strip-area real estate updates.`,
+  title: "Connect with the Palms Place team | Las Vegas Strip condos",
+  description: `Follow Palms Place updates, office NAP, and social channels for Las Vegas Strip high-rise condos—with ${siteContact.agentName} and ${siteContact.buyerSpecialistName}, ${siteContact.brokerage}.`,
   ...canonicalMetadata("/connect"),
 };
 

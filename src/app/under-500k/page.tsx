@@ -3,9 +3,9 @@ import { Under500kPageBody } from "@/components/marketing/under-500k-page-body";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
-  title: "Homes & condos under $500K",
+  title: "Las Vegas homes & condos under $500K | Price-band search",
   description:
-    "Las Vegas homes and condos under $500,000—starter and move-up inventory near the Strip and Palms Place.",
+    "Search Las Vegas homes and condos under $500,000 near the Strip and Palms Place—compare HOA carry on high-rises vs single-family with local Realtors.",
   ...canonicalMetadata("/under-500k"),
 };
 

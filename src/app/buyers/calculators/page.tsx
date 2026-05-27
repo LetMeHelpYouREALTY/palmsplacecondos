@@ -3,9 +3,9 @@ import { BuyerCalculatorsPageBody } from "@/components/marketing/buyer-calculato
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
-  title: "Buyer calculators",
+  title: "Palms Place buyer calculators | Payment & HOA planning",
   description:
-    "Mortgage payment, affordability, and closing-cost planning for Las Vegas and Palms Place home purchases.",
+    "Plan PITI, HOA, and closing costs before you tour Palms Place or Strip high-rises—questions for your lender plus live listing search.",
   ...canonicalMetadata("/buyers/calculators"),
 };
 
