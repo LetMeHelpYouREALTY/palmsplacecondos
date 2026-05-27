@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { GuideSellingPalmsPlacePageBody } from "@/components/marketing/guide-selling-palms-place-page-body";
-import { palmsPlaceSellerGuideMeta } from "@/lib/content/palms-place-seller-guide";
 import { canonicalMetadata } from "@/lib/metadata-helpers";
-import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
 
 const path = "/guide/selling-palms-place";
 
 export const metadata: Metadata = {
   title: "Selling a Palms Place condo | Team field guide",
-  description: `${palmsPlaceSellerGuideMeta.description} ${formatTeamPhrase()} — ${siteContact.brokerage}.`,
+  description:
+    "Sell a Palms Place condo with HOA packet timing, furnished resale prep, and listing strategy from Dr. Jan Duffy's Las Vegas Strip team.",
   ...canonicalMetadata(path),
 };
 

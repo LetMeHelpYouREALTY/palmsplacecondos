@@ -3,7 +3,8 @@ import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonAnchor, ButtonLink } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import type { RelatedLink } from "@/lib/internal-links";
-import type { BreadcrumbItem } from "@/lib/schema";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
+import type { BreadcrumbItem, FaqItem } from "@/lib/schema";
 import {
   getArticleJsonLdForPath,
   getBreadcrumbListJsonLd,
@@ -25,6 +26,8 @@ type MarketingGuidePageShellProps = {
   checklist?: { title: string; items: string[] };
   sections: { id: string; question: string; answer: string }[];
   footerCtas: { href: string; label: string }[];
+  faqItems?: FaqItem[];
+  faqHeading?: string;
 };
 
 export function MarketingGuidePageShell({
@@ -41,6 +44,8 @@ export function MarketingGuidePageShell({
   checklist,
   sections,
   footerCtas,
+  faqItems,
+  faqHeading = "Quick answers",
 }: MarketingGuidePageShellProps) {
   const webPageJsonLd = getWebPageJsonLdForPath(path, {
     name: meta.title,
@@ -120,6 +125,15 @@ export function MarketingGuidePageShell({
           ? ` · ${siteContact.buyerSpecialistName} ${siteContact.buyerSpecialistLicense}`
           : null}
       </p>
+
+      {faqItems && faqItems.length > 0 ? (
+        <PageFaqSection
+          pathname={path}
+          headingId={`${path.replace(/\//g, "-")}-faq`}
+          heading={faqHeading}
+          items={faqItems}
+        />
+      ) : null}
 
       <RelatedPages links={related} />
     </article>

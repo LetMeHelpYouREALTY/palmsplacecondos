@@ -4,8 +4,8 @@ import { canonicalMetadata } from "@/lib/metadata-helpers";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: "Buy Palms Place & Las Vegas high-rise condos | Buyer guide",
-  description: `Search Palms Place condos for sale, use buyer calculators, and tour with ${siteContact.buyerSpecialistName}, ${siteContact.buyerSpecialistTitle}. ${siteContact.brokerage}.`,
+  title: "Buy Palms Place & Las Vegas high-rise condos | Buyer hub",
+  description: `Search Palms Place condos, use buyer calculators, and tour with ${siteContact.buyerSpecialistName}—${siteContact.buyerSpecialistTitle}, ${siteContact.brokerage}.`,
   ...canonicalMetadata("/buyers"),
 };
 

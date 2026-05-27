@@ -94,3 +94,155 @@ export const popularSearchesPageFaq: FaqItem[] = [
       "No. The building guide explains address, amenities, and buying context. Popular searches are shortcuts to topic pages and live search—not a substitute for tower-specific due diligence.",
   },
 ];
+
+/** `/buyers` — must mirror visible FAQ on that page. */
+export const buyersPageFaq: FaqItem[] = [
+  {
+    question: "Who should start on the Palms Place buyer guide?",
+    answer:
+      "Buyers comparing Strip high-rises or targeting Palms Place specifically. Use this hub for search entry, calculators, and team contacts—then read the buying field guide before your first tower tour.",
+  },
+  {
+    question: "Does Chance Fuller handle all Palms Place buyer tours?",
+    answer:
+      "Chance Fuller is the Palms Place Buyers Specialist for showings, HOA questions, and offer strategy. Listing and marketing conversations typically route through Dr. Jan Duffy as listing lead.",
+  },
+  {
+    question: "Where do I search live Palms Place inventory?",
+    answer:
+      "Use the on-site search page or the team’s RealScout link from this hub. Inventory changes daily—confirm status and HOA documents with your agent before you write.",
+  },
+];
+
+/** `/communities` — must mirror visible FAQ on that page. */
+export const communitiesPageFaq: FaqItem[] = [
+  {
+    question: "How do Las Vegas communities compare to Palms Place?",
+    answer:
+      "Master-planned and guard-gated neighborhoods emphasize yards, schools, and drive times. Palms Place is a Strip-adjacent high-rise with HOA amenities and lock-and-leave living—compare both product types before you tour.",
+  },
+  {
+    question: "Should I tour communities and high-rises in the same weekend?",
+    answer:
+      "Only if you are genuinely open to both lifestyles. HOA rules, noise, parking, and monthly carry differ sharply—your agent can sequence tours so you compare like-for-like monthly costs.",
+  },
+  {
+    question: "Where do Summerlin and Henderson fit this hub?",
+    answer:
+      "Use the luxury homes page for estate and single-family context in Summerlin and Henderson, then contrast with Strip condos on the high-rises and Palms Place building guides.",
+  },
+];
+
+/** `/high-rises` — must mirror visible FAQ on that page. */
+export const highRisesPageFaq: FaqItem[] = [
+  {
+    question: "Is Palms Place the only Strip high-rise on this page?",
+    answer:
+      "No. Buyers often cross-shop multiple towers. This page explains how to compare HOAs and tours, with Palms Place–specific detail on the building guide and comparison field guide.",
+  },
+  {
+    question: "What should I compare besides list price?",
+    answer:
+      "HOA dues, parking, rental caps, reserve studies, and assessment history. List price alone rarely predicts monthly carry in Las Vegas towers.",
+  },
+  {
+    question: "Can I search all Strip towers in one MLS filter?",
+    answer:
+      "Live search can filter by area and property type, but each building’s rules still require disclosure review. Use RealScout for inventory and your agent for tower-specific due diligence.",
+  },
+];
+
+/** `/homes` — must mirror visible FAQ on that page. */
+export const homesPageFaq: FaqItem[] = [
+  {
+    question: "Does this team sell single-family homes beyond Palms Place?",
+    answer:
+      "Yes—buyers often compare valley single-family homes with Strip high-rises. This page covers Las Vegas houses; use the condos and Palms Place guides if a tower might fit better.",
+  },
+  {
+    question: "When should I choose a house instead of Palms Place?",
+    answer:
+      "When schools, yard space, or neighborhood character matter more than resort-style amenities and Strip proximity. Monthly payment comparisons should include HOA vs maintenance, not list price alone.",
+  },
+  {
+    question: "How do I search Las Vegas homes for sale here?",
+    answer:
+      "Open the team’s RealScout search for live MLS inventory, or browse popular searches for price-band shortcuts and topic hubs before you schedule tours.",
+  },
+];
+
+/** `/guide/buying-palms-place` — must mirror visible FAQ on that page. */
+export const buyingGuidePageFaq: FaqItem[] = [
+  {
+    question: "Is this guide official Palms Place or HOA documentation?",
+    answer:
+      "No. It is a brokerage field guide based on tours and transactions—always verify rental rules, fees, and assessments in HOA resale certificates and listing disclosures.",
+  },
+  {
+    question: "What is the first document to request before an offer?",
+    answer:
+      "HOA resale package and governing documents, plus a clear picture of parking, storage, and any special assessments. Your agent coordinates timing so you are not guessing from marketing copy alone.",
+  },
+  {
+    question: "Who handles buyer tours versus listing marketing?",
+    answer:
+      "Buyer tours and offer strategy often start with Chance Fuller, Palms Place Buyers Specialist. Listing preparation and marketing typically route through Dr. Jan Duffy as listing lead.",
+  },
+];
+
+/** `/guide/compare-strip-high-rises` — must mirror visible FAQ on that page. */
+export const compareStripGuidePageFaq: FaqItem[] = [
+  {
+    question: "Should I tour Palms Place first or another Strip tower?",
+    answer:
+      "Tour order depends on your must-haves—noise, parking, furnished inventory, and HOA rental rules. This guide suggests a comparison framework; your agent sequences buildings to match your criteria.",
+  },
+  {
+    question: "Are HOA fees comparable across Strip high-rises?",
+    answer:
+      "Rarely. Amenities, reserves, and assessment history differ by tower. Compare monthly carry with disclosures side by side, not marketing averages from third-party sites.",
+  },
+  {
+    question: "Does comparing towers replace the Palms Place building guide?",
+    answer:
+      "No. Use the building guide for Palms Place–specific address, amenities, and inventory context. This comparison guide helps you evaluate multiple towers on the same tour weekend.",
+  },
+];
+
+/** `/guide/palms-place-unit-types` — must mirror visible FAQ on that page. */
+export const unitTypesGuidePageFaq: FaqItem[] = [
+  {
+    question: "Are published square-footage ranges exact for every unit?",
+    answer:
+      "No. Marketing ranges are starting points—confirm square footage, storage, and parking on each listing record and during your tour.",
+  },
+  {
+    question: "Do studios and one-bedrooms have the same HOA rules?",
+    answer:
+      "They are in the same association, but furnished inventory, views, and parking assignments still vary by unit. Read the resale certificate for the specific unit you are buying.",
+  },
+  {
+    question: "Where do penthouses fit a first-time Palms Place tour?",
+    answer:
+      "Tour studios or one-bedrooms first if budget and lifestyle match. Penthouse layouts differ in ceiling height, outdoor space, and carry—confirm on listing data, not building averages.",
+  },
+];
+
+/** `/guide/selling-palms-place` — must mirror visible FAQ on that page. */
+export const sellingGuidePageFaq: FaqItem[] = [
+  {
+    question: "When should a Palms Place seller order HOA documents?",
+    answer:
+      "Early in listing prep so marketing, pricing, and buyer questions reflect accurate rental rules, reserves, and assessments. Delays in HOA packets can slow escrow—not just marketing.",
+  },
+  {
+    question: "Does furnished staging change how buyers evaluate HOA rules?",
+    answer:
+      "Furnished presentation can highlight lifestyle but does not replace disclosures. Buyers still underwrite rental caps, fees, and sound issues from official documents.",
+  },
+  {
+    question: "Who leads Palms Place listing strategy?",
+    answer:
+      "Dr. Jan Duffy leads listing marketing and positioning; buyer inquiries on active listings are coordinated per brokerage workflow. Use the sell page for valuation conversations.",
+  },
+];

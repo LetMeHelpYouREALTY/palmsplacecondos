@@ -1,49 +1,77 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { StructuredData } from "@/components/seo/structured-data";
+import { communitiesPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
+import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+
+const pageMeta = {
+  name: "Las Vegas communities & guard-gated neighborhoods",
+  description:
+    "Compare Strip-adjacent corridors, guard-gated neighborhoods, and Summerlin or Henderson with Palms Place high-rise living before you tour.",
+};
 
 /**
  * Expanded /communities — neighborhood context without duplicating homepage FAQ JSON-LD.
  */
 export function CommunitiesPageBody() {
   const related = relatedLinksForPath("/communities");
+  const webPageJsonLd = getWebPageJsonLdForPath("/communities", pageMeta);
+  const breadcrumbJsonLd = getBreadcrumbListJsonLd("/communities", [
+    { name: "Home", path: "/" },
+    { name: "Communities", path: "/communities" },
+  ]);
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <StructuredData data={webPageJsonLd} />
+      <StructuredData data={breadcrumbJsonLd} />
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Las Vegas communities &amp; guard-gated neighborhoods
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        Use this hub to orient your search before you tour. {siteContact.agentName} and{" "}
-        {siteContact.buyerSpecialistName} help buyers compare corridors across{" "}
-        {siteContact.primaryServiceArea}.
+        Orient your search before you tour. {siteContact.agentName} and {siteContact.buyerSpecialistName}{" "}
+        help buyers compare corridors across {siteContact.primaryServiceArea}—from Strip-adjacent towers
+        to master-planned valleys.
       </p>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
-          Strip-adjacent and west Las Vegas corridors
+      <section className="mt-12" aria-labelledby="communities-strip-heading">
+        <h2
+          className="font-display text-2xl font-semibold text-palms-cream"
+          id="communities-strip-heading"
+        >
+          How do Strip-adjacent corridors compare to Palms Place?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          Luxury condos West Las Vegas and near the Strip can offer shorter drives to entertainment
-          and employment centers—but HOA rules, noise, and parking differ by tower. Palms Place
-          condos for sale attract buyers who want resort-adjacent living with a private residential
-          tower experience; always compare HOA packets side by side.
+          Luxury condos west of the Las Vegas Strip can offer shorter drives to entertainment and
+          employment—but HOA rules, noise, and parking differ by tower. Start with the{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/palms-place">
+            Palms Place building guide
+          </Link>{" "}
+          and{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/high-rises">
+            Strip high-rise comparison hub
+          </Link>{" "}
+          before you assume every west-side tower trades like Palms Place.
         </p>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
-          Guard-gated and master-planned neighborhoods
+      <section className="mt-12" aria-labelledby="communities-gated-heading">
+        <h2
+          className="font-display text-2xl font-semibold text-palms-cream"
+          id="communities-gated-heading"
+        >
+          What should you know about guard-gated communities?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           Guard-gated communities in Las Vegas and Henderson layer controlled access and often
-          stronger amenity packages—but HOA costs and rules vary. If that product fits your
-          timeline, pair community tours with{" "}
+          stronger amenity packages—but HOA costs and rules vary. Pair community tours with{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/luxury-homes">
             Las Vegas luxury homes for sale
           </Link>{" "}
-          context and compare against high-rise trade-offs on{" "}
+          and compare against high-rise trade-offs on{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/condos">
             Strip and high-rise condos
           </Link>
@@ -51,40 +79,58 @@ export function CommunitiesPageBody() {
         </p>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
-          Summerlin, Henderson, and the broader valley
+      <section className="mt-12" aria-labelledby="communities-valley-heading">
+        <h2
+          className="font-display text-2xl font-semibold text-palms-cream"
+          id="communities-valley-heading"
+        >
+          How do Summerlin and Henderson fit a Palms Place search?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           If you are weighing master-planned communities against high-rise life, browse{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/luxury-homes">
             luxury homes in Summerlin and Henderson
+          </Link>
+          , then contrast with{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/homes">
+            Las Vegas homes for sale
           </Link>{" "}
-          for single-family and estate inventory, then contrast with{" "}
-          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/condos">
-            Las Vegas high-rise &amp; Palms Place condos
+          and{" "}
+          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/popular-searches">
+            popular buyer searches
           </Link>{" "}
-          for vertical living and HOA amenities Palms Place and similar towers provide.
+          for shortcuts by topic and price band.
         </p>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
-          Next steps with the Palms Place team
+      <section className="mt-12" aria-labelledby="communities-next-heading">
+        <h2
+          className="font-display text-2xl font-semibold text-palms-cream"
+          id="communities-next-heading"
+        >
+          What are the next steps with the Palms Place team?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          Narrow your must-haves, pull comparable sales with your agent, and schedule showings when
-          you are ready. Start from the{" "}
+          Narrow must-haves, pull comparables with your agent, and schedule showings when you are
+          ready. Start from the{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/">
-            Palms Place condos homepage
+            Palms Place homepage
           </Link>{" "}
           or{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
             contact the office
           </Link>{" "}
-          for a conversation about timing and financing—not legal or tax advice.
+          for timing and financing conversations—not legal or tax advice.
         </p>
       </section>
+
+      <PageFaqSection
+        pathname="/communities"
+        headingId="communities-faq-heading"
+        heading="Las Vegas communities FAQ"
+        intro="Comparing neighborhoods, guard-gated product, and Palms Place high-rise living."
+        items={communitiesPageFaq}
+      />
 
       <RelatedPages links={related} />
     </article>

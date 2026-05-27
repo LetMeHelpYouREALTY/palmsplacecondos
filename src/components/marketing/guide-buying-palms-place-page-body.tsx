@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { buyingGuidePageFaq } from "@/lib/content/discoverability-page-faqs";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonAnchor } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
@@ -143,6 +145,14 @@ export function GuideBuyingPalmsPlacePageBody() {
           </Link>
         </div>
       </section>
+
+      <PageFaqSection
+        pathname={path}
+        headingId="buying-guide-faq-heading"
+        heading="Buying guide FAQ"
+        intro="Field-guide scope, HOA documents, and team roles—not official HOA materials."
+        items={buyingGuidePageFaq}
+      />
 
       <RelatedPages links={related} />
     </article>

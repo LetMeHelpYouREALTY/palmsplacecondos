@@ -3,9 +3,9 @@ import { CommunitiesPageBody } from "@/components/marketing/communities-page-bod
 import { canonicalMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = {
-  title: "Las Vegas communities & guard-gated neighborhoods",
+  title: "Las Vegas communities & neighborhoods | Palms Place area guide",
   description:
-    "Strip-adjacent corridors, guard-gated communities, Summerlin and Henderson context—orient your search before you tour, including Palms Place and west-side condos.",
+    "Compare Strip-adjacent corridors, guard-gated neighborhoods, and Summerlin or Henderson with Palms Place high-rise living before you tour.",
   ...canonicalMetadata("/communities"),
 };
 

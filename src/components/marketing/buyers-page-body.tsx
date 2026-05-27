@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
+import { buyersPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { ButtonAnchor } from "@/components/shared/button-link";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
@@ -159,6 +161,14 @@ export function BuyersPageBody() {
           for location and building answers before your first visit.
         </p>
       </section>
+
+      <PageFaqSection
+        pathname="/buyers"
+        headingId="buyers-faq-heading"
+        heading="Palms Place buyer FAQ"
+        intro="Starting your search, team roles, and live inventory."
+        items={buyersPageFaq}
+      />
 
       <RelatedPages links={related} />
     </article>

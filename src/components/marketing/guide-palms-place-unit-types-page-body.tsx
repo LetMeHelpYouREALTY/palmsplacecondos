@@ -1,4 +1,5 @@
 import { MarketingGuidePageShell } from "@/components/marketing/marketing-guide-page-shell";
+import { unitTypesGuidePageFaq } from "@/lib/content/discoverability-page-faqs";
 import {
   palmsPlaceUnitSizeNotes,
   palmsPlaceUnitTypesGuideMeta,
@@ -35,6 +36,8 @@ export function GuidePalmsPlaceUnitTypesPageBody() {
       related={relatedLinksForPath(path)}
       searchUrl={getRealScoutSharedSearchUrl()}
       sections={[sizeContextSection, ...palmsPlaceUnitTypesSections]}
+      faqItems={unitTypesGuidePageFaq}
+      faqHeading="Unit types FAQ"
       footerCtas={[
         { href: "/guide/buying-palms-place", label: "Buying field guide" },
         { href: "/buyers", label: "Buyer hub" },

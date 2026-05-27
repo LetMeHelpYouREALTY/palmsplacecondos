@@ -4,8 +4,8 @@ import { canonicalMetadata } from "@/lib/metadata-helpers";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: "Las Vegas homes for sale & Palms Place context",
-  description: `Browse single-family and attached homes for sale in Las Vegas and near Palms Place with Dr. Jan Duffy and ${siteContact.buyerSpecialistName}, ${siteContact.brokerage}.`,
+  title: "Las Vegas homes for sale | Compare with Palms Place condos",
+  description: `Browse Las Vegas single-family and attached homes for sale—compare valley neighborhoods with Palms Place with ${siteContact.buyerSpecialistName}, ${siteContact.brokerage}.`,
   ...canonicalMetadata("/homes"),
 };
 

@@ -1,4 +1,5 @@
 import { MarketingGuidePageShell } from "@/components/marketing/marketing-guide-page-shell";
+import { compareStripGuidePageFaq } from "@/lib/content/discoverability-page-faqs";
 import {
   compareStripHighRisesGuideMeta,
   compareStripHighRisesIntro,
@@ -32,6 +33,8 @@ export function GuideCompareStripHighRisesPageBody() {
         { href: "/palms-place", label: "Palms Place building guide" },
         { href: "/high-rises", label: "Las Vegas high-rise condos" },
       ]}
+      faqItems={compareStripGuidePageFaq}
+      faqHeading="Strip comparison FAQ"
     />
   );
 }

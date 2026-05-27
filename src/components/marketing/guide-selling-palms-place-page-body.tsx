@@ -1,4 +1,5 @@
 import { MarketingGuidePageShell } from "@/components/marketing/marketing-guide-page-shell";
+import { sellingGuidePageFaq } from "@/lib/content/discoverability-page-faqs";
 import {
   palmsPlaceSellerGuideIntro,
   palmsPlaceSellerGuideMeta,
@@ -31,6 +32,8 @@ export function GuideSellingPalmsPlacePageBody() {
         items: palmsPlaceSellerPrepChecklist,
       }}
       sections={palmsPlaceSellerGuideSections}
+      faqItems={sellingGuidePageFaq}
+      faqHeading="Selling guide FAQ"
       footerCtas={[
         { href: "/sell", label: "Sell with the team" },
         { href: "/contact", label: "Schedule a seller consult" },
