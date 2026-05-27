@@ -2,8 +2,8 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 /**
- * When `NEXT_PUBLIC_SITE_URL` uses the **www** hostname, redirect apex (bare domain) requests to the www origin.
- * Keeps Search Console, sitemap, and metadataBase aligned on one primary host.
+ * Consolidate non-canonical hosts and HTTP to `NEXT_PUBLIC_SITE_URL` (production: https://www…).
+ * Cloudflare/Vercel may redirect before this runs; this covers apex, http://www, and direct hits.
  */
 export function middleware(request: NextRequest) {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
@@ -23,19 +23,26 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const apexHost = canonicalHost.slice(4);
   const host = request.headers.get("host")?.split(":")[0]?.toLowerCase();
-  if (!host || host === canonicalHost) {
+  if (!host) {
     return NextResponse.next();
   }
 
-  if (host !== apexHost) {
+  const forwardedProto = request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim()?.toLowerCase();
+  const requestIsHttps =
+    forwardedProto === "https" || request.nextUrl.protocol === "https:";
+
+  const hostMatches = host === canonicalHost;
+  const protocolMatches =
+    canonical.protocol === "https:" ? requestIsHttps : request.nextUrl.protocol === canonical.protocol;
+
+  if (hostMatches && protocolMatches) {
     return NextResponse.next();
   }
 
   const destination = new URL(
     `${request.nextUrl.pathname}${request.nextUrl.search}`,
-    `${canonical.protocol}//${canonicalHost}`,
+    canonical.origin,
   );
   return NextResponse.redirect(destination, 308);
 }

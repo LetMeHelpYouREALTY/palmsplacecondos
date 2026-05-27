@@ -40,6 +40,7 @@ Keep **apex** (`palmsplacecondos.com`) and **`www`** on **DNS only** (gray cloud
 ### Google Search Console
 
 - Add a **URL-prefix** property for **`https://www.palmsplacecondos.com`** (same host as `NEXT_PUBLIC_SITE_URL` and the app’s apex → `www` redirect).
+- **Page indexing → Page with redirect** for `http://palmsplacecondos.com/` or `http://www.palmsplacecondos.com/` is **expected**: those URLs 301/308 to `https://www.palmsplacecondos.com/`. Do not try to get the HTTP or apex URLs indexed—use **URL Inspection** on the **https www** homepage instead. The redirect report may keep listing legacy URLs while Google recrawls.
 - After deploy, submit **`https://www.palmsplacecondos.com/sitemap.xml`** in GSC.
 - **Verification:** DNS **TXT** at the apex (as in your Cloudflare zone) **or** set `GOOGLE_SITE_VERIFICATION` / `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` per [`.env.example`](.env.example) for the HTML-tag method.
 

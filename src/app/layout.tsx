@@ -8,6 +8,7 @@ import { RealScoutOfficeListingsEmbed } from "@/components/seo/realscout-office-
 import { StructuredData } from "@/components/seo/structured-data";
 import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
 import { getBaseJsonLd } from "@/lib/schema";
+import { getDefaultOgImages, getDefaultTwitterImages } from "@/lib/social-images";
 import { getSiteUrl } from "@/lib/site-url";
 
 const geistSans = Geist({
@@ -57,11 +58,13 @@ export const metadata: Metadata = {
     siteName: "Palms Place Condos",
     title: "Palms Place Condos for Sale | Las Vegas Strip",
     description: rootOgDescription,
+    images: getDefaultOgImages(),
   },
   twitter: {
     card: "summary_large_image",
     title: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
     description: rootOgDescription,
+    images: getDefaultTwitterImages(),
   },
   ...(googleSiteVerification
     ? {

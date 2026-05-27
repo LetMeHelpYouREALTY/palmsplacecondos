@@ -7,6 +7,7 @@ import { UnwindSection } from "@/components/sections/unwind-section";
 import { WhyBuySection } from "@/components/sections/why-buy-section";
 import { StructuredData } from "@/components/seo/structured-data";
 import { canonicalMetadata, canonicalPath } from "@/lib/metadata-helpers";
+import { getDefaultOgImages, getDefaultTwitterImages } from "@/lib/social-images";
 import { siteContact } from "@/lib/site-contact";
 import { getHomeWebPageJsonLd } from "@/lib/schema";
 
@@ -35,11 +36,13 @@ export const metadata: Metadata = {
     siteName: "Palms Place Condos",
     locale: "en_US",
     type: "website",
+    images: getDefaultOgImages(),
   },
   twitter: {
     card: "summary_large_image",
     title: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
     description: ogDescription,
+    images: getDefaultTwitterImages(),
   },
   ...canonicalMetadata("/"),
 };
