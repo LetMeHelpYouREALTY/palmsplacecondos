@@ -6,6 +6,7 @@ import { connectPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Connect with the Palms Place team — Las Vegas Strip condos",
@@ -34,6 +35,7 @@ export function ConnectPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Connect with the Palms Place team
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Stay in touch with {siteContact.teamBrandName}—{siteContact.brokerage}. Use this page for
         office location, hours, and social follow-ups; use{" "}

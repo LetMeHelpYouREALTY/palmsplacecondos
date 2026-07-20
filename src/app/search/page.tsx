@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 import { ButtonAnchor } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import { searchPageFaq } from "@/lib/content/discoverability-page-faqs";
@@ -47,6 +48,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
           Palms Place condos for sale — search residences
         </h1>
+        <AgentHeroBadge className="mt-6" />
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-palms-cream/85">
           Palms Place and Las Vegas high-rise inventory is searched through the team&apos;s curated
           RealScout link. Filter by price, property type, and status

@@ -7,6 +7,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Homes for sale in Las Vegas",
@@ -31,6 +32,7 @@ export function HomesPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Homes for sale in Las Vegas
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Single-family and attached homes across the valley—buyer tours with {siteContact.buyerSpecialistName},{" "}
         {siteContact.buyerSpecialistTitle}, and {siteContact.brokerage}. {siteContact.primaryServiceArea}.

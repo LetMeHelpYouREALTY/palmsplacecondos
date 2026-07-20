@@ -8,6 +8,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Buy Palms Place & Las Vegas high-rise condos — buyer guide",
@@ -31,6 +32,7 @@ export function BuyersPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Buy Palms Place &amp; Las Vegas high-rise condos
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         <strong className="font-semibold text-palms-cream">Buyers start here</strong> to search
         Palms Place and comparable Las Vegas high-rise inventory, estimate payments, and schedule tours

@@ -6,6 +6,7 @@ import { insightsHubPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { fieldNotes, fieldNotesHubMeta } from "@/lib/content/field-notes";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const path = "/insights";
 
@@ -24,6 +25,7 @@ export function InsightsHubPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Palms Place field notes
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         {fieldNotesHubMeta.description} Each note covers a <strong className="text-palms-cream">specific</strong>{" "}
         situation we see on tours and listings—not recycled “tips for first-time buyers” lists.

@@ -11,6 +11,7 @@ import {
 } from "@/lib/content/palms-place-faq";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getFaqPageJsonLdForPath } from "@/lib/schema";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 function FaqAccordionList({ items }: { items: PalmsPlaceFaqEntry[] }) {
   return (
@@ -61,6 +62,7 @@ export function FaqPageBody() {
         <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
           {palmsPlaceFaqIntro.title}
         </h1>
+        <AgentHeroBadge className="mt-6" />
         <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">{palmsPlaceFaqIntro.description}</p>
 
         <section className="mt-14" aria-labelledby="faq-common-heading">

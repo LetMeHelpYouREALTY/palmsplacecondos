@@ -7,6 +7,7 @@ import { formatPalmsPlaceTowerAddressLine, palmsPlaceTower } from "@/lib/content
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const path = "/area/palms-place-las-vegas";
 
@@ -36,6 +37,7 @@ export function AreaPalmsPlaceLasVegasPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Palms Place location — West Flamingo &amp; Paradise, Las Vegas
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Palms Place is a {palmsPlaceTower.floors}-story residential tower at{" "}
         <strong className="font-semibold text-palms-cream">{formatPalmsPlaceTowerAddressLine()}</strong>

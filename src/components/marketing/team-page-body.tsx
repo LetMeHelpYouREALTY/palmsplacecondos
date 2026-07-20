@@ -10,6 +10,7 @@ import {
   getWebPageJsonLdForPath,
 } from "@/lib/schema";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 function telHref(phone: string): string {
   return `tel:${phone.replace(/\D/g, "")}`;
@@ -40,6 +41,7 @@ export function TeamPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Palms Place real estate team — Las Vegas Strip high-rises
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         <strong className="font-semibold text-palms-cream">{siteContact.teamBrandName}</strong> helps
         buyers and sellers with Palms Place and Las Vegas high-rise condos at {siteContact.brokerage}.

@@ -16,6 +16,7 @@ import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { getSiteUrl } from "@/lib/site-url";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const path = "/guide/buying-palms-place";
 
@@ -67,6 +68,7 @@ export function GuideBuyingPalmsPlacePageBody() {
       <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         {palmsPlaceBuyerGuideIntro.headline}
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">{palmsPlaceBuyerGuideIntro.lede}</p>
       <p className="mt-4 text-sm text-palms-cream/60">
         Last updated {palmsPlaceBuyerGuideMeta.dateModified}. General real estate guidance—not legal,

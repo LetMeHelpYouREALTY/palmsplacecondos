@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 import { ButtonLink } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import { siteContact } from "@/lib/site-contact";
@@ -72,7 +73,9 @@ export function HeroPalmsPlace() {
           </p>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
+        <AgentHeroBadge className="mt-8" />
+
+        <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
           <ButtonLink href="/search" variant="primary">
             Browse listings
           </ButtonLink>

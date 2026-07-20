@@ -12,6 +12,7 @@ import {
   getWebPageJsonLdForPath,
   type FaqItem,
 } from "@/lib/schema";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 type FieldNotePageBodyProps = {
   note: FieldNote;
@@ -55,6 +56,7 @@ export function FieldNotePageBody({ note }: FieldNotePageBodyProps) {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         {note.headline}
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">{note.lede}</p>
       <p className="mt-3 text-sm text-palms-cream/60">
         By {note.authorName}, {note.authorJobTitle} · Updated {note.dateModified}

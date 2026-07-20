@@ -6,6 +6,7 @@ import { luxuryHomesPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Las Vegas luxury homes for sale — Summerlin, Henderson & valley",
@@ -29,6 +30,7 @@ export function LuxuryHomesPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Las Vegas luxury homes for sale — Summerlin, Henderson &amp; the valley
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Explore luxury homes for sale in Las Vegas—from Summerlin and Henderson estates to executive
         single-family in the broader valley. Buyer tours with {siteContact.buyerSpecialistName},{" "}

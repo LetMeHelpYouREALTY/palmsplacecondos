@@ -7,6 +7,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Las Vegas homes & condos under $500K — price-band search",
@@ -31,6 +32,7 @@ export function Under500kPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Las Vegas homes &amp; condos under $500K
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Starter and move-up inventory in {siteContact.primaryServiceArea}. Use live search to filter by
         price; in high-rises, compare HOA fees and monthly carry with your agent—not list price alone.

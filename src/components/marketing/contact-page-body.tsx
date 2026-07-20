@@ -6,6 +6,7 @@ import { contactPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { formatOfficeAddressLine, formatTeamPhrase, siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 function buildMapsQuery(): string {
   const line = formatOfficeAddressLine();
@@ -51,6 +52,7 @@ export function ContactPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Contact the Palms Place team
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         {formatTeamPhrase()}. {siteContact.brokerage}. Office NAP below matches the Google Business
         Profile and site footer.

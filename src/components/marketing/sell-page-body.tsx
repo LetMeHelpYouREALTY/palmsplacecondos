@@ -7,6 +7,7 @@ import { sellPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Sell your Palms Place or Las Vegas condo",
@@ -34,6 +35,7 @@ export function SellPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Sell your Palms Place or Las Vegas condo
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Listing conversations with {siteContact.agentName}, {siteContact.agentTitle}, and{" "}
         {siteContact.brokerage} focus on pricing strategy, presentation, and exposure—not a

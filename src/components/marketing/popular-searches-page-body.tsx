@@ -6,6 +6,7 @@ import { popularSearchesPageFaq } from "@/lib/content/discoverability-page-faqs"
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 type PopularSearchLink = {
   id: string;
@@ -155,6 +156,7 @@ export function PopularSearchesPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Popular Palms Place &amp; Las Vegas real estate searches
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         High-intent shortcuts to Palms Place, Strip high-rises, and valley homes—each destination page
         adds local context without repeating the homepage FAQ. Use this hub when you know the topic but

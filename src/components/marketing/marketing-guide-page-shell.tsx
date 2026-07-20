@@ -2,6 +2,7 @@ import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { SourcesVerification } from "@/components/seo/sources-verification";
 import { StructuredData } from "@/components/seo/structured-data";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 import { ButtonAnchor, ButtonLink } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import type { RelatedLink } from "@/lib/internal-links";
@@ -73,6 +74,7 @@ export function MarketingGuidePageShell({
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         {headline}
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">{lede}</p>
       <p className="mt-3 text-sm text-palms-cream/60">
         By {authorName}, {authorJobTitle} · Last reviewed {meta.dateModified}

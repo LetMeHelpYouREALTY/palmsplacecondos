@@ -10,6 +10,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Palms Place Las Vegas — building guide & condos for sale",
@@ -34,6 +35,7 @@ export function PalmsPlacePageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Palms Place Las Vegas — building guide &amp; condos for sale
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         <strong className="font-semibold text-palms-cream">Palms Place</strong> is a{" "}
         {palmsPlaceTower.floors}-story residential tower at {towerLine}, connected to Palms Casino

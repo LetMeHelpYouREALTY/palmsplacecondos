@@ -7,6 +7,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Featured Palms Place & Las Vegas listings — spotlight inventory",
@@ -31,6 +32,7 @@ export function FeaturedPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Featured Palms Place &amp; Las Vegas listings
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Highlights rotate with market activity—{siteContact.buyerSpecialistName} and{" "}
         {siteContact.agentName} curate search experiences and tour lists for{" "}

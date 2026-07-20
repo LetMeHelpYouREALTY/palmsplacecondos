@@ -8,6 +8,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Las Vegas high-rise & Palms Place condos for sale",
@@ -34,6 +35,7 @@ export function CondosPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Las Vegas high-rise &amp; Palms Place condos for sale
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         If you are searching for condos for sale on the Las Vegas Strip or a luxury condo in Las
         Vegas, start here—Palms Place for sale and comparable high-rise inventory with{" "}

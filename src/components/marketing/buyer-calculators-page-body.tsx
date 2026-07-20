@@ -7,6 +7,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Palms Place buyer calculators — payment & HOA planning",
@@ -34,6 +35,7 @@ export function BuyerCalculatorsPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Palms Place buyer calculators &amp; payment planning
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Use this page to frame questions for your lender—{siteContact.buyerSpecialistName} and the team
         at {siteContact.brokerage} focus on property fit and negotiation, not loan underwriting. This is

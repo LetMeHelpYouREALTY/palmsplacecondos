@@ -8,6 +8,7 @@ import { sellersPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Sell Palms Place & Las Vegas condos — seller guide",
@@ -30,6 +31,7 @@ export function SellersPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Sell Palms Place &amp; Las Vegas condos
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         <strong className="font-semibold text-palms-cream">Sellers start here</strong> for listing
         strategy at Palms Place and comparable Las Vegas high-rises with {siteContact.agentName},{" "}

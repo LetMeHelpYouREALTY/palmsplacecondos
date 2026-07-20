@@ -8,6 +8,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Las Vegas Strip high-rise condos for sale",
@@ -32,6 +33,7 @@ export function HighRisesPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Las Vegas Strip high-rise condos for sale
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Condos on the Strip and just west of it—luxury towers where amenities, HOA structures, and
         floor-plan variety differ by building. {siteContact.agentName} and {siteContact.buyerSpecialistName}{" "}

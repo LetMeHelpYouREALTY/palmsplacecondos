@@ -6,6 +6,7 @@ import { communitiesPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Las Vegas communities & guard-gated neighborhoods",
@@ -31,6 +32,7 @@ export function CommunitiesPageBody() {
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Las Vegas communities &amp; guard-gated neighborhoods
       </h1>
+      <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Orient your search before you tour. {siteContact.agentName} and {siteContact.buyerSpecialistName}{" "}
         help buyers compare corridors across {siteContact.primaryServiceArea}—from Strip-adjacent towers
