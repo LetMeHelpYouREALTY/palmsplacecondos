@@ -24,10 +24,17 @@ export function ContactPageBody() {
   const phone = siteContact.phone;
   const tel = phone ? `tel:${phone.replace(/\D/g, "")}` : undefined;
   const mapsQuery = buildMapsQuery();
+  // Preference order: explicit embed URL → Maps Embed API place mode (officially
+  // supported, free unlimited usage per Google docs) → keyless output=embed fallback.
+  const mapsEmbedApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY?.trim();
+  const embedApiSrc = mapsEmbedApiKey
+    ? `https://www.google.com/maps/embed/v1/place?key=${mapsEmbedApiKey}&q=${mapsQuery}`
+    : undefined;
   const fallbackEmbedSrc = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
   const embedSrc =
     process.env.NEXT_PUBLIC_CONTACT_MAP_EMBED_URL?.trim() ||
     siteContact.contactMapEmbedUrl?.trim() ||
+    embedApiSrc ||
     fallbackEmbedSrc;
   const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`;
   const placeSearchHref = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
@@ -156,11 +163,12 @@ export function ContactPageBody() {
         <h2 className="font-display text-xl font-semibold text-palms-cream">Map</h2>
         <div className="mt-4 overflow-hidden rounded-lg border border-palms-gold/15">
           <iframe
-            className="aspect-[4/3] min-h-[240px] w-full max-w-full md:min-h-[360px] md:aspect-auto md:h-[480px]"
+            allowFullScreen
+            className="aspect-[4/3] min-h-[240px] w-full max-w-full border-0 md:min-h-[360px] md:aspect-auto md:h-[480px]"
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
+            referrerPolicy="strict-origin-when-cross-origin"
             src={embedSrc}
-            title="Map — Palms Place and Las Vegas area"
+            title={`Map — office at ${formatOfficeAddressLine() || "Las Vegas, NV"}`}
           />
         </div>
       </section>
