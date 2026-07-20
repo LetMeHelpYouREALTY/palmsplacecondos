@@ -40,13 +40,15 @@ export function FeaturedListingBanner() {
           </div>
 
           <div className="bg-[#1a2744] px-4 py-6 md:px-8 md:py-8">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
-              <p className="font-display text-4xl font-bold tracking-tight text-palms-cream md:text-5xl">
-                {featuredListing.price}
-              </p>
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
+              <div className="shrink-0 space-y-1">
+                <p className="font-display text-4xl font-bold tracking-tight text-palms-cream md:text-5xl">
+                  {featuredListing.price}
+                </p>
+                <p className="text-sm font-medium text-palms-gold">{featuredListing.status}</p>
+              </div>
 
               <div className="min-w-0 flex-1 space-y-3">
-                <p className="text-sm font-medium text-palms-gold">{featuredListing.status}</p>
                 <p className="text-sm leading-snug text-palms-cream/95 md:text-base">
                   {featuredListing.addressLine}
                 </p>
@@ -66,6 +68,16 @@ export function FeaturedListingBanner() {
                       {featuredListing.squareFeet}
                     </span>
                   </li>
+                  <li>
+                    <span className="inline-flex rounded-md border border-palms-gold/50 bg-palms-charcoal/40 px-2.5 py-1 text-xs font-medium text-palms-gold md:text-sm">
+                      {featuredListing.entryLevel}
+                    </span>
+                  </li>
+                  <li>
+                    <span className="inline-flex rounded-md border border-palms-gold/50 bg-palms-charcoal/40 px-2.5 py-1 text-xs font-medium text-palms-gold md:text-sm">
+                      {featuredListing.hoaMonthly}
+                    </span>
+                  </li>
                 </ul>
                 <ul className="flex flex-wrap gap-2" aria-label="Property highlights">
                   {featuredListing.badges.map((badge) => (
@@ -76,7 +88,13 @@ export function FeaturedListingBanner() {
                     </li>
                   ))}
                 </ul>
-                <p className="text-sm text-palms-cream/80">{featuredListing.highlights}</p>
+                <p className="max-w-3xl text-sm leading-relaxed text-palms-cream/80">
+                  {featuredListing.overview}
+                </p>
+                <p className="text-xs text-palms-cream/55">
+                  MLS #{featuredListing.mlsNumber} · {featuredListing.annualTax} · Source: GLVAR ·
+                  Listing offered by BHHS Nevada Properties
+                </p>
               </div>
 
               {external ? (

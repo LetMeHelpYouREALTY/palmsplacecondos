@@ -2,17 +2,31 @@ import { palmsPlaceTower } from "@/lib/content/palms-place-building";
 
 /**
  * Homepage “just listed” spotlight — update when the featured unit changes.
+ * Facts below mirror the active RealScout / GLVAR listing (verify before offers).
  * Override with NEXT_PUBLIC_FEATURED_LISTING_URL in Vercel when the listing URL changes.
  */
 export const featuredListing = {
   price: "$387,777",
   status: "For Sale (Active)",
+  mlsNumber: "2782527",
   addressLine: `${palmsPlaceTower.streetAddress} #8322 • Palms Place • ${palmsPlaceTower.addressLocality}, ${palmsPlaceTower.addressRegion} ${palmsPlaceTower.postalCode}`,
-  badges: ["STR Permitted", "HOA Covers All Utilities", "8th Floor Corner"] as const,
   beds: "1 bed",
   baths: "1.5 baths",
   squareFeet: "1,220 SF",
-  highlights: "1 Bed • 1.5 Baths • Strip Views • Turnkey Investor Play",
+  lot: "—",
+  propertyType: "High Rise",
+  entryLevel: "8th floor",
+  hoaMonthly: "$1,638 / mo HOA",
+  annualTax: "$4,612 taxes / yr",
+  badges: [
+    "STR Permitted",
+    "Fully Furnished",
+    "HOA Covers Utilities",
+    "8th Floor Corner",
+    "Strip Views",
+  ] as const,
+  overview:
+    "Eighth-floor corner unit at Palms Place with two east-facing walls of floor-to-ceiling glass and Strip views. Short-term rentals permitted. 1,220 SF, fully furnished—new carpet, new dryer, Sub-Zero refrigerator, custom kitchenette, marble bath with jetted tub. HOA includes power, water, gas, cable, valet parking, and 24/7 concierge. Sky Tube connects to Palms Casino Resort.",
   ctaLabel: "View Full Details",
   // RealScout slug uses "822" even though the unit is #8322 — do not "fix" the path.
   detailsUrl:
