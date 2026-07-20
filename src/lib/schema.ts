@@ -2,6 +2,12 @@
  * JSON-LD builders for GEO/SEO. NAP fields (telephone, address) are added only when
  * present in siteContact—must match visible copy and GBP (see site-contact.ts).
  */
+import type { FeaturedYoutubeVideo } from "@/lib/content/featured-youtube-video";
+import {
+  youtubeEmbedUrl,
+  youtubeThumbnailUrl,
+  youtubeWatchUrl,
+} from "@/lib/content/featured-youtube-video";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -84,6 +90,8 @@ function getSameAs(): string[] | undefined {
   const fromSite: string[] = [];
   const fb = siteContact.facebookUrl?.trim();
   if (fb?.startsWith("http")) fromSite.push(fb);
+  const yt = siteContact.youtubeUrl?.trim();
+  if (yt?.startsWith("http")) fromSite.push(yt);
   const merged = [...fromSite, ...fromEnv];
   const seen = new Set<string>();
   const unique: string[] = [];
@@ -503,5 +511,36 @@ export function getFaqPageJsonLdForPath(pathname: string, items: FaqItem[]): Jso
   return {
     "@context": CONTEXT,
     "@graph": [faqPage],
+  };
+}
+
+/**
+ * VideoObject for an on-page YouTube embed (helps Google discover videos beyond the URL sitemap).
+ * @see https://developers.google.com/search/docs/appearance/structured-data/video
+ */
+export function getVideoObjectJsonLd(video: FeaturedYoutubeVideo): JsonLdGraph {
+  const siteUrl = siteOrigin(getSiteUrl());
+  const watchUrl = youtubeWatchUrl(video.videoId);
+  const embedUrl = youtubeEmbedUrl(video.videoId);
+  const thumbnailUrl = youtubeThumbnailUrl(video.videoId);
+  const videoNode: Record<string, unknown> = {
+    "@type": "VideoObject",
+    "@id": `${siteUrl}#video-${video.videoId}`,
+    name: video.title,
+    description: video.description,
+    thumbnailUrl: [thumbnailUrl],
+    uploadDate: video.uploadDate,
+    contentUrl: watchUrl,
+    embedUrl,
+    publisher: {
+      "@type": "Person",
+      name: siteContact.agentName,
+      url: video.channelUrl,
+    },
+  };
+
+  return {
+    "@context": CONTEXT,
+    "@graph": [videoNode],
   };
 }

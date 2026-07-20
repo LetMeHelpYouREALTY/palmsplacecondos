@@ -1,4 +1,5 @@
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
+import { siteContact } from "@/lib/site-contact";
 
 export type NavItem = {
   label: string;
@@ -7,8 +8,11 @@ export type NavItem = {
 };
 
 const facebookHref =
-  process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "https://www.facebook.com/palmsplace";
-const youtubeHref = process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "https://www.youtube.com/";
+  process.env.NEXT_PUBLIC_FACEBOOK_URL ??
+  siteContact.facebookUrl ??
+  "https://www.facebook.com/palmsplace";
+const youtubeHref =
+  process.env.NEXT_PUBLIC_YOUTUBE_URL ?? siteContact.youtubeUrl ?? "https://www.youtube.com/@DrDuffy";
 const realScoutSharedSearchHref = getRealScoutSharedSearchUrl();
 
 /** Top utility links (Connect + Facebook + YouTube) */
