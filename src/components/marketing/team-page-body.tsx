@@ -4,7 +4,11 @@ import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
 import { teamPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
-import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
+import {
+  getBreadcrumbListJsonLd,
+  getTeamPersonsJsonLd,
+  getWebPageJsonLdForPath,
+} from "@/lib/schema";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
 
 function telHref(phone: string): string {
@@ -26,11 +30,13 @@ export function TeamPageBody() {
     { name: "Home", path: "/" },
     { name: "Team", path: "/team" },
   ]);
+  const personsJsonLd = getTeamPersonsJsonLd();
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
       <StructuredData data={webPageJsonLd} />
       <StructuredData data={breadcrumbJsonLd} />
+      <StructuredData data={personsJsonLd} />
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Palms Place real estate team — Las Vegas Strip high-rises
       </h1>

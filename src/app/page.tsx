@@ -12,25 +12,25 @@ import { siteContact } from "@/lib/site-contact";
 import { getHomeWebPageJsonLd } from "@/lib/schema";
 
 const ogDescription =
-  "Studio to penthouse high-rise condos steps from the Las Vegas Strip. Expert guidance from Dr. Jan Duffy, 35+ years Vegas real estate.";
+  "Palms Place at 4381 W Flamingo Road—studio to penthouse Strip-adjacent condos. Local guidance from Dr. Jan Duffy, Palms Place listing specialist.";
 
 export const metadata: Metadata = {
-  title: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
-  description: `Browse Palms Place condos for sale on the Las Vegas Strip. Studio, 1-bedroom & penthouse residences with resort amenities. Call Dr. Jan Duffy ${siteContact.phone} — ${siteContact.brokerage}.`,
+  title: "Palms Place Condos for Sale | 4381 W Flamingo | Dr. Jan Duffy",
+  description: `Palms Place condos for sale at 4381 W Flamingo Road, Las Vegas. Studio, 1-bedroom & penthouse high-rise residences. Call listing specialist Dr. Jan Duffy ${siteContact.phone} — ${siteContact.brokerage}.`,
   keywords: [
     "Palms Place condos for sale",
     "Palms Place Las Vegas",
+    "4381 W Flamingo Road condos",
+    "Palms Place HOA",
     "Las Vegas Strip condos for sale",
     "high-rise condos Las Vegas",
-    "Las Vegas luxury penthouses for sale",
-    "luxury condo Las Vegas",
     "Palms Place floor plans",
-    "Las Vegas condo investment",
-    "Palms Place real estate",
-    "strip adjacent condos Las Vegas",
+    "Palms Place real estate agent",
+    "buy Palms Place condo",
+    "sell Palms Place condo",
   ],
   openGraph: {
-    title: "Palms Place Condos for Sale | Las Vegas Strip",
+    title: "Palms Place Condos for Sale | 4381 W Flamingo Road",
     description: ogDescription,
     url: canonicalPath("/"),
     siteName: "Palms Place Condos",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
+    title: "Palms Place Condos for Sale | 4381 W Flamingo | Dr. Jan Duffy",
     description: ogDescription,
     images: getDefaultTwitterImages(),
   },

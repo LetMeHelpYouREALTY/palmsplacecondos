@@ -2,6 +2,7 @@
  * JSON-LD builders for GEO/SEO. NAP fields (telephone, address) are added only when
  * present in siteContact—must match visible copy and GBP (see site-contact.ts).
  */
+import { palmsPlaceTower } from "@/lib/content/palms-place-building";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -84,6 +85,8 @@ function getSameAs(): string[] | undefined {
   const fromSite: string[] = [];
   const fb = siteContact.facebookUrl?.trim();
   if (fb?.startsWith("http")) fromSite.push(fb);
+  const yt = siteContact.youtubeUrl?.trim();
+  if (yt?.startsWith("http")) fromSite.push(yt);
   const merged = [...fromSite, ...fromEnv];
   const seen = new Set<string>();
   const unique: string[] = [];
@@ -119,48 +122,97 @@ function applyOfficeNapAndHours(
   }
 }
 
+/**
+ * Canonical Palms Place tower entity for GEO.
+ * Prefer ApartmentComplex (whole building) over Apartment (single unit).
+ */
 function buildPalmsPlaceEntity(siteUrl: string): Record<string, unknown> {
   const placePalmsId = id(siteUrl, "place-palms-place");
+  const origin = siteOrigin(siteUrl);
   const b = siteContact.palmsPlaceBuilding;
+  const towerUrl = `${origin}${palmsPlaceTower.pagePath}`;
 
-  if (b) {
-    return {
-      "@type": "Apartment",
-      "@id": placePalmsId,
-      name: "Palms Place",
-      description:
-        "Las Vegas high-rise condominium residences near the Strip. Verify unit details, HOA rules, and amenities with your agent and official building disclosures.",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: b.streetAddress,
-        addressLocality: b.addressLocality,
-        addressRegion: b.addressRegion,
-        postalCode: b.postalCode,
-        addressCountry: siteContact.addressCountry ?? "US",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: b.latitude,
-        longitude: b.longitude,
-      },
-      containedInPlace: {
-        "@type": "City",
-        name: "Las Vegas",
-        containedInPlace: { "@type": "State", name: "Nevada" },
-      },
-    };
-  }
-
-  return {
-    "@type": "Place",
+  const base: Record<string, unknown> = {
+    "@type": ["ApartmentComplex", "Place"],
     "@id": placePalmsId,
-    name: "Palms Place",
+    name: palmsPlaceTower.name,
+    alternateName: "Palms Place Las Vegas",
+    url: towerUrl,
+    description:
+      "Strip-adjacent high-rise condominium tower at 4381 W Flamingo Road, Las Vegas, connected to Palms Casino Resort. Residences are individually owned—verify HOA rules, fees, and amenities in official disclosures.",
     containedInPlace: {
       "@type": "City",
       name: "Las Vegas",
       containedInPlace: { "@type": "State", name: "Nevada" },
     },
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Floors",
+        value: String(palmsPlaceTower.floors),
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Opened",
+        value: String(palmsPlaceTower.openedYear),
+      },
+    ],
   };
+
+  if (b) {
+    base.address = {
+      "@type": "PostalAddress",
+      streetAddress: b.streetAddress,
+      addressLocality: b.addressLocality,
+      addressRegion: b.addressRegion,
+      postalCode: b.postalCode,
+      addressCountry: siteContact.addressCountry ?? "US",
+    };
+    base.geo = {
+      "@type": "GeoCoordinates",
+      latitude: b.latitude,
+      longitude: b.longitude,
+    };
+    base.hasMap = googleMapsSearchUrlForAddress(
+      `${b.streetAddress}, ${b.addressLocality}, ${b.addressRegion} ${b.postalCode}`,
+    );
+  }
+
+  return base;
+}
+
+/** Hyperlocal realtor services tied to the Palms Place entity. */
+function buildPalmsPlaceServices(
+  siteUrl: string,
+  placePalmsId: string,
+  listingAgentId: string,
+  buyersAgentId: string,
+): Record<string, unknown>[] {
+  const origin = siteOrigin(siteUrl);
+  return [
+    {
+      "@type": "Service",
+      "@id": id(siteUrl, "service-buy-palms-place"),
+      name: "Buy Palms Place Condos",
+      serviceType: "Real estate buyer representation",
+      description:
+        "Buyer representation for Palms Place and comparable Las Vegas Strip-adjacent high-rise condos—tours, HOA due diligence, and offer strategy.",
+      provider: { "@id": buyersAgentId },
+      areaServed: { "@id": placePalmsId },
+      url: `${origin}/buyers`,
+    },
+    {
+      "@type": "Service",
+      "@id": id(siteUrl, "service-sell-palms-place"),
+      name: "Sell Palms Place Condos",
+      serviceType: "Real estate listing services",
+      description:
+        "Listing strategy and marketing for Palms Place condo sellers—pricing, presentation, HOA packets, and exposure with Dr. Jan Duffy.",
+      provider: { "@id": listingAgentId },
+      areaServed: { "@id": placePalmsId },
+      url: `${origin}/sell`,
+    },
+  ];
 }
 
 /**
@@ -286,13 +338,30 @@ export function getBaseJsonLd(): JsonLdGraph {
   const palmsPlace = buildPalmsPlaceEntity(siteUrl);
   const placePalmsId = id(siteUrl, "place-palms-place");
 
+  listingAgent.areaServed = [
+    { "@id": placePalmsId },
+    { "@type": "City", name: "Las Vegas", containedInPlace: { "@type": "State", name: "Nevada" } },
+    { "@type": "AdministrativeArea", name: "Clark County" },
+  ];
+  buyersAgent.areaServed = listingAgent.areaServed;
+
   listingAgent.knowsAbout = [
     { "@id": placePalmsId },
     { "@type": "Thing", name: "Palms Place condos for sale" },
+    { "@type": "Thing", name: "Palms Place HOA and monthly costs" },
     { "@type": "Thing", name: "Las Vegas Strip high-rise condos" },
-    { "@type": "Thing", name: "Las Vegas luxury penthouses for sale" },
+    { "@type": "Thing", name: "Furnished Palms Place resales" },
+  ];
+  buyersAgent.knowsAbout = [
+    { "@id": placePalmsId },
+    { "@type": "Thing", name: "Buying Palms Place condos" },
+    { "@type": "Thing", name: "Palms Place unit types" },
+    { "@type": "Thing", name: "Las Vegas Strip high-rise condos" },
   ];
 
+  const services = buildPalmsPlaceServices(siteUrl, placePalmsId, listingAgentId, buyersAgentId);
+  listingAgent.makesOffer = { "@id": id(siteUrl, "service-sell-palms-place") };
+  buyersAgent.makesOffer = { "@id": id(siteUrl, "service-buy-palms-place") };
   const searchTarget = `${siteOrigin(siteUrl)}/search?q={search_term_string}`;
 
   const website: Record<string, unknown> = {
@@ -322,7 +391,7 @@ export function getBaseJsonLd(): JsonLdGraph {
 
   return {
     "@context": CONTEXT,
-    "@graph": [website, brokerage, listingAgent, buyersAgent, palmsPlace],
+    "@graph": [website, brokerage, listingAgent, buyersAgent, palmsPlace, ...services],
   };
 }
 
@@ -369,9 +438,14 @@ export function getHomeWebPageJsonLd(): JsonLdGraph {
     url: pageUrl,
     name: "Palms Place Condos for Sale — Las Vegas Strip High-Rise Residences",
     description:
-      "Browse Palms Place condos for sale near the Las Vegas Strip. Compare studio and one-bedroom high-rise listings, HOA details, and tours with Dr. Jan Duffy and Chance Fuller, Realtors.",
+      "Browse Palms Place condos for sale at 4381 W Flamingo Road near the Las Vegas Strip. Compare studio and one-bedroom high-rise listings, HOA details, and tours with Dr. Jan Duffy and Chance Fuller, Realtors.",
     isPartOf: { "@id": webId },
-    about: { "@id": placePalmsId },
+    about: [
+      { "@id": placePalmsId },
+      { "@id": listingAgentId },
+      { "@id": id(siteUrl, "service-buy-palms-place") },
+      { "@id": id(siteUrl, "service-sell-palms-place") },
+    ],
     mainEntity: { "@id": getHomeFaqSchemaId(siteUrl) },
     speakable: {
       "@type": "SpeakableSpecification",
@@ -426,11 +500,53 @@ export function getArticleJsonLdForPath(input: ArticleJsonLdInput): JsonLdGraph 
     mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
   };
   if (input.aboutPalmsPlace) {
-    article.about = { "@type": "Place", name: "Palms Place" };
+    article.about = { "@id": id(siteUrl, "place-palms-place") };
   }
   return {
     "@context": CONTEXT,
     "@graph": [article],
+  };
+}
+
+/** Person nodes for /team — stable @ids matching sitewide agent entities. */
+export function getTeamPersonsJsonLd(): JsonLdGraph {
+  const siteUrl = getSiteUrl();
+  const origin = siteOrigin(siteUrl);
+  const listingAgentId = id(siteUrl, "dr-jan-duffy");
+  const buyersAgentId = id(siteUrl, "chance-fuller");
+  const placePalmsId = id(siteUrl, "place-palms-place");
+  const brokerageId = id(siteUrl, "brokerage");
+
+  const jan: Record<string, unknown> = {
+    "@type": "Person",
+    "@id": `${listingAgentId}-person`,
+    name: siteContact.agentName,
+    jobTitle: siteContact.agentTitle,
+    url: `${origin}/team`,
+    worksFor: { "@id": brokerageId },
+    knowsAbout: [{ "@id": placePalmsId }, { "@type": "Thing", name: "Palms Place listings" }],
+    identifier: siteContact.license,
+  };
+  const chance: Record<string, unknown> = {
+    "@type": "Person",
+    "@id": `${buyersAgentId}-person`,
+    name: siteContact.buyerSpecialistName,
+    jobTitle: siteContact.buyerSpecialistTitle,
+    url: `${origin}/team`,
+    worksFor: { "@id": brokerageId },
+    knowsAbout: [{ "@id": placePalmsId }, { "@type": "Thing", name: "Buying Palms Place condos" }],
+    identifier: siteContact.buyerSpecialistLicense,
+  };
+  if (siteContact.emailListings) jan.email = siteContact.emailListings;
+  if (siteContact.emailBuyers) chance.email = siteContact.emailBuyers;
+  if (siteContact.phone) {
+    jan.telephone = toTelE164(siteContact.phone);
+    chance.telephone = toTelE164(siteContact.phone);
+  }
+
+  return {
+    "@context": CONTEXT,
+    "@graph": [jan, chance],
   };
 }
 

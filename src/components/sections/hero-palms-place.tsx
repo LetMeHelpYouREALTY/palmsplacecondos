@@ -42,12 +42,12 @@ export function HeroPalmsPlace() {
           className="font-display mt-8 max-w-3xl text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-palms-cream md:text-5xl lg:text-6xl"
           id="hero-heading"
         >
-          Palms Place Condos for Sale — Las Vegas Strip High-Rise Residences
+          Palms Place Condos for Sale — Las Vegas Strip High-Rise
         </h1>
 
         <p className="mt-6 max-w-3xl text-base leading-relaxed text-palms-cream/90 md:text-lg">
-          <strong className="font-semibold text-palms-cream">Palms Place condos for sale</strong> are
-          studio-to-penthouse residences near the Las Vegas Strip, listed with the{" "}
+          <strong className="font-semibold text-palms-cream">Palms Place</strong> is the focus of this
+          site: studio-to-penthouse condos at 4381 W Flamingo Road with the{" "}
           {siteContact.teamBrandName} at {siteContact.brokerage}. Browse live inventory, compare HOA
           rules, and schedule tours with {siteContact.agentName} (listings) or{" "}
           {siteContact.buyerSpecialistName} (buyers).

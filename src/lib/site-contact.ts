@@ -4,7 +4,9 @@
  * Optional NAP fields must match visible on-page copy and GBP before use in schema.
  */
 
-/** Verified building facts for schema.org `Apartment` — do not fabricate. */
+import { getPalmsPlaceBuildingForSchema } from "@/lib/content/palms-place-building";
+
+/** Verified tower facts for schema.org `ApartmentComplex` — do not fabricate. */
 export type PalmsPlaceBuilding = {
   streetAddress: string;
   addressLocality: string;
@@ -58,8 +60,8 @@ export type SiteContact = {
   /** Office longitude for JSON-LD `geo` — must match Google Maps / GBP pin. */
   officeLongitude?: number;
   /**
-   * Palms Place tower address + coordinates for JSON-LD `Apartment` when fully verified (HOA / public records).
-   * Omit to emit a minimal `Place` only.
+   * Palms Place tower address + coordinates for JSON-LD `ApartmentComplex`.
+   * Sourced from palms-place-building.ts (public tower address + listing map pin).
    */
   palmsPlaceBuilding?: PalmsPlaceBuilding;
   /**
@@ -69,6 +71,8 @@ export type SiteContact = {
   contactMapEmbedUrl?: string;
   /** Official Palms Place Facebook page — merged into JSON-LD `sameAs` when set. */
   facebookUrl?: string;
+  /** Dr. Jan Duffy YouTube channel — footer/connect + JSON-LD `sameAs`. */
+  youtubeUrl?: string;
 };
 
 export const siteContact: SiteContact = {
@@ -96,6 +100,11 @@ export const siteContact: SiteContact = {
   contactMapEmbedUrl:
     "https://www.google.com/maps/d/embed?mid=1fl048P0dAxnuNvwqHLrJU4i4zZmkwpE&hl=en&ehbc=2E312F",
   facebookUrl: "https://www.facebook.com/palmsplace",
+  youtubeUrl: "https://www.youtube.com/@DrDuffy",
+  /** Tower entity for GEO — address + geo from palms-place-building.ts */
+  palmsPlaceBuilding: getPalmsPlaceBuildingForSchema(),
+  schemaAgentDescription:
+    "Nevada Realtor and listing specialist focused on Palms Place condos for sale at 4381 W Flamingo Road, Las Vegas—Strip-adjacent high-rise residences with Berkshire Hathaway HomeServices Nevada Properties.",
 };
 
 /** Single-line office address for visible copy (footer, contact). */

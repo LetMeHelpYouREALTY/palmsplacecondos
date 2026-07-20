@@ -1,3 +1,4 @@
+import { formatPalmsPlaceTowerAddressLine, palmsPlaceTower } from "@/lib/content/palms-place-building";
 import { MARKETING_ROUTES, marketingPathHref } from "@/lib/marketing-routes";
 import { siteContact } from "@/lib/site-contact";
 import { getSiteUrl } from "@/lib/site-url";
@@ -8,11 +9,15 @@ export function buildLlmsTxt(): string {
   const lines = [
     `# ${siteContact.teamBrandName}`,
     "",
-    `> Hyperlocal Palms Place / Las Vegas Strip high-rise condo site for ${siteContact.agentName} and ${siteContact.buyerSpecialistName} at ${siteContact.brokerage}.`,
+    `> Hyperlocal real estate site for ${palmsPlaceTower.name} condos (${formatPalmsPlaceTowerAddressLine()}). Listing specialist ${siteContact.agentName}; buyers specialist ${siteContact.buyerSpecialistName}; ${siteContact.brokerage}.`,
     "",
-    `Office: ${siteContact.streetAddress}, ${siteContact.addressLocality}, ${siteContact.addressRegion} ${siteContact.postalCode}`,
-    `Phone: ${siteContact.phone ?? ""}`,
-    `Licenses: ${siteContact.agentName} ${siteContact.license}; ${siteContact.buyerSpecialistName} ${siteContact.buyerSpecialistLicense}`,
+    "## Entities",
+    "",
+    `- Building: ${palmsPlaceTower.name}, ${formatPalmsPlaceTowerAddressLine()} (${palmsPlaceTower.floors} floors, opened ${palmsPlaceTower.openedYear}). Page: ${origin}${palmsPlaceTower.pagePath}`,
+    `- Team office (GBP NAP): ${siteContact.streetAddress}, ${siteContact.addressLocality}, ${siteContact.addressRegion} ${siteContact.postalCode}`,
+    `- Phone: ${siteContact.phone ?? ""}`,
+    `- Licenses: ${siteContact.agentName} ${siteContact.license}; ${siteContact.buyerSpecialistName} ${siteContact.buyerSpecialistLicense}`,
+    `- Services: buy representation (${origin}/buyers); sell / listing (${origin}/sell)`,
     "",
     "## Primary pages",
     "",
