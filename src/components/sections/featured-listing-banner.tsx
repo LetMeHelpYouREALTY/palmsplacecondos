@@ -25,6 +25,8 @@ export function FeaturedListingBanner() {
 
   const ctaClassName =
     "inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-lg bg-palms-gold px-5 py-3 text-sm font-semibold text-palms-charcoal shadow-lg shadow-palms-gold/25 transition-colors hover:bg-palms-gold-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-palms-gold";
+  const secondaryCtaClassName =
+    "inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-lg border border-palms-gold/50 bg-transparent px-5 py-3 text-sm font-semibold text-palms-gold transition-colors hover:bg-palms-gold/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-palms-gold";
 
   return (
     <section
@@ -97,20 +99,30 @@ export function FeaturedListingBanner() {
                 </p>
               </div>
 
-              {external ? (
+              <div className="flex w-full shrink-0 flex-col gap-3 sm:flex-row lg:w-auto lg:flex-col">
                 <a
-                  className={ctaClassName}
-                  href={detailsUrl}
+                  className={secondaryCtaClassName}
+                  href={featuredListing.virtualTourUrl}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {featuredListing.ctaLabel} →
+                  {featuredListing.tourLabel} →
                 </a>
-              ) : (
-                <Link className={ctaClassName} href={detailsUrl}>
-                  {featuredListing.ctaLabel} →
-                </Link>
-              )}
+                {external ? (
+                  <a
+                    className={ctaClassName}
+                    href={detailsUrl}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {featuredListing.ctaLabel} →
+                  </a>
+                ) : (
+                  <Link className={ctaClassName} href={detailsUrl}>
+                    {featuredListing.ctaLabel} →
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
 

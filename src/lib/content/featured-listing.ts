@@ -28,6 +28,9 @@ export const featuredListing = {
   overview:
     "Eighth-floor corner unit at Palms Place with two east-facing walls of floor-to-ceiling glass and Strip views. Short-term rentals permitted. 1,220 SF, fully furnished—new carpet, new dryer, Sub-Zero refrigerator, custom kitchenette, marble bath with jetted tub. HOA includes power, water, gas, cable, valet parking, and 24/7 concierge. Sky Tube connects to Palms Casino Resort.",
   ctaLabel: "View Full Details",
+  tourLabel: "View Virtual / 3D Tour",
+  // PropertyPanorama Instaview for MLS #2782527 (unit #8322).
+  virtualTourUrl: "https://www.propertypanorama.com/instaview/las/2782527#tour",
   // RealScout slug uses "822" even though the unit is #8322 — do not "fix" the path.
   detailsUrl:
     "https://drjanduffy.realscout.com/homesearch/listings/p-4381-w-flamingo-road-822-las-vegas-89103-glvartrestle-932",
