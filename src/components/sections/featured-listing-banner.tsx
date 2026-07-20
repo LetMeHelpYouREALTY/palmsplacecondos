@@ -46,9 +46,27 @@ export function FeaturedListingBanner() {
               </p>
 
               <div className="min-w-0 flex-1 space-y-3">
+                <p className="text-sm font-medium text-palms-gold">{featuredListing.status}</p>
                 <p className="text-sm leading-snug text-palms-cream/95 md:text-base">
                   {featuredListing.addressLine}
                 </p>
+                <ul className="flex flex-wrap gap-2" aria-label="Property facts">
+                  <li>
+                    <span className="inline-flex rounded-md border border-palms-gold/50 bg-palms-charcoal/40 px-2.5 py-1 text-xs font-medium text-palms-gold md:text-sm">
+                      {featuredListing.beds}
+                    </span>
+                  </li>
+                  <li>
+                    <span className="inline-flex rounded-md border border-palms-gold/50 bg-palms-charcoal/40 px-2.5 py-1 text-xs font-medium text-palms-gold md:text-sm">
+                      {featuredListing.baths}
+                    </span>
+                  </li>
+                  <li>
+                    <span className="inline-flex rounded-md border border-palms-gold/50 bg-palms-charcoal/40 px-2.5 py-1 text-xs font-medium text-palms-gold md:text-sm">
+                      {featuredListing.squareFeet}
+                    </span>
+                  </li>
+                </ul>
                 <ul className="flex flex-wrap gap-2" aria-label="Property highlights">
                   {featuredListing.badges.map((badge) => (
                     <li key={badge}>
@@ -57,11 +75,6 @@ export function FeaturedListingBanner() {
                       </span>
                     </li>
                   ))}
-                  <li>
-                    <span className="inline-flex rounded-md border border-palms-gold/50 bg-palms-charcoal/40 px-2.5 py-1 text-xs font-medium text-palms-gold md:text-sm">
-                      {featuredListing.squareFeet}
-                    </span>
-                  </li>
                 </ul>
                 <p className="text-sm text-palms-cream/80">{featuredListing.highlights}</p>
               </div>
