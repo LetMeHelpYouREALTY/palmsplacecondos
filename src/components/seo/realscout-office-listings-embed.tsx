@@ -1,8 +1,10 @@
 /**
- * RealScout office listings web component. Script is loaded once in root layout.
+ * RealScout office listings section. Script + custom element mount are deferred
+ * until near the viewport (see RealScoutOfficeListingsMount).
  * @see https://support.realscout.com — widget and agent ID configuration.
  */
 import Link from "next/link";
+import { RealScoutOfficeListingsMount } from "@/components/seo/realscout-office-listings-mount";
 import { ButtonAnchor } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
@@ -77,10 +79,7 @@ export function RealScoutOfficeListingsEmbed() {
         </div>
 
         <div className="mt-10 rounded-2xl border border-palms-gold/10 bg-palms-charcoal-muted/40 p-4 shadow-inner shadow-black/20 backdrop-blur-sm md:p-6">
-          <div
-            className="min-h-[240px] w-full"
-            dangerouslySetInnerHTML={{ __html: markup }}
-          />
+          <RealScoutOfficeListingsMount markup={markup} />
         </div>
 
         <p className="mt-6 max-w-3xl text-xs leading-relaxed text-palms-cream/55">

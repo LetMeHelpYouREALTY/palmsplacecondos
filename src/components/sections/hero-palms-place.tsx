@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { LuxuryPlaceholder } from "@/components/sections/luxury-placeholder";
 import { ButtonLink } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import { siteContact } from "@/lib/site-contact";
@@ -15,15 +15,10 @@ export function HeroPalmsPlace() {
   return (
     <section aria-labelledby="hero-heading" className="relative isolate min-h-[80vh] w-full overflow-hidden">
       <div className="absolute inset-0">
-        <Image
+        <LuxuryPlaceholder
           alt="Palms Place condos for sale Las Vegas Strip high-rise exterior view"
-          className="object-cover"
-          fetchPriority="high"
-          fill
-          priority
-          sizes="100vw"
-          src="/placeholders/hero-gradient.svg"
-          unoptimized
+          className="absolute inset-0 h-full w-full"
+          variant="hero"
         />
         <div
           aria-hidden
