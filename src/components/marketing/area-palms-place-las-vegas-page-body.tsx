@@ -5,6 +5,7 @@ import { StructuredData } from "@/components/seo/structured-data";
 import { areaPalmsPlacePageFaq } from "@/lib/content/discoverability-page-faqs";
 import { formatPalmsPlaceTowerAddressLine, palmsPlaceTower } from "@/lib/content/palms-place-building";
 import { relatedLinksForPath } from "@/lib/internal-links";
+import { resolveMapEmbedSrc } from "@/lib/maps-embed";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
@@ -17,9 +18,14 @@ const pageMeta = {
     "Where Palms Place sits on the Las Vegas Strip corridor—4381 W Flamingo Rd, Paradise 89103, directions, and how the tower relates to resort and high-rise living.",
 };
 
-const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-  formatPalmsPlaceTowerAddressLine(),
-)}&output=embed`;
+const mapsEmbedSrc = resolveMapEmbedSrc({
+  query: formatPalmsPlaceTowerAddressLine(),
+  coords: {
+    latitude: palmsPlaceTower.latitude,
+    longitude: palmsPlaceTower.longitude,
+  },
+  embedApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY?.trim(),
+});
 
 /** GEO / entity page for the Palms Place tower — building address, not team office. */
 export function AreaPalmsPlaceLasVegasPageBody() {
@@ -93,9 +99,10 @@ export function AreaPalmsPlaceLasVegasPageBody() {
         </p>
         <div className="mt-6 overflow-hidden rounded-xl border border-palms-gold/20">
           <iframe
+            allowFullScreen
             className="aspect-[4/3] w-full border-0"
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
+            referrerPolicy="strict-origin-when-cross-origin"
             src={mapsEmbedSrc}
             title={`Map of Palms Place at ${formatPalmsPlaceTowerAddressLine()}`}
           />

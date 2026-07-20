@@ -4,14 +4,10 @@ import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
 import { contactPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
+import { resolveMapEmbedSrc } from "@/lib/maps-embed";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { formatOfficeAddressLine, formatTeamPhrase, siteContact } from "@/lib/site-contact";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
-
-function buildMapsQuery(): string {
-  const line = formatOfficeAddressLine();
-  return encodeURIComponent(line || "Las Vegas, NV");
-}
 
 const pageMeta = {
   name: "Contact the Palms Place team — Las Vegas office",
@@ -24,19 +20,21 @@ export function ContactPageBody() {
   const related = relatedLinksForPath("/contact");
   const phone = siteContact.phone;
   const tel = phone ? `tel:${phone.replace(/\D/g, "")}` : undefined;
-  const mapsQuery = buildMapsQuery();
-  // Preference order: explicit embed URL → Maps Embed API place mode (officially
-  // supported, free unlimited usage per Google docs) → keyless output=embed fallback.
-  const mapsEmbedApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY?.trim();
-  const embedApiSrc = mapsEmbedApiKey
-    ? `https://www.google.com/maps/embed/v1/place?key=${mapsEmbedApiKey}&q=${mapsQuery}`
-    : undefined;
-  const fallbackEmbedSrc = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
-  const embedSrc =
-    process.env.NEXT_PUBLIC_CONTACT_MAP_EMBED_URL?.trim() ||
-    siteContact.contactMapEmbedUrl?.trim() ||
-    embedApiSrc ||
-    fallbackEmbedSrc;
+  const officeLine = formatOfficeAddressLine() || "Las Vegas, NV";
+  const mapsQuery = encodeURIComponent(officeLine);
+  const officeCoords =
+    typeof siteContact.officeLatitude === "number" &&
+    typeof siteContact.officeLongitude === "number"
+      ? { latitude: siteContact.officeLatitude, longitude: siteContact.officeLongitude }
+      : undefined;
+  const embedSrc = resolveMapEmbedSrc({
+    query: officeLine,
+    coords: officeCoords,
+    overrideUrl:
+      process.env.NEXT_PUBLIC_CONTACT_MAP_EMBED_URL?.trim() ||
+      siteContact.contactMapEmbedUrl?.trim(),
+    embedApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY?.trim(),
+  });
   const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`;
   const placeSearchHref = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
   const webPageJsonLd = getWebPageJsonLdForPath("/contact", pageMeta, { aboutListingAgent: true });
@@ -170,7 +168,7 @@ export function ContactPageBody() {
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
             src={embedSrc}
-            title={`Map — office at ${formatOfficeAddressLine() || "Las Vegas, NV"}`}
+            title={`Map — office at ${officeLine}`}
           />
         </div>
       </section>
