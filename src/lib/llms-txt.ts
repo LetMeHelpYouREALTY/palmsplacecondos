@@ -7,15 +7,19 @@ import { getSiteUrl } from "@/lib/site-url";
 export function buildLlmsTxt(): string {
   const origin = getSiteUrl().replace(/\/$/, "");
   const lines = [
-    `# ${siteContact.teamBrandName}`,
+    `# ${siteContact.gbpBusinessName}`,
     "",
     `> Hyperlocal real estate site for ${palmsPlaceTower.name} condos (${formatPalmsPlaceTowerAddressLine()}). Listing specialist ${siteContact.agentName}; buyers specialist ${siteContact.buyerSpecialistName}; ${siteContact.brokerage}.`,
     "",
     "## Entities",
     "",
+    `- GBP business name: ${siteContact.gbpBusinessName} (Real estate agent)`,
     `- Building: ${palmsPlaceTower.name}, ${formatPalmsPlaceTowerAddressLine()} (${palmsPlaceTower.floors} floors, opened ${palmsPlaceTower.openedYear}). Page: ${origin}${palmsPlaceTower.pagePath}`,
     `- Team office (GBP NAP): ${siteContact.streetAddress}, ${siteContact.addressLocality}, ${siteContact.addressRegion} ${siteContact.postalCode}`,
+    `- Service area: ${siteContact.primaryServiceArea}`,
+    `- Hours: ${siteContact.officeHoursLine ?? ""}`,
     `- Phone: ${siteContact.phone ?? ""}`,
+    `- Website: ${origin}/`,
     `- Licenses: ${siteContact.agentName} ${siteContact.license}; ${siteContact.buyerSpecialistName} ${siteContact.buyerSpecialistLicense}`,
     `- Services: buy representation (${origin}/buyers); sell / listing (${origin}/sell)`,
     "",
@@ -45,10 +49,12 @@ export function buildLlmsTxt(): string {
 export function buildLlmsFullTxt(): string {
   const origin = getSiteUrl().replace(/\/$/, "");
   const parts = [
-    `# ${siteContact.teamBrandName} — full page index`,
+    `# ${siteContact.gbpBusinessName} — full page index`,
     "",
     `Canonical host: ${origin}`,
     `NAP: ${siteContact.streetAddress}, ${siteContact.addressLocality}, ${siteContact.addressRegion} ${siteContact.postalCode} · ${siteContact.phone}`,
+    `Service area: ${siteContact.primaryServiceArea}`,
+    `Hours: ${siteContact.officeHoursLine ?? ""}`,
     "",
     "Quantitative listing prices, HOA dues, and inventory counts change daily. Verify in live search and official disclosures.",
     "",

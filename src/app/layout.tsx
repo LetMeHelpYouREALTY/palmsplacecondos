@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
-    template: "%s | Palms Place Condos",
+    template: `%s | ${siteContact.gbpBusinessName}`,
   },
-  description: `Browse Palms Place condos for sale on the Las Vegas Strip. ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
+  description: `${siteContact.schemaAgentDescription}. Service area: ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
   robots: {
     index: true,
     follow: true,
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Palms Place Condos",
+    siteName: siteContact.gbpBusinessName,
     title: "Palms Place Condos for Sale | Las Vegas Strip",
     description: rootOgDescription,
     images: getDefaultOgImages(),

@@ -48,7 +48,7 @@ export function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           <div>
             <p className="font-display text-lg font-semibold tracking-tight text-palms-cream">
-              Palms Place Condos
+              {siteContact.gbpBusinessName}
             </p>
             <p className="mt-2 max-w-xs text-palms-cream/75">{siteContact.teamBrandName}</p>
             <p className="mt-1 text-xs text-palms-cream/60">{siteContact.primaryServiceArea}</p>
@@ -172,7 +172,7 @@ export function SiteFooter() {
 
         <div className="mt-12 border-t border-palms-gold/15 pt-8 text-xs leading-relaxed text-palms-cream/55">
           <p>
-            © {year} {siteContact.teamBrandName}. {siteContact.brokerage}. All rights reserved.
+            © {year} {siteContact.gbpBusinessName}. {siteContact.brokerage}. All rights reserved.
           </p>
           <p className="mt-2">
             Equal Housing Opportunity. Listing data is deemed reliable but not guaranteed; verify with your

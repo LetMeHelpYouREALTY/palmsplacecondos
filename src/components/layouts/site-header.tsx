@@ -24,7 +24,7 @@ export function SiteHeader() {
             className="font-display truncate text-lg font-semibold tracking-[0.02em] text-palms-cream hover:text-palms-gold"
             href="/"
           >
-            Palms Place Condos
+            {siteContact.gbpBusinessName}
           </Link>
           <nav aria-label="Primary" className="hidden items-center gap-5 md:flex">
             {headerNav.map((item) => (

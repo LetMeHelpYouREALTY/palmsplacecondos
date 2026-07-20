@@ -274,8 +274,9 @@ export function getBaseJsonLd(): JsonLdGraph {
   const listingAgent: Record<string, unknown> = {
     "@type": ["RealEstateAgent", "LocalBusiness"],
     "@id": listingAgentId,
-    name: siteContact.agentName,
-    alternateName: siteContact.teamBrandName,
+    // LocalBusiness.name must match Google Business Profile business name exactly.
+    name: siteContact.gbpBusinessName,
+    alternateName: [siteContact.agentName, siteContact.teamBrandName],
     description: defaultListingAgentDescription(),
     jobTitle: siteContact.agentTitle,
     url: siteUrl,
@@ -340,6 +341,16 @@ export function getBaseJsonLd(): JsonLdGraph {
 
   listingAgent.areaServed = [
     { "@id": placePalmsId },
+    {
+      "@type": "Place",
+      name: "Las Vegas Strip",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Las Vegas",
+        addressRegion: "NV",
+        addressCountry: "US",
+      },
+    },
     { "@type": "City", name: "Las Vegas", containedInPlace: { "@type": "State", name: "Nevada" } },
     { "@type": "AdministrativeArea", name: "Clark County" },
   ];
@@ -368,9 +379,8 @@ export function getBaseJsonLd(): JsonLdGraph {
     "@type": "WebSite",
     "@id": webId,
     url: siteUrl,
-    name: "Palms Place Condos",
-    description:
-      "Palms Place condos for sale on the Las Vegas Strip — studio to penthouse high-rise residences with expert guidance from Dr. Jan Duffy and the Palms Place team at Berkshire Hathaway HomeServices Nevada Properties.",
+    name: siteContact.gbpBusinessName,
+    description: defaultListingAgentDescription(),
     inLanguage: "en-US",
     publisher: { "@id": listingAgentId },
     about: [
@@ -436,7 +446,7 @@ export function getHomeWebPageJsonLd(): JsonLdGraph {
     "@type": "WebPage",
     "@id": `${pageUrl}#webpage`,
     url: pageUrl,
-    name: "Palms Place Condos for Sale — Las Vegas Strip High-Rise Residences",
+    name: defaultListingAgentDescription(),
     description:
       "Browse Palms Place condos for sale at 4381 W Flamingo Road near the Las Vegas Strip. Compare studio and one-bedroom high-rise listings, HOA details, and tours with Dr. Jan Duffy and Chance Fuller, Realtors.",
     isPartOf: { "@id": webId },

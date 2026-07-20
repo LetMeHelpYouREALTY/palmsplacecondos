@@ -18,8 +18,12 @@ export type PalmsPlaceBuilding = {
 
 export type SiteContact = {
   /**
-   * Public-facing team name for marketing (who clients work with—not the building name alone).
-   * Align with Google Business Profile / team branding when published.
+   * Google Business Profile business name — must match GBP exactly for LocalBusiness JSON-LD
+   * and primary on-page brand (header/footer).
+   */
+  gbpBusinessName: string;
+  /**
+   * Public-facing team name for marketing (who clients work with—not the GBP listing name alone).
    */
   teamBrandName: string;
   /** Listing lead / primary licensee on this site. */
@@ -27,6 +31,7 @@ export type SiteContact = {
   agentTitle: string;
   license: string;
   brokerage: string;
+  /** GBP service area — keep aligned with profile “Service area”. */
   primaryServiceArea: string;
   /** Buyer-side specialist (name + role for copy and schema). */
   buyerSpecialistName: string;
@@ -47,11 +52,11 @@ export type SiteContact = {
   postalCode?: string;
   addressCountry?: string;
   /**
-   * Visible office hours — must match Google Business Profile.
+   * Visible office hours — must match Google Business Profile (pending/live).
    * If you change this line, update `openingHoursSpecification` in `lib/schema.ts` to match (opens/closes, days).
    */
   officeHoursLine?: string;
-  /** Optional override for JSON-LD `RealEstateAgent` / `LocalBusiness` description (must match on-site claims). */
+  /** Optional override for JSON-LD `RealEstateAgent` / `LocalBusiness` description (must match GBP + on-site). */
   schemaAgentDescription?: string;
   /** Optional `priceRange` for LocalBusiness JSON-LD (e.g. "$$$$"). */
   schemaPriceRange?: string;
@@ -76,6 +81,8 @@ export type SiteContact = {
 };
 
 export const siteContact: SiteContact = {
+  /** Must match Google Business Profile business name exactly. */
+  gbpBusinessName: "Palms Place Condos",
   teamBrandName: "Dr. Jan Duffy Palms Place Team",
   agentName: "Dr. Jan Duffy",
   agentTitle: "Realtor, Listing Specialist & Team Leader for Palms Place",
@@ -86,17 +93,19 @@ export const siteContact: SiteContact = {
   emailGeneral: "DrDuffy@PalmsPlaceCondos.com",
   emailListings: "DrDuffySells@PalmsPlaceCondos.com",
   emailBuyers: "ChanceSells@PalmsPlaceCondos.com",
-  primaryServiceArea: "Las Vegas — Palms Place and surrounding communities",
+  /** GBP service area: Las Vegas Strip, NV, USA */
+  primaryServiceArea: "Las Vegas Strip, NV",
   buyerSpecialistName: "Chance Fuller, Realtor",
   buyerSpecialistTitle: "Palms Place Buyers Specialist",
   buyerSpecialistLicense: "S.204454",
-  /** Office — must match Google Business Profile and JSON-LD. */
-  streetAddress: "3651 Lindell Rd Suite D",
+  /** Office — must match Google Business Profile (“3651 S Lindell Rd suite d”). */
+  streetAddress: "3651 S Lindell Rd Suite D",
   addressLocality: "Las Vegas",
   addressRegion: "NV",
   postalCode: "89103",
   addressCountry: "US",
-  officeHoursLine: "Monday through Friday, 9:00 AM to 5:00 PM",
+  /** Matches GBP pending hours: Mon–Fri 9:00 AM–5:00 PM; Sat–Sun closed. */
+  officeHoursLine: "Monday–Friday, 9:00 AM–5:00 PM · Saturday–Sunday closed",
   // Office pin from Google Maps place result for this address (matches embed).
   officeLatitude: 36.1233904,
   officeLongitude: -115.2171723,
@@ -109,8 +118,9 @@ export const siteContact: SiteContact = {
   youtubeUrl: "https://www.youtube.com/@DrDuffy",
   /** Tower entity for GEO — address + geo from palms-place-building.ts */
   palmsPlaceBuilding: getPalmsPlaceBuildingForSchema(),
+  /** Must match Google Business Profile description. */
   schemaAgentDescription:
-    "Nevada Realtor and listing specialist focused on Palms Place condos for sale at 4381 W Flamingo Road, Las Vegas—Strip-adjacent high-rise residences with Berkshire Hathaway HomeServices Nevada Properties.",
+    "Palms Place Condos for Sale — Las Vegas Strip High-Rise Residences",
 };
 
 /** Single-line office address for visible copy (footer, contact). */

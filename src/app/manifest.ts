@@ -3,9 +3,9 @@ import { siteContact } from "@/lib/site-contact";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Palms Place Condos",
+    name: siteContact.gbpBusinessName,
     short_name: "Palms Place",
-    description: `Palms Place condos for sale on the Las Vegas Strip — ${siteContact.teamBrandName}.`,
+    description: siteContact.schemaAgentDescription ?? `Palms Place condos for sale on the Las Vegas Strip — ${siteContact.teamBrandName}.`,
     start_url: "/",
     display: "browser",
     background_color: "#0d0d0d",
