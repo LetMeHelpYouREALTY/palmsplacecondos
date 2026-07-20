@@ -31,7 +31,7 @@ export function StaySection() {
                 content: (
                   <div className="grid gap-0 md:grid-cols-2">
                     <LuxuryPlaceholder
-                      alt="Palms Place studio condo floor plan layout Las Vegas"
+                      alt="Modern studio condo interior with city view — illustrative image for Palms Place studios in Las Vegas"
                       className="min-h-[220px] md:min-h-[280px]"
                       variant="stay"
                     />
@@ -72,8 +72,9 @@ export function StaySection() {
                 content: (
                   <div className="grid gap-0 md:grid-cols-2">
                     <LuxuryPlaceholder
-                      alt="Palms Place one bedroom condo floor plan Las Vegas Strip"
+                      alt="Open-plan one-bedroom condo living room at twilight — illustrative image for Palms Place one-bedroom residences"
                       className="min-h-[220px] md:min-h-[280px]"
+                      src="/images/stay-one-bedroom-interior.webp"
                       variant="stay"
                     />
                     <div className="flex flex-col justify-center bg-palms-charcoal-muted p-8 md:p-10">

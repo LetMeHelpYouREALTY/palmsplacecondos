@@ -16,14 +16,13 @@ export function HeroPalmsPlace() {
     <section aria-labelledby="hero-heading" className="relative isolate min-h-[80vh] w-full overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          alt="Palms Place condos for sale Las Vegas Strip high-rise exterior view"
+          alt="Las Vegas high-rise condo tower at dusk — illustrative image for Palms Place condos for sale"
           className="object-cover"
           fetchPriority="high"
           fill
           priority
           sizes="100vw"
-          src="/placeholders/hero-gradient.svg"
-          unoptimized
+          src="/images/hero-tower-dusk.webp"
         />
         <div
           aria-hidden

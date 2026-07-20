@@ -1,32 +1,36 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-type LuxuryPlaceholderProps = {
+type LuxuryImageProps = {
   /** Short description for assistive tech (e.g. “High-rise skyline at dusk”). */
   alt: string;
   className?: string;
   /** Visual variant for different sections. */
   variant?: "hero" | "stay" | "unwind";
-};
-
-const variantClass: Record<NonNullable<LuxuryPlaceholderProps["variant"]>, string> = {
-  hero: "from-palms-charcoal via-palms-charcoal-muted to-[#2a2418]",
-  stay: "from-[#1a1610] via-palms-charcoal-muted to-palms-charcoal",
-  unwind: "from-[#0f1814] via-[#152620] to-palms-charcoal",
+  /** Explicit image path override (defaults to the variant image). */
+  src?: string;
 };
 
 /**
- * Gradient placeholder until licensed photography is added. Not a depiction of Palms Place.
+ * Illustrative section imagery (AI-generated, brand palette) — not photographs of
+ * Palms Place interiors or amenities. Swap for licensed photography when available.
  */
-export function LuxuryPlaceholder({ alt, className, variant = "hero" }: LuxuryPlaceholderProps) {
+const variantSrc: Record<NonNullable<LuxuryImageProps["variant"]>, string> = {
+  hero: "/images/hero-tower-dusk.webp",
+  stay: "/images/stay-studio-interior.webp",
+  unwind: "/images/unwind-pool-amenities.webp",
+};
+
+export function LuxuryPlaceholder({ alt, className, variant = "hero", src }: LuxuryImageProps) {
   return (
-    <div
-      aria-label={alt}
-      className={cn(
-        "relative overflow-hidden bg-gradient-to-br",
-        variantClass[variant],
-        className,
-      )}
-      role="img"
-    />
+    <div className={cn("relative overflow-hidden bg-palms-charcoal-muted", className)}>
+      <Image
+        alt={alt}
+        className="object-cover"
+        fill
+        sizes="(min-width: 768px) 50vw, 100vw"
+        src={src ?? variantSrc[variant]}
+      />
+    </div>
   );
 }
