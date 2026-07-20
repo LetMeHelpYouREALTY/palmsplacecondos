@@ -14,8 +14,9 @@ export const featuredListing = {
   squareFeet: "1,220 SF",
   highlights: "1 Bed • 1.5 Baths • Strip Views • Turnkey Investor Play",
   ctaLabel: "View Full Details",
+  // RealScout slug uses "822" even though the unit is #8322 — do not "fix" the path.
   detailsUrl:
-    "https://drjanduffy.realscout.com/homesearch/listings/p-4381-w-flamingo-road-8322-las-vegas-89103-glvartrestle-932",
+    "https://drjanduffy.realscout.com/homesearch/listings/p-4381-w-flamingo-road-822-las-vegas-89103-glvartrestle-932",
 } as const;
 
 export function getFeaturedListingDetailsUrl(): string {
