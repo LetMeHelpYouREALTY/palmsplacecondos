@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
+import { insightsHubPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { fieldNotes, fieldNotesHubMeta } from "@/lib/content/field-notes";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
@@ -72,6 +74,14 @@ export function InsightsHubPageBody() {
           </li>
         ))}
       </ul>
+
+      <PageFaqSection
+        pathname="/insights"
+        headingId="insights-faq-heading"
+        heading="Field notes FAQ"
+        intro="What these notes are, what they are not, and how dates work."
+        items={insightsHubPageFaq}
+      />
 
       <RelatedPages links={related} />
     </article>

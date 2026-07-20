@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
+import { teamPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
@@ -166,6 +168,14 @@ export function TeamPageBody() {
           . This is general real estate guidance—not legal or tax advice.
         </p>
       </section>
+
+      <PageFaqSection
+        pathname="/team"
+        headingId="team-faq-heading"
+        heading="Team FAQ"
+        intro="Listing vs buyer specialists and NAP alignment with GBP."
+        items={teamPageFaq}
+      />
 
       <RelatedPages links={related} />
     </article>

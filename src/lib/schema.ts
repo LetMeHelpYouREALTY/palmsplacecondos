@@ -293,7 +293,7 @@ export function getBaseJsonLd(): JsonLdGraph {
     { "@type": "Thing", name: "Las Vegas luxury penthouses for sale" },
   ];
 
-  const searchTarget = `${siteOrigin(siteUrl)}/search`;
+  const searchTarget = `${siteOrigin(siteUrl)}/search?q={search_term_string}`;
 
   const website: Record<string, unknown> = {
     "@type": "WebSite",

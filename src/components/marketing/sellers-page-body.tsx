@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { SourcesVerification } from "@/components/seo/sources-verification";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonLink } from "@/components/shared/button-link";
+import { sellersPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
@@ -88,6 +91,15 @@ export function SellersPageBody() {
         </p>
       </section>
 
+      <PageFaqSection
+        pathname="/sellers"
+        headingId="sellers-faq-heading"
+        heading="Sellers FAQ"
+        intro="How this hub differs from /sell and who lists Palms Place."
+        items={sellersPageFaq}
+      />
+
+      <SourcesVerification />
       <RelatedPages links={related} />
     </article>
   );

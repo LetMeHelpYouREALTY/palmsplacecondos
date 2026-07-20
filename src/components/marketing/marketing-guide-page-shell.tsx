@@ -1,9 +1,10 @@
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { SourcesVerification } from "@/components/seo/sources-verification";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonAnchor, ButtonLink } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import type { RelatedLink } from "@/lib/internal-links";
-import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import type { BreadcrumbItem, FaqItem } from "@/lib/schema";
 import {
   getArticleJsonLdForPath,
@@ -74,7 +75,8 @@ export function MarketingGuidePageShell({
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">{lede}</p>
       <p className="mt-3 text-sm text-palms-cream/60">
-        By {authorName}, {authorJobTitle} · Updated {meta.dateModified}
+        By {authorName}, {authorJobTitle} · Last reviewed {meta.dateModified}
+        {meta.datePublished !== meta.dateModified ? ` · Published ${meta.datePublished}` : null}
       </p>
 
       {checklist ? (
@@ -135,6 +137,7 @@ export function MarketingGuidePageShell({
         />
       ) : null}
 
+      <SourcesVerification />
       <RelatedPages links={related} />
     </article>
   );

@@ -1,18 +1,36 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { SourcesVerification } from "@/components/seo/sources-verification";
+import { StructuredData } from "@/components/seo/structured-data";
+import { sellPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
+import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
+const pageMeta = {
+  name: "Sell your Palms Place or Las Vegas condo",
+  description:
+    "Request a free seller valuation conversation with Dr. Jan Duffy—pricing strategy and marketing for Palms Place listings. Not an automated appraisal.",
+};
+
 /**
- * Expanded /sell — seller journey; complements homepage CTA without copying FAQ schema.
+ * Expanded /sell — seller journey; complements homepage CTA.
  */
 export function SellPageBody() {
   const related = relatedLinksForPath("/sell");
   const phone = siteContact.phone;
   const tel = phone ? `tel:${phone.replace(/\D/g, "")}` : undefined;
+  const webPageJsonLd = getWebPageJsonLdForPath("/sell", pageMeta, { aboutListingAgent: true });
+  const breadcrumbJsonLd = getBreadcrumbListJsonLd("/sell", [
+    { name: "Home", path: "/" },
+    { name: "Sell", path: "/sell" },
+  ]);
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <StructuredData data={webPageJsonLd} />
+      <StructuredData data={breadcrumbJsonLd} />
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Sell your Palms Place or Las Vegas condo
       </h1>
@@ -22,14 +40,14 @@ export function SellPageBody() {
         guaranteed sale price.
       </p>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
-          Complimentary valuation discussion
+      <section className="mt-12" aria-labelledby="sell-valuation-heading">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream" id="sell-valuation-heading">
+          Is the free valuation conversation an appraisal?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          Sellers often begin with a free valuation conversation: we review recent comps, active
-          competition, and how Palms Place condos for sale are positioned in the current market.
-          This is not an automated appraisal—your agent explains methodology and limitations.
+          No. Sellers often begin with a free valuation conversation: we review recent comps, active
+          competition, and how Palms Place condos for sale are positioned. This is not an automated
+          appraisal—your agent explains methodology and limitations.
         </p>
         {phone && tel ? (
           <p className="mt-4 text-palms-cream/85">
@@ -42,43 +60,38 @@ export function SellPageBody() {
         ) : null}
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
-          What listing prep looks like at Palms Place (seller perspective)
+      <section className="mt-12" aria-labelledby="sell-prep-heading">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream" id="sell-prep-heading">
+          What listing prep looks like at Palms Place
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           {siteContact.agentName} approaches Palms Place listings as a building-specific campaign—not
-          a template MLS upload. That usually means clarifying how the unit is used today (owner,
-          tenant, or rental program), aligning remarks with furniture and parking actually included,
-          and timing photography when the residence shows the view buyers expect. We also flag when a
-          buyer will need extra HOA packets because the tower mixes furnished and unfurnished resales.
+          a template upload. That usually means clarifying how the unit is used today, aligning
+          remarks with furniture and parking included, and timing photography when the residence shows
+          the view buyers expect.
         </p>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           Start with our{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/guide/selling-palms-place">
             Palms Place selling field guide
           </Link>{" "}
-          for the listing prep checklist. Buyers comparing your unit may use the{" "}
-          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/guide/buying-palms-place">
-            buying field guide
-          </Link>{" "}
-          on tours—sellers who read both understand which questions surface before offers arrive.
+          for the listing prep checklist.
         </p>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
+      <section className="mt-12" aria-labelledby="sell-marketing-heading">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream" id="sell-marketing-heading">
           Listing strategy &amp; marketing
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          Plans can include professional media, syndication to major listing sites, and targeted outreach appropriate to
-          your building and price band. HOA rules and tenant-occupied units add steps—your listing
-          team coordinates timelines with disclosures and association requirements.
+          Plans can include professional media, syndication to major listing sites, and targeted
+          outreach appropriate to your building and price band. HOA rules and tenant-occupied units
+          add steps—your listing team coordinates timelines with disclosures.
         </p>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">
+      <section className="mt-12" aria-labelledby="sell-crosslinks-heading">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream" id="sell-crosslinks-heading">
           Buyers still searching? Cross-links
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
@@ -90,12 +103,14 @@ export function SellPageBody() {
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/homes">
             Las Vegas homes for sale
           </Link>{" "}
-          with co-buyers or tenants who need context on the broader market.
+          with co-buyers who need market context.
         </p>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl font-semibold text-palms-cream">Get started</h2>
+      <section className="mt-12" aria-labelledby="sell-next-heading">
+        <h2 className="font-display text-2xl font-semibold text-palms-cream" id="sell-next-heading">
+          Get started
+        </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/contact">
             Contact the team
@@ -103,11 +118,20 @@ export function SellPageBody() {
           for a seller consult, or return to the{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/">
             homepage
-          </Link>{" "}
-          for Palms Place buyer resources.
+          </Link>
+          .
         </p>
       </section>
 
+      <PageFaqSection
+        pathname="/sell"
+        headingId="sell-faq-heading"
+        heading="Sell FAQ"
+        intro="Valuation vs appraisal, listing prep, and where sellers start."
+        items={sellPageFaq}
+      />
+
+      <SourcesVerification />
       <RelatedPages links={related} />
     </article>
   );

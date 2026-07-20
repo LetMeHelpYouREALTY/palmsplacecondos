@@ -1,12 +1,22 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { StructuredData } from "@/components/seo/structured-data";
+import { contactPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
+import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { formatOfficeAddressLine, formatTeamPhrase, siteContact } from "@/lib/site-contact";
 
 function buildMapsQuery(): string {
   const line = formatOfficeAddressLine();
   return encodeURIComponent(line || "Las Vegas, NV");
 }
+
+const pageMeta = {
+  name: "Contact the Palms Place team — Las Vegas office",
+  description:
+    "Office NAP, hours, map, and call/directions for Dr. Jan Duffy and Chance Fuller at Berkshire Hathaway HomeServices Nevada Properties.",
+};
 
 /** Expanded /contact — NAP, hours, map embed, Call / Directions / Google entry. */
 export function ContactPageBody() {
@@ -21,14 +31,22 @@ export function ContactPageBody() {
     fallbackEmbedSrc;
   const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`;
   const placeSearchHref = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+  const webPageJsonLd = getWebPageJsonLdForPath("/contact", pageMeta, { aboutListingAgent: true });
+  const breadcrumbJsonLd = getBreadcrumbListJsonLd("/contact", [
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact" },
+  ]);
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <StructuredData data={webPageJsonLd} />
+      <StructuredData data={breadcrumbJsonLd} />
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
-        Contact
+        Contact the Palms Place team
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        {formatTeamPhrase()}. {siteContact.brokerage}.
+        {formatTeamPhrase()}. {siteContact.brokerage}. Office NAP below matches the Google Business
+        Profile and site footer.
       </p>
 
       <section className="mt-10 rounded-lg border border-palms-gold/20 bg-palms-charcoal-elevated/80 p-6">
@@ -159,6 +177,14 @@ export function ContactPageBody() {
           </Link>
         </p>
       </section>
+
+      <PageFaqSection
+        pathname="/contact"
+        headingId="contact-faq-heading"
+        heading="Contact FAQ"
+        intro="Office NAP, hours, and which inbox to use."
+        items={contactPageFaq}
+      />
 
       <RelatedPages links={related} />
     </article>

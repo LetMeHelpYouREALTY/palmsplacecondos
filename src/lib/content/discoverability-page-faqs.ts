@@ -360,3 +360,136 @@ export const luxuryHomesPageFaq: FaqItem[] = [
       "Start with the homes hub and RealScout search, or browse popular searches for price-band shortcuts. Your agent aligns showings with disclosure review.",
   },
 ];
+
+/** `/search` — must mirror visible FAQ on that page. */
+export const searchPageFaq: FaqItem[] = [
+  {
+    question: "What does the curated RealScout search include?",
+    answer:
+      "The team’s saved RealScout search filters Palms Place and comparable Las Vegas-area inventory by price, property type, and status. Availability changes daily—confirm every field with your agent before you offer.",
+  },
+  {
+    question: "Is this search the same as the MLS website?",
+    answer:
+      "It is a curated brokerage search experience, not an unfiltered national feed. Use it to narrow tours, then verify status, HOA, and square footage in official listing records.",
+  },
+  {
+    question: "Who should I call after I find a unit I like?",
+    answer:
+      "Buyer questions often start with Chance Fuller; listing and seller context with Dr. Jan Duffy. Use the contact page or the office phone shown in the footer.",
+  },
+];
+
+/** `/sell` — must mirror visible FAQ on that page. */
+export const sellPageFaq: FaqItem[] = [
+  {
+    question: "Is the free valuation conversation an appraisal?",
+    answer:
+      "No. It is a listing strategy discussion covering comps, competition, and positioning—not an automated appraisal or a guaranteed sale price.",
+  },
+  {
+    question: "What makes Palms Place listing prep different?",
+    answer:
+      "Furnished vs unfurnished resales, parking, and HOA packets often drive buyer questions. Dr. Jan Duffy approaches Palms Place as a building-specific campaign, not a template upload.",
+  },
+  {
+    question: "Where should sellers start before photography?",
+    answer:
+      "Read the Palms Place selling field guide, then schedule a consult so remarks, furniture, and disclosure timing match how the unit will show.",
+  },
+];
+
+/** `/sellers` — must mirror visible FAQ on that page. */
+export const sellersPageFaq: FaqItem[] = [
+  {
+    question: "How is the sellers hub different from /sell?",
+    answer:
+      "Sellers is the strategy hub with links to the selling field guide and valuation path. Sell is the conversion page for scheduling a listing conversation.",
+  },
+  {
+    question: "Who lists Palms Place for the team?",
+    answer:
+      "Dr. Jan Duffy is the listing specialist and team leader for Palms Place at Berkshire Hathaway HomeServices Nevada Properties (license S.0197614.LLC).",
+  },
+  {
+    question: "Should I gather HOA documents before I list?",
+    answer:
+      "Yes when possible. Buyers and lenders request association packets early—starting that process reduces delays after you accept an offer.",
+  },
+];
+
+/** `/contact` — must mirror visible FAQ on that page. */
+export const contactPageFaq: FaqItem[] = [
+  {
+    question: "What is the office address and phone for the Palms Place team?",
+    answer:
+      "The office is at 3651 Lindell Rd Suite D, Las Vegas, NV 89103. Call (702) 837-4544. That NAP should match the Google Business Profile and the site footer.",
+  },
+  {
+    question: "What are office hours?",
+    answer:
+      "Monday through Friday, 9:00 AM to 5:00 PM. Confirm appointments if you need evenings or weekends—tour and listing schedules vary.",
+  },
+  {
+    question: "Who do I email for listings vs buyers?",
+    answer:
+      "Use the listings inbox for Dr. Jan Duffy and the buyers inbox for Chance Fuller when those addresses are shown on this page. General inquiries can use the general office email.",
+  },
+];
+
+/** `/team` — must mirror visible FAQ on that page. */
+export const teamPageFaq: FaqItem[] = [
+  {
+    question: "Who is the Palms Place listing specialist?",
+    answer:
+      "Dr. Jan Duffy, Realtor, listing specialist and team leader for Palms Place (Nevada license S.0197614.LLC) at Berkshire Hathaway HomeServices Nevada Properties.",
+  },
+  {
+    question: "Who helps Palms Place buyers?",
+    answer:
+      "Chance Fuller, Realtor, is the Palms Place buyers specialist (Nevada license S.204454). Buyer tours, filters, and offer prep often start with Chance.",
+  },
+  {
+    question: "Does team contact info match Google Business Profile?",
+    answer:
+      "Yes—phone, office address, and licenses on this page are meant to match GBP and JSON-LD. Report any drift so the site and profile stay aligned.",
+  },
+];
+
+/** `/palms-place` — must mirror visible FAQ on that page. */
+export const palmsPlacePageFaq: FaqItem[] = [
+  {
+    question: "What is the Palms Place building address?",
+    answer:
+      "Palms Place is at 4381 W Flamingo Road, Las Vegas, NV 89103—a 47-story tower connected to Palms Casino Resort, west of the Las Vegas Strip. That is the tower address, not the team office.",
+  },
+  {
+    question: "What unit types are typically for sale?",
+    answer:
+      "Active inventory often includes studios and one-bedroom layouts, with select upper-floor or penthouse-style residences when listed. Confirm floor plans and HOA assessments per unit.",
+  },
+  {
+    question: "How do I buy or sell at Palms Place with this team?",
+    answer:
+      "Buyers use the curated search and buying field guide; sellers start with the selling field guide and a valuation conversation with Dr. Jan Duffy.",
+  },
+];
+
+/** `/insights` hub — must mirror visible FAQ on that page. */
+export const insightsHubPageFaq: FaqItem[] = [
+  {
+    question: "What are field notes?",
+    answer:
+      "Short, first-hand articles from the Palms Place team about tours, HOA packets, and listing prep—not generic market blogs recycled across cities.",
+  },
+  {
+    question: "Are field notes legal advice?",
+    answer:
+      "No. They share process observations. HOA rules, assessments, and contracts must be verified in official documents for your unit.",
+  },
+  {
+    question: "How often are field notes updated?",
+    answer:
+      "Each note shows an updated date. Re-read before you tour if association rules or inventory conditions may have changed.",
+  },
+];

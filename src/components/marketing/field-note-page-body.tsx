@@ -1,4 +1,6 @@
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { SourcesVerification } from "@/components/seo/sources-verification";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonLink } from "@/components/shared/button-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
@@ -8,6 +10,7 @@ import {
   getArticleJsonLdForPath,
   getBreadcrumbListJsonLd,
   getWebPageJsonLdForPath,
+  type FaqItem,
 } from "@/lib/schema";
 
 type FieldNotePageBodyProps = {
@@ -38,6 +41,10 @@ export function FieldNotePageBody({ note }: FieldNotePageBodyProps) {
     authorJobTitle: note.authorJobTitle,
     aboutPalmsPlace: true,
   });
+  const faqItems: FaqItem[] = note.sections.slice(0, 3).map((section) => ({
+    question: section.heading.endsWith("?") ? section.heading : `${section.heading}?`,
+    answer: section.body,
+  }));
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
@@ -100,8 +107,19 @@ export function FieldNotePageBody({ note }: FieldNotePageBodyProps) {
 
       <p className="mt-8 text-sm text-palms-cream/60">
         Not legal or tax advice. HOA rules and assessments change—verify in official documents for your unit.
+        Last reviewed: {note.dateModified}.
       </p>
 
+      {faqItems.length > 0 ? (
+        <PageFaqSection
+          pathname={path}
+          headingId={`${note.slug}-faq`}
+          heading="Quick answers from this field note"
+          items={faqItems}
+        />
+      ) : null}
+
+      <SourcesVerification />
       <RelatedPages links={related} />
     </article>
   );

@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
+import { SourcesVerification } from "@/components/seo/sources-verification";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonAnchor } from "@/components/shared/button-link";
+import { palmsPlacePageFaq } from "@/lib/content/discoverability-page-faqs";
 import { formatPalmsPlaceTowerAddressLine, palmsPlaceTower } from "@/lib/content/palms-place-building";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
@@ -184,6 +187,15 @@ export function PalmsPlacePageBody() {
         </p>
       </section>
 
+      <PageFaqSection
+        pathname="/palms-place"
+        headingId="palms-place-faq-heading"
+        heading="Palms Place building FAQ"
+        intro="Tower address, unit types, and how to buy or sell with this team."
+        items={palmsPlacePageFaq}
+      />
+
+      <SourcesVerification />
       <RelatedPages links={related} />
     </article>
   );
