@@ -34,10 +34,9 @@ export function FeaturedPageBody() {
       </h1>
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        Highlights rotate with market activity—{siteContact.buyerSpecialistName} and{" "}
-        {siteContact.agentName} curate search experiences and tour lists for{" "}
-        {siteContact.primaryServiceArea}. This page does not show a static grid of listing cards that
-        can go stale; use live search and the team for what is on market today.
+        Highlights rotate with market activity—{siteContact.agentName} curates search experiences and
+        tour lists for {siteContact.primaryServiceArea}. This page does not show a static grid of
+        listing cards that can go stale; use live search and the team for what is on market today.
       </p>
 
       <section className="mt-12" aria-labelledby="featured-palms-place-heading">

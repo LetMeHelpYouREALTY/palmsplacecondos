@@ -39,8 +39,7 @@ export function CondosPageBody() {
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         If you are searching for condos for sale on the Las Vegas Strip or a luxury condo in Las
         Vegas, start here—Palms Place for sale and comparable high-rise inventory with{" "}
-        {siteContact.agentName} (listing specialist) and {siteContact.buyerSpecialistName}{" "}
-        (buyers)—{siteContact.brokerage}.
+        {siteContact.agentName}—{siteContact.brokerage}.
       </p>
 
       <section className="mt-12" aria-labelledby="condos-corridors-heading">

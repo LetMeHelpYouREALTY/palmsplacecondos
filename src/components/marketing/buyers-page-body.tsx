@@ -13,7 +13,7 @@ import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 const pageMeta = {
   name: "Buy Palms Place & Las Vegas high-rise condos — buyer guide",
   description:
-    "Buyer guide for Palms Place and Las Vegas Strip high-rise condos: search, tours, calculators, and working with Chance Fuller, Palms Place Buyers Specialist.",
+    "Buyer guide for Palms Place and Las Vegas Strip high-rise condos: search, tours, calculators, and working with Dr. Jan Duffy, Palms Place Buyers Specialist.",
 };
 
 export function BuyersPageBody() {
@@ -107,10 +107,9 @@ export function BuyersPageBody() {
           Who helps Palms Place buyers with showings and offers?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          {siteContact.buyerSpecialistName} is the Palms Place Buyers Specialist—buyers often start
-          with Chance for showings, HOA questions, and offer strategy. Listing and marketing
-          conversations typically route through {siteContact.agentName},{" "}
-          {siteContact.agentTitle}. Meet both on the{" "}
+          {siteContact.buyerSpecialistName} is the Palms Place Buyers Specialist—buyers start with
+          Dr. Jan for showings, HOA questions, and offer strategy. Listing and marketing conversations
+          also route through {siteContact.agentName}, {siteContact.agentTitle}. Meet the team on the{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/team">
             Palms Place real estate team
           </Link>{" "}

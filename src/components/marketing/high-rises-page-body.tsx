@@ -36,8 +36,8 @@ export function HighRisesPageBody() {
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Condos on the Strip and just west of it—luxury towers where amenities, HOA structures, and
-        floor-plan variety differ by building. {siteContact.agentName} and {siteContact.buyerSpecialistName}{" "}
-        help buyers compare options with {siteContact.brokerage}.
+        floor-plan variety differ by building. {siteContact.agentName}{" "}
+        helps buyers compare options with {siteContact.brokerage}.
       </p>
 
       <section className="mt-12" aria-labelledby="high-rises-palms-place-heading">

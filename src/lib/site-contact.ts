@@ -26,17 +26,19 @@ export type SiteContact = {
    * Public-facing team name for marketing (who clients work with—not the GBP listing name alone).
    */
   teamBrandName: string;
-  /** Listing lead / primary licensee on this site. */
+  /** Primary licensee — listing lead and Palms Place buyers specialist. */
   agentName: string;
   agentTitle: string;
   license: string;
   brokerage: string;
   /** GBP service area — keep aligned with profile “Service area”. */
   primaryServiceArea: string;
-  /** Buyer-side specialist (name + role for copy and schema). */
+  /**
+   * Buyers-specialist display name/title/license — same person as `agentName` (Dr. Jan Duffy).
+   * Kept as fields so buyer-facing pages can emphasize the buyers role without a second agent.
+   */
   buyerSpecialistName: string;
   buyerSpecialistTitle: string;
-  /** Nevada real estate license for the buyers specialist — must match GBP / REC when published. */
   buyerSpecialistLicense: string;
   /** Office phone — single NAP line for this site; must match GBP. */
   phone?: string;
@@ -44,7 +46,7 @@ export type SiteContact = {
   emailGeneral?: string;
   /** Listing-focused inbox (Dr. Jan). */
   emailListings?: string;
-  /** Buyer inquiries (Chance). */
+  /** Buyer inquiries (Dr. Jan). */
   emailBuyers?: string;
   streetAddress?: string;
   addressLocality?: string;
@@ -85,19 +87,20 @@ export const siteContact: SiteContact = {
   gbpBusinessName: "Palms Place Condos",
   teamBrandName: "Dr. Jan Duffy Palms Place Team",
   agentName: "Dr. Jan Duffy",
-  agentTitle: "Realtor, Listing Specialist & Team Leader for Palms Place",
+  agentTitle: "Realtor, Listing Specialist, Team Leader & Palms Place Buyers Specialist",
   license: "S.0197614.LLC",
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
   /** Must match visible copy, meta descriptions, and GBP — sole office line for this site. */
   phone: "(702) 837-4544",
   emailGeneral: "DrDuffy@PalmsPlaceCondos.com",
   emailListings: "DrDuffySells@PalmsPlaceCondos.com",
-  emailBuyers: "ChanceSells@PalmsPlaceCondos.com",
+  /** Buyer inquiries go to Dr. Jan (same agent). */
+  emailBuyers: "DrDuffy@PalmsPlaceCondos.com",
   /** GBP service area: Las Vegas Strip, NV, USA */
   primaryServiceArea: "Las Vegas Strip, NV",
-  buyerSpecialistName: "Chance Fuller, Realtor",
+  buyerSpecialistName: "Dr. Jan Duffy",
   buyerSpecialistTitle: "Palms Place Buyers Specialist",
-  buyerSpecialistLicense: "S.204454",
+  buyerSpecialistLicense: "S.0197614.LLC",
   /** Office — must match Google Business Profile (“3651 S Lindell Rd suite d”). */
   streetAddress: "3651 S Lindell Rd Suite D",
   addressLocality: "Las Vegas",
@@ -135,5 +138,5 @@ export function formatOfficeAddressLine(): string {
 /** Concise team line for meta descriptions (SEO / entity clarity). */
 export function formatTeamPhrase(): string {
   const c = siteContact;
-  return `${c.agentName}, ${c.agentTitle}; ${c.buyerSpecialistName}, ${c.buyerSpecialistTitle}`;
+  return `${c.agentName}, ${c.agentTitle}`;
 }

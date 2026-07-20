@@ -41,7 +41,7 @@ export const furnishedInventorySurprisesNote: FieldNote = {
       id: "buyer-walkthrough",
       heading: "Why buyers should tour with the exhibit in hand",
       body:
-        "On the buyer side, Chance Fuller’s tours cross-check the exhibit against what is in the unit before removal contingencies expire. If a piece in photos is missing on tour, we fix it in the contract or adjust price—before appraisal and loan docs assume a furnished sale.",
+        "On the buyer side, Dr. Jan Duffy’s tours cross-check the exhibit against what is in the unit before removal contingencies expire. If a piece in photos is missing on tour, we fix it in the contract or adjust price—before appraisal and loan docs assume a furnished sale.",
     },
   ],
   whatWeDoNext: [

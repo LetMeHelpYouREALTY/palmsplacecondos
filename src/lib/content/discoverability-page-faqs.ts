@@ -103,9 +103,9 @@ export const buyersPageFaq: FaqItem[] = [
       "Buyers comparing Strip high-rises or targeting Palms Place specifically. Use this hub for search entry, calculators, and team contacts—then read the buying field guide before your first tower tour.",
   },
   {
-    question: "Does Chance Fuller handle all Palms Place buyer tours?",
+    question: "Who handles Palms Place buyer tours?",
     answer:
-      "Chance Fuller is the Palms Place Buyers Specialist for showings, HOA questions, and offer strategy. Listing and marketing conversations typically route through Dr. Jan Duffy as listing lead.",
+      "Dr. Jan Duffy is the Palms Place Buyers Specialist for showings, HOA questions, and offer strategy—and the listing specialist for marketing and seller representation.",
   },
   {
     question: "Where do I search live Palms Place inventory?",
@@ -186,7 +186,7 @@ export const buyingGuidePageFaq: FaqItem[] = [
   {
     question: "Who handles buyer tours versus listing marketing?",
     answer:
-      "Buyer tours and offer strategy often start with Chance Fuller, Palms Place Buyers Specialist. Listing preparation and marketing typically route through Dr. Jan Duffy as listing lead.",
+      "Buyer tours, offer strategy, listing preparation, and marketing all route through Dr. Jan Duffy—listing specialist, team leader, and Palms Place Buyers Specialist.",
   },
 ];
 
@@ -376,7 +376,7 @@ export const searchPageFaq: FaqItem[] = [
   {
     question: "Who should I call after I find a unit I like?",
     answer:
-      "Buyer questions often start with Chance Fuller; listing and seller context with Dr. Jan Duffy. Use the contact page or the office phone shown in the footer.",
+      "Buyer and seller questions both go to Dr. Jan Duffy. Use the contact page or the office phone shown in the footer.",
   },
 ];
 
@@ -433,7 +433,7 @@ export const contactPageFaq: FaqItem[] = [
   {
     question: "Who do I email for listings vs buyers?",
     answer:
-      "Use the listings inbox for Dr. Jan Duffy and the buyers inbox for Chance Fuller when those addresses are shown on this page. General inquiries can use the general office email.",
+      "Use the listings inbox for listing questions and the general inbox for buyer or general inquiries—both reach Dr. Jan Duffy when those addresses are shown on this page.",
   },
 ];
 
@@ -447,7 +447,7 @@ export const teamPageFaq: FaqItem[] = [
   {
     question: "Who helps Palms Place buyers?",
     answer:
-      "Chance Fuller, Realtor, is the Palms Place buyers specialist (Nevada license S.204454). Buyer tours, filters, and offer prep often start with Chance.",
+      "Dr. Jan Duffy, Realtor, is the Palms Place Buyers Specialist (Nevada license S.0197614.LLC). Buyer tours, filters, and offer prep start with Dr. Jan.",
   },
   {
     question: "Does team contact info match Google Business Profile?",

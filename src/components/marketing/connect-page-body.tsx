@@ -11,7 +11,7 @@ import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 const pageMeta = {
   name: "Connect with the Palms Place team — Las Vegas Strip condos",
   description:
-    "Follow Palms Place updates, office NAP, and social channels for Las Vegas Strip high-rise condos with Dr. Jan Duffy and Chance Fuller at Berkshire Hathaway.",
+    "Follow Palms Place updates, office NAP, and social channels for Las Vegas Strip high-rise condos with Dr. Jan Duffy at Berkshire Hathaway.",
 };
 
 /** Expanded /connect — stay in touch; aligns with utility nav + social links. */

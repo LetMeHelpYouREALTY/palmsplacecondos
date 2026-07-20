@@ -6,7 +6,7 @@
 export const palmsPlaceUnitTypesGuideMeta = {
   title: "Palms Place studios vs one-bedroom condos — how to choose",
   description:
-    "Compare Palms Place studio and one-bedroom layouts, carry costs, and tour priorities with Chance Fuller, buyers specialist—without relying on generic tower marketing copy.",
+    "Compare Palms Place studio and one-bedroom layouts, carry costs, and tour priorities with Dr. Jan Duffy, Palms Place Buyers Specialist—without relying on generic tower marketing copy.",
   datePublished: "2026-05-10",
   dateModified: "2026-05-20",
 };
@@ -14,7 +14,7 @@ export const palmsPlaceUnitTypesGuideMeta = {
 export const palmsPlaceUnitTypesIntro = {
   headline: "Palms Place studios vs one-bedroom condos — a buyer decision guide",
   lede:
-    "Listing sites often list square footage without explaining how Palms Place studios and one-bedroom units live differently day-to-day. This guide is written from buyer tours Chance Fuller runs at the tower—what to prioritize before you chase a floor plan label.",
+    "Listing sites often list square footage without explaining how Palms Place studios and one-bedroom units live differently day-to-day. This guide is written from buyer tours Dr. Jan Duffy runs at the tower—what to prioritize before you chase a floor plan label.",
 };
 
 /** Commonly cited approximate sizes — always verify on the listing record. */

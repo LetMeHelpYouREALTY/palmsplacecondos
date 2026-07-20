@@ -88,7 +88,7 @@ export function PalmsPlacePageBody() {
           Active inventory often includes efficient studios and larger one-bedroom layouts, with
           select upper-floor and penthouse-style residences when listed. Palms Place floor plans,
           views, and HOA assessments change by unit—compare live listings and official disclosures
-          with {siteContact.buyerSpecialistName} (buyers) or {siteContact.agentName} (listings).
+          with {siteContact.agentName}.
         </p>
       </section>
 
@@ -158,9 +158,8 @@ export function PalmsPlacePageBody() {
           How do I buy or sell a Palms Place condo?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          Start with live Palms Place condos for sale via the curated search, then tour with the team.
-          Listing and marketing conversations typically route through {siteContact.agentName}; buyer
-          showings and offer strategy often start with {siteContact.buyerSpecialistName}. Thinking
+          Start with live Palms Place condos for sale via the curated search, then tour with{" "}
+          {siteContact.agentName}—listing specialist and Palms Place Buyers Specialist. Thinking
           about selling? See{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/sell">
             sell your Palms Place condo

@@ -110,7 +110,7 @@ export const MARKETING_ROUTES: MarketingRoute[] = [
   },
   {
     path: "/team",
-    summary: "Dr. Jan Duffy (listings) and Chance Fuller (buyers) — Palms Place team NAP.",
+    summary: "Dr. Jan Duffy — Palms Place listing lead and buyers specialist NAP.",
     changeFrequency: "monthly",
     priority: 0.85,
   },

@@ -19,7 +19,7 @@ export const homeFaqItems: FaqItem[] = [
   {
     question: "What types of Palms Place condos are for sale?",
     answer:
-      "Inventory typically includes efficient studios and larger one-bedroom layouts, with select upper-floor and penthouse-style residences when available. Floor plans, views, and HOA assessments vary by unit—compare live listings and disclosures with Dr. Jan Duffy (listings) or Chance Fuller (buyers) before touring or writing an offer.",
+      "Inventory typically includes efficient studios and larger one-bedroom layouts, with select upper-floor and penthouse-style residences when available. Floor plans, views, and HOA assessments vary by unit—compare live listings and disclosures with Dr. Jan Duffy before touring or writing an offer.",
   },
   {
     question: "Where is Palms Place in Las Vegas?",
@@ -39,7 +39,7 @@ export const homeFaqItems: FaqItem[] = [
   {
     question: "Who helps buyers vs. sellers at Palms Place?",
     answer:
-      "Dr. Jan Duffy, Realtor, is the listing specialist and team leader for Palms Place; Chance Fuller, Realtor, is the Palms Place Buyers Specialist. Buyers often start with Chance for showings and offer strategy; listing and marketing conversations typically route through Dr. Jan. This is general guidance, not legal or tax advice.",
+      "Dr. Jan Duffy, Realtor, is the listing specialist, team leader, and Palms Place Buyers Specialist. Buyers and sellers both work with Dr. Jan for showings, offer strategy, listing, and marketing. This is general guidance, not legal or tax advice.",
   },
   {
     question: "How do I contact the Palms Place real estate team?",

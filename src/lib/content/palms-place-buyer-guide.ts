@@ -6,7 +6,7 @@
 export const palmsPlaceBuyerGuideMeta = {
   title: "Buying a Palms Place condo — team field guide",
   description:
-    "A practical Palms Place buyer guide from Dr. Jan Duffy's listing team and Chance Fuller, buyers specialist: tour checklist, HOA documents, owner vs rental-pool context, and offer prep.",
+    "A practical Palms Place buyer guide from Dr. Jan Duffy—listing specialist and Palms Place Buyers Specialist: tour checklist, HOA documents, owner vs rental-pool context, and offer prep.",
   datePublished: "2026-05-01",
   dateModified: "2026-05-20",
 };
@@ -14,7 +14,7 @@ export const palmsPlaceBuyerGuideMeta = {
 export const palmsPlaceBuyerGuideIntro = {
   headline: "Buying a Palms Place condo — what our team does differently on tours",
   lede:
-    "Most Palms Place pages online recycle the same tower amenities list. This guide is written from how Dr. Jan Duffy's Palms Place team actually runs buyer tours and offer prep in Las Vegas—split between a listing specialist and a dedicated buyers specialist, not a generic call center. Situation-specific tour and HOA notes live in our separate field notes hub.",
+    "Most Palms Place pages online recycle the same tower amenities list. This guide is written from how Dr. Jan Duffy actually runs buyer tours and offer prep in Las Vegas—as both listing specialist and Palms Place Buyers Specialist, not a generic call center. Situation-specific tour and HOA notes live in our separate field notes hub.",
 };
 
 /** Questions buyers should ask on-site — citable checklist for AEO. */
@@ -36,9 +36,9 @@ export const palmsPlaceBuyerGuideSections: {
 }[] = [
   {
     id: "why-split-team",
-    question: "Why does Palms Place use a listing specialist and a separate buyers specialist?",
+    question: "Who represents Palms Place buyers and sellers?",
     answer:
-      "Palms Place inventory mixes owner-occupant resales, furnished turnovers, and units with rental history. Dr. Jan Duffy focuses on listing strategy, pricing context, and seller representation; Chance Fuller, Palms Place Buyers Specialist, leads most buyer tours, HOA document review, and offer timing. That split keeps listing negotiations from colliding with buyer advocacy on the same transaction—and matches how many Strip towers are actually sold in Las Vegas.",
+      "Palms Place inventory mixes owner-occupant resales, furnished turnovers, and units with rental history. Dr. Jan Duffy handles listing strategy, pricing context, and seller representation—and leads buyer tours, HOA document review, and offer timing as the Palms Place Buyers Specialist. On any one transaction she represents only one side, so buyer advocacy and listing negotiations never collide.",
   },
   {
     id: "hotel-vs-owner",

@@ -185,8 +185,7 @@ function buildPalmsPlaceEntity(siteUrl: string): Record<string, unknown> {
 function buildPalmsPlaceServices(
   siteUrl: string,
   placePalmsId: string,
-  listingAgentId: string,
-  buyersAgentId: string,
+  agentId: string,
 ): Record<string, unknown>[] {
   const origin = siteOrigin(siteUrl);
   return [
@@ -196,8 +195,8 @@ function buildPalmsPlaceServices(
       name: "Buy Palms Place Condos",
       serviceType: "Real estate buyer representation",
       description:
-        "Buyer representation for Palms Place and comparable Las Vegas Strip-adjacent high-rise condos—tours, HOA due diligence, and offer strategy.",
-      provider: { "@id": buyersAgentId },
+        "Buyer representation for Palms Place and comparable Las Vegas Strip-adjacent high-rise condos—tours, HOA due diligence, and offer strategy with Dr. Jan Duffy.",
+      provider: { "@id": agentId },
       areaServed: { "@id": placePalmsId },
       url: `${origin}/buyers`,
     },
@@ -208,7 +207,7 @@ function buildPalmsPlaceServices(
       serviceType: "Real estate listing services",
       description:
         "Listing strategy and marketing for Palms Place condo sellers—pricing, presentation, HOA packets, and exposure with Dr. Jan Duffy.",
-      provider: { "@id": listingAgentId },
+      provider: { "@id": agentId },
       areaServed: { "@id": placePalmsId },
       url: `${origin}/sell`,
     },
@@ -216,22 +215,21 @@ function buildPalmsPlaceServices(
 }
 
 /**
- * Core entities: WebSite, brokerage RealEstateOffice (+ LocalBusiness), two RealEstateAgent profiles,
- * Place or Apartment for Palms Place. Listing lead agent also typed as LocalBusiness when enriched.
+ * Core entities: WebSite, brokerage RealEstateOffice (+ LocalBusiness), one RealEstateAgent /
+ * LocalBusiness profile (Dr. Jan Duffy — listing lead and buyers specialist), Place for Palms Place.
  */
 export function getBaseJsonLd(): JsonLdGraph {
   const siteUrl = getSiteUrl();
   const webId = id(siteUrl, "website");
   const brokerageId = id(siteUrl, "brokerage");
   const listingAgentId = id(siteUrl, "dr-jan-duffy");
-  const buyersAgentId = id(siteUrl, "chance-fuller");
 
   const brokerage: Record<string, unknown> = {
     "@type": ["RealEstateOffice", "LocalBusiness"],
     "@id": brokerageId,
     name: siteContact.brokerage,
     url: siteUrl,
-    employee: [{ "@id": listingAgentId }, { "@id": buyersAgentId }],
+    employee: [{ "@id": listingAgentId }],
   };
 
   const postalAddress =
@@ -281,7 +279,6 @@ export function getBaseJsonLd(): JsonLdGraph {
     jobTitle: siteContact.agentTitle,
     url: siteUrl,
     identifier: siteContact.license,
-    colleague: { "@id": buyersAgentId },
     priceRange: siteContact.schemaPriceRange ?? "$$$$",
   };
 
@@ -318,24 +315,6 @@ export function getBaseJsonLd(): JsonLdGraph {
     listingAgent.telephone = toTelE164(siteContact.phone);
   }
 
-  const buyersAgent: Record<string, unknown> = {
-    "@type": "RealEstateAgent",
-    "@id": buyersAgentId,
-    name: siteContact.buyerSpecialistName,
-    jobTitle: siteContact.buyerSpecialistTitle,
-    url: siteUrl,
-    identifier: siteContact.buyerSpecialistLicense,
-    colleague: { "@id": listingAgentId },
-  };
-
-  applyOfficeNapAndHours(buyersAgent, brokerageId, postalAddress, hoursSpec, true);
-  if (siteContact.emailBuyers) {
-    buyersAgent.email = siteContact.emailBuyers;
-  }
-  if (siteContact.phone) {
-    buyersAgent.telephone = toTelE164(siteContact.phone);
-  }
-
   const palmsPlace = buildPalmsPlaceEntity(siteUrl);
   const placePalmsId = id(siteUrl, "place-palms-place");
 
@@ -354,25 +333,22 @@ export function getBaseJsonLd(): JsonLdGraph {
     { "@type": "City", name: "Las Vegas", containedInPlace: { "@type": "State", name: "Nevada" } },
     { "@type": "AdministrativeArea", name: "Clark County" },
   ];
-  buyersAgent.areaServed = listingAgent.areaServed;
 
   listingAgent.knowsAbout = [
     { "@id": placePalmsId },
     { "@type": "Thing", name: "Palms Place condos for sale" },
+    { "@type": "Thing", name: "Buying Palms Place condos" },
+    { "@type": "Thing", name: "Palms Place unit types" },
     { "@type": "Thing", name: "Palms Place HOA and monthly costs" },
     { "@type": "Thing", name: "Las Vegas Strip high-rise condos" },
     { "@type": "Thing", name: "Furnished Palms Place resales" },
   ];
-  buyersAgent.knowsAbout = [
-    { "@id": placePalmsId },
-    { "@type": "Thing", name: "Buying Palms Place condos" },
-    { "@type": "Thing", name: "Palms Place unit types" },
-    { "@type": "Thing", name: "Las Vegas Strip high-rise condos" },
-  ];
 
-  const services = buildPalmsPlaceServices(siteUrl, placePalmsId, listingAgentId, buyersAgentId);
-  listingAgent.makesOffer = { "@id": id(siteUrl, "service-sell-palms-place") };
-  buyersAgent.makesOffer = { "@id": id(siteUrl, "service-buy-palms-place") };
+  const services = buildPalmsPlaceServices(siteUrl, placePalmsId, listingAgentId);
+  listingAgent.makesOffer = [
+    { "@id": id(siteUrl, "service-buy-palms-place") },
+    { "@id": id(siteUrl, "service-sell-palms-place") },
+  ];
   const searchTarget = `${siteOrigin(siteUrl)}/search?q={search_term_string}`;
 
   const website: Record<string, unknown> = {
@@ -386,7 +362,6 @@ export function getBaseJsonLd(): JsonLdGraph {
     about: [
       { "@id": placePalmsId },
       { "@id": listingAgentId },
-      { "@id": buyersAgentId },
       { "@id": brokerageId },
     ],
     potentialAction: {
@@ -401,7 +376,7 @@ export function getBaseJsonLd(): JsonLdGraph {
 
   return {
     "@context": CONTEXT,
-    "@graph": [website, brokerage, listingAgent, buyersAgent, palmsPlace, ...services],
+    "@graph": [website, brokerage, listingAgent, palmsPlace, ...services],
   };
 }
 
@@ -448,7 +423,7 @@ export function getHomeWebPageJsonLd(): JsonLdGraph {
     url: pageUrl,
     name: defaultListingAgentDescription(),
     description:
-      "Browse Palms Place condos for sale at 4381 W Flamingo Road near the Las Vegas Strip. Compare studio and one-bedroom high-rise listings, HOA details, and tours with Dr. Jan Duffy and Chance Fuller, Realtors.",
+      "Browse Palms Place condos for sale at 4381 W Flamingo Road near the Las Vegas Strip. Compare studio and one-bedroom high-rise listings, HOA details, and tours with Dr. Jan Duffy, Realtor.",
     isPartOf: { "@id": webId },
     about: [
       { "@id": placePalmsId },
@@ -518,12 +493,11 @@ export function getArticleJsonLdForPath(input: ArticleJsonLdInput): JsonLdGraph 
   };
 }
 
-/** Person nodes for /team — stable @ids matching sitewide agent entities. */
+/** Person node for /team — stable @id matching the sitewide agent entity. */
 export function getTeamPersonsJsonLd(): JsonLdGraph {
   const siteUrl = getSiteUrl();
   const origin = siteOrigin(siteUrl);
   const listingAgentId = id(siteUrl, "dr-jan-duffy");
-  const buyersAgentId = id(siteUrl, "chance-fuller");
   const placePalmsId = id(siteUrl, "place-palms-place");
   const brokerageId = id(siteUrl, "brokerage");
 
@@ -534,29 +508,21 @@ export function getTeamPersonsJsonLd(): JsonLdGraph {
     jobTitle: siteContact.agentTitle,
     url: `${origin}/team`,
     worksFor: { "@id": brokerageId },
-    knowsAbout: [{ "@id": placePalmsId }, { "@type": "Thing", name: "Palms Place listings" }],
+    knowsAbout: [
+      { "@id": placePalmsId },
+      { "@type": "Thing", name: "Palms Place listings" },
+      { "@type": "Thing", name: "Buying Palms Place condos" },
+    ],
     identifier: siteContact.license,
   };
-  const chance: Record<string, unknown> = {
-    "@type": "Person",
-    "@id": `${buyersAgentId}-person`,
-    name: siteContact.buyerSpecialistName,
-    jobTitle: siteContact.buyerSpecialistTitle,
-    url: `${origin}/team`,
-    worksFor: { "@id": brokerageId },
-    knowsAbout: [{ "@id": placePalmsId }, { "@type": "Thing", name: "Buying Palms Place condos" }],
-    identifier: siteContact.buyerSpecialistLicense,
-  };
   if (siteContact.emailListings) jan.email = siteContact.emailListings;
-  if (siteContact.emailBuyers) chance.email = siteContact.emailBuyers;
   if (siteContact.phone) {
     jan.telephone = toTelE164(siteContact.phone);
-    chance.telephone = toTelE164(siteContact.phone);
   }
 
   return {
     "@context": CONTEXT,
-    "@graph": [jan, chance],
+    "@graph": [jan],
   };
 }
 

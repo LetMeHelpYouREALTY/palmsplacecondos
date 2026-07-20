@@ -130,7 +130,7 @@ export function GuideBuyingPalmsPlacePageBody() {
           </Link>
           , or meet{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/team">
-            Dr. Jan Duffy &amp; Chance Fuller
+            Dr. Jan Duffy
           </Link>{" "}
           before you write. Listing questions: {siteContact.emailListings ?? "contact page"}.
           Buyer tours: {siteContact.emailBuyers ?? "contact page"}.

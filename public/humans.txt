@@ -1,11 +1,8 @@
 /* TEAM */
-Listing specialist: Dr. Jan Duffy
-Buyers specialist: Chance Fuller
+Listing specialist & buyers specialist: Dr. Jan Duffy
 Brokerage: Berkshire Hathaway HomeServices Nevada Properties
-Site: palmsplacecondos.com
-Location: Las Vegas, Nevada, USA
-
+Nevada license: S.0197614.LLC
 /* SITE */
-Standards: Next.js App Router, HTML5, JSON-LD
-Components: RealScout listings, YouTube (when embedded)
-Canonical host: https://www.palmsplacecondos.com
+Standards: Next.js App Router, TypeScript, Tailwind
+/* THANKS */
+Google Business Profile · RealScout · Vercel

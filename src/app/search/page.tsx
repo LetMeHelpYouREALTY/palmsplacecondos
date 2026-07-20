@@ -58,8 +58,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               (you searched for <span className="text-palms-cream">{q}</span>)
             </>
           ) : null}
-          —buyer questions often start with {siteContact.buyerSpecialistName}; listing context with{" "}
-          {siteContact.agentName}.
+          —questions for buyers and sellers both go to {siteContact.agentName}.
         </p>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
           <ButtonAnchor

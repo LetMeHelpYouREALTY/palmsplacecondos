@@ -12,7 +12,7 @@ import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 const pageMeta = {
   name: "Contact the Palms Place team — Las Vegas office",
   description:
-    "Office NAP, hours, map, and call/directions for Dr. Jan Duffy and Chance Fuller at Berkshire Hathaway HomeServices Nevada Properties.",
+    "Office NAP, hours, map, and call/directions for Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties.",
 };
 
 /** Expanded /contact — NAP, hours, map embed, Call / Directions / Google entry. */
@@ -79,12 +79,10 @@ export function ContactPageBody() {
           <p>
             {siteContact.agentName}: Nevada license {siteContact.license}
           </p>
-          <p>
-            Nevada license {siteContact.buyerSpecialistLicense} — {siteContact.buyerSpecialistTitle}
-          </p>
+          <p>{siteContact.agentTitle}</p>
         </div>
 
-        {(siteContact.emailGeneral || siteContact.emailListings || siteContact.emailBuyers) && (
+        {(siteContact.emailGeneral || siteContact.emailListings) && (
           <div className="mt-6 border-t border-palms-gold/15 pt-6">
             <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-palms-gold-muted">
               Email
@@ -92,7 +90,7 @@ export function ContactPageBody() {
             <ul className="mt-3 space-y-2 text-palms-cream/90">
               {siteContact.emailGeneral ? (
                 <li>
-                  General:{" "}
+                  General &amp; buyers:{" "}
                   <a
                     className="font-medium text-palms-gold underline-offset-4 hover:underline"
                     href={`mailto:${siteContact.emailGeneral}`}
@@ -101,25 +99,15 @@ export function ContactPageBody() {
                   </a>
                 </li>
               ) : null}
-              {siteContact.emailListings ? (
+              {siteContact.emailListings &&
+              siteContact.emailListings !== siteContact.emailGeneral ? (
                 <li>
-                  Listings ({siteContact.agentName}):{" "}
+                  Listings:{" "}
                   <a
                     className="font-medium text-palms-gold underline-offset-4 hover:underline"
                     href={`mailto:${siteContact.emailListings}`}
                   >
                     {siteContact.emailListings}
-                  </a>
-                </li>
-              ) : null}
-              {siteContact.emailBuyers ? (
-                <li>
-                  Buyers ({siteContact.buyerSpecialistName}):{" "}
-                  <a
-                    className="font-medium text-palms-gold underline-offset-4 hover:underline"
-                    href={`mailto:${siteContact.emailBuyers}`}
-                  >
-                    {siteContact.emailBuyers}
                   </a>
                 </li>
               ) : null}

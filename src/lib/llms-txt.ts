@@ -9,7 +9,7 @@ export function buildLlmsTxt(): string {
   const lines = [
     `# ${siteContact.gbpBusinessName}`,
     "",
-    `> Hyperlocal real estate site for ${palmsPlaceTower.name} condos (${formatPalmsPlaceTowerAddressLine()}). Listing specialist ${siteContact.agentName}; buyers specialist ${siteContact.buyerSpecialistName}; ${siteContact.brokerage}.`,
+    `> Hyperlocal real estate site for ${palmsPlaceTower.name} condos (${formatPalmsPlaceTowerAddressLine()}). Listing specialist and buyers specialist ${siteContact.agentName}; ${siteContact.brokerage}.`,
     "",
     "## Entities",
     "",
@@ -20,7 +20,7 @@ export function buildLlmsTxt(): string {
     `- Hours: ${siteContact.officeHoursLine ?? ""}`,
     `- Phone: ${siteContact.phone ?? ""}`,
     `- Website: ${origin}/`,
-    `- Licenses: ${siteContact.agentName} ${siteContact.license}; ${siteContact.buyerSpecialistName} ${siteContact.buyerSpecialistLicense}`,
+    `- License: ${siteContact.agentName} ${siteContact.license}`,
     `- Services: buy representation (${origin}/buyers); sell / listing (${origin}/sell)`,
     "",
     "## Primary pages",

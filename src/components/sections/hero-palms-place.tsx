@@ -49,8 +49,8 @@ export function HeroPalmsPlace() {
           <strong className="font-semibold text-palms-cream">{siteContact.gbpBusinessName}</strong>{" "}
           — studio-to-penthouse residences at 4381 W Flamingo Road with the{" "}
           {siteContact.teamBrandName} at {siteContact.brokerage}. Browse live inventory, compare HOA
-          rules, and schedule tours with {siteContact.agentName} (listings) or{" "}
-          {siteContact.buyerSpecialistName} (buyers). Service area: {siteContact.primaryServiceArea}.
+          rules, and schedule tours with {siteContact.agentName} for listings or buyer representation.
+          Service area: {siteContact.primaryServiceArea}.
         </p>
 
         <div className="mt-6 max-w-3xl space-y-5 text-base leading-relaxed text-palms-cream/88 md:text-lg">

@@ -17,9 +17,9 @@ function telHref(phone: string): string {
 }
 
 const pageMeta = {
-  name: "Palms Place real estate team — Dr. Jan Duffy & Chance Fuller",
+  name: "Palms Place real estate team — Dr. Jan Duffy",
   description:
-    "Meet the Palms Place listing and buyer specialists: Dr. Jan Duffy and Chance Fuller, Realtors at Berkshire Hathaway HomeServices Nevada Properties.",
+    "Meet Dr. Jan Duffy, Realtor — listing specialist, team leader, and Palms Place Buyers Specialist at Berkshire Hathaway HomeServices Nevada Properties.",
 };
 
 export function TeamPageBody() {
@@ -53,12 +53,13 @@ export function TeamPageBody() {
           className="font-display text-2xl font-semibold text-palms-cream"
           id="team-jan-heading"
         >
-          Who is the Palms Place listing specialist?
+          Who leads Palms Place listings and buyer representation?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           {siteContact.agentName} is the {siteContact.agentTitle}. Nevada license{" "}
-          {siteContact.license}. Listing and marketing questions, pricing strategy, and seller
-          representation for Palms Place typically start with Dr. Jan. Email:{" "}
+          {siteContact.license}. Listing and marketing questions, pricing strategy, seller
+          representation, buyer tours, HOA review, and offer strategy for Palms Place start with Dr.
+          Jan. Email:{" "}
           {siteContact.emailListings ? (
             <a
               className="text-palms-gold underline-offset-4 hover:underline"
@@ -68,33 +69,33 @@ export function TeamPageBody() {
             </a>
           ) : (
             "see contact page"
-          )}
-          .
+          )}{" "}
+          (listings) or{" "}
+          {siteContact.emailGeneral ? (
+            <a
+              className="text-palms-gold underline-offset-4 hover:underline"
+              href={`mailto:${siteContact.emailGeneral}`}
+            >
+              {siteContact.emailGeneral}
+            </a>
+          ) : (
+            "see contact page"
+          )}{" "}
+          (general &amp; buyers).
         </p>
       </section>
 
-      <section className="mt-12" aria-labelledby="team-chance-heading">
+      <section className="mt-12" aria-labelledby="team-buyers-heading">
         <h2
           className="font-display text-2xl font-semibold text-palms-cream"
-          id="team-chance-heading"
+          id="team-buyers-heading"
         >
           Who helps Palms Place buyers?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          {siteContact.buyerSpecialistName} is the {siteContact.buyerSpecialistTitle}. Nevada license{" "}
-          {siteContact.buyerSpecialistLicense}. Buyers often start with Chance for showings, HOA
-          review, and offer strategy. Email:{" "}
-          {siteContact.emailBuyers ? (
-            <a
-              className="text-palms-gold underline-offset-4 hover:underline"
-              href={`mailto:${siteContact.emailBuyers}`}
-            >
-              {siteContact.emailBuyers}
-            </a>
-          ) : (
-            "see contact page"
-          )}
-          .
+          {siteContact.buyerSpecialistName} is also the {siteContact.buyerSpecialistTitle}. Buyers
+          start with Dr. Jan for showings, HOA review, and offer strategy—the same Nevada license{" "}
+          {siteContact.buyerSpecialistLicense}.
         </p>
       </section>
 
@@ -181,7 +182,7 @@ export function TeamPageBody() {
         pathname="/team"
         headingId="team-faq-heading"
         heading="Team FAQ"
-        intro="Listing vs buyer specialists and NAP alignment with GBP."
+        intro="Listing and buyer representation with Dr. Jan Duffy, plus NAP alignment with GBP."
         items={teamPageFaq}
       />
 

@@ -34,8 +34,8 @@ export function CommunitiesPageBody() {
       </h1>
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        Orient your search before you tour. {siteContact.agentName} and {siteContact.buyerSpecialistName}{" "}
-        help buyers compare corridors across {siteContact.primaryServiceArea}—from Strip-adjacent towers
+        Orient your search before you tour. {siteContact.agentName}{" "}
+        helps buyers compare corridors across {siteContact.primaryServiceArea}—from Strip-adjacent towers
         to master-planned valleys.
       </p>
 

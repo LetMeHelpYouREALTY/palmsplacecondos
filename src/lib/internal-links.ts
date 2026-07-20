@@ -93,7 +93,7 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
     {
       href: "/team",
       label: "Palms Place real estate team",
-      description: "Dr. Jan Duffy & Chance Fuller",
+      description: "Dr. Jan Duffy — listings & buyers",
     },
     { href: "/homes", label: "Homes for sale in Las Vegas", description: "Single-family and attached" },
     {

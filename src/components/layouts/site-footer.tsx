@@ -99,13 +99,6 @@ export function SiteFooter() {
                   <p className="text-palms-cream/80">{siteContact.agentTitle}</p>
                   <p className="text-sm text-palms-cream/70">Nevada license {siteContact.license}</p>
                 </div>
-                <div>
-                  <p className="font-medium text-palms-cream">{siteContact.buyerSpecialistName}</p>
-                  <p className="text-palms-cream/80">{siteContact.buyerSpecialistTitle}</p>
-                  <p className="text-sm text-palms-cream/70">
-                    Nevada license {siteContact.buyerSpecialistLicense}
-                  </p>
-                </div>
                 <p className="text-palms-cream/85">{siteContact.brokerage}</p>
                 <address className="not-italic text-palms-cream/85">
                   {formatOfficeAddressLine()}
@@ -153,7 +146,9 @@ export function SiteFooter() {
                       <span className="text-palms-cream/55"> — listings</span>
                     </li>
                   ) : null}
-                  {siteContact.emailBuyers ? (
+                  {siteContact.emailBuyers &&
+                  siteContact.emailBuyers !== siteContact.emailGeneral &&
+                  siteContact.emailBuyers !== siteContact.emailListings ? (
                     <li>
                       <a
                         className="font-medium text-palms-gold underline-offset-4 hover:underline"
