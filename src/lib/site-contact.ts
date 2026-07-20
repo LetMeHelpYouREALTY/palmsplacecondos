@@ -69,6 +69,8 @@ export type SiteContact = {
   contactMapEmbedUrl?: string;
   /** Official Palms Place Facebook page — merged into JSON-LD `sameAs` when set. */
   facebookUrl?: string;
+  /** Dr. Jan Duffy YouTube channel — footer/connect links + JSON-LD `sameAs`. */
+  youtubeUrl?: string;
 };
 
 export const siteContact: SiteContact = {
@@ -96,6 +98,7 @@ export const siteContact: SiteContact = {
   contactMapEmbedUrl:
     "https://www.google.com/maps/d/embed?mid=1fl048P0dAxnuNvwqHLrJU4i4zZmkwpE&hl=en&ehbc=2E312F",
   facebookUrl: "https://www.facebook.com/palmsplace",
+  youtubeUrl: "https://www.youtube.com/@DrDuffy",
 };
 
 /** Single-line office address for visible copy (footer, contact). */

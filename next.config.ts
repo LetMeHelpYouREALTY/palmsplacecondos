@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
   /* When a parent directory has another lockfile, pin tracing to this app root (Vercel/local). */
   outputFileTracingRoot: path.join(__dirname),
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+        pathname: "/vi/**",
+      },
+    ],
+  },
+
   /**
    * RealScout CSP (when you add Content-Security-Policy): include in `script-src` and
    * `connect-src` both `https://em.realscout.com` and `https://www.realscout.com` — see
@@ -15,6 +25,7 @@ const nextConfig: NextConfig = {
    * without aligning directives.
    *
    * This project does not set CSP by default so Next.js/Vercel defaults do not break embeds.
+   * YouTube embeds use youtube-nocookie.com; thumbnails load from i.ytimg.com (remotePatterns).
    */
 };
 

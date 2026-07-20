@@ -2,9 +2,15 @@ import Link from "next/link";
 import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
+import { YoutubeVideoEmbed } from "@/components/seo/youtube-video-embed";
 import { connectPageFaq } from "@/lib/content/discoverability-page-faqs";
+import { featuredYoutubeVideo, youtubeWatchUrl } from "@/lib/content/featured-youtube-video";
 import { relatedLinksForPath } from "@/lib/internal-links";
-import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
+import {
+  getBreadcrumbListJsonLd,
+  getVideoObjectJsonLd,
+  getWebPageJsonLdForPath,
+} from "@/lib/schema";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
 
 const pageMeta = {
@@ -20,17 +26,21 @@ export function ConnectPageBody() {
   const tel = phone ? `tel:${phone.replace(/\D/g, "")}` : undefined;
   const facebookHref =
     process.env.NEXT_PUBLIC_FACEBOOK_URL ?? siteContact.facebookUrl ?? "https://www.facebook.com/palmsplace";
-  const youtubeHref = process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "https://www.youtube.com/";
+  const youtubeHref =
+    process.env.NEXT_PUBLIC_YOUTUBE_URL ?? siteContact.youtubeUrl ?? featuredYoutubeVideo.channelUrl;
+  const video = featuredYoutubeVideo;
   const webPageJsonLd = getWebPageJsonLdForPath("/connect", pageMeta, { aboutListingAgent: true });
   const breadcrumbJsonLd = getBreadcrumbListJsonLd("/connect", [
     { name: "Home", path: "/" },
     { name: "Connect", path: "/connect" },
   ]);
+  const videoJsonLd = getVideoObjectJsonLd(video);
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
       <StructuredData data={webPageJsonLd} />
       <StructuredData data={breadcrumbJsonLd} />
+      <StructuredData data={videoJsonLd} />
       <h1 className="font-display text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
         Connect with the Palms Place team
       </h1>
@@ -84,14 +94,14 @@ export function ConnectPageBody() {
           >
             Palms Place on Facebook
           </a>{" "}
-          for building and area updates. The footer also links to{" "}
+          for building and area updates. Watch{" "}
           <a
             className="text-palms-gold underline-offset-4 hover:underline"
             href={youtubeHref}
             rel="noopener noreferrer"
             target="_blank"
           >
-            YouTube
+            {video.channelName} on YouTube
           </a>{" "}
           for tours and market context. For curated topic shortcuts, see{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/popular-searches">
@@ -99,6 +109,19 @@ export function ConnectPageBody() {
           </Link>
           .
         </p>
+        <div className="mt-8">
+          <YoutubeVideoEmbed title={video.title} videoId={video.videoId} />
+          <p className="mt-3 text-sm text-palms-cream/65">
+            <a
+              className="font-medium text-palms-gold underline-offset-4 hover:underline"
+              href={youtubeWatchUrl(video.videoId)}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {video.title}
+            </a>
+          </p>
+        </div>
       </section>
 
       <section className="mt-12" aria-labelledby="connect-next-step-heading">
