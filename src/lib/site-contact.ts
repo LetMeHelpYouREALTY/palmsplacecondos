@@ -97,8 +97,10 @@ export const siteContact: SiteContact = {
   postalCode: "89103",
   addressCountry: "US",
   officeHoursLine: "Monday through Friday, 9:00 AM to 5:00 PM",
-  contactMapEmbedUrl:
-    "https://www.google.com/maps/d/embed?mid=1fl048P0dAxnuNvwqHLrJU4i4zZmkwpE&hl=en&ehbc=2E312F",
+  // contactMapEmbedUrl intentionally unset: the previous Google My Maps embed
+  // (maps/d/embed?mid=1fl048P0d…) now 404s at Google. Contact page falls back to
+  // a standard keyless Maps embed of the office address. Re-add only after
+  // verifying a new My Maps share link loads publicly.
   facebookUrl: "https://www.facebook.com/palmsplace",
   youtubeUrl: "https://www.youtube.com/@DrDuffy",
   /** Tower entity for GEO — address + geo from palms-place-building.ts */
