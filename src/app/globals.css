@@ -9,7 +9,8 @@
   --palms-charcoal-muted: #1e1e1e;
   --palms-gold: #c5a35a;
   --palms-gold-hover: #d4b56d;
-  --palms-gold-muted: #8a7340;
+  /* ~5.4:1 on charcoal-elevated (#141414) for AA small-text labels */
+  --palms-gold-muted: #a8873f;
   --palms-cream: #f5f0e6;
   --palms-cream-muted: rgba(245, 240, 230, 0.72);
 }
@@ -25,7 +26,6 @@
   --color-palms-gold-muted: var(--palms-gold-muted);
   --color-palms-cream: var(--palms-cream);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 html {

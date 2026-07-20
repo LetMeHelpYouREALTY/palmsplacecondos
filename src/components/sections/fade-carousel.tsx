@@ -144,14 +144,21 @@ export function FadeCarousel({
                 aria-controls={`${baseId}-slide-${slide.id}`}
                 aria-label={`Go to slide ${i + 1}`}
                 aria-pressed={i === index}
-                className={cn(
-                  "h-2.5 w-2.5 rounded-full transition-colors",
-                  i === index ? "bg-palms-gold" : "bg-palms-cream/25 hover:bg-palms-cream/45",
-                )}
+                className="group inline-flex min-h-11 min-w-11 items-center justify-center rounded-md"
                 key={slide.id}
                 onClick={() => goTo(i)}
                 type="button"
-              />
+              >
+                <span
+                  aria-hidden
+                  className={cn(
+                    "h-2.5 w-2.5 rounded-full transition-colors",
+                    i === index
+                      ? "bg-palms-gold"
+                      : "bg-palms-cream/25 group-hover:bg-palms-cream/45",
+                  )}
+                />
+              </button>
             ))}
           </div>
         </div>
