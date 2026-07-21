@@ -3,6 +3,7 @@ import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonAnchor } from "@/components/shared/button-link";
+import { CalendlyButton } from "@/components/shared/calendly-link";
 import { condosPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
@@ -128,12 +129,7 @@ export function CondosPageBody() {
           <ButtonAnchor href={searchUrl} variant="primary">
             Open curated home search
           </ButtonAnchor>
-          <Link
-            className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-palms-gold/45 px-6 py-3 text-sm font-semibold text-palms-cream transition-colors hover:border-palms-gold hover:bg-palms-gold/10"
-            href="/contact"
-          >
-            Schedule a Palms Place showing
-          </Link>
+          <CalendlyButton variant="secondary">Schedule a Palms Place showing</CalendlyButton>
         </div>
       </section>
 

@@ -134,7 +134,7 @@ export function BuyerCalculatorsPageBody() {
             <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
               Contact the office
             </Link>{" "}
-            for lender introductions and tour planning.
+            for lender introductions, or schedule a tour via Calendly links on the buyer pages.
           </p>
         )}
       </section>

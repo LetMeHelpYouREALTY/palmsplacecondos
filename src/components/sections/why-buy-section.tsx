@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CalendlyLink } from "@/components/shared/calendly-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import { siteContact } from "@/lib/site-contact";
 
@@ -63,9 +64,7 @@ export function WhyBuySection() {
               Palms Place buying field guide
             </Link>
             , or{" "}
-            <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/contact">
-              schedule a showing
-            </Link>
+            <CalendlyLink>schedule a showing</CalendlyLink>
             . Thinking about selling? See{" "}
             <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/sell">
               Sell your Palms Place condo — free valuation

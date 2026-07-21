@@ -4,6 +4,7 @@ import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
 import { buyersPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { ButtonAnchor } from "@/components/shared/button-link";
+import { CalendlyLink } from "@/components/shared/calendly-link";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
@@ -152,10 +153,13 @@ export function BuyersPageBody() {
           Ready to tour or write an offer?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
+          <CalendlyLink>Schedule a conversation</CalendlyLink>
+          {" "}
+          with the team, or{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
-            Contact the team
-          </Link>{" "}
-          to schedule a conversation. Review the{" "}
+            contact the office
+          </Link>
+          . Review the{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/faq">
             Palms Place FAQ
           </Link>{" "}

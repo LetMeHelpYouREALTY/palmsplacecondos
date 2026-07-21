@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ButtonAnchor } from "@/components/shared/button-link";
+import { CalendlyLink } from "@/components/shared/calendly-link";
 import { LuxuryPlaceholder } from "@/components/sections/luxury-placeholder";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 
@@ -37,9 +38,7 @@ export function UnwindSection() {
               Las Vegas condo communities overview
             </Link>{" "}
             or{" "}
-            <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/contact">
-              Schedule a Palms Place showing with Dr. Jan
-            </Link>
+            <CalendlyLink>Schedule a Palms Place showing with Dr. Jan</CalendlyLink>
             .
           </p>
         </div>

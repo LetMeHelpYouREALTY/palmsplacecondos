@@ -44,8 +44,8 @@ export const homeFaqItems: FaqItem[] = [
   {
     question: "How do I contact the Palms Place real estate team?",
     answer: siteContact.phone
-      ? `Call ${siteContact.phone} or email ${siteContact.emailGeneral ?? siteContact.emailListings ?? "the team"} for Palms Place tours and listing questions. Office hours: ${siteContact.officeHoursLine ?? "see the contact page"}. ${siteContact.brokerage}.`
-      : "Use the contact page on this site for Palms Place tours and listing questions. Office hours and phone are listed there and must match this site's Google Business Profile.",
+      ? `Schedule a tour or call on Calendly (Schedule CTAs sitewide), or call ${siteContact.phone} / email ${siteContact.emailGeneral ?? siteContact.emailListings ?? "the team"}. Office hours: ${siteContact.officeHoursLine ?? "see the contact page"}. ${siteContact.brokerage}.`
+      : "Schedule a tour or call via the Calendly links on this site, or use the contact page for phone and email. Office hours must match this site's Google Business Profile.",
   },
   {
     question: "Where does listing information come from?",

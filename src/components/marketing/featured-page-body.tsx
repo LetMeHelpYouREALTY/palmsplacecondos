@@ -8,6 +8,7 @@ import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
+import { CalendlyLink } from "@/components/shared/calendly-link";
 
 const pageMeta = {
   name: "Featured Palms Place & Las Vegas listings — spotlight inventory",
@@ -94,10 +95,9 @@ export function FeaturedPageBody() {
           Can I get a private featured list for my price band?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
-            Contact the office
-          </Link>{" "}
-          for tours and conversations appropriate to your timeline. If you are shopping under $500K,
+          <CalendlyLink>Schedule a tour or call</CalendlyLink>
+          {" "}
+          for conversations appropriate to your timeline. If you are shopping under $500K,
           also review{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/under-500k">
             homes and condos under $500K

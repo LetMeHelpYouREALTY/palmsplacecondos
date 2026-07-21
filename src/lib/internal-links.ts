@@ -1,3 +1,4 @@
+import { getCalendlyUrl } from "@/lib/calendly";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 
 /**
@@ -113,7 +114,13 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
       external: true,
     },
     { href: "/sell", label: "Sell with the Palms Place team", description: "Listing specialist & marketing" },
-    { href: "/contact", label: "Schedule a conversation", description: "Buy or sell" },
+    {
+      href: getCalendlyUrl(),
+      label: "Schedule a conversation",
+      description: "Book on Calendly",
+      external: true,
+    },
+    { href: "/contact", label: "Contact the office", description: "Phone, email & map" },
     { href: "/connect", label: "Connect & YouTube", description: "Stay in touch" },
     { href: "/communities", label: "Neighborhoods & communities", description: "Near the Strip" },
     {

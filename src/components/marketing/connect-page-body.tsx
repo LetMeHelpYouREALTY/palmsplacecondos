@@ -2,11 +2,12 @@ import Link from "next/link";
 import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
+import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
+import { CalendlyLink } from "@/components/shared/calendly-link";
 import { connectPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
-import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
   name: "Connect with the Palms Place team — Las Vegas Strip condos",
@@ -40,11 +41,13 @@ export function ConnectPageBody() {
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Stay in touch with {siteContact.teamBrandName}—{siteContact.brokerage}. Use this page for
-        office location, hours, and social follow-ups; use{" "}
+        office location, hours, and social follow-ups;{" "}
+        <CalendlyLink>schedule a tour or call on Calendly</CalendlyLink>
+        ; or use{" "}
         <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
           contact
         </Link>{" "}
-        when you are ready to schedule tours or buyer and seller conversations.
+        for phone, email, and the office map.
       </p>
 
       <section className="mt-12" aria-labelledby="connect-office-heading">
@@ -127,9 +130,7 @@ export function ConnectPageBody() {
           What is the best next step after connecting?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/contact">
-            Schedule a call or visit
-          </Link>
+          <CalendlyLink>Schedule a call or visit</CalendlyLink>
           , browse{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/buyers">
             the buyer guide

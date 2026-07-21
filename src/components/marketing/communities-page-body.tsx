@@ -7,6 +7,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
+import { CalendlyLink } from "@/components/shared/calendly-link";
 
 const pageMeta = {
   name: "Las Vegas communities & guard-gated neighborhoods",
@@ -113,8 +114,8 @@ export function CommunitiesPageBody() {
           What are the next steps with the Palms Place team?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          Narrow must-haves, pull comparables with your agent, and schedule showings when you are
-          ready. Start from the{" "}
+          Narrow must-haves, pull comparables with your agent, and{" "}
+          <CalendlyLink>schedule showings</CalendlyLink> when you are ready. Start from the{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/">
             Palms Place homepage
           </Link>{" "}
@@ -122,7 +123,7 @@ export function CommunitiesPageBody() {
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
             contact the office
           </Link>{" "}
-          for timing and financing conversations—not legal or tax advice.
+          for phone and email—not legal or tax advice.
         </p>
       </section>
 

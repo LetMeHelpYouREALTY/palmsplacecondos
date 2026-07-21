@@ -4,6 +4,7 @@ import { RelatedPages } from "@/components/seo/related-pages";
 import { buyingGuidePageFaq } from "@/lib/content/discoverability-page-faqs";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonAnchor } from "@/components/shared/button-link";
+import { CalendlyButton } from "@/components/shared/calendly-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import {
   palmsPlaceBuyerGuideIntro,
@@ -139,12 +140,7 @@ export function GuideBuyingPalmsPlacePageBody() {
           <ButtonAnchor href={searchUrl} variant="primary">
             Open curated search
           </ButtonAnchor>
-          <Link
-            className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-palms-gold/45 px-6 py-3 text-sm font-semibold text-palms-cream transition-colors hover:border-palms-gold hover:bg-palms-gold/10"
-            href="/contact"
-          >
-            Schedule a tour
-          </Link>
+          <CalendlyButton variant="secondary">Schedule a tour</CalendlyButton>
         </div>
       </section>
 

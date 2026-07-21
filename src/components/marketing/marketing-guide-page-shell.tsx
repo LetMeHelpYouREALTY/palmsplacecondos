@@ -14,6 +14,13 @@ import {
 } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
+type FooterCta = {
+  href: string;
+  label: string;
+  /** Open in a new tab (Calendly, RealScout, etc.). */
+  external?: boolean;
+};
+
 type MarketingGuidePageShellProps = {
   path: string;
   breadcrumbs: BreadcrumbItem[];
@@ -27,7 +34,7 @@ type MarketingGuidePageShellProps = {
   searchUrl?: string;
   checklist?: { title: string; items: string[] };
   sections: { id: string; question: string; answer: string }[];
-  footerCtas: { href: string; label: string }[];
+  footerCtas: FooterCta[];
   faqItems?: FaqItem[];
   faqHeading?: string;
 };
@@ -111,11 +118,17 @@ export function MarketingGuidePageShell({
       </div>
 
       <div className="mt-12 flex flex-wrap gap-4">
-        {footerCtas.map((cta) => (
-          <ButtonLink key={cta.href} href={cta.href} variant="primary">
-            {cta.label}
-          </ButtonLink>
-        ))}
+        {footerCtas.map((cta) =>
+          cta.external ? (
+            <ButtonAnchor key={`${cta.href}-${cta.label}`} href={cta.href} variant="primary">
+              {cta.label}
+            </ButtonAnchor>
+          ) : (
+            <ButtonLink key={`${cta.href}-${cta.label}`} href={cta.href} variant="primary">
+              {cta.label}
+            </ButtonLink>
+          ),
+        )}
         {searchUrl ? (
           <ButtonAnchor href={searchUrl} variant="secondary">
             Search listings

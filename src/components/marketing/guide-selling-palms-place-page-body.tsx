@@ -6,6 +6,7 @@ import {
   palmsPlaceSellerGuideSections,
   palmsPlaceSellerPrepChecklist,
 } from "@/lib/content/palms-place-seller-guide";
+import { getCalendlyUrl } from "@/lib/calendly";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { siteContact } from "@/lib/site-contact";
 
@@ -36,7 +37,11 @@ export function GuideSellingPalmsPlacePageBody() {
       faqHeading="Selling guide FAQ"
       footerCtas={[
         { href: "/sell", label: "Sell with the team" },
-        { href: "/contact", label: "Schedule a seller consult" },
+        {
+          href: getCalendlyUrl(),
+          label: "Schedule a seller consult",
+          external: true,
+        },
       ]}
     />
   );

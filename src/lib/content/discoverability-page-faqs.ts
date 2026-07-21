@@ -24,7 +24,7 @@ export const connectPageFaq: FaqItem[] = [
   {
     question: "How is the connect page different from contact?",
     answer:
-      "Connect focuses on staying in touch—office NAP, social channels, and follow-up paths. Contact is where you schedule calls, tours, and buyer or seller conversations with the Palms Place team.",
+      "Connect focuses on staying in touch—office NAP, social channels, and follow-up paths. Schedule calls, tours, and buyer or seller conversations on Calendly (linked from Schedule CTAs sitewide). Contact has phone, email, hours, and the office map.",
   },
   {
     question: "Will I get spam if I follow Palms Place on social?",
@@ -404,7 +404,7 @@ export const sellersPageFaq: FaqItem[] = [
   {
     question: "How is the sellers hub different from /sell?",
     answer:
-      "Sellers is the strategy hub with links to the selling field guide and valuation path. Sell is the conversion page for scheduling a listing conversation.",
+      "Sellers is the strategy hub with links to the selling field guide and valuation path. Sell is the conversion page—use Schedule a seller consult (Calendly) to book a listing conversation.",
   },
   {
     question: "Who lists Palms Place for the team?",
@@ -428,7 +428,7 @@ export const contactPageFaq: FaqItem[] = [
   {
     question: "What are office hours?",
     answer:
-      "Monday–Friday, 9:00 AM–5:00 PM. Saturday and Sunday closed. Confirm appointments if you need evenings—tour and listing schedules vary.",
+      "Monday–Friday, 9:00 AM–5:00 PM. Saturday and Sunday closed. Book tours and calls on Calendly (Schedule an appointment on this page)—evening slots depend on availability.",
   },
   {
     question: "Who do I email for listings vs buyers?",

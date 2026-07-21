@@ -4,6 +4,7 @@ import { RelatedPages } from "@/components/seo/related-pages";
 import { SourcesVerification } from "@/components/seo/sources-verification";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ButtonLink } from "@/components/shared/button-link";
+import { CalendlyButton } from "@/components/shared/calendly-link";
 import { sellersPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
@@ -72,9 +73,7 @@ export function SellersPageBody() {
           <ButtonLink href="/sell" variant="primary">
             Sell page overview
           </ButtonLink>
-          <ButtonLink href="/contact" variant="secondary">
-            Contact the team
-          </ButtonLink>
+          <CalendlyButton variant="secondary">Schedule a seller consult</CalendlyButton>
         </div>
       </section>
 

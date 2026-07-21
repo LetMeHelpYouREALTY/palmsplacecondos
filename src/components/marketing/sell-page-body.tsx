@@ -8,6 +8,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
+import { CalendlyLink } from "@/components/shared/calendly-link";
 
 const pageMeta = {
   name: "Sell your Palms Place or Las Vegas condo",
@@ -114,10 +115,8 @@ export function SellPageBody() {
           Get started
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          <Link className="font-medium text-palms-gold underline-offset-4 hover:underline" href="/contact">
-            Contact the team
-          </Link>{" "}
-          for a seller consult, or return to the{" "}
+          <CalendlyLink>Schedule a seller consult</CalendlyLink>
+          , or return to the{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/">
             homepage
           </Link>

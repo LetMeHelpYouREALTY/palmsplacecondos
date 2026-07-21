@@ -8,6 +8,7 @@ import { resolveMapEmbedSrc } from "@/lib/maps-embed";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { formatOfficeAddressLine, formatTeamPhrase, siteContact } from "@/lib/site-contact";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
+import { CalendlyButton } from "@/components/shared/calendly-link";
 
 const pageMeta = {
   name: "Contact the Palms Place team — Las Vegas office",
@@ -117,6 +118,9 @@ export function ContactPageBody() {
         )}
 
         <div className="mt-6 flex flex-wrap gap-3">
+          <CalendlyButton className="rounded-md px-4 py-2 text-sm shadow-none" variant="primary">
+            Schedule an appointment
+          </CalendlyButton>
           {tel ? (
             <a
               className="inline-flex items-center justify-center rounded-md border border-palms-gold/40 bg-palms-gold/10 px-4 py-2 text-sm font-medium text-palms-cream transition-colors hover:bg-palms-gold/20"

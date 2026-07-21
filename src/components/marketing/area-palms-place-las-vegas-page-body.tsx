@@ -9,6 +9,7 @@ import { resolveMapEmbedSrc } from "@/lib/maps-embed";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
+import { CalendlyLink } from "@/components/shared/calendly-link";
 
 const path = "/area/palms-place-las-vegas";
 
@@ -48,8 +49,9 @@ export function AreaPalmsPlaceLasVegasPageBody() {
         Palms Place is a {palmsPlaceTower.floors}-story residential tower at{" "}
         <strong className="font-semibold text-palms-cream">{formatPalmsPlaceTowerAddressLine()}</strong>
         , west of the Las Vegas Strip in the Paradise area (ZIP {palmsPlaceTower.postalCode}). This page
-        orients buyers and sellers on geography and access—office tours and NAP for the{" "}
-        {siteContact.teamBrandName} are on the{" "}
+        orients buyers and sellers on geography and access. Book office tours on{" "}
+        <CalendlyLink>Calendly</CalendlyLink>
+        ; NAP for the {siteContact.teamBrandName} is on the{" "}
         <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
           contact page
         </Link>
