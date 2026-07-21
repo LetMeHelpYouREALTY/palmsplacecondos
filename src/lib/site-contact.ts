@@ -80,6 +80,11 @@ export type SiteContact = {
   facebookUrl?: string;
   /** Dr. Jan Duffy YouTube channel — footer/connect + JSON-LD `sameAs`. */
   youtubeUrl?: string;
+  /**
+   * Google Business Profile / Maps share URL — visible “View Google Reviews” link and JSON-LD `sameAs`.
+   * Prefer the stable share link from GBP (share.google) or a Maps place URL.
+   */
+  googleBusinessProfileUrl?: string;
 };
 
 export const siteContact: SiteContact = {
@@ -119,6 +124,8 @@ export const siteContact: SiteContact = {
   // is set). See src/lib/maps-embed.ts.
   facebookUrl: "https://www.facebook.com/palmsplace",
   youtubeUrl: "https://www.youtube.com/@DrDuffy",
+  /** GBP share link for Palms Place Condos (Maps / knowledge panel). */
+  googleBusinessProfileUrl: "https://share.google/6cQL7oQ9T88LIQfbC",
   /** Tower entity for GEO — address + geo from palms-place-building.ts */
   palmsPlaceBuilding: getPalmsPlaceBuildingForSchema(),
   /** Must match Google Business Profile description. */

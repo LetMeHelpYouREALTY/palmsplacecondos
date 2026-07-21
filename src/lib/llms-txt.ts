@@ -20,6 +20,7 @@ export function buildLlmsTxt(): string {
     `- Hours: ${siteContact.officeHoursLine ?? ""}`,
     `- Phone: ${siteContact.phone ?? ""}`,
     `- Website: ${origin}/`,
+    `- Google Business Profile: ${siteContact.googleBusinessProfileUrl ?? ""}`,
     `- License: ${siteContact.agentName} ${siteContact.license}`,
     `- Services: buy representation (${origin}/buyers); sell / listing (${origin}/sell)`,
     "",

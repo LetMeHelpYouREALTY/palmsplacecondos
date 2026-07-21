@@ -87,6 +87,8 @@ function getSameAs(): string[] | undefined {
   if (fb?.startsWith("http")) fromSite.push(fb);
   const yt = siteContact.youtubeUrl?.trim();
   if (yt?.startsWith("http")) fromSite.push(yt);
+  const gbp = siteContact.googleBusinessProfileUrl?.trim();
+  if (gbp?.startsWith("http")) fromSite.push(gbp);
   const merged = [...fromSite, ...fromEnv];
   const seen = new Set<string>();
   const unique: string[] = [];

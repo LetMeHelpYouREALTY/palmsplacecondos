@@ -37,6 +37,7 @@ export function ContactPageBody() {
   });
   const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`;
   const placeSearchHref = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+  const gbpHref = siteContact.googleBusinessProfileUrl?.trim() || placeSearchHref;
   const webPageJsonLd = getWebPageJsonLdForPath("/contact", pageMeta, { aboutListingAgent: true });
   const breadcrumbJsonLd = getBreadcrumbListJsonLd("/contact", [
     { name: "Home", path: "/" },
@@ -140,10 +141,18 @@ export function ContactPageBody() {
           >
             View on Google Maps
           </a>
+          <a
+            className="inline-flex items-center justify-center rounded-md border border-palms-gold/40 bg-palms-gold/10 px-4 py-2 text-sm font-medium text-palms-cream transition-colors hover:bg-palms-gold/20"
+            href={gbpHref}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View Google Reviews
+          </a>
         </div>
         <p className="mt-4 text-xs text-palms-cream/60">
-          Open the Google Maps listing to read reviews and confirm hours match what you see here and
-          on the Google Business Profile.
+          Open the Google Business Profile for {siteContact.gbpBusinessName} to read reviews and
+          confirm hours match what you see here.
         </p>
       </section>
 

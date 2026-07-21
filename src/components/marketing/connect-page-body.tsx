@@ -21,7 +21,9 @@ export function ConnectPageBody() {
   const tel = phone ? `tel:${phone.replace(/\D/g, "")}` : undefined;
   const facebookHref =
     process.env.NEXT_PUBLIC_FACEBOOK_URL ?? siteContact.facebookUrl ?? "https://www.facebook.com/palmsplace";
-  const youtubeHref = process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "https://www.youtube.com/";
+  const youtubeHref =
+    process.env.NEXT_PUBLIC_YOUTUBE_URL ?? siteContact.youtubeUrl ?? "https://www.youtube.com/";
+  const gbpHref = siteContact.googleBusinessProfileUrl?.trim();
   const webPageJsonLd = getWebPageJsonLdForPath("/connect", pageMeta, { aboutListingAgent: true });
   const breadcrumbJsonLd = getBreadcrumbListJsonLd("/connect", [
     { name: "Home", path: "/" },
@@ -86,7 +88,21 @@ export function ConnectPageBody() {
           >
             Palms Place on Facebook
           </a>{" "}
-          for building and area updates. The footer also links to{" "}
+          for building and area updates
+          {gbpHref ? (
+            <>
+              , leave or read reviews on our{" "}
+              <a
+                className="text-palms-gold underline-offset-4 hover:underline"
+                href={gbpHref}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Google Business Profile
+              </a>
+            </>
+          ) : null}
+          , and watch{" "}
           <a
             className="text-palms-gold underline-offset-4 hover:underline"
             href={youtubeHref}
