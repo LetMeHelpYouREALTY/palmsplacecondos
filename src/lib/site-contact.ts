@@ -193,3 +193,23 @@ export function formatTeamPhrase(): string {
   const c = siteContact;
   return `${c.agentName}, ${c.agentTitle}`;
 }
+
+/** `tel:` href from the display phone (digits only). */
+export function getTelHref(phone: string = siteContact.phone ?? ""): string | undefined {
+  const digits = phone.replace(/\D/g, "");
+  return digits ? `tel:${digits}` : undefined;
+}
+
+/** Regular hours plus optional special-hours clause for FAQ / one-line copy. */
+export function formatOfficeHoursWithSpecial(): string {
+  const regular = siteContact.officeHoursLine?.trim() ?? "";
+  const special = siteContact.officeSpecialHoursLine?.trim();
+  if (!regular) return special ?? "";
+  if (!special) return regular;
+  return `${regular}. ${special}`;
+}
+
+/** GBP description for visible copy and meta (empty string when unset). */
+export function getGbpDescription(): string {
+  return siteContact.schemaAgentDescription?.trim() ?? "";
+}

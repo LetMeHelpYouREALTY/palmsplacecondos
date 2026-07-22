@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     default: "Palms Place Condos for Sale | Las Vegas Strip High-Rise | Dr. Jan Duffy",
     template: `%s | ${siteContact.gbpBusinessName}`,
   },
-  description: `${siteContact.schemaAgentDescription}. Service area: ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
+  description: `${siteContact.schemaAgentDescription} Service area: ${siteContact.primaryServiceArea}. ${formatTeamPhrase()}. ${siteContact.brokerage}.`,
   robots: {
     index: true,
     follow: true,

@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { CalendlyLink } from "@/components/shared/calendly-link";
 import { popularNav, primaryNav, utilityNav } from "@/lib/navigation";
-import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
+import {
+  formatOfficeAddressLine,
+  formatOfficeHoursWithSpecial,
+  getTelHref,
+  siteContact,
+} from "@/lib/site-contact";
 import { cn } from "@/lib/utils";
 
 function FooterLink({
@@ -38,6 +44,8 @@ function FooterSectionTitle({ children }: { children: React.ReactNode }) {
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
+  const hoursLine = formatOfficeHoursWithSpecial();
+  const tel = siteContact.phone ? getTelHref(siteContact.phone) : undefined;
 
   return (
     <footer
@@ -103,22 +111,18 @@ export function SiteFooter() {
                 <address className="not-italic text-palms-cream/85">
                   {formatOfficeAddressLine()}
                 </address>
-                {siteContact.officeHoursLine ? (
-                  <p className="text-palms-cream/80">{siteContact.officeHoursLine}</p>
-                ) : null}
-                {siteContact.officeSpecialHoursLine ? (
-                  <p className="text-sm text-palms-cream/70">{siteContact.officeSpecialHoursLine}</p>
-                ) : null}
+                {hoursLine ? <p className="text-palms-cream/80">{hoursLine}</p> : null}
+                <p className="text-sm text-palms-cream/65">{siteContact.primaryServiceArea}</p>
               </div>
 
               <div className="border-t border-palms-gold/10 pt-5">
                 <FooterSectionTitle>Reach us</FooterSectionTitle>
                 <ul className="mt-3 list-none space-y-2">
-                  {siteContact.phone ? (
+                  {siteContact.phone && tel ? (
                     <li>
                       <a
                         className="font-medium text-palms-gold underline-offset-4 hover:underline"
-                        href={`tel:${siteContact.phone.replace(/\D/g, "")}`}
+                        href={tel}
                       >
                         {siteContact.phone}
                       </a>
@@ -127,6 +131,9 @@ export function SiteFooter() {
                   ) : (
                     <li className="text-palms-cream/65">Phone: add when it matches your Google Business Profile.</li>
                   )}
+                  <li>
+                    <CalendlyLink>Schedule an appointment</CalendlyLink>
+                  </li>
                   {siteContact.emailGeneral ? (
                     <li>
                       <a
@@ -138,7 +145,8 @@ export function SiteFooter() {
                       <span className="text-palms-cream/55"> — general</span>
                     </li>
                   ) : null}
-                  {siteContact.emailListings ? (
+                  {siteContact.emailListings &&
+                  siteContact.emailListings !== siteContact.emailGeneral ? (
                     <li>
                       <a
                         className="font-medium text-palms-gold underline-offset-4 hover:underline"
@@ -149,17 +157,16 @@ export function SiteFooter() {
                       <span className="text-palms-cream/55"> — listings</span>
                     </li>
                   ) : null}
-                  {siteContact.emailBuyers &&
-                  siteContact.emailBuyers !== siteContact.emailGeneral &&
-                  siteContact.emailBuyers !== siteContact.emailListings ? (
+                  {siteContact.facebookUrl ? (
                     <li>
                       <a
                         className="font-medium text-palms-gold underline-offset-4 hover:underline"
-                        href={`mailto:${siteContact.emailBuyers}`}
+                        href={siteContact.facebookUrl}
+                        rel="noopener noreferrer"
+                        target="_blank"
                       >
-                        {siteContact.emailBuyers}
+                        Facebook
                       </a>
-                      <span className="text-palms-cream/55"> — buyers</span>
                     </li>
                   ) : null}
                 </ul>

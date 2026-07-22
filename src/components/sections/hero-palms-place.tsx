@@ -1,17 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 import { ButtonLink } from "@/components/shared/button-link";
+import { CalendlyButton } from "@/components/shared/calendly-link";
 import { SectionEyebrow } from "@/components/shared/section-heading";
-import { siteContact } from "@/lib/site-contact";
-
-function telHref(phone: string): string {
-  return `tel:${phone.replace(/\D/g, "")}`;
-}
+import { getGbpDescription, getTelHref, siteContact } from "@/lib/site-contact";
 
 export function HeroPalmsPlace() {
-  const phone = siteContact.phone ?? "";
-  const phoneDisplay = phone || "Add phone in site contact";
+  const phone = siteContact.phone;
+  const tel = phone ? getTelHref(phone) : undefined;
+  const description = getGbpDescription();
 
   return (
     <section aria-labelledby="hero-heading" className="relative isolate min-h-[80vh] w-full overflow-hidden">
@@ -36,53 +33,45 @@ export function HeroPalmsPlace() {
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-5xl flex-col justify-end px-6 pb-20 pt-32 md:pb-28 md:pt-36">
-        <SectionEyebrow>Las Vegas high-rise living</SectionEyebrow>
+        <div className="palms-reveal">
+          <SectionEyebrow>Las Vegas Strip high-rise residences</SectionEyebrow>
 
-        <h1
-          className="font-display mt-8 max-w-3xl text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-palms-cream md:text-5xl lg:text-6xl"
-          id="hero-heading"
-        >
-          {siteContact.gbpBusinessName}
-        </h1>
-
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-palms-cream/90 md:text-lg">
-          {siteContact.schemaAgentDescription}
-        </p>
-
-        <div className="mt-6 max-w-3xl space-y-5 text-base leading-relaxed text-palms-cream/88 md:text-lg">
-          <p>
-            Residences at 4381 W Flamingo Road with the {siteContact.teamBrandName} at{" "}
-            {siteContact.brokerage}. Browse live inventory, compare HOA rules, and schedule tours with{" "}
-            {siteContact.agentName}. Service area: {siteContact.primaryServiceArea}.
-          </p>
-          <p>
-            Call or text{" "}
-            {phone ? (
-              <a className="font-medium text-palms-gold underline-offset-4 hover:underline" href={telHref(phone)}>
-                {phoneDisplay}
-              </a>
-            ) : (
-              phoneDisplay
-            )}{" "}
-            for next steps, or open the curated search below to match listings to your criteria.
-          </p>
-        </div>
-
-        <AgentHeroBadge className="mt-8" />
-
-        <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-          <ButtonLink href="/search" variant="primary">
-            Browse listings
-          </ButtonLink>
-          <ButtonLink href="/contact" variant="secondary">
-            Contact
-          </ButtonLink>
-          <Link
-            className="text-sm font-medium text-palms-gold/90 underline-offset-4 transition-colors hover:text-palms-gold hover:underline"
-            href="#listings"
+          <h1
+            className="font-display mt-8 max-w-3xl text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-palms-cream md:text-5xl lg:text-6xl"
+            id="hero-heading"
           >
-            View live listings
-          </Link>
+            {siteContact.gbpBusinessName}
+          </h1>
+
+          {description ? (
+            <p className="palms-reveal-delay-1 mt-6 max-w-2xl text-base leading-relaxed text-palms-cream/90 md:text-lg">
+              {description}
+            </p>
+          ) : null}
+
+          {phone && tel ? (
+            <p className="palms-reveal-delay-2 mt-4 text-sm text-palms-cream/75 md:text-base">
+              Call{" "}
+              <a className="font-medium text-palms-gold underline-offset-4 hover:underline" href={tel}>
+                {phone}
+              </a>
+              {" · "}
+              {siteContact.primaryServiceArea}
+            </p>
+          ) : null}
+
+          <div className="palms-reveal-delay-2 mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <ButtonLink href="/search" variant="primary">
+              Browse listings
+            </ButtonLink>
+            <CalendlyButton variant="secondary">Schedule an appointment</CalendlyButton>
+            <Link
+              className="text-sm font-medium text-palms-gold/90 underline-offset-4 transition-colors hover:text-palms-gold hover:underline"
+              href="#listings"
+            >
+              View live listings
+            </Link>
+          </div>
         </div>
       </div>
     </section>

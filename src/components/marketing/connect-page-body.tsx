@@ -7,7 +7,12 @@ import { CalendlyLink } from "@/components/shared/calendly-link";
 import { connectPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
-import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
+import {
+  formatOfficeAddressLine,
+  formatOfficeHoursWithSpecial,
+  getTelHref,
+  siteContact,
+} from "@/lib/site-contact";
 
 const pageMeta = {
   name: "Connect with the Palms Place team — Las Vegas Strip condos",
@@ -19,7 +24,8 @@ const pageMeta = {
 export function ConnectPageBody() {
   const related = relatedLinksForPath("/connect");
   const phone = siteContact.phone;
-  const tel = phone ? `tel:${phone.replace(/\D/g, "")}` : undefined;
+  const tel = phone ? getTelHref(phone) : undefined;
+  const hoursLine = formatOfficeHoursWithSpecial();
   const facebookHref =
     process.env.NEXT_PUBLIC_FACEBOOK_URL ?? siteContact.facebookUrl ?? "https://www.facebook.com/palmsplace";
   const youtubeHref =
@@ -57,12 +63,7 @@ export function ConnectPageBody() {
         <address className="mt-4 not-italic leading-relaxed text-palms-cream/85">
           {formatOfficeAddressLine()}
         </address>
-        {siteContact.officeHoursLine ? (
-          <p className="mt-2 text-palms-cream/80">{siteContact.officeHoursLine}</p>
-        ) : null}
-        {siteContact.officeSpecialHoursLine ? (
-          <p className="mt-1 text-sm text-palms-cream/70">{siteContact.officeSpecialHoursLine}</p>
-        ) : null}
+        {hoursLine ? <p className="mt-2 text-palms-cream/80">{hoursLine}</p> : null}
         {phone && tel ? (
           <p className="mt-4">
             <a className="font-medium text-palms-gold underline-offset-4 hover:underline" href={tel}>

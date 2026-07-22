@@ -2,19 +2,20 @@ import Link from "next/link";
 import { PageFaqSection } from "@/components/marketing/page-faq-section";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
-import { teamPageFaq } from "@/lib/content/discoverability-page-faqs";
+import { getTeamPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import {
   getBreadcrumbListJsonLd,
   getTeamPersonsJsonLd,
   getWebPageJsonLdForPath,
 } from "@/lib/schema";
-import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
+import {
+  formatOfficeAddressLine,
+  formatOfficeHoursWithSpecial,
+  getTelHref,
+  siteContact,
+} from "@/lib/site-contact";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
-
-function telHref(phone: string): string {
-  return `tel:${phone.replace(/\D/g, "")}`;
-}
 
 const pageMeta = {
   name: "Palms Place real estate team — Dr. Jan Duffy",
@@ -121,21 +122,21 @@ export function TeamPageBody() {
               {officeLine}
             </li>
           ) : null}
-          {phone ? (
+          {phone && getTelHref(phone) ? (
             <li>
               <span className="text-palms-cream/60">Phone: </span>
-              <a className="text-palms-gold underline-offset-4 hover:underline" href={telHref(phone)}>
+              <a
+                className="text-palms-gold underline-offset-4 hover:underline"
+                href={getTelHref(phone)}
+              >
                 {phone}
               </a>
             </li>
           ) : null}
-          {siteContact.officeHoursLine ? (
+          {formatOfficeHoursWithSpecial() ? (
             <li>
               <span className="text-palms-cream/60">Hours: </span>
-              {siteContact.officeHoursLine}
-              {siteContact.officeSpecialHoursLine
-                ? ` · ${siteContact.officeSpecialHoursLine}`
-                : null}
+              {formatOfficeHoursWithSpecial()}
             </li>
           ) : null}
           {siteContact.emailGeneral ? (
@@ -186,7 +187,7 @@ export function TeamPageBody() {
         headingId="team-faq-heading"
         heading="Team FAQ"
         intro="Listing and buyer representation with Dr. Jan Duffy, plus NAP alignment with GBP."
-        items={teamPageFaq}
+        items={getTeamPageFaq()}
       />
 
       <RelatedPages links={related} />

@@ -1,10 +1,6 @@
 import Image from "next/image";
-import { siteContact } from "@/lib/site-contact";
+import { getTelHref, siteContact } from "@/lib/site-contact";
 import { cn } from "@/lib/utils";
-
-function telHref(phone: string): string {
-  return `tel:${phone.replace(/\D/g, "")}`;
-}
 
 /**
  * Circular gold-framed headshot + name/phone strip for page heroes.
@@ -12,6 +8,7 @@ function telHref(phone: string): string {
  */
 export function AgentHeroBadge({ className }: { className?: string }) {
   const phone = siteContact.phone;
+  const tel = phone ? getTelHref(phone) : undefined;
   return (
     <div className={cn("flex items-center gap-4", className)}>
       <Image
@@ -23,11 +20,11 @@ export function AgentHeroBadge({ className }: { className?: string }) {
       />
       <div className="text-sm leading-snug">
         <p className="font-semibold text-palms-cream">{siteContact.agentName}</p>
-        <p className="text-palms-cream/70">Palms Place Listing Specialist &amp; Team Leader</p>
-        {phone ? (
+        <p className="text-palms-cream/70">{siteContact.buyerSpecialistTitle}</p>
+        {phone && tel ? (
           <a
             className="font-medium text-palms-gold underline-offset-4 hover:underline"
-            href={telHref(phone)}
+            href={tel}
           >
             {phone}
           </a>

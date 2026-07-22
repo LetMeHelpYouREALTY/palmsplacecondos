@@ -1,4 +1,9 @@
 import type { FaqItem } from "@/lib/schema";
+import {
+  formatOfficeAddressLine,
+  formatOfficeHoursWithSpecial,
+  siteContact,
+} from "@/lib/site-contact";
 
 /** `/featured` — must mirror visible FAQ on that page. */
 export const featuredPageFaq: FaqItem[] = [
@@ -24,7 +29,7 @@ export const connectPageFaq: FaqItem[] = [
   {
     question: "How is the connect page different from contact?",
     answer:
-      "Connect focuses on staying in touch—office NAP, social channels, and follow-up paths. Schedule calls, tours, and buyer or seller conversations on Calendly (linked from Schedule CTAs sitewide). Contact has phone, email, hours, and the office map.",
+      "Connect focuses on staying in touch—office NAP, social channels, and follow-up paths. Schedule calls and tours on Calendly. Contact has the full GBP-matched NAP block, hours, map, and reviews links.",
   },
   {
     question: "Will I get spam if I follow Palms Place on social?",
@@ -418,43 +423,47 @@ export const sellersPageFaq: FaqItem[] = [
   },
 ];
 
-/** `/contact` — must mirror visible FAQ on that page. */
-export const contactPageFaq: FaqItem[] = [
-  {
-    question: "What is the office address and phone for the Palms Place team?",
-    answer:
-      "The office is at 3651 S Lindell Rd suite d, Las Vegas, NV 89103. Call (702) 837-4544. That NAP matches the Google Business Profile (Palms Place Condos) and the site footer.",
-  },
-  {
-    question: "What are office hours?",
-    answer:
-      "Sunday–Saturday, 9:00 AM–5:00 PM. Labor Day (September 7, 2026) is closed. Book tours and calls on Calendly (Schedule an appointment on this page)—evening slots depend on availability.",
-  },
-  {
-    question: "Who do I email for listings vs buyers?",
-    answer:
-      "Use the listings inbox for listing questions and the general inbox for buyer or general inquiries—both reach Dr. Jan Duffy when those addresses are shown on this page.",
-  },
-];
+/** `/contact` — built from site-contact so NAP/hours never drift from GBP. */
+export function getContactPageFaq(): FaqItem[] {
+  const address = formatOfficeAddressLine();
+  const hours = formatOfficeHoursWithSpecial();
+  const phone = siteContact.phone ?? "";
+  return [
+    {
+      question: `What is the office address and phone for ${siteContact.gbpBusinessName}?`,
+      answer: `The office is at ${address}. Call ${phone}. That NAP matches the Google Business Profile (${siteContact.gbpBusinessName}) and the site footer.`,
+    },
+    {
+      question: "What are office hours?",
+      answer: `${hours}. Book tours and calls on Calendly (Schedule an appointment on this page)—evening slots depend on availability.`,
+    },
+    {
+      question: "Who do I email for listings vs buyers?",
+      answer:
+        "Use the listings inbox for listing questions and the general inbox for buyer or general inquiries—both reach Dr. Jan Duffy when those addresses are shown on this page.",
+    },
+  ];
+}
 
-/** `/team` — must mirror visible FAQ on that page. */
-export const teamPageFaq: FaqItem[] = [
-  {
-    question: "Who is the Palms Place listing specialist?",
-    answer:
-      "Dr. Jan Duffy, Realtor, listing specialist and team leader for Palms Place (Nevada license S.0197614.LLC) at Berkshire Hathaway HomeServices Nevada Properties.",
-  },
-  {
-    question: "Who helps Palms Place buyers?",
-    answer:
-      "Dr. Jan Duffy, Realtor, is the Palms Place Buyers Specialist (Nevada license S.0197614.LLC). Buyer tours, filters, and offer prep start with Dr. Jan.",
-  },
-  {
-    question: "Does team contact info match Google Business Profile?",
-    answer:
-      "Yes—business name (Palms Place Condos), phone (702) 837-4544, office at 3651 S Lindell Rd suite d, Las Vegas, NV 89103, service area Las Vegas Strip, NV, USA, and Sunday–Saturday 9:00 AM–5:00 PM hours are meant to match GBP and JSON-LD. Report any drift so the site and profile stay aligned.",
-  },
-];
+/** `/team` — built from site-contact so license/NAP stay aligned with GBP. */
+export function getTeamPageFaq(): FaqItem[] {
+  const address = formatOfficeAddressLine();
+  const hours = formatOfficeHoursWithSpecial();
+  return [
+    {
+      question: "Who is the Palms Place listing specialist?",
+      answer: `${siteContact.agentName}, Realtor, listing specialist and team leader for Palms Place (Nevada license ${siteContact.license}) at ${siteContact.brokerage}.`,
+    },
+    {
+      question: "Who helps Palms Place buyers?",
+      answer: `${siteContact.buyerSpecialistName}, Realtor, is the ${siteContact.buyerSpecialistTitle} (Nevada license ${siteContact.buyerSpecialistLicense}). Buyer tours, filters, and offer prep start with Dr. Jan.`,
+    },
+    {
+      question: "Does team contact info match Google Business Profile?",
+      answer: `Yes—business name (${siteContact.gbpBusinessName}), phone ${siteContact.phone}, office at ${address}, service area ${siteContact.primaryServiceArea}, and hours (${hours}) are meant to match GBP and JSON-LD. Report any drift so the site and profile stay aligned.`,
+    },
+  ];
+}
 
 /** `/palms-place` — must mirror visible FAQ on that page. */
 export const palmsPlacePageFaq: FaqItem[] = [
