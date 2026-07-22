@@ -59,6 +59,8 @@ export const popularNav: NavItem[] = [
   { label: "FAQ", href: "/faq" },
   { label: "Popular Searches", href: "/popular-searches" },
   { label: "Featured", href: "/featured" },
+  { label: "Photos", href: "/photos" },
+  { label: "#8322 photos", href: "/photos/unit-8322" },
   { label: "Under $500K", href: "/under-500k" },
   { label: "Homes", href: "/homes" },
   { label: "High Rises", href: "/high-rises" },

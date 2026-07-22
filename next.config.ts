@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      // Cloudflare Images delivery (set NEXT_PUBLIC_CLOUDFLARE_IMAGES_ACCOUNT_HASH)
+      { protocol: "https", hostname: "imagedelivery.net", pathname: "/**" },
+      // Listing syndication / virtual tour hosts (featured unit photos)
+      { protocol: "https", hostname: "static.propertypanorama.com", pathname: "/photos/**" },
+      { protocol: "https", hostname: "www.propertypanorama.com", pathname: "/photos/**" },
+      { protocol: "https", hostname: "d1buiexcd5gara.cloudfront.net", pathname: "/property_photos/**" },
+    ],
   },
 
   /**

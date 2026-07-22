@@ -14,6 +14,13 @@ This file is the **repository-specific** companion to the shared Cursor rules in
 - Prefer **Next.js App Router** (15+), **TypeScript**, **Tailwind**, **server components by default**.
 - Match patterns in `.cursor/rules/` for metadata, sitemap, robots, JSON-LD, layouts, and middleware.
 
+## Photos and Cloudflare Images
+
+- Listing photo galleries live under [`/photos`](src/app/photos/page.tsx) and unit pages (e.g. [`/photos/unit-8322`](src/app/photos/unit-8322/page.tsx)).
+- Catalog + SEO titles/alts: [`src/lib/content/media-gallery.ts`](src/lib/content/media-gallery.ts). Local files under `public/images/listings/`.
+- Optional Cloudflare Images: set `NEXT_PUBLIC_CLOUDFLARE_IMAGES_ACCOUNT_HASH` and per-photo `cloudflareImageId` in the catalog ([`src/lib/cloudflare-images.ts`](src/lib/cloudflare-images.ts)). `next.config.ts` already allows `imagedelivery.net`.
+- Do not present illustrative/AI hero assets as real Palms Place listing photography.
+
 ## RealScout
 
 - Load the RealScout script **once** when the listings widget is about to show ([`src/components/seo/realscout-office-listings-mount.tsx`](src/components/seo/realscout-office-listings-mount.tsx) — IntersectionObserver + `next/script` `lazyOnload`). Do not put the script in the root layout (keeps it off the LCP critical path).

@@ -129,6 +129,16 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
       description: "Summerlin, Henderson & valley estates",
     },
     { href: "/featured", label: "Featured listings", description: "Spotlight inventory" },
+    {
+      href: "/photos",
+      label: "Palms Place condo photos",
+      description: "Listing photo galleries",
+    },
+    {
+      href: "/photos/unit-8322",
+      label: "Palms Place #8322 photos — Strip views",
+      description: "Living room & balcony",
+    },
     { href: "/under-500k", label: "Homes & condos under $500K", description: "Price band shortcut" },
     { href: "/popular-searches", label: "Popular buyer searches", description: "Shortcuts by topic" },
     {

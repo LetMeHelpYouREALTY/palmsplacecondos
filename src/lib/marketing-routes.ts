@@ -169,6 +169,18 @@ export const MARKETING_ROUTES: MarketingRoute[] = [
     priority: 0.75,
   },
   {
+    path: "/photos",
+    summary: "Palms Place condo photo galleries — Strip-view listing photography hub.",
+    changeFrequency: "weekly",
+    priority: 0.86,
+  },
+  {
+    path: "/photos/unit-8322",
+    summary: "Photos of Palms Place #8322 for sale — living room and balcony Strip views.",
+    changeFrequency: "weekly",
+    priority: 0.9,
+  },
+  {
     path: "/high-rises",
     summary: "Las Vegas high-rise condo hub — towers buyers cross-shop with Palms Place.",
     changeFrequency: "monthly",

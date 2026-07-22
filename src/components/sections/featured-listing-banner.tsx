@@ -1,14 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   featuredListing,
   getFeaturedListingDetailsUrl,
   isFeaturedListingExternalUrl,
 } from "@/lib/content/featured-listing";
-import { siteContact } from "@/lib/site-contact";
-
-function telHref(phone: string): string {
-  return `tel:${phone.replace(/\D/g, "")}`;
-}
+import {
+  getFeaturedListingHeroPhoto,
+  getGalleryPhotoSrc,
+} from "@/lib/content/media-gallery";
+import { getTelHref, siteContact } from "@/lib/site-contact";
 
 function StarIcon() {
   return (
@@ -22,6 +23,9 @@ export function FeaturedListingBanner() {
   const detailsUrl = getFeaturedListingDetailsUrl();
   const external = isFeaturedListingExternalUrl();
   const phone = siteContact.phone;
+  const tel = phone ? getTelHref(phone) : undefined;
+  const heroPhoto = getFeaturedListingHeroPhoto();
+  const heroSrc = getGalleryPhotoSrc(heroPhoto);
 
   const ctaClassName =
     "inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-lg bg-palms-gold px-5 py-3 text-sm font-semibold text-palms-charcoal shadow-lg shadow-palms-gold/25 transition-colors hover:bg-palms-gold-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-palms-gold";
@@ -39,6 +43,18 @@ export function FeaturedListingBanner() {
             <StarIcon />
             <span id="featured-listing-heading">Just listed — featured property</span>
             <StarIcon />
+          </div>
+
+          <div className="relative aspect-[21/9] w-full min-h-[180px] bg-palms-charcoal-muted md:min-h-[240px]">
+            <Image
+              alt={heroPhoto.alt}
+              className="object-cover"
+              fill
+              priority
+              sizes="(max-width: 1280px) 100vw, 1152px"
+              src={heroSrc}
+              title={heroPhoto.title}
+            />
           </div>
 
           <div className="bg-[#1a2744] px-4 py-6 md:px-8 md:py-8">
@@ -100,6 +116,9 @@ export function FeaturedListingBanner() {
               </div>
 
               <div className="flex w-full shrink-0 flex-col gap-3 sm:flex-row lg:w-auto lg:flex-col">
+                <Link className={ctaClassName} href="/photos/unit-8322">
+                  View photo gallery →
+                </Link>
                 <a
                   className={secondaryCtaClassName}
                   href={featuredListing.virtualTourUrl}
@@ -110,7 +129,7 @@ export function FeaturedListingBanner() {
                 </a>
                 {external ? (
                   <a
-                    className={ctaClassName}
+                    className={secondaryCtaClassName}
                     href={detailsUrl}
                     rel="noopener noreferrer"
                     target="_blank"
@@ -118,7 +137,7 @@ export function FeaturedListingBanner() {
                     {featuredListing.ctaLabel} →
                   </a>
                 ) : (
-                  <Link className={ctaClassName} href={detailsUrl}>
+                  <Link className={secondaryCtaClassName} href={detailsUrl}>
                     {featuredListing.ctaLabel} →
                   </Link>
                 )}
@@ -130,12 +149,12 @@ export function FeaturedListingBanner() {
             <p>
               {siteContact.agentName} • {siteContact.brokerage} • NV Lic #{siteContact.license}
             </p>
-            {phone ? (
+            {phone && tel ? (
               <p className="sm:text-right">
                 <span className="sr-only">Call </span>
                 <a
                   className="font-semibold text-palms-gold underline-offset-4 hover:underline"
-                  href={telHref(phone)}
+                  href={tel}
                 >
                   {phone}
                 </a>

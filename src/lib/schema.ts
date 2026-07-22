@@ -625,3 +625,134 @@ export function getFaqPageJsonLdForPath(pathname: string, items: FaqItem[]): Jso
     "@graph": [faqPage],
   };
 }
+
+/**
+ * ImageGallery + ImageObject JSON-LD for photo pages (GEO/AEO).
+ * Absolute contentUrl/thumbnailUrl required for Google.
+ */
+export function getImageGalleryJsonLd(
+  pathname: string,
+  gallery: {
+    name: string;
+    description: string;
+    photos: {
+      title: string;
+      description: string;
+      src: string;
+      width: number;
+      height: number;
+    }[];
+  },
+): JsonLdGraph {
+  const origin = siteOrigin(getSiteUrl());
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const pageUrl = `${origin}${path}`;
+
+  const imageObjects = gallery.photos.map((photo, index) => {
+    const contentUrl = photo.src.startsWith("http")
+      ? photo.src
+      : `${origin}${photo.src.startsWith("/") ? photo.src : `/${photo.src}`}`;
+    return {
+      "@type": "ImageObject",
+      "@id": `${pageUrl}#image-${index + 1}`,
+      contentUrl,
+      url: contentUrl,
+      name: photo.title,
+      description: photo.description,
+      width: photo.width,
+      height: photo.height,
+      creditText: siteContact.agentName,
+      copyrightNotice: siteContact.brokerage,
+    };
+  });
+
+  const imageGallery: Record<string, unknown> = {
+    "@type": "ImageGallery",
+    "@id": `${pageUrl}#gallery`,
+    name: gallery.name,
+    description: gallery.description,
+    url: pageUrl,
+    associatedMedia: imageObjects.map((img) => ({ "@id": img["@id"] })),
+  };
+
+  return {
+    "@context": CONTEXT,
+    "@graph": [imageGallery, ...imageObjects],
+  };
+}
+
+/** Featured Palms Place unit as RealEstateListing + Offer (photos required). */
+export function getFeaturedUnitListingJsonLd(
+  pathname: string,
+  listing: {
+    name: string;
+    description: string;
+    price: number;
+    mlsNumber: string;
+    beds: number;
+    baths: number;
+    squareFeet: number;
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    imageUrls: string[];
+    detailsUrl: string;
+  },
+): JsonLdGraph {
+  const origin = siteOrigin(getSiteUrl());
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const pageUrl = `${origin}${path}`;
+  const listingAgentId = id(getSiteUrl(), "dr-jan-duffy");
+  const placePalmsId = id(getSiteUrl(), "place-palms-place");
+
+  const images = listing.imageUrls.map((src) =>
+    src.startsWith("http") ? src : `${origin}${src.startsWith("/") ? src : `/${src}`}`,
+  );
+
+  const realEstateListing: Record<string, unknown> = {
+    "@type": "RealEstateListing",
+    "@id": `${pageUrl}#listing`,
+    name: listing.name,
+    description: listing.description,
+    url: pageUrl,
+    datePosted: "2026-07-10",
+    image: images,
+    offers: {
+      "@type": "Offer",
+      price: listing.price,
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: listing.detailsUrl,
+      seller: { "@id": listingAgentId },
+    },
+    about: {
+      "@type": "Apartment",
+      name: listing.name,
+      description: listing.description,
+      numberOfRooms: listing.beds,
+      numberOfBathroomsTotal: listing.baths,
+      floorSize: {
+        "@type": "QuantitativeValue",
+        value: listing.squareFeet,
+        unitCode: "FTK",
+      },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: listing.streetAddress,
+        addressLocality: listing.addressLocality,
+        addressRegion: listing.addressRegion,
+        postalCode: listing.postalCode,
+        addressCountry: "US",
+      },
+      containedInPlace: { "@id": placePalmsId },
+      image: images,
+    },
+    identifier: listing.mlsNumber,
+  };
+
+  return {
+    "@context": CONTEXT,
+    "@graph": [realEstateListing],
+  };
+}
