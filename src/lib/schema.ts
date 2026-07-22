@@ -249,20 +249,43 @@ export function getBaseJsonLd(): JsonLdGraph {
         }
       : undefined;
 
-  const hoursSpec = siteContact.officeHoursLine
-    ? {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "17:00",
-      }
-    : undefined;
+  const hoursSpec =
+    siteContact.officeHoursLine &&
+    siteContact.officeHoursDays?.length &&
+    siteContact.officeHoursOpens &&
+    siteContact.officeHoursCloses
+      ? {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [...siteContact.officeHoursDays],
+          opens: siteContact.officeHoursOpens,
+          closes: siteContact.officeHoursCloses,
+        }
+      : undefined;
+
+  const specialHoursSpec =
+    siteContact.officeSpecialHours && siteContact.officeSpecialHours.length > 0
+      ? siteContact.officeSpecialHours.map((entry) => {
+          const spec: Record<string, unknown> = {
+            "@type": "OpeningHoursSpecification",
+            validFrom: entry.validFrom,
+            validThrough: entry.validThrough,
+          };
+          if (entry.opens && entry.closes) {
+            spec.opens = entry.opens;
+            spec.closes = entry.closes;
+          }
+          return spec;
+        })
+      : undefined;
 
   if (postalAddress) {
     brokerage.address = postalAddress;
   }
   if (hoursSpec) {
     brokerage.openingHoursSpecification = hoursSpec;
+  }
+  if (specialHoursSpec) {
+    brokerage.specialOpeningHoursSpecification = specialHoursSpec;
   }
   if (siteContact.emailGeneral) {
     brokerage.email = siteContact.emailGeneral;
@@ -310,6 +333,9 @@ export function getBaseJsonLd(): JsonLdGraph {
   }
 
   applyOfficeNapAndHours(listingAgent, brokerageId, postalAddress, hoursSpec, true);
+  if (specialHoursSpec) {
+    listingAgent.specialOpeningHoursSpecification = specialHoursSpec;
+  }
   if (siteContact.emailListings) {
     listingAgent.email = siteContact.emailListings;
   }

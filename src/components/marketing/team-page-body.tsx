@@ -133,6 +133,9 @@ export function TeamPageBody() {
             <li>
               <span className="text-palms-cream/60">Hours: </span>
               {siteContact.officeHoursLine}
+              {siteContact.officeSpecialHoursLine
+                ? ` · ${siteContact.officeSpecialHoursLine}`
+                : null}
             </li>
           ) : null}
           {siteContact.emailGeneral ? (

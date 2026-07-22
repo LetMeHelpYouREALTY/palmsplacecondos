@@ -17,9 +17,14 @@ export function buildLlmsTxt(): string {
     `- Building: ${palmsPlaceTower.name}, ${formatPalmsPlaceTowerAddressLine()} (${palmsPlaceTower.floors} floors, opened ${palmsPlaceTower.openedYear}). Page: ${origin}${palmsPlaceTower.pagePath}`,
     `- Team office (GBP NAP): ${siteContact.streetAddress}, ${siteContact.addressLocality}, ${siteContact.addressRegion} ${siteContact.postalCode}`,
     `- Service area: ${siteContact.primaryServiceArea}`,
+    `- Description: ${siteContact.schemaAgentDescription ?? ""}`,
     `- Hours: ${siteContact.officeHoursLine ?? ""}`,
+    ...(siteContact.officeSpecialHoursLine
+      ? [`- Special hours: ${siteContact.officeSpecialHoursLine}`]
+      : []),
     `- Phone: ${siteContact.phone ?? ""}`,
     `- Website: ${origin}/`,
+    `- Facebook: ${siteContact.facebookUrl ?? ""}`,
     `- Google Business Profile: ${siteContact.googleBusinessProfileUrl ?? ""}`,
     `- License: ${siteContact.agentName} ${siteContact.license}`,
     `- Services: buy representation (${origin}/buyers); sell / listing (${origin}/sell)`,
@@ -55,7 +60,10 @@ export function buildLlmsFullTxt(): string {
     `Canonical host: ${origin}`,
     `NAP: ${siteContact.streetAddress}, ${siteContact.addressLocality}, ${siteContact.addressRegion} ${siteContact.postalCode} · ${siteContact.phone}`,
     `Service area: ${siteContact.primaryServiceArea}`,
-    `Hours: ${siteContact.officeHoursLine ?? ""}`,
+    `Hours: ${siteContact.officeHoursLine ?? ""}${
+      siteContact.officeSpecialHoursLine ? ` · ${siteContact.officeSpecialHoursLine}` : ""
+    }`,
+    `Description: ${siteContact.schemaAgentDescription ?? ""}`,
     "",
     "Quantitative listing prices, HOA dues, and inventory counts change daily. Verify in live search and official disclosures.",
     "",

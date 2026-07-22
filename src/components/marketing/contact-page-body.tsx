@@ -66,6 +66,12 @@ export function ContactPageBody() {
         {siteContact.officeHoursLine ? (
           <p className="mt-3 text-palms-cream/85">{siteContact.officeHoursLine}</p>
         ) : null}
+        {siteContact.officeSpecialHoursLine ? (
+          <p className="mt-2 text-sm text-palms-cream/75">{siteContact.officeSpecialHoursLine}</p>
+        ) : null}
+        {siteContact.schemaAgentDescription ? (
+          <p className="mt-4 leading-relaxed text-palms-cream/85">{siteContact.schemaAgentDescription}</p>
+        ) : null}
         {phone && tel ? (
           <p className="mt-3">
             <a

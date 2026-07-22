@@ -55,9 +55,30 @@ export type SiteContact = {
   addressCountry?: string;
   /**
    * Visible office hours — must match Google Business Profile (pending/live).
-   * If you change this line, update `openingHoursSpecification` in `lib/schema.ts` to match (opens/closes, days).
+   * Keep in sync with `officeHoursDays` / opens / closes used by JSON-LD.
    */
   officeHoursLine?: string;
+  /**
+   * Schema.org `dayOfWeek` values for regular hours (must match GBP + `officeHoursLine`).
+   */
+  officeHoursDays?: readonly string[];
+  /** Regular open time (24h) for JSON-LD OpeningHoursSpecification. */
+  officeHoursOpens?: string;
+  /** Regular close time (24h) for JSON-LD OpeningHoursSpecification. */
+  officeHoursCloses?: string;
+  /** Visible special hours (e.g. holiday closures) — must match GBP special hours. */
+  officeSpecialHoursLine?: string;
+  /**
+   * Schema.org specialOpeningHoursSpecification entries (closed holidays, etc.).
+   * `opens`/`closes` omitted means closed that calendar day.
+   */
+  officeSpecialHours?: readonly {
+    validFrom: string;
+    validThrough: string;
+    /** When set with opens/closes, those hours apply; when both omitted, closed. */
+    opens?: string;
+    closes?: string;
+  }[];
   /** Optional override for JSON-LD `RealEstateAgent` / `LocalBusiness` description (must match GBP + on-site). */
   schemaAgentDescription?: string;
   /** Optional `priceRange` for LocalBusiness JSON-LD (e.g. "$$$$"). */
@@ -101,19 +122,41 @@ export const siteContact: SiteContact = {
   emailListings: "DrDuffySells@PalmsPlaceCondos.com",
   /** Buyer inquiries go to Dr. Jan (same agent). */
   emailBuyers: "DrDuffy@PalmsPlaceCondos.com",
-  /** GBP service area: Las Vegas Strip, NV, USA */
-  primaryServiceArea: "Las Vegas Strip, NV",
+  /** GBP service area — exact profile wording. */
+  primaryServiceArea: "Las Vegas Strip, NV, USA",
   buyerSpecialistName: "Dr. Jan Duffy",
   buyerSpecialistTitle: "Palms Place Buyers Specialist",
   buyerSpecialistLicense: "S.0197614.LLC",
   /** Office — must match Google Business Profile (“3651 S Lindell Rd suite d”). */
-  streetAddress: "3651 S Lindell Rd Suite D",
+  streetAddress: "3651 S Lindell Rd suite d",
   addressLocality: "Las Vegas",
   addressRegion: "NV",
   postalCode: "89103",
   addressCountry: "US",
-  /** Matches GBP pending hours: Mon–Fri 9:00 AM–5:00 PM; Sat–Sun closed. */
-  officeHoursLine: "Monday–Friday, 9:00 AM–5:00 PM · Saturday–Sunday closed",
+  /**
+   * Matches GBP pending main hours (under review): Sunday–Saturday 9:00 AM–5:00 PM.
+   * Live GBP may still show “closed” until Google publishes the pending edit.
+   */
+  officeHoursLine: "Sunday–Saturday, 9:00 AM–5:00 PM",
+  officeHoursDays: [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ],
+  officeHoursOpens: "09:00",
+  officeHoursCloses: "17:00",
+  /** Matches GBP special hours. */
+  officeSpecialHoursLine: "Labor Day (September 7, 2026): closed",
+  officeSpecialHours: [
+    {
+      validFrom: "2026-09-07",
+      validThrough: "2026-09-07",
+    },
+  ],
   // Office pin from Google Maps place result for this address (matches embed).
   officeLatitude: 36.1233904,
   officeLongitude: -115.2171723,
@@ -128,9 +171,12 @@ export const siteContact: SiteContact = {
   googleBusinessProfileUrl: "https://share.google/6cQL7oQ9T88LIQfbC",
   /** Tower entity for GEO — address + geo from palms-place-building.ts */
   palmsPlaceBuilding: getPalmsPlaceBuildingForSchema(),
-  /** Must match Google Business Profile description. */
+  /**
+   * Must match Google Business Profile “Description” exactly
+   * (category: Real estate agent).
+   */
   schemaAgentDescription:
-    "Palms Place Condos for Sale — Las Vegas Strip High-Rise Residences",
+    "Discover luxury high-rise condos for sale at Palms Place on the Las Vegas Strip. Browse available residences and find your perfect retreat in the heart of Las Vegas.",
 };
 
 /** Single-line office address for visible copy (footer, contact). */

@@ -60,6 +60,9 @@ export function ConnectPageBody() {
         {siteContact.officeHoursLine ? (
           <p className="mt-2 text-palms-cream/80">{siteContact.officeHoursLine}</p>
         ) : null}
+        {siteContact.officeSpecialHoursLine ? (
+          <p className="mt-1 text-sm text-palms-cream/70">{siteContact.officeSpecialHoursLine}</p>
+        ) : null}
         {phone && tel ? (
           <p className="mt-4">
             <a className="font-medium text-palms-gold underline-offset-4 hover:underline" href={tel}>

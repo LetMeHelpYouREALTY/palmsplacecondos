@@ -423,12 +423,12 @@ export const contactPageFaq: FaqItem[] = [
   {
     question: "What is the office address and phone for the Palms Place team?",
     answer:
-      "The office is at 3651 S Lindell Rd Suite D, Las Vegas, NV 89103. Call (702) 837-4544. That NAP matches the Google Business Profile (Palms Place Condos) and the site footer.",
+      "The office is at 3651 S Lindell Rd suite d, Las Vegas, NV 89103. Call (702) 837-4544. That NAP matches the Google Business Profile (Palms Place Condos) and the site footer.",
   },
   {
     question: "What are office hours?",
     answer:
-      "Monday–Friday, 9:00 AM–5:00 PM. Saturday and Sunday closed. Book tours and calls on Calendly (Schedule an appointment on this page)—evening slots depend on availability.",
+      "Sunday–Saturday, 9:00 AM–5:00 PM. Labor Day (September 7, 2026) is closed. Book tours and calls on Calendly (Schedule an appointment on this page)—evening slots depend on availability.",
   },
   {
     question: "Who do I email for listings vs buyers?",
@@ -452,7 +452,7 @@ export const teamPageFaq: FaqItem[] = [
   {
     question: "Does team contact info match Google Business Profile?",
     answer:
-      "Yes—business name (Palms Place Condos), phone (702) 837-4544, office at 3651 S Lindell Rd Suite D, Las Vegas, NV 89103, service area Las Vegas Strip, and Mon–Fri 9:00 AM–5:00 PM hours are meant to match GBP and JSON-LD. Report any drift so the site and profile stay aligned.",
+      "Yes—business name (Palms Place Condos), phone (702) 837-4544, office at 3651 S Lindell Rd suite d, Las Vegas, NV 89103, service area Las Vegas Strip, NV, USA, and Sunday–Saturday 9:00 AM–5:00 PM hours are meant to match GBP and JSON-LD. Report any drift so the site and profile stay aligned.",
   },
 ];
 

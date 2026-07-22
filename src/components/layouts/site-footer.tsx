@@ -106,6 +106,9 @@ export function SiteFooter() {
                 {siteContact.officeHoursLine ? (
                   <p className="text-palms-cream/80">{siteContact.officeHoursLine}</p>
                 ) : null}
+                {siteContact.officeSpecialHoursLine ? (
+                  <p className="text-sm text-palms-cream/70">{siteContact.officeSpecialHoursLine}</p>
+                ) : null}
               </div>
 
               <div className="border-t border-palms-gold/10 pt-5">
