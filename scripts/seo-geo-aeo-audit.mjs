@@ -27,6 +27,17 @@
  *  5. AI crawler allow-list — robots.ts includes the answer-engine crawlers
  *                         this site intentionally welcomes for GEO/AEO
  *                         visibility.
+ *  6. AEO answer conciseness — FAQ/Q&A `answer:` strings in src/lib/content
+ *                         longer than ANSWER_WORD_WARN words. 2026 AEO
+ *                         research (concise, question-first answer blocks)
+ *                         shows short direct answers get extracted into AI
+ *                         answers at a meaningfully higher rate than long
+ *                         paragraphs — flagged for a copy trim, not rewritten
+ *                         automatically.
+ *  7. Image alt text    — `<Image` JSX usages under src/ with no literal
+ *                         `alt=` prop and no spread props (regression guard;
+ *                         alt text is both an accessibility requirement and
+ *                         an image-search/GEO signal).
  *
  * Usage: node scripts/seo-geo-aeo-audit.mjs [--strict] [--out <file>]
  *   --strict  exit 1 on warnings too (default: only hard errors exit 1)
@@ -47,6 +58,8 @@ const TITLE_MIN = 15;
 const TITLE_MAX = 70;
 const DESCRIPTION_MIN = 70;
 const DESCRIPTION_MAX = 185;
+/** 2026 AEO guidance favors concise, directly-extractable answers (roughly a 40-60 word band). */
+const ANSWER_WORD_WARN = 60;
 
 /** Answer-engine / AI crawlers this site intentionally allows (GEO/AEO visibility). */
 const EXPECTED_AI_CRAWLERS = [
@@ -279,7 +292,61 @@ if (missingCrawlers.length > 0) {
   );
 }
 
-notes.push(`Checked ${routeEntries.length} MARKETING_ROUTES, ${allPageFiles.length} page.tsx files, ${freshnessSources.length} content modules for freshness.`);
+// ---------------------------------------------------------------------------
+// 6. AEO answer conciseness — FAQ/Q&A `answer:` strings over ANSWER_WORD_WARN words
+// ---------------------------------------------------------------------------
+
+const contentTsFiles = walk(CONTENT_DIR).filter((f) => f.endsWith(".ts"));
+const answerRe = [/answer:\s*"((?:[^"\\]|\\.)*)"/g, /answer:\s*`((?:[^`\\]|\\.)*)`/g];
+let answersChecked = 0;
+
+for (const file of contentTsFiles) {
+  const src = readText(file);
+  const rel = path.relative(ROOT, file);
+  for (const re of answerRe) {
+    re.lastIndex = 0;
+    let m;
+    while ((m = re.exec(src)) !== null) {
+      answersChecked += 1;
+      // Approximate template-literal `${expr}` interpolations as one word each so word
+      // counts stay meaningful without evaluating the expression.
+      const text = m[1].replace(/\\"/g, '"').replace(/\\`/g, "`").replace(/\$\{[^}]*\}/g, "X");
+      const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
+      if (wordCount > ANSWER_WORD_WARN) {
+        const preview = text.trim().slice(0, 80);
+        warnings.push(
+          `AEO answer length: ${rel} has a ${wordCount}-word answer (target ≤${ANSWER_WORD_WARN} for higher AI-answer extraction rates): "${preview}${text.length > 80 ? "…" : ""}"`,
+        );
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 7. Image alt text — <Image> JSX usages missing a literal `alt=` prop
+// ---------------------------------------------------------------------------
+
+const srcTsxFiles = walk(path.join(ROOT, "src")).filter((f) => f.endsWith(".tsx"));
+const imageTagRe = /<Image\b([\s\S]*?)(?:\/>|>)/g;
+let imageTagsChecked = 0;
+
+for (const file of srcTsxFiles) {
+  const src = readText(file);
+  const rel = path.relative(ROOT, file);
+  imageTagRe.lastIndex = 0;
+  let m;
+  while ((m = imageTagRe.exec(src)) !== null) {
+    imageTagsChecked += 1;
+    const props = m[1];
+    if (props.includes("{...")) continue; // spread props may carry alt — can't verify statically
+    if (!/\balt\s*=/.test(props)) {
+      const lineNumber = src.slice(0, m.index).split("\n").length;
+      errors.push(`Image alt text: ${rel}:${lineNumber} <Image> has no literal alt= prop (accessibility + image-search regression).`);
+    }
+  }
+}
+
+notes.push(`Checked ${routeEntries.length} MARKETING_ROUTES, ${allPageFiles.length} page.tsx files, ${freshnessSources.length} content modules for freshness, ${answersChecked} FAQ/Q&A answers for AEO length, ${imageTagsChecked} <Image> usages for alt text.`);
 
 // ---------------------------------------------------------------------------
 // Report

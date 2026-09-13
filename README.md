@@ -123,8 +123,14 @@ It checks:
 - **Title/description length and sitewide duplicates** — duplicate `<title>`/meta description across pages is a disambiguation problem for both Google and AI answer engines.
 - **Content freshness** — `dateModified` / sitemap lastmod values older than 180 days are flagged for a copy/facts refresh; GEO treats freshness as a citation-priority signal distinct from Google ranking.
 - **AI crawler allow-list** — [`src/app/robots.ts`](src/app/robots.ts) still welcomes the answer-engine crawlers (GPTBot, PerplexityBot, Claude-User, Claude-SearchBot, etc.) this site intentionally allows for GEO/AEO citation eligibility.
+- **AEO answer conciseness** — `answer:` strings in [`src/lib/content/`](src/lib/content/) longer than 60 words are flagged for a copy trim. 2026 AEO research shows short, question-first answer blocks get extracted into AI-generated answers at a meaningfully higher rate than long paragraphs; this is a review signal, not an automatic rewrite.
+- **Image alt text** — every `<Image>` usage under `src/` must have a literal `alt=` prop (a regression guard — missing alt text is both an accessibility failure and a lost image-search/GEO signal). This is a hard error, not a warning.
 
-[`.github/workflows/seo-geo-aeo-self-improve.yml`](.github/workflows/seo-geo-aeo-self-improve.yml) runs the same audit as a PR status check on content/SEO changes, and again weekly (Monday, plus manual dispatch) — filing or updating a single tracking issue (label `seo-self-audit`) with current findings so drift surfaces on its own instead of waiting for someone to notice it in Search Console. Hard errors fail the check; length/freshness/duplicate findings are warnings for editorial follow-up.
+[`.github/workflows/seo-geo-aeo-self-improve.yml`](.github/workflows/seo-geo-aeo-self-improve.yml) runs the same audit as a PR status check on content/SEO changes, and again weekly (Monday, plus manual dispatch) — filing or updating a single tracking issue (label `seo-self-audit`) with current findings so drift surfaces on its own instead of waiting for someone to notice it in Search Console. Hard errors (route coverage, missing alt text) fail the check; length/freshness/duplicate/AEO-conciseness findings are warnings for editorial follow-up.
+
+### Core Web Vitals
+
+[`@vercel/speed-insights`](https://vercel.com/docs/speed-insights) runs alongside the existing `@vercel/analytics` in [`src/app/layout.tsx`](src/app/layout.tsx) and reports real-user LCP/INP/CLS from production traffic in the Vercel dashboard (**Project → Speed Insights**) — no extra config beyond deploying to Vercel. Core Web Vitals are a direct Google ranking input and a page-quality signal AI answer engines weigh when choosing which pages to crawl and cite, so treat regressions here the same as a Search Console alert.
 
 ### Optional: DMARC (email only)
 

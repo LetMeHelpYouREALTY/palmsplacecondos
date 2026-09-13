@@ -15,10 +15,10 @@ name: SEO / GEO / AEO self-improve loop
 on:
   pull_request:
     paths:
-      - "src/app/**"
-      - "src/lib/**"
-      - "src/components/seo/**"
-      - "src/components/marketing/**"
+      # Broad `src/**` so the audit's alt-text and content-freshness checks (which
+      # scan every .tsx/.ts file under src/) reliably re-run on any code change —
+      # not just the marketing/SEO-specific subfolders.
+      - "src/**"
       - "scripts/seo-geo-aeo-audit.mjs"
       - ".github/workflows/seo-geo-aeo-self-improve.yml"
   schedule:
