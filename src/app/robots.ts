@@ -47,6 +47,10 @@ const AI_CRAWLER_USER_AGENTS = [
   // business site with no paywalled content to protect.
   "YouBot",
   "DuckAssistBot",
+  // Meta AI's answer surface inside Facebook/Instagram/WhatsApp, and
+  // Amazon's Alexa+Rufus shopping-assistant crawler — same rationale.
+  "meta-externalagent",
+  "Amazonbot",
 ] as const;
 
 /** Match sitemap.ts: live origin, no 4-hour static metadata cache. */
