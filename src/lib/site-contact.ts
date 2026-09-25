@@ -139,10 +139,9 @@ export const siteContact: SiteContact = {
   postalCode: "89103",
   addressCountry: "US",
   /**
-   * Matches GBP pending main hours (under review): Sunday–Saturday 9:00 AM–5:00 PM.
-   * Live GBP may still show “closed” until Google publishes the pending edit.
+   * Approved 2026-09-25: Sunday–Saturday 8:00 AM–8:00 PM daily.
    */
-  officeHoursLine: "Sunday–Saturday, 9:00 AM–5:00 PM",
+  officeHoursLine: "Sunday–Saturday, 8:00 AM–8:00 PM",
   officeHoursDays: [
     "Sunday",
     "Monday",
@@ -152,8 +151,8 @@ export const siteContact: SiteContact = {
     "Friday",
     "Saturday",
   ],
-  officeHoursOpens: "09:00",
-  officeHoursCloses: "17:00",
+  officeHoursOpens: "08:00",
+  officeHoursCloses: "20:00",
   /** Matches GBP special hours. */
   officeSpecialHoursLine: "Labor Day (September 7, 2026): closed",
   officeSpecialHours: [
