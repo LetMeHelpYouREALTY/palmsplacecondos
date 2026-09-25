@@ -197,7 +197,10 @@ function applyOfficeNapAndHours(
   hoursSpec: Record<string, unknown> | undefined,
   includePhone: boolean,
 ): void {
-  entity.worksFor = { "@id": brokerageId };
+  // Brand mention only — brokerageId no longer resolves to a separate business
+  // entity in the graph (removed 2026-09-25 to match GBP: one business per NAP).
+  void brokerageId;
+  entity.worksFor = { "@type": "Organization", name: siteContact.brokerage };
   entity.areaServed = [
     { "@type": "City", name: "Las Vegas", containedInPlace: { "@type": "State", name: "Nevada" } },
     { "@type": "AdministrativeArea", name: "Clark County" },
@@ -320,13 +323,9 @@ export function getBaseJsonLd(): JsonLdGraph {
   const brokerageId = id(siteUrl, "brokerage");
   const listingAgentId = id(siteUrl, "dr-jan-duffy");
 
-  const brokerage: Record<string, unknown> = {
-    "@type": ["RealEstateOffice", "LocalBusiness"],
-    "@id": brokerageId,
-    name: siteContact.brokerage,
-    url: siteUrl,
-    employee: [{ "@id": listingAgentId }],
-  };
+  // Berkshire Hathaway HomeServices Nevada Properties is a brand mention only
+  // (via listingAgent.worksFor below) — not a separate business entity, since
+  // it shares the same office NAP as Palms Place Condos (GBP: one business here).
 
   const postalAddress =
     siteContact.streetAddress &&
@@ -372,21 +371,11 @@ export function getBaseJsonLd(): JsonLdGraph {
         })
       : undefined;
 
-  if (postalAddress) {
-    brokerage.address = postalAddress;
-  }
-  if (hoursSpec) {
-    brokerage.openingHoursSpecification = hoursSpec;
-  }
-  if (specialHoursSpec) {
-    brokerage.specialOpeningHoursSpecification = specialHoursSpec;
-  }
-  if (siteContact.emailGeneral) {
-    brokerage.email = siteContact.emailGeneral;
-  }
-  if (siteContact.phone) {
-    brokerage.telephone = toTelE164(siteContact.phone);
-  }
+  // brokerage stays a lightweight brand mention (name only, no address/phone/hours):
+  // Palms Place Condos (listingAgent) is the single business entity matching GBP.
+  void postalAddress;
+  void hoursSpec;
+  void specialHoursSpec;
 
   const listingAgent: Record<string, unknown> = {
     "@type": ["RealEstateAgent", "LocalBusiness", "Person"],
@@ -475,7 +464,6 @@ export function getBaseJsonLd(): JsonLdGraph {
   ];
   const logo = getBrandLogoImageObject(siteUrl);
   const logoRef = { "@id": id(siteUrl, "logo") };
-  brokerage.logo = logoRef;
   listingAgent.logo = logoRef;
   if (!agentImage) {
     listingAgent.image = logoRef;
@@ -495,7 +483,6 @@ export function getBaseJsonLd(): JsonLdGraph {
     about: [
       { "@id": placePalmsId },
       { "@id": listingAgentId },
-      { "@id": brokerageId },
     ],
     potentialAction: {
       "@type": "SearchAction",
@@ -509,7 +496,7 @@ export function getBaseJsonLd(): JsonLdGraph {
 
   return {
     "@context": CONTEXT,
-    "@graph": [logo, website, brokerage, listingAgent, palmsPlace, ...services],
+    "@graph": [logo, website, listingAgent, palmsPlace, ...services],
   };
 }
 
@@ -706,7 +693,6 @@ export function getTeamPersonsJsonLd(): JsonLdGraph {
   const origin = siteOrigin(siteUrl);
   const listingAgentId = id(siteUrl, "dr-jan-duffy");
   const placePalmsId = id(siteUrl, "place-palms-place");
-  const brokerageId = id(siteUrl, "brokerage");
 
   const jan: Record<string, unknown> = {
     "@type": ["Person", "RealEstateAgent"],
@@ -714,7 +700,7 @@ export function getTeamPersonsJsonLd(): JsonLdGraph {
     name: siteContact.agentName,
     jobTitle: siteContact.agentTitle,
     url: `${origin}/team`,
-    worksFor: { "@id": brokerageId },
+    worksFor: { "@type": "Organization", name: siteContact.brokerage },
     knowsAbout: [
       { "@id": placePalmsId },
       { "@type": "Thing", name: "Palms Place listings" },
