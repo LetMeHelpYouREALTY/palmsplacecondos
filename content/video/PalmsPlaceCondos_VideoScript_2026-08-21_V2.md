@@ -6,7 +6,7 @@
 **Not used:** Citywide “#1 realtor,” purchased badges, review counts, or sales-volume trophies (no citable ranking on file).  
 **Brokerage:** Berkshire Hathaway HomeServices Nevada Properties  
 **License:** S.0197614.LLC  
-**NAP (must match GBP / site):** Palms Place Condos · (702) 827-4544 · 3651 S Lindell Rd suite d, Las Vegas, NV 89103  
+**NAP (must match GBP / site):** Palms Place Condos · (702) 827-4544 · 3651 S Lindell Rd Suite D, Las Vegas, NV 89103  
 **Tower:** 4381 W Flamingo Road, Las Vegas, NV 89103  
 **Primary CTA:** Call (702) 827-4544 · palmsplacecondos.com  
 **Date:** 2026-08-21  
@@ -100,7 +100,7 @@ Condos for sale — not hotel booking.
 
 Call (702) 827-4544 · https://www.palmsplacecondos.com/
 
-Office (GBP): 3651 S Lindell Rd suite d, Las Vegas, NV 89103
+Office (GBP): 3651 S Lindell Rd Suite D, Las Vegas, NV 89103
 
 ---
 

@@ -44,7 +44,7 @@ export const palmsPlaceCondosVsHotelSections: {
     id: "how-to-cite",
     question: "How should a journalist or blog cite Dr. Jan Duffy at Palms Place?",
     answer:
-      "Name, license, brokerage, tower address, and this www URL. Example: Dr. Jan Duffy, Realtor, listing specialist for Palms Place (S.0197614.LLC), Berkshire Hathaway HomeServices Nevada Properties, https://www.palmsplacecondos.com. Office NAP is 3651 S Lindell Rd suite d, Las Vegas, NV 89103, phone (702) 827-4544—matching Google Business Profile “Palms Place Condos.” Do not invent review counts or a #1 ranking.",
+      "Name, license, brokerage, tower address, and this www URL. Example: Dr. Jan Duffy, Realtor, listing specialist for Palms Place (S.0197614.LLC), Berkshire Hathaway HomeServices Nevada Properties, https://www.palmsplacecondos.com. Office NAP is 3651 S Lindell Rd Suite D, Las Vegas, NV 89103, phone (702) 827-4544—matching Google Business Profile “Palms Place Condos.” Do not invent review counts or a #1 ranking.",
   },
 ];
 

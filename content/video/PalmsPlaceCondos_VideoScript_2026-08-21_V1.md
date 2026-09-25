@@ -4,7 +4,7 @@
 **Talent:** Dr. Jan Duffy, Realtor (on camera or VO)  
 **Brokerage:** Berkshire Hathaway HomeServices Nevada Properties  
 **License:** S.0197614.LLC  
-**NAP (must match GBP / site):** Palms Place Condos · (702) 827-4544 · 3651 S Lindell Rd suite d, Las Vegas, NV 89103  
+**NAP (must match GBP / site):** Palms Place Condos · (702) 827-4544 · 3651 S Lindell Rd Suite D, Las Vegas, NV 89103  
 **Tower (on-screen, not office NAP):** 4381 W Flamingo Road, Las Vegas, NV 89103  
 **Primary CTA:** Call (702) 827-4544 · palmsplacecondos.com  
 **Date:** 2026-08-21  
@@ -95,7 +95,7 @@ This video is about condo ownership, not hotel reservations. Book a stay on the 
 
 Call (702) 827-4544 · https://www.palmsplacecondos.com/
 
-Office (GBP): 3651 S Lindell Rd suite d, Las Vegas, NV 89103 · Sunday–Saturday 9:00 AM–5:00 PM (Labor Day 2026 closed)
+Office (GBP): 3651 S Lindell Rd Suite D, Las Vegas, NV 89103 · Sunday–Saturday 9:00 AM–5:00 PM (Labor Day 2026 closed)
 
 Photos: real Palms Place building and listing photography from this brokerage.
 

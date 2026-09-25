@@ -132,8 +132,8 @@ export const siteContact: SiteContact = {
   buyerSpecialistName: "Dr. Jan Duffy",
   buyerSpecialistTitle: "Palms Place Buyers Specialist",
   buyerSpecialistLicense: "S.0197614.LLC",
-  /** Office — must match Google Business Profile (“3651 S Lindell Rd suite d”). */
-  streetAddress: "3651 S Lindell Rd suite d",
+  /** Office — must match Google Business Profile (“3651 S Lindell Rd Suite D”). */
+  streetAddress: "3651 S Lindell Rd Suite D",
   addressLocality: "Las Vegas",
   addressRegion: "NV",
   postalCode: "89103",
@@ -153,14 +153,9 @@ export const siteContact: SiteContact = {
   ],
   officeHoursOpens: "08:00",
   officeHoursCloses: "20:00",
-  /** Matches GBP special hours. */
-  officeSpecialHoursLine: "Labor Day (September 7, 2026): closed",
-  officeSpecialHours: [
-    {
-      validFrom: "2026-09-07",
-      validThrough: "2026-09-07",
-    },
-  ],
+  // No active GBP special hours notice. Set `officeSpecialHoursLine` /
+  // `officeSpecialHours` when GBP publishes a new one; both are optional
+  // and every consumer (footer, llms.txt, JSON-LD) already skips them when unset.
   // Office pin from Google Maps place result for this address (matches embed).
   officeLatitude: 36.1233904,
   officeLongitude: -115.2171723,
