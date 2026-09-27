@@ -64,6 +64,9 @@ const EXPECTED_AI_CRAWLERS = [
   "CCBot",
   "YouBot",
   "DuckAssistBot",
+  "Meta-ExternalAgent",
+  "MistralAI-User",
+  "Amazonbot",
 ];
 
 const errors = [];

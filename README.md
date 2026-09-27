@@ -122,9 +122,13 @@ It checks:
 - **Orphan pages** — a `page.tsx` that exists but isn't in `MARKETING_ROUTES` (missing from sitemap.xml, llms.txt, and IndexNow).
 - **Title/description length and sitewide duplicates** — duplicate `<title>`/meta description across pages is a disambiguation problem for both Google and AI answer engines.
 - **Content freshness** — `dateModified` / sitemap lastmod values older than 180 days are flagged for a copy/facts refresh; GEO treats freshness as a citation-priority signal distinct from Google ranking.
-- **AI crawler allow-list** — [`src/app/robots.ts`](src/app/robots.ts) still welcomes the answer-engine crawlers (GPTBot, PerplexityBot, Claude-User, Claude-SearchBot, etc.) this site intentionally allows for GEO/AEO citation eligibility.
+- **AI crawler allow-list** — [`src/app/robots.ts`](src/app/robots.ts) still welcomes the answer-engine crawlers (GPTBot, PerplexityBot, Claude-User, Claude-SearchBot, Meta-ExternalAgent, MistralAI-User, Amazonbot, etc.) this site intentionally allows for GEO/AEO citation eligibility.
 
 [`.github/workflows/seo-geo-aeo-self-improve.yml`](.github/workflows/seo-geo-aeo-self-improve.yml) runs the same audit as a PR status check on content/SEO changes, and again weekly (Monday, plus manual dispatch) — filing or updating a single tracking issue (label `seo-self-audit`) with current findings so drift surfaces on its own instead of waiting for someone to notice it in Search Console. Hard errors fail the check; length/freshness/duplicate findings are warnings for editorial follow-up.
+
+**2026-09 crawler refresh:** added `Meta-ExternalAgent` (Meta AI's training/citation crawler), `MistralAI-User` (Mistral Le Chat's on-demand fetch agent), and `Amazonbot` (Amazon/Alexa+ search-AI eligibility) to both `robots.ts` and the audit's `EXPECTED_AI_CRAWLERS` list — keep the two in sync when adding a new one.
+
+**Note on Google specifically:** Google's May 2026 generative-AI search guide states AI Overviews/AI Mode citations come from the same core ranking and quality signals as regular Search, that structured data does not measurably increase AI-Overview citations, and that Google Search does not use `llms.txt`. This site keeps schema.org JSON-LD and `llms.txt`/`llms-full.txt` anyway — they cost nothing at build time and are read by Perplexity, ChatGPT, Claude, Mistral, and Amazon's answer engines, which do not share Google's stance. Don't chase schema/`llms.txt` changes as a lever for Google AI Overviews specifically; do keep them current for the other engines and for regular organic ranking (JSON-LD still helps entity disambiguation and rich results elsewhere).
 
 ### Optional: DMARC (email only)
 
