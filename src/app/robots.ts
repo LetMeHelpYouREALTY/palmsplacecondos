@@ -47,6 +47,12 @@ const AI_CRAWLER_USER_AGENTS = [
   // business site with no paywalled content to protect.
   "YouBot",
   "DuckAssistBot",
+  // Added 2026-09: Meta AI (training/citation crawler), Mistral Le Chat's
+  // on-demand user-fetch agent, and Amazon's crawler (Alexa+/Amazon search AI
+  // eligibility) — same GEO/AEO rationale as the agents above.
+  "Meta-ExternalAgent",
+  "MistralAI-User",
+  "Amazonbot",
 ] as const;
 
 /** Match sitemap.ts: live origin, no 4-hour static metadata cache. */
