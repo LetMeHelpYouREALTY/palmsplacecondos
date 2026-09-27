@@ -1,8 +1,7 @@
 /**
  * Hyperlocal amenity map config for Palms Place (Strip-adjacent high-rise).
  * Center coordinates reuse palmsPlaceTower (4381 W Flamingo Rd — MLS map pin).
- * Curated places are named with full addresses only when verifiable from public listings;
- * drive-time notes are approximate and labeled in page copy.
+ * Curated places include sourceUrl to a primary business or government page.
  */
 
 import {
@@ -118,6 +117,8 @@ export type CuratedNearbyPlace = {
   addressLocality: string;
   addressRegion: string;
   postalCode: string;
+  /** Primary source used to verify name and mailing address */
+  sourceUrl: string;
   /** schema.org type for JSON-LD ItemList entries */
   schemaType:
     | "Restaurant"
@@ -148,8 +149,7 @@ export const communityMapCenter = {
 };
 
 /**
- * Verified nearby destinations (names + mailing addresses). No invented ratings or distances.
- * Coordinates are optional aids for static markers only.
+ * Nearby destinations verified against each sourceUrl (no invented ratings or distances).
  */
 export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
   {
@@ -159,6 +159,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: palmsPlaceTower.addressLocality,
     addressRegion: palmsPlaceTower.addressRegion,
     postalCode: palmsPlaceTower.postalCode,
+    sourceUrl: "https://www.palmsplacecondos.com/palms-place",
     schemaType: "ApartmentComplex",
     categories: ["parking", "fitness"],
     latitude: palmsPlaceTower.latitude,
@@ -171,6 +172,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89103",
+    sourceUrl: "https://www.palms.com/",
     schemaType: "Casino",
     categories: ["restaurants", "attractions", "parking"],
     latitude: 36.1149,
@@ -183,34 +185,37 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89103",
+    sourceUrl: "https://www.goldcoastcasino.com/",
     schemaType: "Casino",
     categories: ["restaurants", "attractions", "parking"],
     latitude: 36.1163,
     longitude: -115.1941,
   },
   {
-    id: "whole-foods-spring-mountain",
+    id: "whole-foods-lvb",
     name: "Whole Foods Market",
     streetAddress: "6689 Las Vegas Blvd S",
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89119",
+    sourceUrl: "https://www.wholefoodsmarket.com/stores/lvb",
     schemaType: "GroceryStore",
     categories: ["grocery"],
     latitude: 36.0709,
     longitude: -115.1722,
   },
   {
-    id: "smiths-grand-canyon",
+    id: "smiths-charleston",
     name: "Smith's Food and Drug",
-    streetAddress: "4165 S Grand Canyon Dr",
+    streetAddress: "9851 W Charleston Blvd",
     addressLocality: "Las Vegas",
     addressRegion: "NV",
-    postalCode: "89147",
+    postalCode: "89117",
+    sourceUrl: "https://www.smithsfoodanddrug.com/stores/grocery/nv/las-vegas/9851-w-charleston-blvd/00647",
     schemaType: "GroceryStore",
     categories: ["grocery", "pharmacies"],
-    latitude: 36.1122,
-    longitude: -115.2782,
+    latitude: 36.1592,
+    longitude: -115.2944,
   },
   {
     id: "spring-valley-hospital",
@@ -219,6 +224,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89118",
+    sourceUrl: "https://www.springvalleyhospital.com/",
     schemaType: "Hospital",
     categories: ["healthcare"],
     latitude: 36.0905,
@@ -231,6 +237,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89103",
+    sourceUrl: "https://www.cvs.com/store-locator/cvs-pharmacy-address/Las+Vegas-NV-89103/3755-S-Rainbow-Blvd.html",
     schemaType: "Pharmacy",
     categories: ["pharmacies"],
     latitude: 36.1215,
@@ -243,6 +250,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89109",
+    sourceUrl: "https://www.fashionshowlv.com/",
     schemaType: "ShoppingCenter",
     categories: ["shopping", "attractions"],
     latitude: 36.1247,
@@ -255,6 +263,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89109",
+    sourceUrl: "https://www.caesars.com/caesars-palace/things-to-do/forum-shops",
     schemaType: "ShoppingCenter",
     categories: ["shopping", "attractions"],
     latitude: 36.1177,
@@ -267,6 +276,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89119",
+    sourceUrl: "https://www.balihaigolf.com/",
     schemaType: "GolfCourse",
     categories: ["golf"],
     latitude: 36.0958,
@@ -279,6 +289,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89120",
+    sourceUrl: "https://www.clarkcountynv.gov/government/departments/parks___recreation/special_use_parks/sunset_park.php",
     schemaType: "Park",
     categories: ["parks"],
     latitude: 36.0717,
@@ -291,6 +302,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89103",
+    sourceUrl: "https://www.24hourfitness.com/gyms/las-vegas-nv/south-rainbow-sport",
     schemaType: "ExerciseGym",
     categories: ["fitness"],
     latitude: 36.1098,
@@ -303,6 +315,7 @@ export const curatedNearbyPlaces: CuratedNearbyPlace[] = [
     addressLocality: "Las Vegas",
     addressRegion: "NV",
     postalCode: "89154",
+    sourceUrl: "https://www.unlv.edu/",
     schemaType: "School",
     categories: ["schools"],
     latitude: 36.1075,

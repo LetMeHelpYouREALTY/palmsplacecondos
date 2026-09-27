@@ -97,8 +97,8 @@ export function NearbyAmenitiesPageBody() {
             Grocery and everyday errands
           </h2>
           <p className="mt-4 leading-relaxed text-palms-cream/85">
-            Whole Foods Market at 6689 Las Vegas Blvd S and Smith&apos;s Food and Drug at 4165 S Grand
-            Canyon Dr are common full-cart runs from the tower. CVS Pharmacy at 3755 S Rainbow Blvd
+            Whole Foods Market at 6689 Las Vegas Blvd S and Smith&apos;s Food and Drug at 9851 W
+            Charleston Blvd are common full-cart runs from the tower. CVS Pharmacy at 3755 S Rainbow Blvd
             covers prescriptions west of the Strip. Hours and inventory change—confirm on your phone
             before you write an offer based on a single errand route.
           </p>
