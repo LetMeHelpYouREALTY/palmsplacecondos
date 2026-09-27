@@ -7,13 +7,16 @@ import { UnwindSection } from "@/components/sections/unwind-section";
 import { WhyBuySection } from "@/components/sections/why-buy-section";
 import { StructuredData } from "@/components/seo/structured-data";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
-import { siteContact } from "@/lib/site-contact";
-import { getCurrentFeaturedListingJsonLd, getHomeWebPageJsonLd } from "@/lib/schema";
+import {
+  getBreadcrumbListJsonLd,
+  getCurrentFeaturedListingJsonLd,
+  getHomeWebPageJsonLd,
+} from "@/lib/schema";
 
 const homeTitle = "Palms Place Condos for Sale | 4381 W Flamingo | Dr. Jan Duffy";
-const homeDescription = `Palms Place condos for sale at 4381 W Flamingo Road, Las Vegas. Studio to penthouse residences. Call ${siteContact.phone} — ${siteContact.agentName}, ${siteContact.brokerage}.`;
-const ogDescription =
+const homeDescription =
   "Palms Place at 4381 W Flamingo Road—studio to penthouse Strip-adjacent condos. Local guidance from Dr. Jan Duffy, Palms Place listing specialist.";
+const ogDescription = homeDescription;
 
 export const metadata: Metadata = buildPageMetadata({
   path: "/",
@@ -38,9 +41,12 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function HomePage() {
+  const homeBreadcrumbJsonLd = getBreadcrumbListJsonLd("/", [{ name: "Home", path: "/" }]);
+
   return (
     <>
       <StructuredData data={getHomeWebPageJsonLd()} />
+      <StructuredData data={homeBreadcrumbJsonLd} />
       <StructuredData data={getCurrentFeaturedListingJsonLd()} />
       <HeroPalmsPlace />
       <FeaturedListingBanner />

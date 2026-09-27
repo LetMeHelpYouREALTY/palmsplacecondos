@@ -612,7 +612,7 @@ export function getHomeWebPageJsonLd(): JsonLdGraph {
     url: pageUrl,
     name: "Palms Place Condos for Sale | 4381 W Flamingo | Dr. Jan Duffy",
     description:
-      "Browse Palms Place condos for sale at 4381 W Flamingo Road near the Las Vegas Strip. Compare studio and one-bedroom high-rise listings, HOA details, and tours with Dr. Jan Duffy, Realtor.",
+      "Palms Place at 4381 W Flamingo Road—studio to penthouse Strip-adjacent condos. Local guidance from Dr. Jan Duffy, Palms Place listing specialist.",
     inLanguage: "en-US",
     isPartOf: { "@id": webId },
     about: [
@@ -621,6 +621,7 @@ export function getHomeWebPageJsonLd(): JsonLdGraph {
       { "@id": id(siteUrl, "service-buy-palms-place") },
       { "@id": id(siteUrl, "service-sell-palms-place") },
     ],
+    breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
     mentions: { "@id": getFeaturedListingSchemaId(siteUrl) },
     mainEntity: { "@id": getHomeFaqSchemaId(siteUrl) },
     primaryImageOfPage: { "@id": id(siteUrl, "logo") },
