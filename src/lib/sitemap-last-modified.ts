@@ -62,6 +62,7 @@ const MARKETING_PAGE_LAST_MODIFIED: Record<string, IsoDate> = {
   "/buyers": "2026-08-20",
   "/sellers": "2026-08-20",
   "/area/palms-place-las-vegas": "2026-08-20",
+  "/amenities": "2026-09-27",
   "/team": "2026-08-20",
   "/homes": "2026-08-20",
   "/condos": "2026-08-20",

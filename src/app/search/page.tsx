@@ -4,6 +4,7 @@ import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 import { ButtonAnchor } from "@/components/shared/button-link";
+import { NearbyAmenitiesSection } from "@/components/sections/nearby-amenities-section";
 import { SectionEyebrow } from "@/components/shared/section-heading";
 import { searchPageFaq } from "@/lib/content/discoverability-page-faqs";
 import { relatedLinksForPath } from "@/lib/internal-links";
@@ -112,6 +113,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
         <RelatedPages links={related} />
       </div>
+      <NearbyAmenitiesSection headingId="search-nearby-amenities-heading" />
     </div>
   );
 }

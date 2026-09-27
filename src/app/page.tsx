@@ -3,6 +3,7 @@ import { FeaturedListingBanner } from "@/components/sections/featured-listing-ba
 import { HeroPalmsPlace } from "@/components/sections/hero-palms-place";
 import { HomeFaqSection } from "@/components/sections/home-faq-section";
 import { StaySection } from "@/components/sections/stay-section";
+import { NearbyAmenitiesSection } from "@/components/sections/nearby-amenities-section";
 import { UnwindSection } from "@/components/sections/unwind-section";
 import { WhyBuySection } from "@/components/sections/why-buy-section";
 import { StructuredData } from "@/components/seo/structured-data";
@@ -47,6 +48,7 @@ export default function HomePage() {
       <StaySection />
       <WhyBuySection />
       <UnwindSection />
+      <NearbyAmenitiesSection headingId="home-nearby-amenities-heading" />
       <HomeFaqSection />
     </>
   );

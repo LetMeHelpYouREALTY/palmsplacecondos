@@ -92,6 +92,11 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
       description: "Map, directions & Strip context",
     },
     {
+      href: "/amenities",
+      label: "Nearby amenities map — Palms Place, Las Vegas",
+      description: "Dining, grocery, healthcare & commute context",
+    },
+    {
       href: "/insights",
       label: "Palms Place field notes — tour & listing insights",
       description: "Non-commodity team POV articles",

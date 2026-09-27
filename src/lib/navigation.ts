@@ -56,6 +56,7 @@ export const popularNav: NavItem[] = [
   { label: "Strip views", href: "/guide/palms-place-strip-view-condos" },
   { label: "Short-term rentals", href: "/guide/palms-place-short-term-rentals" },
   { label: "Location", href: "/area/palms-place-las-vegas" },
+  { label: "Nearby amenities", href: "/amenities" },
   { label: "Field notes", href: "/insights" },
   { label: "Team", href: "/team" },
   { label: "Buyer Calculators", href: "/buyers/calculators" },

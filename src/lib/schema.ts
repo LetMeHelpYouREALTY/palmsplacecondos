@@ -4,6 +4,11 @@
  */
 import { featuredListing, getFeaturedListingDetailsUrl } from "@/lib/content/featured-listing";
 import { getGalleryPhotoSrc, unit8322Gallery } from "@/lib/content/media-gallery";
+import {
+  curatedNearbyPlaces,
+  formatPlaceAddress,
+  nearbyAmenitiesPagePath,
+} from "@/lib/content/nearby-amenities";
 import { palmsPlaceTower } from "@/lib/content/palms-place-building";
 import { PHOTO_LICENSE_REQUEST_PATH, PHOTO_USE_PATH } from "@/lib/content/photo-use";
 import { formatOfficeAddressLine, siteContact } from "@/lib/site-contact";
@@ -1082,6 +1087,52 @@ export function getFeaturedListingSchemaId(siteUrl = getSiteUrl()): string {
 }
 
 /** RealEstateListing graph for the current homepage spotlight — same @id as `/photos/unit-8322`. */
+/** ItemList of verified nearby Place entities for `/amenities` (GEO / AEO). */
+export function getNearbyFeaturedPlacesItemListJsonLd(): JsonLdGraph {
+  const origin = siteOrigin(getSiteUrl());
+  const pageUrl = `${origin}${nearbyAmenitiesPagePath}`;
+  const itemList: Record<string, unknown> = {
+    "@type": "ItemList",
+    "@id": `${pageUrl}#nearby-places`,
+    name: "Featured places near Palms Place, Las Vegas",
+    numberOfItems: curatedNearbyPlaces.length,
+    itemListElement: curatedNearbyPlaces.map((place, index) => {
+      const address = formatPlaceAddress(place);
+      const placeNode: Record<string, unknown> = {
+        "@type": place.schemaType,
+        name: place.name,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: place.streetAddress,
+          addressLocality: place.addressLocality,
+          addressRegion: place.addressRegion,
+          postalCode: place.postalCode,
+          addressCountry: "US",
+        },
+      };
+      if (place.latitude !== undefined && place.longitude !== undefined) {
+        placeNode.geo = {
+          "@type": "GeoCoordinates",
+          latitude: place.latitude,
+          longitude: place.longitude,
+        };
+      }
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        item: placeNode,
+        name: place.name,
+        description: address,
+      };
+    }),
+  };
+
+  return {
+    "@context": CONTEXT,
+    "@graph": [itemList],
+  };
+}
+
 export function getCurrentFeaturedListingJsonLd(): JsonLdGraph {
   const imageUrls = unit8322Gallery.photos.map((photo) => getGalleryPhotoSrc(photo));
   return getFeaturedUnitListingJsonLd(unit8322Gallery.path, {
