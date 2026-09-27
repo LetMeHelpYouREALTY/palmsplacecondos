@@ -145,6 +145,17 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     ctaLabel: "Palms Place building guide",
     ctaHref: "/palms-place",
   },
+  "/amenities": {
+    heading: "Who maps daily life around Palms Place—not generic Strip copy?",
+    answer: `Dr. Jan Duffy maintains this nearby-amenities map from the tower pin at ${tower} so buyers see grocery, healthcare, and resort corridors they will actually use. She is the Palms Place listing specialist—HOA parking rules and Sky Tube access still belong in disclosures, not a map legend.`,
+    proofs: [
+      `Map center: ${tower} (public MLS / listing map pin).`,
+      "Curated destinations use verifiable street addresses—no invented ratings or drive-time guarantees.",
+      `Nevada license ${license} · ${brokerage}.`,
+    ],
+    ctaLabel: "Tour Palms Place with the listing specialist",
+    ctaHref: "/contact",
+  },
   "/area/palms-place-las-vegas": {
     heading: "Who maps Palms Place tours from the tower pin—not the office pin?",
     answer: `Dr. Jan Duffy meets Palms Place buyers at ${tower}, the 47-story residential tower, not at the Lindell Road office unless you schedule paperwork there. As listing specialist she keeps tower and office NAP separate so directions, maps, and Google Business Profile never get swapped. That is building-level local knowledge.`,

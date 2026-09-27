@@ -4,8 +4,8 @@
  *
  * GSC Sitemaps (2026-08-20): 33 URLs discovered on
  * `https://www.palmsplacecondos.com/sitemap.xml` (Success). After this deploy the
- * marketing catalog is 40 URLs (added `/maps` for GBP/Google Maps citations;
- * GSC count was already behind this array). Count must stay aligned with this array.
+ * marketing catalog is 41 URLs (includes `/amenities` hyperlocal map page).
+ * Count must stay aligned with this array.
  */
 
 export type MarketingRoute = {
@@ -106,6 +106,13 @@ export const MARKETING_ROUTES: MarketingRoute[] = [
     summary: "Location page: West Flamingo / Paradise map context for Palms Place.",
     changeFrequency: "monthly",
     priority: 0.88,
+  },
+  {
+    path: "/amenities",
+    summary:
+      "Nearby amenities map — restaurants, grocery, healthcare, shopping, and commute context near Palms Place.",
+    changeFrequency: "monthly",
+    priority: 0.86,
   },
   {
     path: "/insights",

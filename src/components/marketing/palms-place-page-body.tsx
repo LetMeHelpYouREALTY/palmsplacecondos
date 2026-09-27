@@ -10,6 +10,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { NearbyAmenitiesSection } from "@/components/sections/nearby-amenities-section";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 
 const pageMeta = {
@@ -33,6 +34,7 @@ export function PalmsPlacePageBody() {
   ]);
 
   return (
+    <>
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
       <StructuredData data={webPageJsonLd} />
       <StructuredData data={breadcrumbJsonLd} />
@@ -212,5 +214,7 @@ export function PalmsPlacePageBody() {
       <SourcesVerification />
       <RelatedPages links={related} />
     </article>
+    <NearbyAmenitiesSection headingId="palms-place-nearby-amenities-heading" />
+    </>
   );
 }

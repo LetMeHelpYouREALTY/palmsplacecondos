@@ -8,6 +8,7 @@ import { relatedLinksForPath } from "@/lib/internal-links";
 import { resolveMapEmbedSrc } from "@/lib/maps-embed";
 import { getBreadcrumbListJsonLd, getWebPageJsonLdForPath } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
+import { NearbyAmenitiesSection } from "@/components/sections/nearby-amenities-section";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 import { CalendlyLink } from "@/components/shared/calendly-link";
 
@@ -42,6 +43,7 @@ export function AreaPalmsPlaceLasVegasPageBody() {
   ]);
 
   return (
+    <>
     <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
       <StructuredData data={webPageJsonLd} />
       <StructuredData data={breadcrumbJsonLd} />
@@ -158,5 +160,7 @@ export function AreaPalmsPlaceLasVegasPageBody() {
 
       <RelatedPages links={related} />
     </article>
+    <NearbyAmenitiesSection headingId="area-nearby-amenities-heading" />
+    </>
   );
 }
