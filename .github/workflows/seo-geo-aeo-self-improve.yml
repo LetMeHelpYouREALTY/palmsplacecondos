@@ -47,6 +47,10 @@ jobs:
 
       - run: npm ci
 
+      # Build so the audit can also inspect prerendered HTML (static vs. dynamic,
+      # JSON-LD validity, canonical, H1) — not just source files.
+      - run: npm run build
+
       - name: Run SEO / GEO / AEO audit
         id: audit
         run: |
