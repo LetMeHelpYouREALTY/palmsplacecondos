@@ -49,7 +49,17 @@ jobs:
 
       # Build so the audit can also inspect prerendered HTML (static vs. dynamic,
       # JSON-LD validity, canonical, H1) — not just source files.
-      - run: npm run build
+      # next/font/google fetches fonts at build time; retry transient failures and, if the
+      # build still fails, drop the partial .next so the audit falls back to source checks
+      # (the build itself is validated by Vercel).
+      - name: Build
+        run: |
+          for attempt in 1 2 3; do
+            npm run build && exit 0
+            sleep $((attempt * 10))
+          done
+          rm -rf .next
+          echo "::warning::next build failed 3x; rendered-output audit checks skipped"
 
       - name: Run SEO / GEO / AEO audit
         id: audit
