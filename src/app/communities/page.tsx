@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CommunitiesPageBody } from "@/components/marketing/communities-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -9,5 +10,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function CommunitiesPage() {
-  return <CommunitiesPageBody />;
+  return (
+    <>
+      <CommunitiesPageBody />
+      <PalmsPlaceListingAuthority pathname="/communities" />
+    </>
+  );
 }

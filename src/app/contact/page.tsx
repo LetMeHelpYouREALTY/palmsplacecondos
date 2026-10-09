@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactPageBody } from "@/components/marketing/contact-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 import { siteContact } from "@/lib/site-contact";
 
@@ -10,5 +11,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function ContactPage() {
-  return <ContactPageBody />;
+  return (
+    <>
+      <ContactPageBody />
+      <PalmsPlaceListingAuthority pathname="/contact" />
+    </>
+  );
 }

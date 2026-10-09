@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GuideSellingPalmsPlacePageBody } from "@/components/marketing/guide-selling-palms-place-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 const path = "/guide/selling-palms-place";
@@ -11,5 +12,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function GuideSellingPalmsPlacePage() {
-  return <GuideSellingPalmsPlacePageBody />;
+  return (
+    <>
+      <GuideSellingPalmsPlacePageBody />
+      <PalmsPlaceListingAuthority pathname={path} />
+    </>
+  );
 }

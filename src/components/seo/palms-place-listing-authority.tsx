@@ -10,6 +10,11 @@ type PalmsPlaceListingAuthorityProps = {
 /**
  * Unique per-route proof section: Dr. Jan Duffy as Palms Place listing specialist
  * and team leader. First-party listing work only — no fabricated rankings.
+ *
+ * Server component: each page renders it with its own static `pathname`, so only that
+ * route's section reaches the HTML/RSC payload and the path→section map never ships as
+ * client JS. Keep it out of the root layout (headers() would make every route dynamic;
+ * a usePathname() wrapper would bundle the whole map into the layout chunk).
  */
 export function PalmsPlaceListingAuthority({ pathname }: PalmsPlaceListingAuthorityProps) {
   const section = getListingAuthoritySection(pathname);

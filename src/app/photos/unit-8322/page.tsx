@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PhotosUnit8322PageBody } from "@/components/marketing/photos-unit-8322-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import {
   getFeaturedListingHeroPhoto,
   getGalleryPhotoSrc,
@@ -25,5 +26,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function PhotosUnit8322Page() {
-  return <PhotosUnit8322PageBody />;
+  return (
+    <>
+      <PhotosUnit8322PageBody />
+      <PalmsPlaceListingAuthority pathname={unit8322Gallery.path} />
+    </>
+  );
 }

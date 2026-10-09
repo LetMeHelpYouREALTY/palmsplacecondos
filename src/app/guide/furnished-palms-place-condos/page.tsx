@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GuideFurnishedPalmsPlacePageBody } from "@/components/marketing/guide-furnished-palms-place-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 const path = "/guide/furnished-palms-place-condos";
@@ -11,5 +12,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function GuideFurnishedPalmsPlacePage() {
-  return <GuideFurnishedPalmsPlacePageBody />;
+  return (
+    <>
+      <GuideFurnishedPalmsPlacePageBody />
+      <PalmsPlaceListingAuthority pathname={path} />
+    </>
+  );
 }

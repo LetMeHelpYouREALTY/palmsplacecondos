@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GuideCompareStripHighRisesPageBody } from "@/components/marketing/guide-compare-strip-high-rises-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 const path = "/guide/compare-strip-high-rises";
@@ -11,5 +12,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function GuideCompareStripHighRisesPage() {
-  return <GuideCompareStripHighRisesPageBody />;
+  return (
+    <>
+      <GuideCompareStripHighRisesPageBody />
+      <PalmsPlaceListingAuthority pathname={path} />
+    </>
+  );
 }

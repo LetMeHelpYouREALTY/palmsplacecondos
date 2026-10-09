@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BuyerCalculatorsPageBody } from "@/components/marketing/buyer-calculators-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -9,5 +10,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function BuyerCalculatorsPage() {
-  return <BuyerCalculatorsPageBody />;
+  return (
+    <>
+      <BuyerCalculatorsPageBody />
+      <PalmsPlaceListingAuthority pathname="/buyers/calculators" />
+    </>
+  );
 }

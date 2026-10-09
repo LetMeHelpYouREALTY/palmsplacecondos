@@ -5,6 +5,7 @@ import { HomeFaqSection } from "@/components/sections/home-faq-section";
 import { StaySection } from "@/components/sections/stay-section";
 import { UnwindSection } from "@/components/sections/unwind-section";
 import { WhyBuySection } from "@/components/sections/why-buy-section";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { StructuredData } from "@/components/seo/structured-data";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 import {
@@ -54,6 +55,7 @@ export default function HomePage() {
       <WhyBuySection />
       <UnwindSection />
       <HomeFaqSection />
+      <PalmsPlaceListingAuthority pathname="/" />
     </>
   );
 }
