@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AreaPalmsPlaceLasVegasPageBody } from "@/components/marketing/area-palms-place-las-vegas-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -9,5 +10,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function AreaPalmsPlaceLasVegasPage() {
-  return <AreaPalmsPlaceLasVegasPageBody />;
+  return (
+    <>
+      <AreaPalmsPlaceLasVegasPageBody />
+      <PalmsPlaceListingAuthority pathname="/area/palms-place-las-vegas" />
+    </>
+  );
 }

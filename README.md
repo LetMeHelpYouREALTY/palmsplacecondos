@@ -122,6 +122,7 @@ It checks:
 - **Orphan pages** — a `page.tsx` that exists but isn't in `MARKETING_ROUTES` (missing from sitemap.xml, llms.txt, and IndexNow).
 - **Title/description length and sitewide duplicates** — duplicate `<title>`/meta description across pages is a disambiguation problem for both Google and AI answer engines.
 - **Content freshness** — `dateModified` / sitemap lastmod values older than 180 days are flagged for a copy/facts refresh; GEO treats freshness as a citation-priority signal distinct from Google ranking.
+- **Rendered output** (after `npm run build`) — every marketing page is prerendered static HTML (a layout calling `headers()`/`cookies()` silently makes every route on-demand SSR; `/search` is the only intentional exception), has exactly one `<h1>`, a canonical link, and parseable JSON-LD.
 - **AI crawler allow-list** — [`src/app/robots.ts`](src/app/robots.ts) still welcomes the answer-engine crawlers (GPTBot, PerplexityBot, Claude-User, Claude-SearchBot, etc.) this site intentionally allows for GEO/AEO citation eligibility.
 
 [`.github/workflows/seo-geo-aeo-self-improve.yml`](.github/workflows/seo-geo-aeo-self-improve.yml) runs the same audit as a PR status check on content/SEO changes, and again weekly (Monday, plus manual dispatch) — filing or updating a single tracking issue (label `seo-self-audit`) with current findings so drift surfaces on its own instead of waiting for someone to notice it in Search Console. Hard errors fail the check; length/freshness/duplicate findings are warnings for editorial follow-up.

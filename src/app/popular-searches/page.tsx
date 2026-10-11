@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PopularSearchesPageBody } from "@/components/marketing/popular-searches-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -9,5 +10,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function PopularSearchesPage() {
-  return <PopularSearchesPageBody />;
+  return (
+    <>
+      <PopularSearchesPageBody />
+      <PalmsPlaceListingAuthority pathname="/popular-searches" />
+    </>
+  );
 }

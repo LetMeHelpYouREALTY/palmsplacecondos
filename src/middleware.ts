@@ -9,14 +9,8 @@ import { INDEXNOW_KEY, indexNowKeyFileHeaders, isIndexNowKeyRequest } from "@/li
  * Google Search Console “Page with redirect” for http:// and apex URLs is expected.
  * Do not remove these redirects to make GSC “Validate Fix” pass.
  *
- * Also: pass `x-pathname` to server components, and serve the public IndexNow key file.
+ * Also: serve the public IndexNow key file.
  */
-function nextWithPathname(request: NextRequest): NextResponse {
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-pathname", request.nextUrl.pathname);
-  return NextResponse.next({ request: { headers: requestHeaders } });
-}
-
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
@@ -29,24 +23,24 @@ export function middleware(request: NextRequest) {
 
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (!raw) {
-    return nextWithPathname(request);
+    return NextResponse.next();
   }
 
   let canonical: URL;
   try {
     canonical = new URL(raw.replace(/\/$/, ""));
   } catch {
-    return nextWithPathname(request);
+    return NextResponse.next();
   }
 
   const canonicalHost = canonical.hostname.toLowerCase();
   if (!canonicalHost.startsWith("www.")) {
-    return nextWithPathname(request);
+    return NextResponse.next();
   }
 
   const host = request.headers.get("host")?.split(":")[0]?.toLowerCase();
   if (!host) {
-    return nextWithPathname(request);
+    return NextResponse.next();
   }
 
   const forwardedProto = request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim()?.toLowerCase();
@@ -58,7 +52,7 @@ export function middleware(request: NextRequest) {
     canonical.protocol === "https:" ? requestIsHttps : request.nextUrl.protocol === canonical.protocol;
 
   if (hostMatches && protocolMatches) {
-    return nextWithPathname(request);
+    return NextResponse.next();
   }
 
   const destination = new URL(
@@ -69,5 +63,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|videos/|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|ico|mp4|webm)$).*)"],
 };

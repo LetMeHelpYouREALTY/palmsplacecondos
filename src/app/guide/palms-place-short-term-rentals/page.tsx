@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GuidePalmsPlaceShortTermRentalsPageBody } from "@/components/marketing/guide-palms-place-short-term-rentals-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 const path = "/guide/palms-place-short-term-rentals";
@@ -12,5 +13,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function GuidePalmsPlaceShortTermRentalsPage() {
-  return <GuidePalmsPlaceShortTermRentalsPageBody />;
+  return (
+    <>
+      <GuidePalmsPlaceShortTermRentalsPageBody />
+      <PalmsPlaceListingAuthority pathname={path} />
+    </>
+  );
 }

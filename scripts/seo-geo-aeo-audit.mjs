@@ -279,6 +279,48 @@ if (missingCrawlers.length > 0) {
   );
 }
 
+// ---------------------------------------------------------------------------
+// 6. Rendered output (only when `next build` has run: .next/server/app exists)
+//    Catches regressions static source checks can't, e.g. a layout calling
+//    headers()/cookies() that silently turns every page into on-demand SSR.
+// ---------------------------------------------------------------------------
+
+// Routes that are dynamic by design (query-driven).
+const DYNAMIC_OK = new Set(["/search"]);
+const BUILT_DIR = path.join(ROOT, ".next", "server", "app");
+if (existsSync(BUILT_DIR)) {
+  let checked = 0;
+  for (const routePath of routeEntries) {
+    const route = routePath === "" ? "/" : routePath;
+    const rel = route === "/" ? "index" : route.replace(/^\//, "");
+    const htmlFile = path.join(BUILT_DIR, `${rel}.html`);
+    if (!existsSync(htmlFile)) {
+      if (DYNAMIC_OK.has(route)) continue;
+      warnings.push(
+        `Rendering: "${route}" is not prerendered (dynamic) — check for headers()/cookies()/searchParams in the page or root layout; static HTML is faster (TTFB/LCP) and CDN-cacheable.`,
+      );
+      continue;
+    }
+    checked += 1;
+    const html = readText(htmlFile);
+    const h1Count = (html.match(/<h1[\s>]/g) ?? []).length;
+    if (h1Count !== 1) warnings.push(`Rendered HTML: "${route}" has ${h1Count} <h1> elements (expected 1).`);
+    if (!/<link[^>]+rel="canonical"/.test(html)) errors.push(`Rendered HTML: "${route}" has no canonical link.`);
+    const blocks = [...html.matchAll(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
+    if (blocks.length === 0) warnings.push(`Rendered HTML: "${route}" has no JSON-LD.`);
+    for (const b of blocks) {
+      try {
+        JSON.parse(b[1]);
+      } catch {
+        errors.push(`Rendered HTML: "${route}" contains invalid JSON-LD.`);
+      }
+    }
+  }
+  notes.push(`Rendered-output checks ran on ${checked} prerendered marketing pages.`);
+} else {
+  notes.push("Rendered-output checks skipped (run `npm run build` first to enable them).");
+}
+
 notes.push(`Checked ${routeEntries.length} MARKETING_ROUTES, ${allPageFiles.length} page.tsx files, ${freshnessSources.length} content modules for freshness.`);
 
 // ---------------------------------------------------------------------------
