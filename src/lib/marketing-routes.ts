@@ -4,7 +4,8 @@
  *
  * GSC Sitemaps (2026-08-20): 33 URLs discovered on
  * `https://www.palmsplacecondos.com/sitemap.xml` (Success). After this deploy the
- * marketing catalog is 40 URLs (added `/maps` for GBP/Google Maps citations;
+ * marketing catalog is 41 URLs (added `/guide/palms-place-parking-and-pets`;
+ * earlier catalog was 40 after `/maps` for GBP/Google Maps citations;
  * GSC count was already behind this array). Count must stay aligned with this array.
  */
 
@@ -70,6 +71,13 @@ export const MARKETING_ROUTES: MarketingRoute[] = [
     summary: "Palms Place HOA fees, assessments, and true monthly carry — verify in disclosures.",
     changeFrequency: "monthly",
     priority: 0.87,
+  },
+  {
+    path: "/guide/palms-place-parking-and-pets",
+    summary:
+      "Palms Place parking assignments and pet rules — verify both in the resale certificate before you offer.",
+    changeFrequency: "monthly",
+    priority: 0.86,
   },
   {
     path: "/guide/furnished-palms-place-condos",

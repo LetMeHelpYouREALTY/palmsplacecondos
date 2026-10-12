@@ -13,6 +13,7 @@ import { palmsPlaceBuyerGuideMeta } from "@/lib/content/palms-place-buyer-guide"
 import { palmsPlaceCondosVsHotelGuideMeta } from "@/lib/content/palms-place-condos-vs-hotel-guide";
 import { palmsPlaceFurnishedGuideMeta } from "@/lib/content/palms-place-furnished-guide";
 import { palmsPlaceHoaGuideMeta } from "@/lib/content/palms-place-hoa-guide";
+import { palmsPlaceParkingAndPetsGuideMeta } from "@/lib/content/palms-place-parking-and-pets-guide";
 import { palmsPlaceSellerGuideMeta } from "@/lib/content/palms-place-seller-guide";
 import { palmsPlaceShortTermRentalGuideMeta } from "@/lib/content/palms-place-short-term-rental-guide";
 import { palmsPlaceStripViewGuideMeta } from "@/lib/content/palms-place-strip-view-guide";
@@ -36,6 +37,7 @@ function editorialContentLastModified(): Record<string, string> {
     "/guide/palms-place-unit-types": palmsPlaceUnitTypesGuideMeta.dateModified,
     "/guide/compare-strip-high-rises": compareStripHighRisesGuideMeta.dateModified,
     "/guide/palms-place-hoa-and-monthly-costs": palmsPlaceHoaGuideMeta.dateModified,
+    "/guide/palms-place-parking-and-pets": palmsPlaceParkingAndPetsGuideMeta.dateModified,
     "/guide/furnished-palms-place-condos": palmsPlaceFurnishedGuideMeta.dateModified,
     "/guide/palms-place-amenities-and-resort-access":
       palmsPlaceAmenitiesGuideMeta.dateModified,

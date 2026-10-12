@@ -5,7 +5,7 @@ export const palmsPlaceHoaGuideMeta = {
   description:
     "How to read Palms Place HOA assessments, reserves, parking line items, and true monthly carry before you tour or write an offer on a Las Vegas high-rise condo.",
   datePublished: "2026-05-27",
-  dateModified: "2026-08-20",
+  dateModified: "2026-10-12",
 };
 
 export const palmsPlaceHoaIntro = {
@@ -44,5 +44,11 @@ export const palmsPlaceHoaSections: { id: string; question: string; answer: stri
     question: "Why not use a YouTube Palms Place HOA number for 2026?",
     answer:
       "Social videos quote dollar figures that may be for a different unit type, year, or utility stack. Palms Place #8322 lists HOA on that spotlight as a unit-specific line—not a building average, and not a studio figure copied onto a one-bedroom. Request the current resale certificate. Dr. Jan Duffy will not publish a blog HOA amount that can be wrong next quarter.",
+  },
+  {
+    id: "parking-and-pets",
+    question: "Where do Palms Place parking and pet rules live?",
+    answer:
+      "In the same resale certificate, on different pages from the assessment. Parking can be a stall, valet, or neither, and pet limits are not a building slogan. The parking and pets guide walks that check. This page stays on monthly carry so a fee average is not mixed with a house rule.",
   },
 ];
