@@ -5,6 +5,7 @@ import { StructuredData } from "@/components/seo/structured-data";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 import { ButtonAnchor, ButtonLink } from "@/components/shared/button-link";
 import { CalendlyButton } from "@/components/shared/calendly-link";
+import { videoPageFaq } from "@/lib/content/video-page-faq";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import {
   getAgentVideoObjectJsonLd,
@@ -27,24 +28,6 @@ const pageMeta = {
   description:
     "First-party Palms Place video: Dr. Jan Duffy, listing specialist and team leader, with tower and unit #8322 photography at 4381 W Flamingo Road.",
 };
-
-const videoFaq = [
-  {
-    question: "Who is the Palms Place realtor in this video?",
-    answer:
-      "Dr. Jan Duffy, Realtor, is the listing specialist, team leader, and Palms Place Buyers Specialist at Berkshire Hathaway HomeServices Nevada Properties (Nevada license S.0197614.LLC). Buyers and sellers in this tower work with her first. This is not a citywide ranking badge.",
-  },
-  {
-    question: "Is this Palms Place hotel booking or condos for sale?",
-    answer:
-      "Condos for sale. The video uses this brokerage’s tower and listing photos. Hotel stays belong on the official Palms Place resort site. Ownership, HOA packets, and tours stay with Dr. Jan Duffy.",
-  },
-  {
-    question: "How do I tour Palms Place after watching?",
-    answer:
-      "Call the office number on this page or schedule on Calendly. Tours are at 4381 W Flamingo Road. Confirm price and HOA documents for any unit, including featured #8322, before you offer.",
-  },
-];
 
 export function VideoPageBody() {
   const related = relatedLinksForPath(PATH);
@@ -191,7 +174,7 @@ export function VideoPageBody() {
         <PageFaqSection
           heading="Video questions"
           headingId="video-faq-heading"
-          items={videoFaq}
+          items={videoPageFaq}
           pathname={PATH}
         />
         <RelatedPages className="mt-14" links={related} />

@@ -36,7 +36,13 @@ import {
   palmsPlaceCondosVsHotelIntro,
   palmsPlaceCondosVsHotelSections,
 } from "@/lib/content/palms-place-condos-vs-hotel-guide";
-import { palmsPlaceFaqAllAsFaqItems, palmsPlaceFaqIntro } from "@/lib/content/palms-place-faq";
+import {
+  palmsPlaceFaqAllAsFaqItems,
+  palmsPlaceFaqIntro,
+  palmsPlaceFaqPlanningIntro,
+  palmsPlaceFaqPlanningStay,
+  palmsPlaceFaqPrimary,
+} from "@/lib/content/palms-place-faq";
 import {
   palmsPlaceFurnishedGuideMeta,
   palmsPlaceFurnishedIntro,
@@ -65,6 +71,7 @@ import {
   palmsPlaceUnitTypesIntro,
   palmsPlaceUnitTypesSections,
 } from "@/lib/content/palms-place-unit-types-guide";
+import { videoPageFaq } from "@/lib/content/video-page-faq";
 import { getRealScoutSharedSearchUrl } from "@/lib/realscout";
 import { formatTeamPhrase, getGbpDescription, siteContact } from "@/lib/site-contact";
 
@@ -120,15 +127,80 @@ function buildHome(): AmpPage {
     description:
       "Palms Place at 4381 W Flamingo Road—studio to penthouse Strip-adjacent condos. Local guidance from Dr. Jan Duffy, Palms Place listing specialist.",
     h1: "Palms Place Condos for Sale in Las Vegas",
+    h1Id: "hero-heading",
     lede: `${siteContact.gbpBusinessName} is a high-rise at ${palmsPlaceTower.streetAddress}, west of the Las Vegas Strip. ${description}`,
     images: [HERO_IMAGE],
     sections: [
       {
         heading: "Which Palms Place condo is featured right now?",
+        headingId: "featured-listing-heading",
         paragraphs: [
           `${featuredListing.addressLine}. ${featuredListing.status}. ${featuredListing.price} (prior ask ${featuredListing.previousPrice}). ${featuredListing.beds}, ${featuredListing.baths}, ${featuredListing.squareFeet}, ${featuredListing.entryLevel}. MLS #${featuredListing.mlsNumber}.`,
           featuredListing.overview,
         ],
+      },
+      {
+        heading: "Which Palms Place condos are for sale near the Las Vegas Strip?",
+        headingId: "stay-heading",
+        paragraphs: [
+          `Palms Place inventory at ${palmsPlaceTower.streetAddress} typically includes studio and one-bedroom Las Vegas high-rise condos near Palms Casino Resort. Compare floor plans on the full page, then search live listings or ask ${siteContact.agentName} for current HOA details.`,
+        ],
+      },
+      {
+        heading: "Why buy a Palms Place condo in Las Vegas?",
+        headingId: "why-buy-heading",
+        paragraphs: [
+          "Buyers choose Palms Place for Strip-adjacent high-rise living with HOA amenities such as pool and outdoor space, concierge-style convenience, and a lock-and-leave lifestyle—often as a primary home, second home, or long-term hold. Confirm HOA rules, fees, and rental restrictions with your agent and official disclosures before you write an offer.",
+          `Palms Place floor plans range from efficient studios to larger one-bedroom layouts. Work with ${siteContact.agentName} (${siteContact.agentTitle}) and ${siteContact.buyerSpecialistName}, ${siteContact.buyerSpecialistTitle}, at ${siteContact.brokerage} to compare Las Vegas high-rise condos, review disclosures, and tour Palms Casino Resort residences access and HOA rules before you write an offer.`,
+        ],
+      },
+      {
+        heading: "Which Palms Place amenities do Las Vegas owners actually get?",
+        headingId: "unwind-heading",
+        paragraphs: [
+          "HOA amenities Palms Place documents describe can include resort-style pool and outdoor spaces. Strip-adjacent residences do not automatically include every hotel pool program—verify hours, guest policies, and fees with disclosures and your agent.",
+        ],
+      },
+      {
+        heading: "Do Palms Place owners get the same pool and cabana access as hotel guests?",
+        headingId: "unwind-pool-heading",
+        headingLevel: 3,
+        paragraphs: [
+          "Hotel-adjacent pool experiences may be available through the resort; ownership benefits differ. Ask your agent what applies to residents versus hotel guests for Palms Casino Resort residences access.",
+          "For resort pool and cabana programs operated by the Palms, see the official resort site.",
+        ],
+      },
+      {
+        heading: "What do Palms Place HOA fees cover in Las Vegas?",
+        headingId: "unwind-hoa-heading",
+        headingLevel: 3,
+        paragraphs: [
+          "HOA fees, special assessments, rental caps, and parking rules change. Review the latest HOA packet and resale package with your agent and a qualified professional before you rely on any summary.",
+        ],
+      },
+      {
+        heading: "How close is Palms Place to Palms Casino Resort?",
+        headingId: "unwind-resort-heading",
+        headingLevel: 3,
+        paragraphs: [
+          "Gaming, dining, and entertainment are steps away at Palms Casino Resort—separate from condominium ownership and HOA rules.",
+        ],
+      },
+      {
+        heading: "Which Palms Place listings are for sale right now?",
+        headingId: "listings-heading",
+        paragraphs: [
+          `Browse Palms Place condos for sale and nearby Las Vegas high-rise listings on the full page. Availability and details are provided by the listing service. For filters and saved criteria, use the curated RealScout search (${siteContact.agentName}, listing specialist and team leader for Palms Place).`,
+        ],
+      },
+    ],
+    faqGroups: [
+      {
+        heading: "What do Palms Place buyers in Las Vegas ask first?",
+        headingId: "home-faq-heading",
+        intro:
+          "Direct answers about Palms Place condos for sale—not hotel booking—plus inventory and how to tour with the local listing specialist.",
+        items: homeFaqItems,
       },
     ],
     faqs: homeFaqItems,
@@ -161,7 +233,29 @@ function buildPages(): AmpPage[] {
         "Palms Place at 4381 W Flamingo Rd, Paradise 89103—Strip-adjacent tower location, map, directions, and links to buying guides for Las Vegas high-rise condos.",
       h1: "Palms Place location — West Flamingo & Paradise, Las Vegas",
       lede: `Palms Place is a ${palmsPlaceTower.floors}-story residential tower at ${towerLine}, west of the Las Vegas Strip in the Paradise area (ZIP ${palmsPlaceTower.postalCode}). This page orients buyers and sellers on geography and access. The team office NAP is on the contact page and is a different pin from the tower.`,
-      sections: [],
+      sections: [
+        {
+          heading: "Is Palms Place on the Las Vegas Strip?",
+          headingId: "area-strip-heading",
+          paragraphs: [
+            "Palms Place is Strip-adjacent on West Flamingo Road—close to resort and entertainment corridors without being the same product as a hotel room on Las Vegas Boulevard. Commute, noise, and walk time depend on which venue you visit most; tour at the hours you expect to use the home.",
+          ],
+        },
+        {
+          heading: "What is the Paradise / 89103 context for buyers?",
+          headingId: "area-paradise-heading",
+          paragraphs: [
+            "Paradise is the broader Las Vegas valley address many Strip-adjacent towers use. Compare communities and valley homes on the full page before assuming a high-rise fits daily life.",
+          ],
+        },
+        {
+          heading: "Where is Palms Place on the map at 4381 W Flamingo Road?",
+          headingId: "area-map-heading",
+          paragraphs: [
+            "Use the map for directions to the building. Listing tours and office meetings may use different addresses—confirm with your agent which pin applies to your appointment.",
+          ],
+        },
+      ],
       faqs: areaPalmsPlacePageFaq,
     },
     {
@@ -171,6 +265,19 @@ function buildPages(): AmpPage[] {
       h1: palmsPlaceFaqIntro.title,
       lede: palmsPlaceFaqIntro.description,
       sections: [],
+      faqGroups: [
+        {
+          heading: "What are the most common Palms Place condo questions?",
+          headingId: "faq-common-heading",
+          items: palmsPlaceFaqPrimary,
+        },
+        {
+          heading: palmsPlaceFaqPlanningIntro.heading,
+          headingId: "faq-planning-heading",
+          intro: palmsPlaceFaqPlanningIntro.description,
+          items: palmsPlaceFaqPlanningStay,
+        },
+      ],
       faqs: palmsPlaceFaqAllAsFaqItems(),
     },
     {
@@ -179,7 +286,22 @@ function buildPages(): AmpPage[] {
       description: `Call ${siteContact.phone} for Palms Place tours and Las Vegas high-rise questions. ${siteContact.agentName}, ${siteContact.brokerage}.`,
       h1: `Contact ${siteContact.gbpBusinessName} — Las Vegas office`,
       lede: getGbpDescription() || `${formatTeamPhrase()}. ${siteContact.brokerage}.`,
-      sections: [],
+      sections: [
+        {
+          heading: "How do I get directions to the Palms Place Condos office?",
+          headingId: "contact-map-heading",
+          paragraphs: [
+            "Use the map for the team office NAP—not the Palms Place tower at 4381 W Flamingo Road. Confirm which pin applies to your appointment before you drive.",
+          ],
+        },
+        {
+          heading: "How do I request permission to reuse listing photos?",
+          headingId: "contact-photos-heading",
+          paragraphs: [
+            "Email or call this office and name the unit and file. Photos are not Creative Commons. Full terms are on the photo-use page.",
+          ],
+        },
+      ],
       faqs: getContactPageFaq(),
     },
     {
@@ -249,23 +371,7 @@ function buildPages(): AmpPage[] {
           ],
         },
       ],
-      faqs: [
-        {
-          question: "Who is the Palms Place realtor in this video?",
-          answer:
-            "Dr. Jan Duffy, Realtor, is the listing specialist, team leader, and Palms Place Buyers Specialist at Berkshire Hathaway HomeServices Nevada Properties (Nevada license S.0197614.LLC). Buyers and sellers in this tower work with her first. This is not a citywide ranking badge.",
-        },
-        {
-          question: "Is this Palms Place hotel booking or condos for sale?",
-          answer:
-            "Condos for sale. The video uses this brokerage's tower and listing photos. Hotel stays belong on the official Palms Place resort site. Ownership, HOA packets, and tours stay with Dr. Jan Duffy.",
-        },
-        {
-          question: "How do I tour Palms Place after watching?",
-          answer:
-            "Call the office number on this page or schedule on Calendly. Tours are at 4381 W Flamingo Road. Confirm price and HOA documents for any unit, including featured #8322, before you offer.",
-        },
-      ],
+      faqs: videoPageFaq,
     },
     {
       canonicalPath: "/maps",
@@ -274,6 +380,14 @@ function buildPages(): AmpPage[] {
       h1: mapsPage.h1,
       lede: "Two pins matter for Palms Place condos: the Google Business Profile office on Lindell, and the tower at 4381 W Flamingo Road. This page publishes those maps as unique citations with follow backlinks—not 150 duplicate Google Sites sharing one iframe.",
       sections: [],
+      faqGroups: [
+        {
+          heading: "Palms Place Google Maps and Google Sites — short answers",
+          headingId: "maps-faq-heading",
+          intro: `${siteContact.agentName} · ${siteContact.brokerage} · ${siteContact.primaryServiceArea}.`,
+          items: getMapsPageFaq(),
+        },
+      ],
       faqs: getMapsPageFaq(),
     },
     guidePage({
@@ -303,7 +417,9 @@ function buildPages(): AmpPage[] {
       byline: reviewedByline(agent, agentTitle, palmsPlaceSellerGuideMeta.dateModified),
       checklist: {
         heading: "What listing prep should Palms Place sellers finish first?",
-        paragraphs: [],
+        paragraphs: [
+          "Work this Palms Place checklist first so photography, remarks, and HOA packets match the unit you are listing or touring. Confirm every item in official documents.",
+        ],
         items: palmsPlaceSellerPrepChecklist,
         ordered: true,
       },
@@ -316,7 +432,7 @@ function buildPages(): AmpPage[] {
       description: palmsPlaceHoaGuideMeta.description,
       h1: palmsPlaceHoaIntro.headline,
       lede: palmsPlaceHoaIntro.lede,
-      byline: reviewedByline(agent, agentTitle, palmsPlaceHoaGuideMeta.dateModified),
+      byline: reviewedByline(buyer, buyerTitle, palmsPlaceHoaGuideMeta.dateModified),
       sections: palmsPlaceHoaSections,
       faqs: hoaGuidePageFaq,
     }),
@@ -326,7 +442,7 @@ function buildPages(): AmpPage[] {
       description: palmsPlaceFurnishedGuideMeta.description,
       h1: palmsPlaceFurnishedIntro.headline,
       lede: palmsPlaceFurnishedIntro.lede,
-      byline: reviewedByline(agent, agentTitle, palmsPlaceFurnishedGuideMeta.dateModified),
+      byline: reviewedByline(buyer, buyerTitle, palmsPlaceFurnishedGuideMeta.dateModified),
       sections: palmsPlaceFurnishedSections,
       faqs: furnishedGuidePageFaq,
     }),
@@ -356,7 +472,7 @@ function buildPages(): AmpPage[] {
       description: palmsPlaceStripViewGuideMeta.description,
       h1: palmsPlaceStripViewIntro.headline,
       lede: palmsPlaceStripViewIntro.lede,
-      byline: reviewedByline(agent, agentTitle, palmsPlaceStripViewGuideMeta.dateModified),
+      byline: reviewedByline(buyer, buyerTitle, palmsPlaceStripViewGuideMeta.dateModified),
       sections: palmsPlaceStripViewSections,
       faqs: stripViewGuidePageFaq,
     }),
@@ -382,7 +498,7 @@ function buildPages(): AmpPage[] {
       description: palmsPlaceShortTermRentalGuideMeta.description,
       h1: palmsPlaceShortTermRentalIntro.headline,
       lede: palmsPlaceShortTermRentalIntro.lede,
-      byline: reviewedByline(agent, agentTitle, palmsPlaceShortTermRentalGuideMeta.dateModified),
+      byline: reviewedByline(buyer, buyerTitle, palmsPlaceShortTermRentalGuideMeta.dateModified),
       sections: palmsPlaceShortTermRentalSections,
       faqs: shortTermRentalGuidePageFaq,
     }),
