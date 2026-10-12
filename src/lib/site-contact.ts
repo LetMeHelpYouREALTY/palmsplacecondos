@@ -107,7 +107,7 @@ export type SiteContact = {
    */
   googleBusinessProfileUrl?: string;
   /**
-   * Google “Write a review” short link (g.page/r/…/review).
+   * Google “Write a review” URL from the Business Profile (`metadata.newReviewUri`).
    * Use for Leave-a-review CTAs — do not put in JSON-LD `sameAs`.
    */
   googleWriteReviewUrl?: string;
@@ -166,9 +166,10 @@ export const siteContact: SiteContact = {
   facebookUrl: "https://www.facebook.com/palmsplace",
   youtubeUrl: "https://www.youtube.com/@DrDuffy",
   /** GBP share link for Palms Place Condos (Maps / knowledge panel). */
-  googleBusinessProfileUrl: "https://share.google/6cQL7oQ9T88LIQfbC",
-  /** GBP write-a-review link for Palms Place Condos. */
-  googleWriteReviewUrl: "https://g.page/r/CQ8Pc6LgsOHoEBM/review",
+  googleBusinessProfileUrl: "https://share.google/h2MT8xgGduM0yJZ8k",
+  /** GBP write-a-review link for Palms Place Condos (place id ChIJvWVR2NLHyIARK57tVlE-8oo). */
+  googleWriteReviewUrl:
+    "https://search.google.com/local/writereview?placeid=ChIJvWVR2NLHyIARK57tVlE-8oo",
   /** Tower entity for GEO — address + geo from palms-place-building.ts */
   palmsPlaceBuilding: getPalmsPlaceBuildingForSchema(),
   /**
