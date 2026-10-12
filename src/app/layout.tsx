@@ -5,6 +5,7 @@ import { Cormorant_Garamond, Geist } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/layouts/site-footer";
 import { SiteHeader } from "@/components/layouts/site-header";
+import { AmpHtmlLinkFromRequest } from "@/components/seo/amp-html-link-from-request";
 import { PalmsPlaceListingAuthorityFromRequest } from "@/components/seo/palms-place-listing-authority-from-request";
 import { RealScoutOfficeListingsEmbed } from "@/components/seo/realscout-office-listings-embed";
 import { StructuredData } from "@/components/seo/structured-data";
@@ -105,6 +106,7 @@ export default function RootLayout({
   return (
     <html className={`${geistSans.variable} ${displaySerif.variable}`} lang="en">
       <body className="min-h-screen bg-palms-charcoal text-palms-cream antialiased">
+        <AmpHtmlLinkFromRequest />
         <StructuredData data={getBaseJsonLd()} />
         <div className="flex min-h-screen flex-col">
           <a
