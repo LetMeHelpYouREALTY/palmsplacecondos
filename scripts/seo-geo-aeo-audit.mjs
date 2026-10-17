@@ -28,9 +28,13 @@
  *                         this site intentionally welcomes for GEO/AEO
  *                         visibility.
  *  6. AEO query coverage  — every AEO_QUERY_MAP id is referenced from a page
- *                         FAQ (canonicalQueryAsFaqItem / getCanonicalQuery).
+ *                         FAQ (canonicalQueryAsFaqItem / getCanonicalQuery),
+ *                         and its canonicalPath is a MARKETING_ROUTES entry.
  *  7. Past special hours  — site-contact must not keep a holiday closure
  *                         whose validThrough date is already in the past.
+ *  8. LLM answer index    — /llms.txt links each canonical question and
+ *                         /llms-full.txt carries the answer, both on the
+ *                         same request host as sitemap.xml.
  *
  * Usage: node scripts/seo-geo-aeo-audit.mjs [--strict] [--out <file>]
  *   --strict  exit 1 on warnings too (default: only hard errors exit 1)
@@ -294,17 +298,17 @@ notes.push(`Checked ${routeEntries.length} MARKETING_ROUTES, ${allPageFiles.leng
 // ---------------------------------------------------------------------------
 
 const aeoSrc = readText(path.join(CONTENT_DIR, "aeo-query-map.ts"));
-const aeoIds = [];
-const aeoIdRe = /\bid:\s*"([^"]+)"/g;
-let aeoMatch;
-while ((aeoMatch = aeoIdRe.exec(aeoSrc)) !== null) {
-  aeoIds.push(aeoMatch[1]);
+const aeoItems = [];
+for (const block of aeoSrc.split(/\n\s*\{/).slice(1)) {
+  const id = block.match(/\bid:\s*"([^"]+)"/)?.[1];
+  const canonicalPath = block.match(/\bcanonicalPath:\s*"([^"]+)"/)?.[1];
+  if (id && canonicalPath) aeoItems.push({ id, canonicalPath });
 }
 const srcFiles = walk(path.join(ROOT, "src")).filter(
   (f) => (f.endsWith(".ts") || f.endsWith(".tsx")) && !f.endsWith(`${path.sep}aeo-query-map.ts`),
 );
 const srcCorpus = srcFiles.map((f) => readText(f)).join("\n");
-for (const id of aeoIds) {
+for (const { id, canonicalPath } of aeoItems) {
   const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const callRe = new RegExp(`(?:canonicalQueryAsFaqItem|getCanonicalQuery)\\(\\s*"${escaped}"`);
   if (!callRe.test(srcCorpus)) {
@@ -312,8 +316,43 @@ for (const id of aeoIds) {
       `AEO coverage: canonical query "${id}" has no canonicalQueryAsFaqItem or getCanonicalQuery call — answer engines have no on-page FAQ for it.`,
     );
   }
+  if (!marketingPathSet.has(canonicalPath)) {
+    warnings.push(
+      `AEO coverage: canonical path "${canonicalPath}" for "${id}" is not in MARKETING_ROUTES, so sitemap, llms.txt, and IndexNow omit the page that owns the answer.`,
+    );
+  }
 }
-notes.push(`Checked ${aeoIds.length} AEO canonical queries for an on-page reference.`);
+notes.push(`Checked ${aeoItems.length} AEO canonical queries for an on-page reference and a marketing route.`);
+
+// ---------------------------------------------------------------------------
+// 8. LLM index must cite the same canonical answers, on the sitemap host
+// ---------------------------------------------------------------------------
+
+const llmsLib = readText(path.join(ROOT, "src", "lib", "llms-txt.ts"));
+if (!llmsLib.includes("AEO_QUERY_MAP")) {
+  warnings.push(
+    "LLM answer index: src/lib/llms-txt.ts does not cite AEO_QUERY_MAP, so /llms.txt and /llms-full.txt omit the canonical questions.",
+  );
+}
+if (!llmsLib.includes("## Canonical answers")) {
+  warnings.push(
+    "LLM answer index: src/lib/llms-txt.ts has no Canonical answers section for answer engines that fetch the plain-text index.",
+  );
+}
+for (const rel of ["src/app/llms.txt/route.ts", "src/app/llms-full.txt/route.ts"]) {
+  const src = readText(path.join(ROOT, rel));
+  if (!src.includes("getPublicSiteOrigin")) {
+    warnings.push(
+      `LLM answer index: ${rel} does not use getPublicSiteOrigin(), so it can cite a *.vercel.app host when NEXT_PUBLIC_SITE_URL is unset.`,
+    );
+  }
+  if (!src.includes("X-Robots-Tag")) {
+    warnings.push(
+      `LLM answer index: ${rel} does not send X-Robots-Tag: noindex, so Google can index the plain-text copy instead of the canonical HTML page.`,
+    );
+  }
+}
+notes.push("Checked /llms.txt and /llms-full.txt for canonical answers on the sitemap host.");
 
 // ---------------------------------------------------------------------------
 // 7. Past special hours — do not cite a holiday that has already passed

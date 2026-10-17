@@ -123,6 +123,9 @@ It checks:
 - **Title/description length and sitewide duplicates** — duplicate `<title>`/meta description across pages is a disambiguation problem for both Google and AI answer engines.
 - **Content freshness** — `dateModified` / sitemap lastmod values older than 180 days are flagged for a copy/facts refresh; GEO treats freshness as a citation-priority signal distinct from Google ranking.
 - **AI crawler allow-list** — [`src/app/robots.ts`](src/app/robots.ts) still welcomes the answer-engine crawlers (GPTBot, PerplexityBot, Claude-User, Claude-SearchBot, etc.) this site intentionally allows for GEO/AEO citation eligibility.
+- **AEO query coverage** — every [`AEO_QUERY_MAP`](src/lib/content/aeo-query-map.ts) id is rendered with `canonicalQueryAsFaqItem` or `getCanonicalQuery`, and its canonical path is a marketing route.
+- **Past special hours** — `site-contact` and public HTML must not cite a holiday whose date has already passed.
+- **LLM answer index** — [`/llms.txt`](src/app/llms.txt/route.ts) links each canonical question, [`/llms-full.txt`](src/app/llms-full.txt/route.ts) includes the answer text, and both use the same public host as the sitemap.
 
 [`.github/workflows/seo-geo-aeo-self-improve.yml`](.github/workflows/seo-geo-aeo-self-improve.yml) runs the same audit as a PR status check on content/SEO changes, and again weekly (Monday, plus manual dispatch) — filing or updating a single tracking issue (label `seo-self-audit`) with current findings so drift surfaces on its own instead of waiting for someone to notice it in Search Console. Hard errors fail the check; length/freshness/duplicate findings are warnings for editorial follow-up.
 
