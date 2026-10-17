@@ -305,9 +305,11 @@ const srcFiles = walk(path.join(ROOT, "src")).filter(
 );
 const srcCorpus = srcFiles.map((f) => readText(f)).join("\n");
 for (const id of aeoIds) {
-  if (!srcCorpus.includes(`"${id}"`)) {
+  const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const callRe = new RegExp(`(?:canonicalQueryAsFaqItem|getCanonicalQuery)\\(\\s*"${escaped}"`);
+  if (!callRe.test(srcCorpus)) {
     warnings.push(
-      `AEO coverage: canonical query "${id}" is not referenced outside aeo-query-map.ts — answer engines have no on-page FAQ for it.`,
+      `AEO coverage: canonical query "${id}" has no canonicalQueryAsFaqItem or getCanonicalQuery call — answer engines have no on-page FAQ for it.`,
     );
   }
 }
@@ -319,14 +321,63 @@ notes.push(`Checked ${aeoIds.length} AEO canonical queries for an on-page refere
 
 const siteContactSrc = readText(path.join(ROOT, "src", "lib", "site-contact.ts"));
 const todayIso = now.toISOString().slice(0, 10);
+const MONTHS = {
+  january: "01",
+  february: "02",
+  march: "03",
+  april: "04",
+  may: "05",
+  june: "06",
+  july: "07",
+  august: "08",
+  september: "09",
+  october: "10",
+  november: "11",
+  december: "12",
+};
+
+function warnIfPastIso(label, isoDate) {
+  if (isoDate < todayIso) {
+    warnings.push(
+      `Past special hours: ${label} cites ${isoDate}, which is before ${todayIso}. Remove it so hours answers match the live Google Business Profile.`,
+    );
+  }
+}
+
 const specialThroughRe = /validThrough:\s*"(\d{4}-\d{2}-\d{2})"/g;
 let specialMatch;
 while ((specialMatch = specialThroughRe.exec(siteContactSrc)) !== null) {
-  const isoDate = specialMatch[1];
-  if (isoDate < todayIso) {
-    warnings.push(
-      `Past special hours: site-contact.ts validThrough ${isoDate} is before ${todayIso}. Remove it so hours answers match the live Google Business Profile.`,
-    );
+  warnIfPastIso("site-contact.ts validThrough", specialMatch[1]);
+}
+
+const hoursLine = siteContactSrc.match(/officeSpecialHoursLine:\s*"([^"]+)"/)?.[1];
+if (hoursLine) {
+  const lineDate = hoursLine.match(
+    /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s+(\d{4})\b/,
+  );
+  if (lineDate) {
+    const month = MONTHS[lineDate[1].toLowerCase()];
+    const isoDate = `${lineDate[3]}-${month}-${lineDate[2].padStart(2, "0")}`;
+    warnIfPastIso("officeSpecialHoursLine", isoDate);
+  }
+}
+
+const publicDir = path.join(ROOT, "public");
+if (existsSync(publicDir)) {
+  const monthDateRe =
+    /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s+(\d{4})\b/g;
+  for (const file of walk(publicDir).filter((f) => f.endsWith(".html"))) {
+    const src = readText(file);
+    for (const line of src.split("\n")) {
+      if (!/closed|hours/i.test(line)) continue;
+      let dateMatch;
+      while ((dateMatch = monthDateRe.exec(line)) !== null) {
+        const month = MONTHS[dateMatch[1].toLowerCase()];
+        const isoDate = `${dateMatch[3]}-${month}-${dateMatch[2].padStart(2, "0")}`;
+        warnIfPastIso(path.relative(ROOT, file), isoDate);
+      }
+      monthDateRe.lastIndex = 0;
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import type { FaqItem } from "@/lib/schema";
-import { canonicalQueryAsFaqItem, canonicalQueryPointer } from "@/lib/content/aeo-query-map";
+import { canonicalQueryAsFaqItem } from "@/lib/content/aeo-query-map";
 import { featuredListing } from "@/lib/content/featured-listing";
 import {
   formatOfficeAddressLine,
@@ -334,10 +334,6 @@ export const stripViewGuidePageFaq: FaqItem[] = [
 /** `/guide/palms-place-short-term-rentals` — must mirror visible FAQ on that page. */
 export const shortTermRentalGuidePageFaq: FaqItem[] = [
   canonicalQueryAsFaqItem("short-term-rental"),
-  {
-    question: "If a Palms Place condo is furnished, is short-term rental already approved?",
-    answer: `No. Furnishing and rental permission are separate. ${canonicalQueryPointer("furnished")} Confirm this unit’s HOA lease rules with Dr. Jan Duffy before you offer.`,
-  },
   {
     question: "Does this page project Airbnb income at Palms Place?",
     answer:
