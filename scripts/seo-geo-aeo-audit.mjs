@@ -27,6 +27,10 @@
  *  5. AI crawler allow-list — robots.ts includes the answer-engine crawlers
  *                         this site intentionally welcomes for GEO/AEO
  *                         visibility.
+ *  6. AEO query coverage  — every AEO_QUERY_MAP id is referenced from a page
+ *                         FAQ (canonicalQueryAsFaqItem / getCanonicalQuery).
+ *  7. Past special hours  — site-contact must not keep a holiday closure
+ *                         whose validThrough date is already in the past.
  *
  * Usage: node scripts/seo-geo-aeo-audit.mjs [--strict] [--out <file>]
  *   --strict  exit 1 on warnings too (default: only hard errors exit 1)
@@ -64,6 +68,10 @@ const EXPECTED_AI_CRAWLERS = [
   "CCBot",
   "YouBot",
   "DuckAssistBot",
+  "meta-webindexer",
+  "meta-externalfetcher",
+  "MistralAI-Index",
+  "MistralAI-User",
 ];
 
 const errors = [];
@@ -280,6 +288,47 @@ if (missingCrawlers.length > 0) {
 }
 
 notes.push(`Checked ${routeEntries.length} MARKETING_ROUTES, ${allPageFiles.length} page.tsx files, ${freshnessSources.length} content modules for freshness.`);
+
+// ---------------------------------------------------------------------------
+// 6. AEO query map — each canonical question must be rendered somewhere
+// ---------------------------------------------------------------------------
+
+const aeoSrc = readText(path.join(CONTENT_DIR, "aeo-query-map.ts"));
+const aeoIds = [];
+const aeoIdRe = /\bid:\s*"([^"]+)"/g;
+let aeoMatch;
+while ((aeoMatch = aeoIdRe.exec(aeoSrc)) !== null) {
+  aeoIds.push(aeoMatch[1]);
+}
+const srcFiles = walk(path.join(ROOT, "src")).filter(
+  (f) => (f.endsWith(".ts") || f.endsWith(".tsx")) && !f.endsWith(`${path.sep}aeo-query-map.ts`),
+);
+const srcCorpus = srcFiles.map((f) => readText(f)).join("\n");
+for (const id of aeoIds) {
+  if (!srcCorpus.includes(`"${id}"`)) {
+    warnings.push(
+      `AEO coverage: canonical query "${id}" is not referenced outside aeo-query-map.ts — answer engines have no on-page FAQ for it.`,
+    );
+  }
+}
+notes.push(`Checked ${aeoIds.length} AEO canonical queries for an on-page reference.`);
+
+// ---------------------------------------------------------------------------
+// 7. Past special hours — do not cite a holiday that has already passed
+// ---------------------------------------------------------------------------
+
+const siteContactSrc = readText(path.join(ROOT, "src", "lib", "site-contact.ts"));
+const todayIso = now.toISOString().slice(0, 10);
+const specialThroughRe = /validThrough:\s*"(\d{4}-\d{2}-\d{2})"/g;
+let specialMatch;
+while ((specialMatch = specialThroughRe.exec(siteContactSrc)) !== null) {
+  const isoDate = specialMatch[1];
+  if (isoDate < todayIso) {
+    warnings.push(
+      `Past special hours: site-contact.ts validThrough ${isoDate} is before ${todayIso}. Remove it so hours answers match the live Google Business Profile.`,
+    );
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Report

@@ -8,7 +8,7 @@ export const palmsPlaceShortTermRentalGuideMeta = {
   description:
     "Can you legally short-term rent a Palms Place condo? Furnishing is not permission. How Dr. Jan Duffy reads HOA rules, listing remarks, and condo-hotel use—without Airbnb income promises.",
   datePublished: "2026-08-20",
-  dateModified: "2026-08-20",
+  dateModified: "2026-10-17",
 };
 
 export const palmsPlaceShortTermRentalIntro = {

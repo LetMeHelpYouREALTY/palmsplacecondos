@@ -153,14 +153,11 @@ export const siteContact: SiteContact = {
   ],
   officeHoursOpens: "08:00",
   officeHoursCloses: "20:00",
-  /** Matches GBP special hours. */
-  officeSpecialHoursLine: "Labor Day (September 7, 2026): closed",
-  officeSpecialHours: [
-    {
-      validFrom: "2026-09-07",
-      validThrough: "2026-09-07",
-    },
-  ],
+  /**
+   * Special hours omitted: the live Google Business Profile has none.
+   * Labor Day 2026 (2026-09-07) has passed. Do not republish a past closure —
+   * answer engines cite hours as current.
+   */
   // Office pin from Google Maps place result for this address (matches embed).
   officeLatitude: 36.1233904,
   officeLongitude: -115.2171723,

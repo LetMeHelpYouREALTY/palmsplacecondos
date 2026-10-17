@@ -14,10 +14,8 @@ import { getPublicSiteOrigin } from "@/lib/public-site-origin";
  * Extra AI crawler groups use the same Allow/Disallow as `*` so answer engines
  * can fetch marketing HTML. Do not add unsupported fields.
  *
- * Production `https://www.palmsplacecondos.com/robots.txt` (fetched 2026-08-20,
- * before Claude-User/Claude-SearchBot were added below) matched this module:
- * Allow `/`, Disallow `/api/`, AI crawler group, and
- * `Sitemap: https://www.palmsplacecondos.com/sitemap.xml`. That Disallow keeps
+ * Production robots.txt must keep Allow `/`, Disallow `/api/`, the AI crawler
+ * group, and `Sitemap:` on the public origin. That Disallow keeps
  * `/api/indexnow` off crawlers; the IndexNow key file is at `/{key}.txt` (root,
  * allowed). Do not add `Host:`.
  *
@@ -47,6 +45,14 @@ const AI_CRAWLER_USER_AGENTS = [
   // business site with no paywalled content to protect.
   "YouBot",
   "DuckAssistBot",
+  // Meta AI search index and on-demand fetcher (distinct from meta-externalagent,
+  // which is training). Tokens match Meta's robots.txt names.
+  "meta-webindexer",
+  "meta-externalfetcher",
+  // Mistral search index and on-demand fetcher. Training crawler MistralAI-Training
+  // is intentionally omitted.
+  "MistralAI-Index",
+  "MistralAI-User",
 ] as const;
 
 /** Match sitemap.ts: live origin, no 4-hour static metadata cache. */

@@ -5,6 +5,7 @@ import { StructuredData } from "@/components/seo/structured-data";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 import { ButtonAnchor, ButtonLink } from "@/components/shared/button-link";
 import { CalendlyButton } from "@/components/shared/calendly-link";
+import { canonicalQueryAsFaqItem } from "@/lib/content/aeo-query-map";
 import { relatedLinksForPath } from "@/lib/internal-links";
 import {
   getAgentVideoObjectJsonLd,
@@ -29,6 +30,7 @@ const pageMeta = {
 };
 
 const videoFaq = [
+  canonicalQueryAsFaqItem("listing-specialist-video"),
   {
     question: "Who is the Palms Place realtor in this video?",
     answer:
