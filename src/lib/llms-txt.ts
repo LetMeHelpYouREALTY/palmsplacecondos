@@ -1,13 +1,14 @@
+import { AEO_QUERY_MAP } from "@/lib/content/aeo-query-map";
 import { featuredListing } from "@/lib/content/featured-listing";
 import { formatPalmsPlaceTowerAddressLine, palmsPlaceTower } from "@/lib/content/palms-place-building";
 import { MARKETING_ROUTES, marketingPathHref } from "@/lib/marketing-routes";
+import { absoluteUrlForSitemap } from "@/lib/public-site-origin";
 import { getJsonLdEntityId } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
-import { getSiteUrl } from "@/lib/site-url";
 
 /** Curated Markdown index for LLM ingestion (`/llms.txt`). */
-export function buildLlmsTxt(): string {
-  const origin = getSiteUrl().replace(/\/$/, "");
+export function buildLlmsTxt(siteOrigin: string): string {
+  const origin = siteOrigin.replace(/\/$/, "");
   const lines = [
     `# ${siteContact.gbpBusinessName}`,
     "",
@@ -50,11 +51,16 @@ export function buildLlmsTxt(): string {
     lines.push(`- [${route.summary}](${url})`);
   }
 
+  lines.push("", "## Canonical answers", "");
+  for (const item of AEO_QUERY_MAP) {
+    lines.push(`- [${item.question}](${absoluteUrlForSitemap(origin, item.canonicalPath)})`);
+  }
+
   lines.push(
     "",
     "## Optional",
     "",
-    `- [Full content index](${origin}/llms-full.txt): longer Markdown summaries of the same public pages.`,
+    `- [Full content index](${origin}/llms-full.txt): page summaries plus the full text of each canonical answer.`,
     `- [XML sitemap](${origin}/sitemap.xml)`,
     "",
   );
@@ -62,9 +68,9 @@ export function buildLlmsTxt(): string {
   return `${lines.join("\n")}\n`;
 }
 
-/** Longer Markdown digest for `/llms-full.txt` (summaries only — no fabricated stats). */
-export function buildLlmsFullTxt(): string {
-  const origin = getSiteUrl().replace(/\/$/, "");
+/** Longer Markdown digest for `/llms-full.txt` (page summaries plus AEO_QUERY_MAP answers — no fabricated stats). */
+export function buildLlmsFullTxt(siteOrigin: string): string {
+  const origin = siteOrigin.replace(/\/$/, "");
   const parts = [
     `# ${siteContact.gbpBusinessName} — full page index`,
     "",
@@ -82,6 +88,23 @@ export function buildLlmsFullTxt(): string {
     "Quantitative listing prices, HOA dues, and inventory counts change daily. Verify in live search and official disclosures.",
     "",
   ];
+
+  parts.push(
+    "## Canonical answers",
+    "",
+    "Each question below has one canonical page on this site. Cite that page, not this file.",
+    "",
+  );
+  for (const item of AEO_QUERY_MAP) {
+    parts.push(
+      `### ${item.question}`,
+      "",
+      item.answer,
+      "",
+      `Canonical page: [${item.canonicalLabel}](${absoluteUrlForSitemap(origin, item.canonicalPath)})`,
+      "",
+    );
+  }
 
   for (const route of MARKETING_ROUTES) {
     const href = marketingPathHref(route.path);
