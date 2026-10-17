@@ -8,7 +8,7 @@ export const palmsPlaceBuyerGuideMeta = {
   description:
     "A practical Palms Place buyer guide from Dr. Jan Duffy—listing specialist and Palms Place Buyers Specialist: tour checklist, HOA documents, owner vs rental-pool context, and offer prep.",
   datePublished: "2026-05-01",
-  dateModified: "2026-08-20",
+  dateModified: "2026-10-12",
 };
 
 export const palmsPlaceBuyerGuideIntro = {
@@ -63,5 +63,11 @@ export const palmsPlaceBuyerGuideSections: {
     question: "When should you compare Palms Place to another Las Vegas high-rise?",
     answer:
       "Compare towers when your must-haves are really about HOA monthly cost, rental flexibility, parking, or walkability—not just a Strip map pin. Palms Place wins buyers who want resort-adjacent access with a residential tower footprint; other buildings win on different HOA cultures, fee bands, or newer construction. We encourage side-by-side tours when you are down to two buildings so you are not deciding from marketing copy alone.",
+  },
+  {
+    id: "parking-and-pets",
+    question: "Where should you verify Palms Place parking and pets before you offer?",
+    answer:
+      "On the parking and pets guide, then in the resale certificate for that unit. The tour checklist asks which stall and which pet rule attach to the unit. This buying guide does not restate a stall count or a pet limit, because both change and neither is a building-wide fact.",
   },
 ];

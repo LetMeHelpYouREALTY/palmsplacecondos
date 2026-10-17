@@ -58,6 +58,12 @@ const staticLinks: PopularSearchLink[] = [
     description: "HOA rules vs Airbnb video claims",
   },
   {
+    id: "palms-place-parking-pets",
+    href: "/guide/palms-place-parking-and-pets",
+    label: "Palms Place parking and pet rules",
+    description: "Verify the assignment letter and pet rules",
+  },
+  {
     id: "palms-place-photos",
     href: "/photos",
     label: "Palms Place high-rise condo tour photos",

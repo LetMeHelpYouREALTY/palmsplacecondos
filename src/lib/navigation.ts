@@ -50,6 +50,7 @@ export const popularNav: NavItem[] = [
   { label: "Unit types", href: "/guide/palms-place-unit-types" },
   { label: "Compare towers", href: "/guide/compare-strip-high-rises" },
   { label: "HOA & costs", href: "/guide/palms-place-hoa-and-monthly-costs" },
+  { label: "Parking & pets", href: "/guide/palms-place-parking-and-pets" },
   { label: "Furnished guide", href: "/guide/furnished-palms-place-condos" },
   { label: "Amenities", href: "/guide/palms-place-amenities-and-resort-access" },
   { label: "Condos vs hotel", href: "/guide/palms-place-condos-vs-hotel" },
