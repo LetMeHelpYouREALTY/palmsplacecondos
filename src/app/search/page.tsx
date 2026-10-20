@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageFaqSection } from "@/components/marketing/page-faq-section";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { StructuredData } from "@/components/seo/structured-data";
 import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
@@ -44,74 +45,77 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   ]);
 
   return (
-    <div className="border-b border-palms-gold/10 bg-linear-to-b from-palms-charcoal to-palms-charcoal-muted/30">
-      <div className="mx-auto max-w-3xl px-6 py-16 md:py-20">
-        <StructuredData data={webPageJsonLd} />
-        <StructuredData data={breadcrumbJsonLd} />
-        <SectionEyebrow>Property search</SectionEyebrow>
-        <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
-          Search Palms Place &amp; Las Vegas listings
-        </h1>
-        <AgentHeroBadge className="mt-6" />
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-palms-cream/85">
-          Palms Place and Las Vegas high-rise inventory is searched through the team&apos;s curated
-          RealScout link. Filter by price, property type, and status
-          {q ? (
-            <>
-              {" "}
-              (you searched for <span className="text-palms-cream">{q}</span>)
-            </>
-          ) : null}
-          —questions for buyers and sellers both go to {siteContact.agentName}.
-        </p>
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-          <ButtonAnchor
-            aria-label="Open the Palms Place team curated home search on RealScout in a new tab"
-            href={sharedSearchUrl}
-            variant="primary"
-          >
-            Open curated home search
-          </ButtonAnchor>
-          <p className="text-sm text-palms-cream/55">Opens in a new tab · RealScout</p>
+    <>
+      <div className="border-b border-palms-gold/10 bg-linear-to-b from-palms-charcoal to-palms-charcoal-muted/30">
+        <div className="mx-auto max-w-3xl px-6 py-16 md:py-20">
+          <StructuredData data={webPageJsonLd} />
+          <StructuredData data={breadcrumbJsonLd} />
+          <SectionEyebrow>Property search</SectionEyebrow>
+          <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-palms-cream md:text-4xl">
+            Search Palms Place &amp; Las Vegas listings
+          </h1>
+          <AgentHeroBadge className="mt-6" />
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-palms-cream/85">
+            Palms Place and Las Vegas high-rise inventory is searched through the team&apos;s curated
+            RealScout link. Filter by price, property type, and status
+            {q ? (
+              <>
+                {" "}
+                (you searched for <span className="text-palms-cream">{q}</span>)
+              </>
+            ) : null}
+            —questions for buyers and sellers both go to {siteContact.agentName}.
+          </p>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+            <ButtonAnchor
+              aria-label="Open the Palms Place team curated home search on RealScout in a new tab"
+              href={sharedSearchUrl}
+              variant="primary"
+            >
+              Open curated home search
+            </ButtonAnchor>
+            <p className="text-sm text-palms-cream/55">Opens in a new tab · RealScout</p>
+          </div>
+
+          <section className="mt-12" aria-labelledby="search-how-heading">
+            <h2
+              className="font-display text-2xl font-semibold text-palms-cream"
+              id="search-how-heading"
+            >
+              How do I search Palms Place condos for sale in Las Vegas?
+            </h2>
+            <p className="mt-4 leading-relaxed text-palms-cream/85">
+              Open the curated RealScout search to filter by price, property type, and status. Inventory
+              at 4381 W Flamingo Road changes daily—confirm availability with {siteContact.agentName}{" "}
+              before you tour.
+            </p>
+          </section>
+
+          <section className="mt-12" aria-labelledby="search-disclaimer-heading">
+            <h2
+              className="font-display text-xl font-semibold text-palms-cream"
+              id="search-disclaimer-heading"
+            >
+              Where does Palms Place listing information come from?
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-palms-cream/70">
+              Listing data is deemed reliable but not guaranteed. Verify listing details with your agent
+              and official sources. Not intended as legal or tax advice.
+            </p>
+          </section>
+
+          <PageFaqSection
+            pathname="/search"
+            headingId="search-faq-heading"
+            heading="How does Palms Place listing search work?"
+            intro="How curated search differs from a raw feed and who to call next."
+            items={searchPageFaq}
+          />
+
+          <RelatedPages links={related} />
         </div>
-
-        <section className="mt-12" aria-labelledby="search-how-heading">
-          <h2
-            className="font-display text-2xl font-semibold text-palms-cream"
-            id="search-how-heading"
-          >
-            How do I search Palms Place condos for sale in Las Vegas?
-          </h2>
-          <p className="mt-4 leading-relaxed text-palms-cream/85">
-            Open the curated RealScout search to filter by price, property type, and status. Inventory
-            at 4381 W Flamingo Road changes daily—confirm availability with {siteContact.agentName}{" "}
-            before you tour.
-          </p>
-        </section>
-
-        <section className="mt-12" aria-labelledby="search-disclaimer-heading">
-          <h2
-            className="font-display text-xl font-semibold text-palms-cream"
-            id="search-disclaimer-heading"
-          >
-            Where does Palms Place listing information come from?
-          </h2>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-palms-cream/70">
-            Listing data is deemed reliable but not guaranteed. Verify listing details with your agent
-            and official sources. Not intended as legal or tax advice.
-          </p>
-        </section>
-
-        <PageFaqSection
-          pathname="/search"
-          headingId="search-faq-heading"
-          heading="How does Palms Place listing search work?"
-          intro="How curated search differs from a raw feed and who to call next."
-          items={searchPageFaq}
-        />
-
-        <RelatedPages links={related} />
       </div>
-    </div>
+      <PalmsPlaceListingAuthority pathname="/search" />
+    </>
   );
 }

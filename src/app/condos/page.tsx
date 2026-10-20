@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CondosPageBody } from "@/components/marketing/condos-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 import { siteContact } from "@/lib/site-contact";
 
@@ -10,5 +11,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function CondosPage() {
-  return <CondosPageBody />;
+  return (
+    <>
+      <CondosPageBody />
+      <PalmsPlaceListingAuthority pathname="/condos" />
+    </>
+  );
 }

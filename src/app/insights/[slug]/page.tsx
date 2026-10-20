@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FieldNotePageBody } from "@/components/marketing/field-note-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { fieldNotes, getFieldNoteBySlug } from "@/lib/content/field-notes";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
@@ -36,5 +37,10 @@ export default async function InsightsArticlePage({ params }: InsightsArticlePag
   if (!note) {
     notFound();
   }
-  return <FieldNotePageBody note={note} />;
+  return (
+    <>
+      <FieldNotePageBody note={note} />
+      <PalmsPlaceListingAuthority pathname={`/insights/${slug}`} />
+    </>
+  );
 }

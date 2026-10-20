@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FaqPageBody } from "@/components/marketing/faq-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 const title = "Palms Place Las Vegas FAQ | Location, condos, and ownership";
@@ -13,5 +14,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function FaqPage() {
-  return <FaqPageBody />;
+  return (
+    <>
+      <FaqPageBody />
+      <PalmsPlaceListingAuthority pathname="/faq" />
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Under500kPageBody } from "@/components/marketing/under-500k-page-body";
+import { PalmsPlaceListingAuthority } from "@/components/seo/palms-place-listing-authority";
 import { buildPageMetadata } from "@/lib/metadata-helpers";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -9,5 +10,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function Under500kPage() {
-  return <Under500kPageBody />;
+  return (
+    <>
+      <Under500kPageBody />
+      <PalmsPlaceListingAuthority pathname="/under-500k" />
+    </>
+  );
 }

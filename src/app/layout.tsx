@@ -5,7 +5,6 @@ import { Cormorant_Garamond, Geist } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/layouts/site-footer";
 import { SiteHeader } from "@/components/layouts/site-header";
-import { PalmsPlaceListingAuthorityFromRequest } from "@/components/seo/palms-place-listing-authority-from-request";
 import { RealScoutOfficeListingsEmbed } from "@/components/seo/realscout-office-listings-embed";
 import { StructuredData } from "@/components/seo/structured-data";
 import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
@@ -114,9 +113,14 @@ export default function RootLayout({
             Skip to site navigation
           </a>
           <SiteHeader />
+          {/*
+            Per-route listing-authority proof (<section id="listing-authority">) is rendered by each
+            page as a server component (see components/seo/palms-place-listing-authority.tsx), not
+            here: reading headers() in this layout made every route dynamic, and a usePathname()
+            client wrapper shipped the whole path→section map to every visitor.
+          */}
           <main className="flex-1" id="main-content">
             {children}
-            <PalmsPlaceListingAuthorityFromRequest />
           </main>
           <RealScoutOfficeListingsEmbed />
           <SiteFooter />
