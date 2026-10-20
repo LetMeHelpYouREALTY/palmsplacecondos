@@ -54,6 +54,11 @@ export function BuyersPageBody() {
         description: "HOA permission vs Airbnb video claims",
       },
       {
+        name: "Palms Place parking and pet rules",
+        path: "/guide/palms-place-parking-and-pets",
+        description: "Assignment letter and pet rules before you offer",
+      },
+      {
         name: "Palms Place field notes",
         path: "/insights",
         description: "First-hand tour and listing notes",
@@ -135,6 +140,13 @@ export function BuyersPageBody() {
             href="/guide/palms-place-short-term-rentals"
           >
             Short-term rental rules
+          </Link>
+          {" · "}
+          <Link
+            className="font-medium text-palms-gold underline-offset-4 hover:underline"
+            href="/guide/palms-place-parking-and-pets"
+          >
+            Parking and pet rules
           </Link>
         </p>
       </section>

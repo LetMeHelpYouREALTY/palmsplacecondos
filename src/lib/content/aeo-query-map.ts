@@ -183,6 +183,22 @@ export const AEO_QUERY_MAP: CanonicalQuery[] = [
     canonicalLabel: "Palms Place listing specialist video",
   },
   {
+    id: "parking",
+    question: "What parking comes with a Palms Place condo?",
+    answer:
+      "Parking at Palms Place is unit-specific. A listing can mention valet while the assignment letter shows a different stall, or none. Match the space number in the remarks to the HOA exhibit before you waive contingencies. Guest privileges may be billed separately. Dr. Jan Duffy checks that letter on tours at 4381 W Flamingo Road.",
+    canonicalPath: "/guide/palms-place-parking-and-pets",
+    canonicalLabel: "Palms Place parking and pets guide",
+  },
+  {
+    id: "pets",
+    question: "Does Palms Place allow pets?",
+    answer:
+      "Pet rules at Palms Place are in the HOA documents for the unit you buy, not a building-wide slogan. Limits can change and are not published on this site. Dr. Jan Duffy reads the pet section of the resale certificate with you before you offer. Assistance-animal questions belong with the association and your attorney, not a marketing page.",
+    canonicalPath: "/guide/palms-place-parking-and-pets",
+    canonicalLabel: "Palms Place parking and pets guide",
+  },
+  {
     id: "gym",
     question: "Does Palms Place have a condo gym owners can use?",
     answer:

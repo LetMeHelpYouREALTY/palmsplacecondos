@@ -33,6 +33,7 @@ export function GuidePalmsPlaceHoaPageBody() {
       faqHeading="What should Palms Place buyers know about HOA fees?"
       footerCtas={[
         { href: "/buyers/calculators", label: "Buyer payment planning" },
+        { href: "/guide/palms-place-parking-and-pets", label: "Parking and pet rules" },
         { href: "/guide/buying-palms-place", label: "Buying field guide" },
       ]}
     />

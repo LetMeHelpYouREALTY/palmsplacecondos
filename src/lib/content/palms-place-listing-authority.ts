@@ -123,6 +123,17 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     ctaLabel: "HOA packets field note",
     ctaHref: "/insights/why-we-request-hoa-packets-early",
   },
+  "/guide/palms-place-parking-and-pets": {
+    heading: "Who checks Palms Place parking letters and pet rules before an offer?",
+    answer: `Dr. Jan Duffy checks Palms Place parking assignments and pet rules in the resale certificate on tours at ${tower}. A listing remark that says valet or pet-friendly is not the assignment letter. She will not publish a stall count or a breed limit on this site, because both change by unit and by board action.`,
+    proofs: [
+      "The checklist on this page is the same sequence she uses when remarks and the HOA exhibit disagree.",
+      `Featured unit #${unit} remarks mention valet—still confirm the space on that unit’s documents, not as a building rule.`,
+      "Assistance-animal questions stay with the association and an attorney. This page is not legal advice.",
+    ],
+    ctaLabel: "Tour red flags: parking on paper",
+    ctaHref: "/insights/palms-place-tour-red-flags",
+  },
   "/guide/furnished-palms-place-condos": {
     heading: "Who lists furnished Palms Place resales without guessing what conveys?",
     answer: `Dr. Jan Duffy lists furnished Palms Place residences with inventory exhibits and HOA rental rules in the file—because photos do not convey furniture. As the tower’s listing specialist she has seen turnkey marketing collide with empty closets and lease caps. That is why this guide separates furnishing from rental eligibility.`,

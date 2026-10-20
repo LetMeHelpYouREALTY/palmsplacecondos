@@ -62,6 +62,11 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
       description: "Assessments, reserves & true carry",
     },
     {
+      href: "/guide/palms-place-parking-and-pets",
+      label: "Palms Place parking and pet rules — buyer verification",
+      description: "Assignment letter and pet rules in the resale packet",
+    },
+    {
       href: "/guide/furnished-palms-place-condos",
       label: "Furnished Palms Place condos — buyer guide",
       description: "What conveys & rental rules",
@@ -250,19 +255,28 @@ function preferredHrefsForPath(pathname: string): string[] {
     pathname === "/guide/buying-palms-place"
   ) {
     return [
+      "/guide/palms-place-parking-and-pets",
       "/guide/palms-place-hoa-and-monthly-costs",
       "/guide/palms-place-strip-view-condos",
       "/photos",
       "__search__",
-      "/guide/palms-place-short-term-rentals",
     ];
   }
   if (pathname === "/guide/palms-place-hoa-and-monthly-costs") {
     return [
+      "/guide/palms-place-parking-and-pets",
       "/guide/buying-palms-place",
       "/insights/why-we-request-hoa-packets-early",
-      "/guide/palms-place-short-term-rentals",
-      "/palms-place",
+      "/insights/palms-place-tour-red-flags",
+      "/faq",
+    ];
+  }
+  if (pathname === "/guide/palms-place-parking-and-pets") {
+    return [
+      "/guide/palms-place-hoa-and-monthly-costs",
+      "/guide/buying-palms-place",
+      "/insights/palms-place-tour-red-flags",
+      "/photos",
       "/faq",
     ];
   }

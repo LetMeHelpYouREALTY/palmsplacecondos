@@ -249,6 +249,17 @@ export const sellingGuidePageFaq: FaqItem[] = [
 ];
 
 /** `/guide/palms-place-hoa-and-monthly-costs` — must mirror visible FAQ on that page. */
+/** `/guide/palms-place-parking-and-pets` — must mirror visible FAQ on that page. */
+export const parkingAndPetsGuidePageFaq: FaqItem[] = [
+  canonicalQueryAsFaqItem("parking"),
+  canonicalQueryAsFaqItem("pets"),
+  {
+    question: "Does this page publish a Palms Place pet weight or breed limit?",
+    answer:
+      "No. Those limits change and belong in the current governing documents. A number copied from a forum or a competitor FAQ can be wrong for the unit you are buying. Read the packet with Dr. Jan Duffy before you offer.",
+  },
+];
+
 export const hoaGuidePageFaq: FaqItem[] = [
   canonicalQueryAsFaqItem("hoa-fees"),
   canonicalQueryAsFaqItem("hoa-costs-year"),
