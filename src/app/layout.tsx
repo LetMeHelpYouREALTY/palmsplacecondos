@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Cormorant_Garamond, Geist } from "next/font/google";
@@ -123,6 +124,7 @@ export default function RootLayout({
         </div>
         <Analytics />
         <SpeedInsights />
+        <Script src="/ads-conversions.js" strategy="afterInteractive" />
       </body>
     </html>
   );
