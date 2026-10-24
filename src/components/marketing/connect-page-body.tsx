@@ -54,7 +54,7 @@ export function ConnectPageBody() {
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Stay in touch with {siteContact.teamBrandName}. Use this page for
         office location, hours, and social follow-ups;{" "}
-        <CalendlyLink>schedule a tour or call on Calendly</CalendlyLink>
+        <CalendlyLink intent="strategy" page="connect">schedule a tour or call on Calendly</CalendlyLink>
         ; or use{" "}
         <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">
           contact
@@ -172,7 +172,7 @@ export function ConnectPageBody() {
           What is the best next step after connecting?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          <CalendlyLink>Schedule a call or visit</CalendlyLink>
+          <CalendlyLink intent="strategy" page="connect">Schedule a call or visit</CalendlyLink>
           , browse{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/buyers">
             the buyer guide

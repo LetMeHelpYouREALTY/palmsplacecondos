@@ -7,6 +7,7 @@ import "./globals.css";
 import { SiteFooter } from "@/components/layouts/site-footer";
 import { SiteHeader } from "@/components/layouts/site-header";
 import { PalmsPlaceListingAuthorityFromRequest } from "@/components/seo/palms-place-listing-authority-from-request";
+import { CalendlyAfterListings } from "@/components/seo/calendly-after-listings";
 import { RealScoutOfficeListingsEmbed } from "@/components/seo/realscout-office-listings-embed";
 import { StructuredData } from "@/components/seo/structured-data";
 import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
@@ -119,6 +120,7 @@ export default function RootLayout({
             <PalmsPlaceListingAuthorityFromRequest />
           </main>
           <RealScoutOfficeListingsEmbed />
+          <CalendlyAfterListings />
           <SiteFooter />
         </div>
         <Analytics />
