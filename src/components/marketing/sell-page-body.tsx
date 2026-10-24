@@ -41,8 +41,7 @@ export function SellPageBody() {
       </h1>
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        Listing conversations with {siteContact.agentName}, {siteContact.agentTitle}, and{" "}
-        {siteContact.brokerage} focus on pricing strategy, presentation, and exposure—not a
+        Listing conversations with {siteContact.agentName}, {siteContact.agentTitle}, focus on pricing strategy, presentation, and exposure—not a
         guaranteed sale price.
       </p>
 

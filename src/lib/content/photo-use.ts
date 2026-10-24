@@ -14,7 +14,7 @@ export const photoUsePage = {
   path: PHOTO_USE_PATH,
   h1: "How may Palms Place listing photos be used?",
   title: "Palms Place listing photo use — credit, copyright, and permission",
-  description: `Terms for Palms Place listing photography credited to ${siteContact.agentName} at ${siteContact.brokerage}. Request reuse through the Las Vegas office—photos are not Creative Commons.`,
+  description: `Terms for Palms Place listing photography credited to ${siteContact.agentName}. Request reuse through the Las Vegas office—photos are not Creative Commons.`,
 } as const;
 
 export const photoUsePageFaq: { question: string; answer: string }[] = [

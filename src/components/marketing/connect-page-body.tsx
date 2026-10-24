@@ -17,7 +17,7 @@ import {
 const pageMeta = {
   name: "Connect with the Palms Place team — Las Vegas Strip condos",
   description:
-    "Follow Palms Place updates, office NAP, and social channels for Las Vegas Strip high-rise condos with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties.",
+    "Follow Palms Place updates, office NAP, and social channels for Las Vegas Strip high-rise condos with Dr. Jan Duffy.",
 };
 
 /** Expanded /connect — stay in touch; aligns with utility nav + social links. */
@@ -52,7 +52,7 @@ export function ConnectPageBody() {
       </h1>
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        Stay in touch with {siteContact.teamBrandName}—{siteContact.brokerage}. Use this page for
+        Stay in touch with {siteContact.teamBrandName}. Use this page for
         office location, hours, and social follow-ups;{" "}
         <CalendlyLink>schedule a tour or call on Calendly</CalendlyLink>
         ; or use{" "}
@@ -153,7 +153,7 @@ export function ConnectPageBody() {
           Use <strong className="text-palms-cream">https://www.palmsplacecondos.com</strong> (www). Suggested
           anchor: “Palms Place condos for sale — Dr. Jan Duffy.” Do not cite Palms.com, Booking,
           Tripadvisor, or Zillow as this brokerage. Owned profiles that should point here: Google
-          Business Profile website field, YouTube About, and the Berkshire Hathaway agent page. Read{" "}
+          Business Profile website field, YouTube About, and the brokerage agent page. Read{" "}
           <Link
             className="text-palms-gold underline-offset-4 hover:underline"
             href="/guide/palms-place-condos-vs-hotel"

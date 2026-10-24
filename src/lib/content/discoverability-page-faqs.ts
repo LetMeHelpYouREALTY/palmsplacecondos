@@ -46,7 +46,7 @@ export const connectPageFaq: FaqItem[] = [
   {
     question: "How should other sites cite Palms Place Condos?",
     answer:
-      "Use https://www.palmsplacecondos.com (www, https). Suggested inbound anchor: “Palms Place condos for sale — Dr. Jan Duffy.” Put that URL in the Google Business Profile website field, YouTube About, and the Berkshire Hathaway agent page. Do not cite Palms.com, Booking, Tripadvisor, or Zillow as this brokerage—those are hotel or portal sites.",
+      "Use https://www.palmsplacecondos.com (www, https). Suggested inbound anchor: “Palms Place condos for sale — Dr. Jan Duffy.” Put that URL in the Google Business Profile website field, YouTube About, and the brokerage agent page. Do not cite Palms.com, Booking, Tripadvisor, or Zillow as this brokerage—those are hotel or portal sites.",
   },
 ];
 
@@ -438,7 +438,7 @@ export const sellersPageFaq: FaqItem[] = [
   {
     question: "Who lists Palms Place for the team?",
     answer:
-      "Dr. Jan Duffy is the listing specialist and team leader for Palms Place at Berkshire Hathaway HomeServices Nevada Properties (license S.0197614.LLC).",
+      "Dr. Jan Duffy is the listing specialist and team leader for Palms Place, a Top 1% Las Vegas REALTOR® in real estate since 1983.",
   },
   {
     question: "Should I gather HOA documents before I list?",
@@ -472,7 +472,7 @@ export function getTeamPageFaq(): FaqItem[] {
     canonicalQueryAsFaqItem("listing-specialist"),
     {
       question: "Who helps Palms Place buyers?",
-      answer: `${siteContact.buyerSpecialistName}, Realtor, is the ${siteContact.buyerSpecialistTitle} (Nevada license ${siteContact.buyerSpecialistLicense}). Buyer tours, filters, and offer prep start with Dr. Jan—the same listing specialist, not a second agent. Use the buyers hub and buying field guide before the first tower showing.`,
+      answer: `${siteContact.buyerSpecialistName}, Realtor, is the ${siteContact.buyerSpecialistTitle}. Buyer tours, filters, and offer prep start with Dr. Jan—the same listing specialist, not a second agent. Use the buyers hub and buying field guide before the first tower showing.`,
     },
     {
       question: "Does team contact info match Google Business Profile?",

@@ -31,8 +31,7 @@ export function WhyBuySection() {
           <p>
             Palms Place floor plans range from efficient studios to larger one-bedroom layouts. Work
             with {siteContact.agentName} ({siteContact.agentTitle}) and{" "}
-            {siteContact.buyerSpecialistName}, {siteContact.buyerSpecialistTitle}, at{" "}
-            {siteContact.brokerage} to compare Las Vegas high-rise condos, review disclosures, and
+            {siteContact.buyerSpecialistName}, {siteContact.buyerSpecialistTitle}, to compare Las Vegas high-rise condos, review disclosures, and
             tour Palms Casino Resort residences access and HOA rules before you write an offer.
           </p>
           <p>

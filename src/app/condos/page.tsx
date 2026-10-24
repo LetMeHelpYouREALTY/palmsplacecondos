@@ -6,7 +6,7 @@ import { siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = buildPageMetadata({
   path: "/condos",
   title: "Las Vegas Strip condos & high-rises for sale | Palms Place",
-  description: `Strip and west-of-Strip condos for sale—including Palms Place—with HOA guides and live search. ${siteContact.buyerSpecialistName}, ${siteContact.brokerage}.`,
+  description: `Strip and west-of-Strip condos for sale—including Palms Place—with HOA guides and live search. ${siteContact.buyerSpecialistName}, REALTOR®.`,
 });
 
 export default function CondosPage() {

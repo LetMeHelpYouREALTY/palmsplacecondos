@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: InsightsArticlePageProps): Pr
   return buildPageMetadata({
     path,
     title: `${note.title} | Field note`,
-    description: `${note.description} ${formatTeamPhrase()} — ${siteContact.brokerage}.`,
+    description: `${note.description} ${formatTeamPhrase()}.`,
   });
 }
 

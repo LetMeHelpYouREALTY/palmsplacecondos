@@ -193,7 +193,7 @@ export function MapsPageBody() {
               Write a Google review
             </a>
           ) : null}
-          . License {siteContact.license}. {siteContact.brokerage}.
+          .
         </p>
       </section>
 
@@ -287,7 +287,7 @@ export function MapsPageBody() {
         pathname={mapsPage.path}
         headingId="maps-faq-heading"
         heading="Palms Place Google Maps and Google Sites — short answers"
-        intro={`${siteContact.agentName} · ${siteContact.brokerage} · ${siteContact.primaryServiceArea}.`}
+        intro={`${siteContact.agentName} · ${siteContact.primaryServiceArea}.`}
         items={getMapsPageFaq()}
       />
 

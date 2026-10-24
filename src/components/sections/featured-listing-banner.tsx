@@ -167,7 +167,7 @@ export function FeaturedListingBanner() {
 
           <div className="flex flex-col gap-2 border-t border-palms-gold/15 bg-palms-charcoal-muted/80 px-4 py-3 text-xs text-palms-cream/70 sm:flex-row sm:items-center sm:justify-between md:px-6">
             <p>
-              {siteContact.agentName} • {siteContact.brokerage} • NV Lic #{siteContact.license}
+              {siteContact.agentName} • REALTOR®
             </p>
             {phone && tel ? (
               <p className="sm:text-right">

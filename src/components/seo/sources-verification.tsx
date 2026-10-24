@@ -46,7 +46,7 @@ export function SourcesVerification() {
           </a>
         </li>
         <li>
-          Nevada license {siteContact.license}:{" "}
+          Nevada license:{" "}
           <a
             className="text-palms-gold underline-offset-4 hover:underline"
             href={NEVADA_LICENSE_LOOKUP}

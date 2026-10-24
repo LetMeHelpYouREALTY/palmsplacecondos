@@ -6,7 +6,7 @@ import { siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = buildPageMetadata({
   path: "/team",
   title: "Palms Place real estate team | Dr. Jan Duffy",
-  description: `Meet ${siteContact.agentName}, Palms Place listing and buyers specialist. Call ${siteContact.phone} — ${siteContact.brokerage}.`,
+  description: `Meet ${siteContact.agentName}, Palms Place listing and buyers specialist. Call ${siteContact.phone}.`,
 });
 
 export default function TeamPage() {

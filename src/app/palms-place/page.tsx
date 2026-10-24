@@ -6,7 +6,7 @@ import { formatTeamPhrase, siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = buildPageMetadata({
   path: "/palms-place",
   title: "Palms Place Las Vegas | Building guide & condos for sale",
-  description: `Palms Place is a 47-story tower at 4381 W Flamingo Rd, west of the Las Vegas Strip. Location, residences, amenities & buying with ${formatTeamPhrase()} — ${siteContact.brokerage}.`,
+  description: `Palms Place is a 47-story tower at 4381 W Flamingo Rd, west of the Las Vegas Strip. Location, residences, amenities & buying with ${formatTeamPhrase()}.`,
 });
 
 export default function PalmsPlacePage() {

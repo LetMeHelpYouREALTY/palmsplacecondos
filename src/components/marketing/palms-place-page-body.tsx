@@ -44,7 +44,7 @@ export function PalmsPlacePageBody() {
         <strong className="font-semibold text-palms-cream">Palms Place</strong> is a{" "}
         {palmsPlaceTower.floors}-story residential tower at {towerLine}, connected to Palms Casino
         Resort and west of the Las Vegas Strip. This page summarizes location, residences, and how to
-        buy or sell with {siteContact.teamBrandName} at {siteContact.brokerage}.
+        buy or sell with {siteContact.teamBrandName}.
       </p>
 
       <section className="mt-12" aria-labelledby="palms-place-location-heading">

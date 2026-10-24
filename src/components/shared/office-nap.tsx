@@ -57,7 +57,7 @@ export function OfficeNap({
       <p className="mt-3 font-display text-lg font-semibold text-palms-cream">
         {siteContact.gbpBusinessName}
       </p>
-      <p className="mt-1 text-sm text-palms-cream/65">Real estate agent · {siteContact.brokerage}</p>
+      <p className="mt-1 text-sm text-palms-cream/65">Real estate agent · Top 1% Las Vegas REALTOR®</p>
       <p className="mt-4 leading-relaxed text-palms-cream/85">
         The sales office is at {officeLine || "the Las Vegas address on this Google Business Profile"}
         —not the Palms Place tower at 4381 W Flamingo Road. Call, map, and hours below match GBP.
@@ -114,7 +114,7 @@ export function OfficeNap({
 
       <div className="mt-6 space-y-1 border-t border-palms-gold/15 pt-5 text-sm text-palms-cream/70">
         <p>
-          {siteContact.agentName} · Nevada license {siteContact.license}
+          {siteContact.agentName} · In real estate since 1983
         </p>
         <p>{siteContact.agentTitle}</p>
       </div>

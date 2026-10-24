@@ -37,7 +37,7 @@ export function LuxuryHomesPageBody() {
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Explore luxury homes for sale in Las Vegas—from Summerlin and Henderson estates to executive
         single-family in the broader valley. Buyer tours with {siteContact.buyerSpecialistName},{" "}
-        {siteContact.buyerSpecialistTitle}, and the Palms Place team—{siteContact.brokerage}.
+        {siteContact.buyerSpecialistTitle}, and the Palms Place team.
       </p>
 
       <section className="mt-12" aria-labelledby="luxury-estates-heading">

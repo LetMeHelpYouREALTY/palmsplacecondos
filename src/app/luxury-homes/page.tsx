@@ -6,7 +6,7 @@ import { siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = buildPageMetadata({
   path: "/luxury-homes",
   title: "Las Vegas luxury homes for sale | Summerlin & Henderson",
-  description: `Luxury homes and estates in Summerlin, Henderson, and the Las Vegas valley—compare with Palms Place high-rises. ${siteContact.buyerSpecialistName}, ${siteContact.brokerage}.`,
+  description: `Luxury homes and estates in Summerlin, Henderson, and the Las Vegas valley—compare with Palms Place high-rises. ${siteContact.buyerSpecialistName}, REALTOR®.`,
 });
 
 export default function LuxuryHomesPage() {

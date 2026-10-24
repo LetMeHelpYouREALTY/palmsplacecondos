@@ -44,7 +44,7 @@ export function PalmsPlaceListingAuthority({ pathname }: PalmsPlaceListingAuthor
         </ul>
         <p className="mt-6 text-sm text-palms-cream/60">
           First-party Palms Place listing work—not a purchased ranking, review-count badge, or invented
-          award. {siteContact.brokerage} · Nevada license {siteContact.license}.
+          award.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
           <Link

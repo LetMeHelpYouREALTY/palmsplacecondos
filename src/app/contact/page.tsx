@@ -6,7 +6,7 @@ import { siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = buildPageMetadata({
   path: "/contact",
   title: "Contact Palms Place Condos — Las Vegas office",
-  description: `Call ${siteContact.phone} for Palms Place tours and Las Vegas high-rise questions. ${siteContact.agentName}, ${siteContact.brokerage}.`,
+  description: `Call ${siteContact.phone} for Palms Place tours and Las Vegas high-rise questions. ${siteContact.agentName}, REALTOR®.`,
 });
 
 export default function ContactPage() {

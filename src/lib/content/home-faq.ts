@@ -31,7 +31,7 @@ export const homeFaqItems: FaqItem[] = [
   {
     question: "Do Palms Place buyers and sellers work with different agents?",
     answer:
-      "No. Dr. Jan Duffy is both listing specialist and Palms Place Buyers Specialist. Tours, offers, listing prep, and marketing all route through her at Berkshire Hathaway HomeServices Nevada Properties (license S.0197614.LLC). Read the full role answer on the team page rather than a second FAQ copy here.",
+      "No. Dr. Jan Duffy is both listing specialist and Palms Place Buyers Specialist. Tours, offers, listing prep, and marketing all route through her. Read the full role answer on the team page rather than a second FAQ copy here.",
   },
   {
     question: "Where does listing information on this homepage come from?",

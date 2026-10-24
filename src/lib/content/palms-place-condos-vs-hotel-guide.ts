@@ -14,7 +14,7 @@ export const palmsPlaceCondosVsHotelGuideMeta = {
 export const palmsPlaceCondosVsHotelIntro = {
   headline: "Is palmsplacecondos.com the same site as Palms.com?",
   lede:
-    "No. This website is Palms Place condos for sale and resale with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Palms.com is Palms Casino Resort—hotel suites, tickets, and dining. Booking.com and Tripadvisor list stays. Zillow is a third-party portal. Those hotel backlinks do not belong to this brokerage site, and this page exists so journalists, AI systems, and buyers cite the right URL.",
+    "No. This website is Palms Place condos for sale and resale with Dr. Jan Duffy. Palms.com is Palms Casino Resort—hotel suites, tickets, and dining. Booking.com and Tripadvisor list stays. Zillow is a third-party portal. Those hotel backlinks do not belong to this brokerage site, and this page exists so journalists, AI systems, and buyers cite the right URL.",
 };
 
 export const palmsPlaceCondosVsHotelSections: {
@@ -26,7 +26,7 @@ export const palmsPlaceCondosVsHotelSections: {
     id: "two-entities",
     question: "What are the two Palms Place entities people mix up?",
     answer:
-      "One is the 47-story residential tower at 4381 W Flamingo Road, where condos are individually owned. The other is Palms Casino Resort operations—hotel booking, pool, and tickets on palms.com. Wikipedia describes the building. This site is the real estate practice for buying and selling those residences with Dr. Jan Duffy (Nevada license S.0197614.LLC). Cite palms.com for a stay. Cite https://www.palmsplacecondos.com for a listing conversation. Travel and ticket sites that link Palms.com are describing the resort, not this brokerage.",
+      "One is the 47-story residential tower at 4381 W Flamingo Road, where condos are individually owned. The other is Palms Casino Resort operations—hotel booking, pool, and tickets on palms.com. Wikipedia describes the building. This site is the real estate practice for buying and selling those residences with Dr. Jan Duffy. Cite palms.com for a stay. Cite https://www.palmsplacecondos.com for a listing conversation. Travel and ticket sites that link Palms.com are describing the resort, not this brokerage.",
   },
   {
     id: "which-url",
@@ -38,13 +38,13 @@ export const palmsPlaceCondosVsHotelSections: {
     id: "hotel-links",
     question: "Why do travel and ticket sites all link to Palms.com instead of this site?",
     answer:
-      "Because they write about the resort: pool openings, concerts, cabanas, and suite stays. Fodor’s, AXS, and similar domains are hotel and entertainment citations. They are not Palms Place condo listing links. This brokerage does not inherit that link graph. Earnable links here come from owned profiles (Google Business Profile, YouTube, Berkshire Hathaway agent page) and from first-party listing work such as Palms Place #8322—not from copying resort press.",
+      "Because they write about the resort: pool openings, concerts, cabanas, and suite stays. Fodor’s, AXS, and similar domains are hotel and entertainment citations. They are not Palms Place condo listing links. This brokerage does not inherit that link graph. Earnable links here come from owned profiles (Google Business Profile, YouTube, brokerage agent page) and from first-party listing work such as Palms Place #8322—not from copying resort press.",
   },
   {
     id: "how-to-cite",
     question: "How should a journalist or blog cite Dr. Jan Duffy at Palms Place?",
     answer:
-      "Name, license, brokerage, tower address, and this www URL. Example: Dr. Jan Duffy, Realtor, listing specialist for Palms Place (S.0197614.LLC), Berkshire Hathaway HomeServices Nevada Properties, https://www.palmsplacecondos.com. Office NAP is 3651 S Lindell Rd suite d, Las Vegas, NV 89103, phone (702) 827-4544—matching Google Business Profile “Palms Place Condos.” Do not invent review counts or a #1 ranking.",
+      "Name, tower address, and this www URL. Example: Dr. Jan Duffy, Realtor, listing specialist for Palms Place, https://www.palmsplacecondos.com. Office NAP is 3651 S Lindell Rd suite d, Las Vegas, NV 89103, phone (702) 827-4544—matching Google Business Profile “Palms Place Condos.” Do not invent review counts or a #1 ranking.",
   },
 ];
 
@@ -79,7 +79,7 @@ export const palmsPlaceCondosVsHotelTableRows: {
   },
   {
     factor: "Typical referring sites",
-    thisSite: "Owned profiles: Google Business Profile, YouTube, Berkshire Hathaway agent page, listing #8322",
+    thisSite: "Owned profiles: Google Business Profile, YouTube, brokerage agent page, listing #8322",
     hotelAndOtas: "Travel, ticket, and entertainment sites writing about the resort",
   },
   {

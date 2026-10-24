@@ -105,10 +105,8 @@ export function SiteFooter() {
                 <div>
                   <p className="font-medium text-palms-cream">{siteContact.agentName}</p>
                   <p className="text-palms-cream/80">{siteContact.agentTitle}</p>
-                  <p className="text-sm text-palms-cream/70">Nevada license {siteContact.license}</p>
-                </div>
-                <p className="text-palms-cream/85">{siteContact.brokerage}</p>
-                <address className="not-italic text-palms-cream/85">
+                                  </div>
+                                <address className="not-italic text-palms-cream/85">
                   {formatOfficeAddressLine()}
                 </address>
                 {hoursLine ? <p className="text-palms-cream/80">{hoursLine}</p> : null}
@@ -177,7 +175,8 @@ export function SiteFooter() {
 
         <div className="mt-12 border-t border-palms-gold/15 pt-8 text-xs leading-relaxed text-palms-cream/55">
           <p>
-            © {year} {siteContact.gbpBusinessName}. {siteContact.brokerage}. All rights reserved.
+            © {year} {siteContact.gbpBusinessName}. All rights reserved.<br />
+            {siteContact.brokerage} since September 2008 · License {siteContact.license}
           </p>
           <p className="mt-2">
             Equal Housing Opportunity. Listing data is deemed reliable but not guaranteed; verify with your

@@ -6,7 +6,7 @@ import { siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = buildPageMetadata({
   path: "/buyers",
   title: "Buy Palms Place & Las Vegas high-rise condos | Buyer hub",
-  description: `Search Palms Place condos, use buyer calculators, and tour with ${siteContact.buyerSpecialistName}—${siteContact.buyerSpecialistTitle}, ${siteContact.brokerage}.`,
+  description: `Search Palms Place condos, use buyer calculators, and tour with ${siteContact.buyerSpecialistName}—${siteContact.buyerSpecialistTitle}.`,
 });
 
 export default function BuyersPage() {

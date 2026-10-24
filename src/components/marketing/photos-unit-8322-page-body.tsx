@@ -134,7 +134,7 @@ export function PhotosUnit8322PageBody() {
         pathname={path}
         headingId="unit-photos-faq-heading"
         heading="What do Palms Place #8322 photos show versus the listing?"
-        intro={`Represented by ${siteContact.agentName}, ${siteContact.brokerage}. Service area: ${siteContact.primaryServiceArea}.`}
+        intro={`Represented by ${siteContact.agentName}. Service area: ${siteContact.primaryServiceArea}.`}
         items={unit8322PhotosPageFaq}
       />
 

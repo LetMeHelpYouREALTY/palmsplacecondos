@@ -40,8 +40,7 @@ export function BuyerCalculatorsPageBody() {
       </h1>
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        Use this page to frame questions for your lender—{siteContact.buyerSpecialistName} and the team
-        at {siteContact.brokerage} focus on property fit and negotiation, not loan underwriting. This is
+        Use this page to frame questions for your lender—{siteContact.buyerSpecialistName} and the team focus on property fit and negotiation, not loan underwriting. This is
         not legal or tax advice; consult licensed professionals for your situation.
       </p>
 

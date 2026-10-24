@@ -163,9 +163,7 @@ export function MarketingGuidePageShell({
         ) : null}
       </div>
 
-      <p className="mt-8 text-sm text-palms-cream/60">
-        {siteContact.brokerage} · Nevada real estate license {siteContact.license}
-      </p>
+      <p className="mt-8 text-sm text-palms-cream/60"> {siteContact.agentName}, REALTOR® · In real estate since 1983 </p>
 
       {faqItems && faqItems.length > 0 ? (
         <PageFaqSection

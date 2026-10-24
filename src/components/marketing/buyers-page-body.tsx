@@ -88,8 +88,7 @@ export function BuyersPageBody() {
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         <strong className="font-semibold text-palms-cream">Buyers start here</strong> to search
         Palms Place and comparable Las Vegas high-rise inventory, estimate payments, and schedule tours
-        with {siteContact.buyerSpecialistName}, {siteContact.buyerSpecialistTitle}, at{" "}
-        {siteContact.brokerage}.
+        with {siteContact.buyerSpecialistName}, {siteContact.buyerSpecialistTitle}.
       </p>
 
       <section

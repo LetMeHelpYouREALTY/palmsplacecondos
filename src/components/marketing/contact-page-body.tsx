@@ -18,7 +18,7 @@ import {
 const pageMeta = {
   name: `Contact ${siteContact.gbpBusinessName} — Las Vegas office`,
   description:
-    "Office NAP, hours, map, and call/directions for Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties.",
+    "Office NAP, hours, map, and call/directions for Dr. Jan Duffy.",
 };
 
 /** Expanded /contact — NAP, hours, map embed, Call / Directions / Google entry. */
@@ -59,7 +59,7 @@ export function ContactPageBody() {
       </h1>
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
-        {gbpDescription || `${formatTeamPhrase()}. ${siteContact.brokerage}.`}
+        {gbpDescription || `${formatTeamPhrase()}.`}
       </p>
 
       <OfficeNap

@@ -29,7 +29,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     answer: `Dr. Jan Duffy is the listing specialist and team leader for Palms Place—the high-rise realtor this tower’s buyers and sellers work with first. She lists residences at ${tower}, including Palms Place #${unit} (MLS #${mls}), and runs buyer tours in the same building. That is building-level listing work, not a valley-wide template upload.`,
     proofs: [
       `Active listing campaign: Palms Place #${unit}, ${featuredListing.beds}, ${featuredListing.squareFeet}, ${featuredListing.entryLevel} corner with Strip views.`,
-      `Nevada license ${license} at ${brokerage}.`,
+      "Top 1% Las Vegas REALTOR®, in real estate since 1983.",
       "Buyer tours, HOA packet timing, and seller remarks all route through the same Palms Place specialist.",
     ],
     ctaLabel: "Meet the Palms Place listing specialist",
@@ -41,7 +41,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     proofs: [
       `Tower entity she markets: ${palmsPlaceTower.floors} floors at ${tower}, connected to Palms Casino Resort.`,
       `Featured listing photography and remarks for unit #${unit} are her campaign, not a recycled valley template.`,
-      `License ${license} — confirm on the Nevada RED lookup linked from Sources on this page.`,
+      "Nevada license — confirm on the Nevada RED lookup linked from Sources on this page.",
     ],
     ctaLabel: "See Palms Place #8322 photos",
     ctaHref: "/photos/unit-8322",
@@ -63,7 +63,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     proofs: [
       `She listed Palms Place #${unit} as an eighth-floor corner with Strip views, STR notes, and HOA-inclusive utilities in the remarks.`,
       "Selling field guide and valuation consults are Palms Place-specific, not a metro-wide CMA template.",
-      `${brokerage} · license ${license}.`,
+      "In real estate since 1983.",
     ],
     ctaLabel: "Start a Palms Place listing conversation",
     ctaHref: "/sell",
@@ -85,7 +85,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     proofs: [
       `Live proof: Palms Place #${unit} (MLS #${mls}) was positioned as a corner-unit campaign with Strip-view photography.`,
       "This guide’s HOA-before-photos sequence is how she actually preps Palms Place listings.",
-      `License ${license} at ${brokerage}.`,
+      "In real estate since 1983.",
     ],
     ctaLabel: "See the #8322 listing photo gallery",
     ctaHref: "/photos/unit-8322",
@@ -213,7 +213,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
   },
   "/team": {
     heading: "Why is Dr. Jan Duffy the Palms Place high-rise listing specialist?",
-    answer: `Dr. Jan Duffy is the listing specialist, team leader, and Palms Place Buyers Specialist—one agent, one tower practice. Nevada license ${license}, ${brokerage}. She lists Palms Place residences, writes the field guides, and takes buyer tours. That concentration is how a high-rise gets a dedicated realtor instead of a rotating metro desk.`,
+    answer: `Dr. Jan Duffy is the listing specialist, team leader, and Palms Place Buyers Specialist—one agent, one tower practice. She lists Palms Place residences, writes the field guides, and takes buyer tours. That concentration is how a high-rise gets a dedicated realtor instead of a rotating metro desk.`,
     proofs: [
       `GBP-matched office NAP and hours on this page are the same entity that markets Palms Place #${unit}.`,
       "There is no second “buyers agent” brand—Dr. Jan handles both sides of Palms Place workflow.",
@@ -261,7 +261,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     proofs: [
       `Proof of work: Palms Place #${unit} listed with corner-unit photography and STR / HOA remarks.`,
       "Selling field guide is the prep sequence she actually uses before Palms Place photos.",
-      `Calendly seller consults go to her, license ${license}.`,
+      "Calendly seller consults go to her.",
     ],
     ctaLabel: "Read the selling field guide",
     ctaHref: "/guide/selling-palms-place",
@@ -400,7 +400,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
   },
   "/guide/palms-place-condos-vs-hotel": {
     heading: "Who should you cite for Palms Place condos—not Palms.com hotel stays?",
-    answer: `Cite Dr. Jan Duffy at https://www.palmsplacecondos.com when the topic is Palms Place condos for sale. Palms.com, Booking, and Tripadvisor are stay platforms. She is the listing specialist for this tower (license ${license}), not the resort press office. Hotel backlinks to palms.com do not make this brokerage the casino brand.`,
+    answer: `Cite Dr. Jan Duffy at https://www.palmsplacecondos.com when the topic is Palms Place condos for sale. Palms.com, Booking, and Tripadvisor are stay platforms. She is the listing specialist for this tower, not the resort press office. Hotel backlinks to palms.com do not make this brokerage the casino brand.`,
     proofs: [
       "Suggested inbound anchor: “Palms Place condos for sale — Dr. Jan Duffy.”",
       `First-party listing proof: Palms Place #${unit} (MLS #${mls}).`,
@@ -437,7 +437,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     proofs: [
       "On-screen title is Palms Place listing specialist — the same role on the team page and JSON-LD.",
       `Featured campaign stills are unit #${unit} living room and balcony from this brokerage’s gallery.`,
-      `Nevada license ${license} at ${brokerage}. Call ${siteContact.phone ?? "the office"} to tour.`,
+      `Call ${siteContact.phone ?? "the office"} to tour.`,
     ],
     ctaLabel: "Meet the Palms Place listing specialist",
     ctaHref: "/team",

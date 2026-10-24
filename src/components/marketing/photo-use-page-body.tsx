@@ -51,7 +51,7 @@ export function PhotoUsePageBody() {
           {siteContact.brokerage}.
         </p>
         <p className="mt-3 leading-relaxed text-palms-cream/85">
-          Gallery pages credit {siteContact.agentName} and {siteContact.brokerage} next to the
+          Gallery pages credit {siteContact.agentName} next to the
           photos. This page is the written license for those images.
         </p>
       </section>
@@ -108,7 +108,7 @@ export function PhotoUsePageBody() {
         pathname={path}
         headingId="photo-use-faq-heading"
         heading="Palms Place listing photo rights — short answers"
-        intro={`${siteContact.agentName} · ${siteContact.brokerage} · ${siteContact.primaryServiceArea}.`}
+        intro={`${siteContact.agentName} · ${siteContact.primaryServiceArea}.`}
         items={photoUsePageFaq}
       />
 

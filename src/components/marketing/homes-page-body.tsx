@@ -38,7 +38,7 @@ export function HomesPageBody() {
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         Single-family and attached homes across the valley—buyer tours with {siteContact.buyerSpecialistName},{" "}
-        {siteContact.buyerSpecialistTitle}, and {siteContact.brokerage}. {siteContact.primaryServiceArea}.
+        {siteContact.buyerSpecialistTitle}. {siteContact.primaryServiceArea}.
       </p>
 
       <section className="mt-12" aria-labelledby="homes-vs-palms-place-heading">

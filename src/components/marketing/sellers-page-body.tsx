@@ -62,7 +62,7 @@ export function SellersPageBody() {
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         <strong className="font-semibold text-palms-cream">Sellers start here</strong> for listing
         strategy at Palms Place and comparable Las Vegas high-rises with {siteContact.agentName},{" "}
-        {siteContact.agentTitle}, at {siteContact.brokerage}.
+        {siteContact.agentTitle}.
       </p>
 
       <section

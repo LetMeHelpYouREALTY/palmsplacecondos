@@ -20,7 +20,7 @@ import { AgentHeroBadge } from "@/components/shared/agent-hero-badge";
 const pageMeta = {
   name: "Palms Place real estate team — Dr. Jan Duffy",
   description:
-    "Meet Dr. Jan Duffy, Realtor — listing specialist, team leader, and Palms Place Buyers Specialist at Berkshire Hathaway HomeServices Nevada Properties.",
+    "Meet Dr. Jan Duffy, Realtor — listing specialist, team leader, and Palms Place Buyers Specialist.",
 };
 
 export function TeamPageBody() {
@@ -50,7 +50,7 @@ export function TeamPageBody() {
       <AgentHeroBadge className="mt-6" />
       <p className="mt-4 text-lg leading-relaxed text-palms-cream/85">
         <strong className="font-semibold text-palms-cream">{siteContact.teamBrandName}</strong> helps
-        buyers and sellers with Palms Place and Las Vegas high-rise condos at {siteContact.brokerage}.
+        buyers and sellers with Palms Place and Las Vegas high-rise condos.
         Visible contact details below match this site&apos;s Google Business Profile and JSON-LD.
       </p>
 
@@ -62,8 +62,7 @@ export function TeamPageBody() {
           Who leads Palms Place listings and buyer representation?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          {siteContact.agentName} is the {siteContact.agentTitle}. Nevada license{" "}
-          {siteContact.license}. Listing and marketing questions, pricing strategy, seller
+          {siteContact.agentName} is the {siteContact.agentTitle}, Top 1% Las Vegas REALTOR®, in real estate since 1983. Listing and marketing questions, pricing strategy, seller
           representation, buyer tours, HOA review, and offer strategy for Palms Place start with Dr.
           Jan. Email:{" "}
           {siteContact.emailListings ? (
@@ -100,8 +99,7 @@ export function TeamPageBody() {
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
           {siteContact.buyerSpecialistName} is also the {siteContact.buyerSpecialistTitle}. Buyers
-          start with Dr. Jan for showings, HOA review, and offer strategy—the same Nevada license{" "}
-          {siteContact.buyerSpecialistLicense}.
+          start with Dr. Jan for showings, HOA review, and offer strategy.
         </p>
       </section>
 
@@ -117,10 +115,7 @@ export function TeamPageBody() {
             <span className="text-palms-cream/60">Team: </span>
             {siteContact.teamBrandName}
           </li>
-          <li>
-            <span className="text-palms-cream/60">Brokerage: </span>
-            {siteContact.brokerage}
-          </li>
+          
           {officeLine ? (
             <li>
               <span className="text-palms-cream/60">Address: </span>

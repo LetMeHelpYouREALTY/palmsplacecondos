@@ -41,7 +41,6 @@ const rootDescription = [
   `Service area: ${siteContact.primaryServiceArea}.`,
   siteContact.phone ? `Call ${siteContact.phone}.` : null,
   formatTeamPhrase(),
-  siteContact.brokerage,
 ]
   .filter(Boolean)
   .join(" ");
