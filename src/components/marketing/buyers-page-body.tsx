@@ -217,7 +217,7 @@ export function BuyersPageBody() {
           How do you tour or write an offer at Palms Place?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          <CalendlyLink>Schedule a conversation</CalendlyLink>
+          <CalendlyLink intent="buyer" page="buyers">Schedule a conversation</CalendlyLink>
           {" "}
           with the team, or{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/contact">

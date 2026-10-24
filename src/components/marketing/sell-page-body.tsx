@@ -117,7 +117,7 @@ export function SellPageBody() {
           How do you start a Palms Place listing conversation?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          <CalendlyLink>Schedule a seller consult</CalendlyLink>
+          <CalendlyLink intent="listing" page="sell">Schedule a seller consult</CalendlyLink>
           , or return to the{" "}
           <Link className="text-palms-gold underline-offset-4 hover:underline" href="/">
             homepage

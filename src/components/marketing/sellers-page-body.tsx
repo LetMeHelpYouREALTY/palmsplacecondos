@@ -101,7 +101,7 @@ export function SellersPageBody() {
           <ButtonLink href="/sell" variant="primary">
             Sell page overview
           </ButtonLink>
-          <CalendlyButton variant="secondary">Schedule a seller consult</CalendlyButton>
+          <CalendlyButton intent="listing" page="sellers" variant="secondary">Schedule a seller consult</CalendlyButton>
         </div>
       </section>
 

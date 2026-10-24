@@ -135,7 +135,7 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
     },
     { href: "/sell", label: "Sell with the Palms Place team", description: "Listing specialist & marketing" },
     {
-      href: getCalendlyUrl(),
+      href: getCalendlyUrl("showing", "link", "related-links"),
       label: "Schedule a conversation",
       description: "Book on Calendly",
       external: true,

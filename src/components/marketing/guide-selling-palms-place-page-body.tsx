@@ -38,7 +38,7 @@ export function GuideSellingPalmsPlacePageBody() {
       footerCtas={[
         { href: "/sell", label: "Sell with the team" },
         {
-          href: getCalendlyUrl(),
+          href: getCalendlyUrl("listing", "link", "guide/selling-palms-place"),
           label: "Schedule a seller consult",
           external: true,
         },
