@@ -34,7 +34,7 @@ const videoFaq = [
   {
     question: "Who is the Palms Place realtor in this video?",
     answer:
-      "Dr. Jan Duffy, Realtor, is the listing specialist, team leader, and Palms Place Buyers Specialist, in real estate since 1983. Buyers and sellers in this tower work with her first. This is not a citywide ranking badge.",
+      "Dr. Jan Duffy, Realtor, is the listing specialist, team leader, and Palms Place Buyers Specialist, licensed since 2008 · 35 years in Las Vegas. Buyers and sellers in this tower work with her first. This is not a citywide ranking badge.",
   },
   {
     question: "Is this Palms Place hotel booking or condos for sale?",

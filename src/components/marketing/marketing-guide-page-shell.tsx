@@ -163,7 +163,7 @@ export function MarketingGuidePageShell({
         ) : null}
       </div>
 
-      <p className="mt-8 text-sm text-palms-cream/60"> {siteContact.agentName}, REALTOR® · In real estate since 1983 </p>
+      <p className="mt-8 text-sm text-palms-cream/60"> {siteContact.agentName}, REALTOR® · Licensed since 2008 · 35 years in Las Vegas </p>
 
       {faqItems && faqItems.length > 0 ? (
         <PageFaqSection

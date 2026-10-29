@@ -62,7 +62,7 @@ export function TeamPageBody() {
           Who leads Palms Place listings and buyer representation?
         </h2>
         <p className="mt-4 leading-relaxed text-palms-cream/85">
-          {siteContact.agentName} is the {siteContact.agentTitle}, Top 1% Las Vegas REALTOR®, in real estate since 1983. Listing and marketing questions, pricing strategy, seller
+          {siteContact.agentName} is the {siteContact.agentTitle}, Las Vegas REALTOR®, licensed since 2008 · 35 years in Las Vegas. Listing and marketing questions, pricing strategy, seller
           representation, buyer tours, HOA review, and offer strategy for Palms Place start with Dr.
           Jan. Email:{" "}
           {siteContact.emailListings ? (

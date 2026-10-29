@@ -66,7 +66,7 @@ export const AEO_QUERY_MAP: CanonicalQuery[] = [
     id: "listing-specialist",
     question: "Who is the Palms Place listing specialist?",
     answer:
-      "Dr. Jan Duffy, Realtor, is the listing specialist, team leader, and Palms Place Buyers Specialist, in real estate since 1983. Buyer tours, seller marketing, HOA packet timing, and the featured Palms Place #8322 campaign all run through her—not a rotating valley-wide desk.",
+      "Dr. Jan Duffy, Realtor, is the listing specialist, team leader, and Palms Place Buyers Specialist, licensed since 2008 · 35 years in Las Vegas. Buyer tours, seller marketing, HOA packet timing, and the featured Palms Place #8322 campaign all run through her—not a rotating valley-wide desk.",
     canonicalPath: "/team",
     canonicalLabel: "Palms Place team page",
   },
