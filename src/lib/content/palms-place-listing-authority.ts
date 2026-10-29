@@ -29,7 +29,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     answer: `Dr. Jan Duffy is the listing specialist and team leader for Palms Place—the high-rise realtor this tower’s buyers and sellers work with first. She lists residences at ${tower}, including Palms Place #${unit} (MLS #${mls}), and runs buyer tours in the same building. That is building-level listing work, not a valley-wide template upload.`,
     proofs: [
       `Active listing campaign: Palms Place #${unit}, ${featuredListing.beds}, ${featuredListing.squareFeet}, ${featuredListing.entryLevel} corner with Strip views.`,
-      "Top 1% Las Vegas REALTOR®, in real estate since 1983.",
+      "Las Vegas REALTOR®, licensed since 2008 · 35 years in Las Vegas.",
       "Buyer tours, HOA packet timing, and seller remarks all route through the same Palms Place specialist.",
     ],
     ctaLabel: "Meet the Palms Place listing specialist",
@@ -63,7 +63,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     proofs: [
       `She listed Palms Place #${unit} as an eighth-floor corner with Strip views, STR notes, and HOA-inclusive utilities in the remarks.`,
       "Selling field guide and valuation consults are Palms Place-specific, not a metro-wide CMA template.",
-      "In real estate since 1983.",
+      "Licensed since 2008 · 35 years in Las Vegas.",
     ],
     ctaLabel: "Start a Palms Place listing conversation",
     ctaHref: "/sell",
@@ -85,7 +85,7 @@ const listingAuthorityByPath: Record<string, ListingAuthoritySection> = {
     proofs: [
       `Live proof: Palms Place #${unit} (MLS #${mls}) was positioned as a corner-unit campaign with Strip-view photography.`,
       "This guide’s HOA-before-photos sequence is how she actually preps Palms Place listings.",
-      "In real estate since 1983.",
+      "Licensed since 2008 · 35 years in Las Vegas.",
     ],
     ctaLabel: "See the #8322 listing photo gallery",
     ctaHref: "/photos/unit-8322",

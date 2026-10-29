@@ -438,7 +438,7 @@ export const sellersPageFaq: FaqItem[] = [
   {
     question: "Who lists Palms Place for the team?",
     answer:
-      "Dr. Jan Duffy is the listing specialist and team leader for Palms Place, a Top 1% Las Vegas REALTOR® in real estate since 1983.",
+      "Dr. Jan Duffy is the listing specialist and team leader for Palms Place, a Las Vegas REALTOR® licensed since 2008 · 35 years in Las Vegas.",
   },
   {
     question: "Should I gather HOA documents before I list?",

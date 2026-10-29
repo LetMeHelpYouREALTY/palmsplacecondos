@@ -92,7 +92,7 @@ function getOfficeLongitude(): number | undefined {
 function defaultListingAgentDescription(): string {
   return (
     siteContact.schemaAgentDescription ??
-    `Licensed Nevada Realtor specializing in Palms Place and Las Vegas high-rise condos. In real estate since 1983. ${siteContact.brokerage}.`
+    `Licensed Nevada Realtor specializing in Palms Place and Las Vegas high-rise condos. Licensed since 2008 · 35 years in Las Vegas. ${siteContact.brokerage}.`
   );
 }
 
