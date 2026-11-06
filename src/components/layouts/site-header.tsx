@@ -43,7 +43,7 @@ export function SiteHeader() {
           {phone ? (
             <a
               className={cn(
-                "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-palms-gold/35 px-3 py-2 text-sm font-semibold text-palms-cream transition-colors hover:border-palms-gold hover:bg-palms-gold/10",
+                "inline-flex min-h-[44px] min-w-[4rem] items-center justify-center whitespace-nowrap rounded-lg border border-palms-gold/35 px-3 py-2 text-sm font-semibold sm:min-w-[9.5rem] text-palms-cream transition-colors hover:border-palms-gold hover:bg-palms-gold/10",
               )}
               href={telHref(phone)}
             >
@@ -52,7 +52,7 @@ export function SiteHeader() {
             </a>
           ) : null}
           <Link
-            className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-palms-gold px-3 py-2 text-sm font-semibold text-palms-charcoal shadow-lg shadow-black/25 transition hover:bg-palms-gold-hover hover:shadow-xl sm:px-4"
+            className="inline-flex min-h-[44px] min-w-[8.5rem] items-center justify-center whitespace-nowrap rounded-lg bg-palms-gold px-3 py-2 text-sm font-semibold text-palms-charcoal shadow-lg shadow-black/25 transition hover:bg-palms-gold-hover hover:shadow-xl sm:min-w-[9.5rem] sm:px-4"
             href="/search"
           >
             Browse listings

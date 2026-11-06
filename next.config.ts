@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
   // a minor fingerprinting surface for a public marketing site.
   poweredByHeader: false,
 
+  experimental: {
+    // Inline the single global stylesheet (~50 KB) into the HTML so the first paint and the
+    // hero image (LCP) are not held behind a render-blocking CSS request on mobile.
+    inlineCss: true,
+  },
+
   images: {
     formats: ["image/avif", "image/webp"],
     // Homepage hero source is 1536px. Default 2048/3840 entries make 3x phones

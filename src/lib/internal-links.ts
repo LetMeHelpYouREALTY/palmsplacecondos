@@ -238,8 +238,9 @@ function preferredHrefsForPath(pathname: string): string[] {
   ) {
     return [
       "/guide/selling-palms-place",
+      "/insights/palms-place-corner-unit-listing-campaign",
       "/guide/furnished-palms-place-condos",
-      "/photos",
+      "/photos/unit-8322",
       "/sell",
       "/contact",
     ];
@@ -251,8 +252,9 @@ function preferredHrefsForPath(pathname: string): string[] {
   ) {
     return [
       "/guide/palms-place-hoa-and-monthly-costs",
+      "/insights/palms-place-tour-red-flags",
       "/guide/palms-place-strip-view-condos",
-      "/photos",
+      "/photos/unit-8322",
       "__search__",
       "/guide/palms-place-short-term-rentals",
     ];
@@ -281,8 +283,9 @@ function preferredHrefsForPath(pathname: string): string[] {
   ) {
     return [
       "/guide/palms-place-strip-view-condos",
+      "/insights/furnished-resale-inventory-surprises",
       "/guide/palms-place-short-term-rentals",
-      "/photos",
+      "/photos/unit-8322",
       "/condos",
       "/guide/buying-palms-place",
     ];
@@ -295,7 +298,8 @@ function preferredHrefsForPath(pathname: string): string[] {
     return [
       "/guide/palms-place-strip-view-condos",
       "/guide/palms-place-short-term-rentals",
-      "/photos",
+      "/photos/unit-8322",
+      "/insights/palms-place-corner-unit-listing-campaign",
       "/guide/palms-place-unit-types",
       "/guide/furnished-palms-place-condos",
     ];
@@ -303,16 +307,19 @@ function preferredHrefsForPath(pathname: string): string[] {
   if (pathname.startsWith("/insights")) {
     return [
       "/insights",
+      "/insights/palms-place-tour-red-flags",
+      "/insights/why-we-request-hoa-packets-early",
+      "/insights/furnished-resale-inventory-surprises",
+      "/insights/palms-place-corner-unit-listing-campaign",
       "/guide/buying-palms-place",
-      "/photos",
-      "/palms-place",
-      "/faq",
+      "/photos/unit-8322",
     ];
   }
   if (pathname.startsWith("/photos") || pathname === "/featured" || pathname === "/video" || pathname === "/photo-use") {
     return [
       "/photos",
       "/photos/unit-8322",
+      "/insights/palms-place-corner-unit-listing-campaign",
       "/photo-use",
       "/video",
       "/contact",
@@ -344,7 +351,8 @@ function preferredHrefsForPath(pathname: string): string[] {
       "/guide/palms-place-amenities-and-resort-access",
       "/guide/palms-place-hoa-and-monthly-costs",
       "/guide/buying-palms-place",
-      "/photos",
+      "/photos/unit-8322",
+      "/maps",
       "/faq",
     ];
   }

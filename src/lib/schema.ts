@@ -134,6 +134,12 @@ function getBrandLogoImageObject(siteUrl: string): Record<string, unknown> {
     height: OG_IMAGE_SIZE.height,
     caption: OG_IMAGE_ALT,
     name: `${siteContact.gbpBusinessName} logo`,
+    // Google Image metadata (creator / credit / license) — same terms as listing galleries.
+    creator: { "@type": "Person", name: siteContact.agentName, url: siteOrigin(siteUrl) },
+    creditText: siteContact.agentName,
+    copyrightNotice: siteContact.brokerage,
+    license: `${siteOrigin(siteUrl)}${PHOTO_USE_PATH}`,
+    acquireLicensePage: `${siteOrigin(siteUrl)}${PHOTO_LICENSE_REQUEST_PATH}`,
   };
 }
 

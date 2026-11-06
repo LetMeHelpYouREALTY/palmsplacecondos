@@ -17,8 +17,26 @@ function nextWithPathname(request: NextRequest): NextResponse {
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
+/**
+ * Malformed homepage URLs Google found from outside links (Search Console 404s, Nov 2026):
+ * the homepage with a stray HTML-escaped "&amp;" or a "$" stuck on the end. They are typos of
+ * the homepage itself, so a permanent redirect to "/" is the matching page (not a soft 404).
+ */
+const MALFORMED_HOME_PATH = /^\/(?:&amp;|&|\$|%24|%26amp;|%26)+\/?$/i;
+
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  if (MALFORMED_HOME_PATH.test(pathname)) {
+    const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
+    let origin = request.nextUrl.origin;
+    try {
+      if (raw) origin = new URL(raw).origin;
+    } catch {
+      // keep request origin
+    }
+    return NextResponse.redirect(new URL("/", origin), 301);
+  }
 
   if (isIndexNowKeyRequest(pathname)) {
     return new NextResponse(INDEXNOW_KEY, {
