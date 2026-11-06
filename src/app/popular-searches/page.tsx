@@ -6,6 +6,8 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/popular-searches",
   title: "Popular Palms Place & Las Vegas real estate searches",
   description: "Shortcuts to Palms Place condos, Strip high-rises, luxury homes, and price bands—curated links plus live RealScout search with the local team.",
+  // Off-topic for Palms Place: keep live, keep links followed, keep out of Google's index.
+  extras: { robots: { index: false, follow: true } },
 });
 
 export default function PopularSearchesPage() {

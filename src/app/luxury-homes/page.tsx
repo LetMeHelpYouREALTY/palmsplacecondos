@@ -7,6 +7,8 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/luxury-homes",
   title: "Las Vegas luxury homes for sale | Summerlin & Henderson",
   description: `Luxury homes and estates in Summerlin, Henderson, and the Las Vegas valley—compare with Palms Place high-rises. ${siteContact.buyerSpecialistName}, REALTOR®.`,
+  // Off-topic for Palms Place: keep live, keep links followed, keep out of Google's index.
+  extras: { robots: { index: false, follow: true } },
 });
 
 export default function LuxuryHomesPage() {

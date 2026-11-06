@@ -13,6 +13,7 @@ import { palmsPlaceBuyerGuideMeta } from "@/lib/content/palms-place-buyer-guide"
 import { palmsPlaceCondosVsHotelGuideMeta } from "@/lib/content/palms-place-condos-vs-hotel-guide";
 import { palmsPlaceFurnishedGuideMeta } from "@/lib/content/palms-place-furnished-guide";
 import { palmsPlaceHoaGuideMeta } from "@/lib/content/palms-place-hoa-guide";
+import { palmsPlaceMortgageGuideMeta } from "@/lib/content/palms-place-mortgage-guide";
 import { palmsPlaceSellerGuideMeta } from "@/lib/content/palms-place-seller-guide";
 import { palmsPlaceShortTermRentalGuideMeta } from "@/lib/content/palms-place-short-term-rental-guide";
 import { palmsPlaceStripViewGuideMeta } from "@/lib/content/palms-place-strip-view-guide";
@@ -42,6 +43,7 @@ function editorialContentLastModified(): Record<string, string> {
     "/guide/palms-place-condos-vs-hotel": palmsPlaceCondosVsHotelGuideMeta.dateModified,
     "/guide/palms-place-strip-view-condos": palmsPlaceStripViewGuideMeta.dateModified,
     "/guide/palms-place-short-term-rentals": palmsPlaceShortTermRentalGuideMeta.dateModified,
+    "/guide/palms-place-mortgage-and-financing": palmsPlaceMortgageGuideMeta.dateModified,
     "/insights": maxIsoDate(fieldNotes.map((note) => note.dateModified)),
   };
 
@@ -57,13 +59,12 @@ function editorialContentLastModified(): Record<string, string> {
  * Seeded from source git history; bump when that route’s copy or NAP changes.
  */
 const MARKETING_PAGE_LAST_MODIFIED: Record<string, IsoDate> = {
-  "": "2026-10-17",
-  "/palms-place": "2026-08-20",
+  "": "2026-11-06",
+  "/palms-place": "2026-11-06",
   "/buyers": "2026-08-20",
   "/sellers": "2026-08-20",
   "/area/palms-place-las-vegas": "2026-08-20",
   "/team": "2026-10-17",
-  "/homes": "2026-08-20",
   "/condos": "2026-08-20",
   "/search": "2026-08-20",
   "/sell": "2026-08-20",
@@ -72,15 +73,11 @@ const MARKETING_PAGE_LAST_MODIFIED: Record<string, IsoDate> = {
   "/photo-use": "2026-10-17",
   "/connect": "2026-10-17",
   "/faq": "2026-08-21",
-  "/communities": "2026-08-20",
-  "/featured": "2026-08-24",
-  "/photos": "2026-08-24",
-  "/photos/unit-8322": "2026-08-24",
+  "/featured": "2026-11-06",
+  "/photos": "2026-11-06",
+  "/photos/unit-8322": "2026-11-06",
   "/video": "2026-10-17",
   "/high-rises": "2026-08-20",
-  "/luxury-homes": "2026-08-20",
-  "/popular-searches": "2026-08-20",
-  "/under-500k": "2026-08-20",
   "/buyers/calculators": "2026-08-20",
 };
 

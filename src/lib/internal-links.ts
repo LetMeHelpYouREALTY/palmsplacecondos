@@ -87,6 +87,11 @@ export function relatedLinksForPath(pathname: string): RelatedLink[] {
       description: "Furnishing is not Airbnb permission",
     },
     {
+      href: "/guide/palms-place-mortgage-and-financing",
+      label: "Can I get a mortgage at Palms Place?",
+      description: "Condo-hotel financing basics",
+    },
+    {
       href: "/area/palms-place-las-vegas",
       label: "Palms Place location — West Flamingo & Paradise",
       description: "Map, directions & Strip context",
@@ -251,21 +256,32 @@ function preferredHrefsForPath(pathname: string): string[] {
     pathname === "/guide/buying-palms-place"
   ) {
     return [
+      "/guide/palms-place-mortgage-and-financing",
       "/guide/palms-place-hoa-and-monthly-costs",
       "/insights/palms-place-tour-red-flags",
       "/guide/palms-place-strip-view-condos",
       "/photos/unit-8322",
       "__search__",
-      "/guide/palms-place-short-term-rentals",
     ];
   }
   if (pathname === "/guide/palms-place-hoa-and-monthly-costs") {
     return [
       "/guide/buying-palms-place",
+      "/guide/palms-place-mortgage-and-financing",
       "/insights/why-we-request-hoa-packets-early",
       "/guide/palms-place-short-term-rentals",
       "/palms-place",
       "/faq",
+    ];
+  }
+  if (pathname === "/guide/palms-place-mortgage-and-financing") {
+    return [
+      "/guide/buying-palms-place",
+      "/guide/palms-place-hoa-and-monthly-costs",
+      "/guide/palms-place-condos-vs-hotel",
+      "/guide/palms-place-short-term-rentals",
+      "/palms-place",
+      "/contact",
     ];
   }
   if (pathname === "/guide/palms-place-amenities-and-resort-access") {
@@ -335,6 +351,7 @@ function preferredHrefsForPath(pathname: string): string[] {
     return [
       "/guide/compare-strip-high-rises",
       "/palms-place",
+      "/guide/palms-place-mortgage-and-financing",
       "/condos",
       "/high-rises",
       "__search__",
@@ -351,9 +368,9 @@ function preferredHrefsForPath(pathname: string): string[] {
       "/guide/palms-place-amenities-and-resort-access",
       "/guide/palms-place-hoa-and-monthly-costs",
       "/guide/buying-palms-place",
+      "/guide/palms-place-mortgage-and-financing",
       "/photos/unit-8322",
       "/maps",
-      "/faq",
     ];
   }
 

@@ -6,6 +6,8 @@
  * `https://www.palmsplacecondos.com/sitemap.xml` (Success). After this deploy the
  * marketing catalog is 40 URLs (added `/maps` for GBP/Google Maps citations;
  * GSC count was already behind this array). Count must stay aligned with this array.
+ * 2026-11-06: 5 off-topic hubs moved to NOINDEX_SECONDARY_ROUTES (noindex, follow)
+ * and `/guide/palms-place-mortgage-and-financing` added — catalog is 36 URLs.
  */
 
 export type MarketingRoute = {
@@ -102,6 +104,13 @@ export const MARKETING_ROUTES: MarketingRoute[] = [
     priority: 0.86,
   },
   {
+    path: "/guide/palms-place-mortgage-and-financing",
+    summary:
+      "Can I get a mortgage at Palms Place? Condo-hotel financing basics — usually cash or a portfolio lender.",
+    changeFrequency: "monthly",
+    priority: 0.86,
+  },
+  {
     path: "/area/palms-place-las-vegas",
     summary: "Location page: West Flamingo / Paradise map context for Palms Place.",
     changeFrequency: "monthly",
@@ -140,12 +149,6 @@ export const MARKETING_ROUTES: MarketingRoute[] = [
   {
     path: "/team",
     summary: "Dr. Jan Duffy — Palms Place listing lead and buyers specialist NAP.",
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
-  {
-    path: "/homes",
-    summary: "Las Vegas homes for sale hub — compare with high-rise condo options.",
     changeFrequency: "monthly",
     priority: 0.85,
   },
@@ -193,12 +196,6 @@ export const MARKETING_ROUTES: MarketingRoute[] = [
     priority: 0.78,
   },
   {
-    path: "/communities",
-    summary: "Las Vegas communities hub for buyers comparing areas with Palms Place.",
-    changeFrequency: "monthly",
-    priority: 0.8,
-  },
-  {
     path: "/featured",
     summary: "Featured and spotlight inventory paths via live RealScout search.",
     changeFrequency: "weekly",
@@ -237,30 +234,28 @@ export const MARKETING_ROUTES: MarketingRoute[] = [
     priority: 0.8,
   },
   {
-    path: "/luxury-homes",
-    summary: "Luxury homes hub — estates vs Strip high-rise lifestyle tradeoffs.",
-    changeFrequency: "monthly",
-    priority: 0.8,
-  },
-  {
-    path: "/popular-searches",
-    summary: "Popular Palms Place and Las Vegas search shortcuts plus live inventory links.",
-    changeFrequency: "monthly",
-    priority: 0.75,
-  },
-  {
-    path: "/under-500k",
-    summary: "Under $500K Las Vegas and Palms Place price-band search guidance.",
-    changeFrequency: "monthly",
-    priority: 0.75,
-  },
-  {
     path: "/buyers/calculators",
     summary: "Buyer calculators hub — prepare questions; confirm rates with a licensed lender.",
     changeFrequency: "monthly",
     priority: 0.7,
   },
 ];
+
+/**
+ * Off-topic hub pages (general Las Vegas homes, luxury estates, price bands,
+ * valley communities, search shortcuts). They stay live for visitors and keep
+ * passing link value, but carry `noindex, follow` and stay out of sitemap.xml,
+ * llms.txt, and IndexNow so Google focuses on the Palms Place pages
+ * (Search Console "Discovered / Crawled – currently not indexed", 2026-11-06).
+ * The SEO audit reads this list to skip its orphan-page warning.
+ */
+export const NOINDEX_SECONDARY_ROUTES = [
+  "/homes",
+  "/communities",
+  "/luxury-homes",
+  "/popular-searches",
+  "/under-500k",
+] as const;
 
 export function marketingPathHref(path: string): string {
   return path === "" ? "/" : path;

@@ -6,15 +6,16 @@ import { palmsPlaceTower } from "@/lib/content/palms-place-building";
  * Override with NEXT_PUBLIC_FEATURED_LISTING_URL in Vercel when the listing URL changes.
  *
  * Relisted 2026-08-24 as MLS #2810666 at $374,500 after the prior MLS #2782527
- * campaign ($387,777 last ask; originally $437,777). Confirm live price before offers.
+ * campaign ($387,777 last ask; originally $437,777). Price reduced to $339,900 on
+ * 2026-11-03 (GLVAR via RealScout listing history, checked 2026-11-06). Confirm live price before offers.
  */
 export const featuredListing = {
-  price: "$374,500",
+  price: "$339,900",
   /** Numeric offer price for RealEstateListing JSON-LD — keep in sync with `price`. */
-  priceUsd: 374500,
+  priceUsd: 339900,
   /** Last ask on the prior MLS campaign — display as a price-drop reference only. */
-  previousPrice: "$387,777",
-  previousPriceUsd: 387777,
+  previousPrice: "$374,500",
+  previousPriceUsd: 374500,
   status: "For Sale (Active)",
   mlsNumber: "2810666",
   unitNumber: "8322",
@@ -33,7 +34,7 @@ export const featuredListing = {
   hoaMonthly: "$1,638 / mo HOA",
   annualTax: "$4,612 taxes / yr",
   badges: [
-    "Relisted · Price Drop",
+    "Price Drop",
     "STR Permitted",
     "Fully Furnished",
     "HOA Covers Utilities",
@@ -41,7 +42,7 @@ export const featuredListing = {
     "Strip Views",
   ] as const,
   overview:
-    "Relisted at $374,500 after a price drop from the prior $387,777 campaign. Eighth-floor corner unit at Palms Place with two east-facing walls of floor-to-ceiling glass and Strip views. Short-term rentals permitted. 1,220 SF, fully furnished—new carpet, new dryer, Sub-Zero refrigerator, custom kitchenette, marble bath with jetted tub. HOA includes power, water, gas, cable, valet parking, and 24/7 concierge. Sky Tube connects to Palms Casino Resort.",
+    "Now $339,900 after a price drop from $374,500 on November 3, 2026. Eighth-floor corner unit at Palms Place with two east-facing walls of floor-to-ceiling glass and Strip views. Short-term rentals permitted. 1,220 SF, fully furnished—new carpet, new dryer, Sub-Zero refrigerator, custom kitchenette, marble bath with jetted tub. HOA includes power, water, gas, cable, valet parking, and 24/7 concierge. Sky Tube connects to Palms Casino Resort.",
   ctaLabel: "View Full Details",
   tourLabel: "View Virtual / 3D Tour",
   // PropertyPanorama Instaview for MLS #2810666 (unit #8322).

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PageFaqSection } from "@/components/marketing/page-faq-section";
+import { PalmsPlaceMarketSnapshot } from "@/components/marketing/palms-place-market-snapshot";
 import { RelatedPages } from "@/components/seo/related-pages";
 import { SourcesVerification } from "@/components/seo/sources-verification";
 import { StructuredData } from "@/components/seo/structured-data";
@@ -160,6 +161,8 @@ export function PalmsPlacePageBody() {
           .
         </p>
       </section>
+
+      <PalmsPlaceMarketSnapshot />
 
       <section className="mt-12" aria-labelledby="palms-place-buy-heading">
         <h2

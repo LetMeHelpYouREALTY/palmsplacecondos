@@ -158,6 +158,11 @@ for (const routePath of routeEntries) {
 // ---------------------------------------------------------------------------
 
 const marketingPathSet = new Set(routeEntries.map((p) => (p === "" ? "/" : p)));
+// Intentionally noindexed hubs (NOINDEX_SECONDARY_ROUTES) are kept out of the sitemap on purpose.
+const noindexBlockMatch = marketingRoutesSrc.match(/NOINDEX_SECONDARY_ROUTES\s*=\s*\[([\s\S]*?)\]/);
+const noindexPathSet = new Set(
+  noindexBlockMatch ? [...noindexBlockMatch[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]) : [],
+);
 const allPageFiles = walk(APP_DIR).filter((f) => f.endsWith(`${path.sep}page.tsx`) || f === path.join(APP_DIR, "page.tsx"));
 
 for (const file of allPageFiles) {
@@ -165,7 +170,7 @@ for (const file of allPageFiles) {
   const dir = path.dirname(rel);
   if (dir.split(path.sep).some((seg) => /^\[.+\]$/.test(seg))) continue; // dynamic — can't statically enumerate
   const routePath = dir === "." ? "/" : `/${dir.split(path.sep).join("/")}`;
-  if (!marketingPathSet.has(routePath)) {
+  if (!marketingPathSet.has(routePath) && !noindexPathSet.has(routePath)) {
     warnings.push(
       `Orphan page: "${routePath}" has a page.tsx but is not in MARKETING_ROUTES — it is missing from sitemap.xml, llms.txt, and IndexNow submissions.`,
     );
