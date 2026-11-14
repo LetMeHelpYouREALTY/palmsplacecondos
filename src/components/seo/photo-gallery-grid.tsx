@@ -29,7 +29,7 @@ export function PhotoGalleryGrid({ photos, className }: PhotoGalleryGridProps) {
               <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-palms-gold/20 bg-palms-charcoal-muted">
                 <Image
                   alt={photo.alt}
-                  className="object-cover"
+                  className={photo.fit === "contain" ? "object-contain bg-white" : "object-cover"}
                   fill
                   sizes="(max-width: 640px) 100vw, 50vw"
                   src={src}

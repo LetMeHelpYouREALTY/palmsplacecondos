@@ -75,7 +75,7 @@ const MARKETING_PAGE_LAST_MODIFIED: Record<string, IsoDate> = {
   "/faq": "2026-08-21",
   "/featured": "2026-11-06",
   "/photos": "2026-11-06",
-  "/photos/unit-8322": "2026-11-06",
+  "/photos/unit-8322": "2026-11-14",
   "/video": "2026-10-17",
   "/high-rises": "2026-08-20",
   "/buyers/calculators": "2026-08-20",
