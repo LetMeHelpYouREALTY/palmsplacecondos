@@ -8,6 +8,10 @@ name: SEO / GEO / AEO self-improve loop
 #     drift (stale guides, duplicate titles, a missing AI crawler) surfaces
 #     on its own instead of waiting for someone to notice.
 #
+# Layer 2 (scripts/rendered-seo-audit.mjs) builds the app, runs `next start`,
+# and checks the server-rendered HTML of every sitemap URL (200, canonical,
+# one title/H1, parseable JSON-LD, og tags, NAP phone + license).
+#
 # The audit itself (scripts/seo-geo-aeo-audit.mjs) is static and offline —
 # no external SEO service, no API keys. See README "Self-improving SEO /
 # GEO / AEO loop" for what each check does and how to act on findings.
@@ -20,6 +24,7 @@ on:
       - "src/components/seo/**"
       - "src/components/marketing/**"
       - "scripts/seo-geo-aeo-audit.mjs"
+      - "scripts/rendered-seo-audit.mjs"
       - ".github/workflows/seo-geo-aeo-self-improve.yml"
   schedule:
     # Monday 13:00 UTC (~6am Pacific) — ahead of the work week.
@@ -54,6 +59,23 @@ jobs:
           npm run audit:seo -- --out audit-report.md
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
           set -e
+
+      - name: Build production app for rendered audit
+        env:
+          NEXT_PUBLIC_SITE_URL: https://www.palmsplacecondos.com
+        run: npm run build
+
+      - name: Run rendered-HTML audit (every sitemap URL)
+        id: rendered
+        env:
+          NEXT_PUBLIC_SITE_URL: https://www.palmsplacecondos.com
+        run: |
+          set +e
+          npm run audit:seo:rendered -- --out rendered-report.md
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+          printf '\n\n' >> audit-report.md
+          cat rendered-report.md >> audit-report.md
 
       - name: Add report to job summary
         if: always()
@@ -94,5 +116,5 @@ jobs:
             }
 
       - name: Fail on hard errors
-        if: steps.audit.outputs.exit_code != '0'
+        if: steps.audit.outputs.exit_code != '0' || steps.rendered.outputs.exit_code != '0'
         run: exit 1

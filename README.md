@@ -129,6 +129,15 @@ It checks:
 
 [`.github/workflows/seo-geo-aeo-self-improve.yml`](.github/workflows/seo-geo-aeo-self-improve.yml) runs the same audit as a PR status check on content/SEO changes, and again weekly (Monday, plus manual dispatch) — filing or updating a single tracking issue (label `seo-self-audit`) with current findings so drift surfaces on its own instead of waiting for someone to notice it in Search Console. Hard errors fail the check; length/freshness/duplicate findings are warnings for editorial follow-up.
 
+**Layer 2 — rendered HTML.** [`scripts/rendered-seo-audit.mjs`](scripts/rendered-seo-audit.mjs) checks what crawlers actually receive. After a production build it boots `next start`, reads `/sitemap.xml` from it, and fetches every URL with the canonical `www` Host header:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://www.palmsplacecondos.com npm run build
+NEXT_PUBLIC_SITE_URL=https://www.palmsplacecondos.com npm run audit:seo:rendered
+```
+
+Per URL it checks HTTP 200, one `<title>`, a meta description, a self-referencing absolute canonical, no `noindex`, one `<h1>`, JSON-LD that parses, `og:title`/`og:image`, the office phone from `site-contact.ts`, and license `S.0197614.LLC`. Sitewide it checks that `robots.txt` points at the same sitemap host and that `/llms.txt` returns 200. The CI workflow runs it after the static audit and appends the result to the same report and tracking issue.
+
 ### Optional: DMARC (email only)
 
 If you use **Cloudflare Email Routing** (MX on the zone), run Cloudflare’s **DMARC** wizard to add a `_dmarc` TXT record. This does not affect the Next.js site; it helps mail authentication and reporting.
