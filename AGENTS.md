@@ -43,7 +43,7 @@ This file is the **repository-specific** companion to the shared Cursor rules in
 - **Palms Place tower entity:** `#place-palms-place` is an `ApartmentComplex` + `Place` with the tower address from [`palms-place-building.ts`](src/lib/content/palms-place-building.ts) (wired via `siteContact.palmsPlaceBuilding`). Buy/sell `Service` nodes and agent `areaServed` / `knowsAbout` point at that `@id`. Do not invent unit counts or amenity lists in schema.
 - **Agent image URL:** set `NEXT_PUBLIC_AGENT_IMAGE_URL` when a production image URL is ready (see [`.env.example`](.env.example)); omit `image` in JSON-LD until then.
 - After deploy, spot-check JSON-LD with Google’s [Rich Results Test](https://search.google.com/test/rich-results) on key URLs (home, `/search`).
-- **Self-audit:** run `npm run audit:seo` ([`scripts/seo-geo-aeo-audit.mjs`](scripts/seo-geo-aeo-audit.mjs)) before adding/renaming a route or content module—it catches sitemap/llms.txt drift, duplicate titles/descriptions, and stale `dateModified`. The same check runs in CI on PRs and weekly (see README "Self-improving SEO / GEO / AEO loop").
+- **Self-audit:** run `npm run audit:seo` ([`scripts/seo-geo-aeo-audit.mjs`](scripts/seo-geo-aeo-audit.mjs)) before adding/renaming a route or content module—it catches sitemap/llms.txt drift, duplicate titles/descriptions, and stale `dateModified`. The same check runs in CI on PRs and weekly (see README "Self-improving SEO / GEO / AEO loop"). After `npm run build`, `npm run audit:seo:rendered` ([`scripts/rendered-seo-audit.mjs`](scripts/rendered-seo-audit.mjs)) boots `next start` and checks the rendered HTML of every sitemap URL (status, canonical, title/H1, JSON-LD parse, og tags, NAP phone, license); CI runs it too.
 
 ## Google Search Console
 
